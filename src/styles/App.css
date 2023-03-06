@@ -1,0 +1,16 @@
+.bg-dev-slate{
+  background:linear-gradient(rgba(0, 11, 55, 0.15), rgba(0, 11, 55, 0.15)),url(../background/dev-pattern.png);
+  background-position: center;
+  background-size: 75px;
+}
+
+.bg-dev-gray{
+  background:linear-gradient(rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 0.5)),url(../background/dev-pattern.png);
+  background-position: center;
+  background-size: 75px;
+}
+
+
+
+
+

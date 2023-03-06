@@ -1,0 +1,14 @@
+.HEADER-LOGO{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.logo{
+  background-image: url('/src/logo/logo.png');
+  background-position: center;
+  background-size: 20rem;
+}
+
+.font-shadow-white{
+  text-shadow:rgba(255, 255, 255, 0.87) 0px 0 4px,
+  rgb(255, 255, 255) 0px 0 50px ;
+}

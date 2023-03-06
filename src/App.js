@@ -25,7 +25,7 @@ function App() {
           <Header/>
         </section>
         
-        <section className='h-full bg-dev-gray'>
+        <section className='h-full'>
           <Routes>
 
             {

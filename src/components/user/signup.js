@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Dna } from "react-loader-spinner";
 
 function Signup () {
-
+  const [loggedIn, setLoggedIn] = useState(null)
   const [emailError, setEmailError] = useState(null)
   const [passwordError, setPasswordError] = useState(null)
   const [signupSuccess, setSignupSucess] = useState(null)
@@ -16,6 +16,19 @@ function Signup () {
     password: "",
     confirm_password: ""
   })
+
+  useEffect(()=> {
+    verifyToken()
+  },[])
+
+  useEffect(()=>{
+    if(loggedIn) window.location.href = '/'
+  },[loggedIn])
+
+  const verifyToken = () => {
+    const token = localStorage.getItem('token')
+    token && setLoggedIn(true)
+  }
 
   
 

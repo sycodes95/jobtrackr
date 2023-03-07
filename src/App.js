@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/header';
-import Signup from './components/signup';
-import Login from './components/login';
+import Signup from './components/user/signup';
+import Login from './components/user/login';
 
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false)

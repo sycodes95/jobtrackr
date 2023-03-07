@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 function Login () {
+  const [loggedIn, setLoggedIn] = useState(null)
 
   const [loginError, setLoginError] = useState(null)
 
@@ -9,6 +10,21 @@ function Login () {
     email: "",
     password: ""
   })
+
+  useEffect(()=> {
+    verifyToken()
+  },[])
+
+  useEffect(()=>{
+    if(loggedIn) window.location.href = '/'
+  },[loggedIn])
+
+  const verifyToken = () => {
+    const token = localStorage.getItem('token')
+    token && setLoggedIn(true)
+  }
+
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +41,6 @@ function Login () {
     })
     .then(response => response.json())
     .then(data => {
-      
       const token = data.token;
       if(token) {
         localStorage.setItem('token', JSON.stringify(token))
@@ -33,7 +48,6 @@ function Login () {
       } else {
         setLoginError('Incorrect email or password')
       }
-      
     })
     .catch(error => {
       console.error('Error:', error);

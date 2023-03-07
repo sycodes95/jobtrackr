@@ -19,27 +19,17 @@ function App() {
   
   return (
     <BrowserRouter>
-      <div className="APP-CONTAINER m-0 flex flex-col h-screen">
-
-        <section>
+      <div className="APP-CONTAINER h-screen m-0 flex flex-col min-w-fit">
           <Header/>
-        </section>
-        
-        <section className='h-full'>
           <Routes>
-
             {
             !userLoggedIn &&
             <Route path="/" element={<Login/>}/>
             }
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/login" element={<Login/>}/>
-            
           </Routes>
-        </section>
-        
       </div>
-
     </BrowserRouter>
   );
 }

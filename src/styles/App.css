@@ -1,5 +1,15 @@
+input:focus{
+  outline: none;
+}
+
 .bg-dev-slate{
   background:linear-gradient(rgba(0, 11, 55, 0.15), rgba(0, 11, 55, 0.15)),url(../background/dev-pattern.png);
+  background-position: center;
+  background-size: 75px;
+}
+
+.bg-dev-slate-dark{
+  background:linear-gradient(rgba(0, 3, 15, 0.4), rgba(0, 3, 15, 0.4)),url(../background/dev-pattern.png);
   background-position: center;
   background-size: 75px;
 }
@@ -23,9 +33,16 @@
                         
 }
 
+.box-shadow-outline{
+  
+  box-shadow:  rgba(255, 255, 255, 0.4) 1px 0 20px,
+  rgb(255, 255, 255) 1px 0 4px ; 
+                        
+}
+
 .bg-earth{
-  background:linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)),url(../images/earth2.png);
-  filter:invert(100%) ;
+  background:url(../images/earth2.png);
+  
 
   background-position: center;
   background-size:contain;
@@ -33,6 +50,14 @@
 }
 
 
+.LOG-IN-FORM, .SIGN-UP-FORM{
+  width: 24rem;
+}
 
+@media (max-width: 640px) {
+  .LOG-IN-FORM, .SIGN-UP-FORM{
+    width: 90%;
+  }
+}
 
 

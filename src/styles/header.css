@@ -8,3 +8,11 @@
   background-size: 20rem;
 }
 
+@media (max-width: 769px){
+  .LOGGED-IN-NAV{
+    display: none;
+  }
+  .NOT-LOGGED-IN-NAV{
+    display: none;
+  }
+}

@@ -26,8 +26,7 @@ function Header () {
       }
     })
   }
-
-
+  
   const verifyToken = () => {
     const token = localStorage.getItem('token')
     token && setLoggedIn(true)
@@ -48,8 +47,8 @@ function Header () {
           <Link className='hover:text-slate-300 border-b border-white  border-opacity-0 hover:border-opacity-100 transition-all' to='/'>
             Dashboard
           </Link>
-          <Link className='hover:text-slate-300 border-b border-white border-opacity-0 hover:border-opacity-100 transition-all' to='/track'>
-            Track
+          <Link className='hover:text-slate-300 border-b border-white border-opacity-0 hover:border-opacity-100 transition-all' to='/tracker'>
+            Tracker
           </Link>
           <button className='hover:text-red-600 text-red-700 flex items-center gap-x-1 transition-all' 
           onClick={handleLogout}>

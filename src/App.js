@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/header';
 import Signup from './components/user/signup';
 import Login from './components/user/login';
+import Tracker from './components/tracker/tracker';
 
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false)
@@ -28,6 +29,7 @@ function App() {
             }
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/tracker" element={<Tracker/>}/>
           </Routes>
       </div>
     </BrowserRouter>

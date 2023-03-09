@@ -24,8 +24,6 @@ function Login () {
     token && setLoggedIn(true)
   }
 
-  
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({...formData, [name]: value})
@@ -53,6 +51,7 @@ function Login () {
       console.error('Error:', error);
     });
   }
+  
   return(
     <div className="LOG-IN-CONTAINER h-fit flex flex-1 flex-col items-center pb-16 ">
       

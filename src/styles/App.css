@@ -107,17 +107,58 @@ th {
   max-height: 50rem;
   grid-template-columns: repeat(4,1fr);
 }
-@media (max-width: 1280px) {
+
+.COLOR-TIPS{
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.TOOL-BAR{
+  grid-template-columns: repeat(3,1fr)
+}
+.SEARCH-BAR{
+  justify-content: end;
+}
+@media (max-width: 1440px) {
   .TRACKER-CONTAINER{
-    max-width: 98%;
+    width: 90%;
   }
+}
+@media (max-width: 1280px) {
+  
   .JOB-FORM {
     grid-template-columns: repeat(2,1fr);
   }
+  /*
+  .TOOL-BAR{
+    grid-template-columns: repeat(2,1fr)
+  }
+  */
+  .COLOR-TIPS{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /*
+  .COLOR-TIPS{
+    grid-column: 1/3;
+    grid-row: 1/2;
+  }
+  */
+  .COLOR-TIPS > span{
+    justify-content: center;
+  }
+  
 } 
+@media (max-width: 900px) {
+  .TOOL-BAR{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .COLOR-TIPS{
+    display: none;
+  }
+  
+
+}
 
 @media (max-width: 769px) {
-  
   .DialogContent {
     width: fit-content;
   }
@@ -129,7 +170,37 @@ th {
   }
   .JOB-FORM {
     grid-template-columns: 1fr;
+  }
+  
+}
+
+@media (max-width: 545px) {
+  .TOOL-BAR{
+    grid-template-columns: 1fr;
+    justify-content: center;
+    justify-items: center;
     
+  }
+  .ADD-JOB-BUTTON-CONTAINER{
+    width: 100%;
+  }
+  .ADD-JOB-BUTTON{
+    width: 100%;
+  }
+  .SEARCH-BAR-CONTAINER{
+    width: 100%;
+  } 
+  .SEARCH-BAR-INPUT{
+    width: 100%;
+  } 
+  .TRACKER-CONTAINER{
+    width: 99%;
+  }
+}
+
+@media (max-width: 300px) {
+  .APP-CONTAINER{
+    width: 300px;
   }
 }
 

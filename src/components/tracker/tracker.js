@@ -48,19 +48,19 @@ function Tracker () {
   };
   return(
     <Dialog.Root>
-    <div className="flex justify-center p-16 w-full">
+    <div className="flex justify-center p-8 w-full">
       <div className="TRACKER-CONTAINER  h-full text-black max-w-screen-2xl flex flex-col items-center justify-center">
 
-        <section className='TRACKER-BANNER h-24 w-96 bg-black bg-opacity-30 flex items-center p-2 mb-12'>
+        <section className='TRACKER-BANNER h-24  bg-black bg-opacity-30 flex items-center p-2 mb-12'>
           <Icon className='text-red-800' path={mdiRadar} size={2} />
           <div className='text-4xl font-bold'>TRACK</div>
         </section>
 
-        <section className='w-full flex justify-between items-center gap-x-2 p-2 bg-black bg-opacity-30'>
+        <section className='TOOL-BAR w-full grid gap-x-2 bg-opacity-25 gap-y-2 mb-2'>
 
-          <div className='h-12 w-fit'>
-            <Dialog.Trigger className='h-full'>
-            <button className='h-full w-48 text-xs bg-red-800 bg-opacity-50 hover:bg-opacity-70 transition-all
+          <div className='ADD-JOB-BUTTON-CONTAINER h-12 p-2 bg-black bg-opacity-25 w-fit'>
+            <Dialog.Trigger className='h-full w-full'>
+            <button className='ADD-JOB-BUTTON h-full w-48 text-xs bg-red-800 bg-opacity-50 hover:bg-opacity-70 transition-all
             grid grid-cols-3 items-center text-white'>
              
               <div className='flex justify-center'> <Icon path={mdiPlusThick} size={1}/></div>
@@ -77,35 +77,33 @@ function Tracker () {
             
             </Dialog.Portal>
           </div>
-          <div className='w-full h-full bg-black bg-opacity-25'>
-            <div className='h-full text-sm text-gray-400 flex justify-center items-center font-bold 
-            w-fit ml-2'>
-              FILTER
-            </div>
-
-          </div>
-          <div className='h-12 w-fit flex items-end'>
-            <input className='bg-black bg-opacity-25 text-white text-sm h-6 w-48
-            ' type='text' placeholder='Search...'/>
-          </div>
-          
-        </section>
-        <section className='flex justify-end w-full p-2'>
-          <div className='flex gap-x-4 COLOR-TIPS'>
-            <span className='flex items-center text-white text-xs gap-x-1'>
+          <div className='grid justify-center gap-x-4 COLOR-TIPS'>
+            <span className='flex items-center text-white text-xs gap-x-1 whitespace-nowrap'>
               <Icon className='' path={mdiCircleSlice8} size={0.8}/> AWAITING RESPONSE
             </span>
-            <span className='flex items-center text-steel-blue text-xs gap-x-1'>
+            <span className='flex items-center text-steel-blue text-xs gap-x-1 whitespace-nowrap'>
               <Icon className='' path={mdiCircleSlice8} size={0.8}/> INTERVIEW STAGE
             </span>
-            <span className='flex items-center text-yellow-500 text-xs gap-x-1'>
+            <span className='flex items-center text-yellow-500 text-xs gap-x-1 whitespace-nowrap'>
               <Icon className='' path={mdiCircleSlice8} size={0.8}/> OFFER RECEIVED
             </span>
-            <span className='flex items-center text-red-500 text-xs gap-x-1'>
+            <span className='flex items-center text-red-500 text-xs gap-x-1 whitespace-nowrap'>
               <Icon className='' path={mdiCircleSlice8} size={0.8}/> REJECTED
             </span>
           </div>
+          
+          <div className='SEARCH-BAR h-12 w-full flex items-center'>
+            <div className='SEARCH-BAR-CONTAINER p-2 bg-black bg-opacity-25 '>
+              <input className='SEARCH-BAR-INPUT bg-black bg-opacity-25  text-white text-sm h-8 w-48
+              transition-all' type='text' placeholder='Search...'/>
+            </div>
+            
+          </div>
+          
         </section>
+
+       
+        
         <section className='TABLE-CONTAINER w-full gap-x-2 p-2 bg-black bg-opacity-30'>
           <TrackerTable jobAppsContext={{jobApps, setJobApps}}/>
         </section>

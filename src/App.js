@@ -24,7 +24,7 @@ function App() {
   
   return (
     <BrowserRouter>
-      <div className="APP-CONTAINER h-screen m-0 flex flex-col w-full">
+      <div className="APP-CONTAINER h-screen m-0 flex flex-col">
         <Header/>
         <Routes>
           {

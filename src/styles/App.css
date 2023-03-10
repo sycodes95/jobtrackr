@@ -1,6 +1,10 @@
-input:focus{
+input:focus select:focus{
   outline: none;
 }
+
+
+
+
 
 .bg-dev-slate{
   background:linear-gradient(rgba(0, 11, 55, 0.15), rgba(0, 11, 55, 0.15)),url(../background/dev-pattern.png);
@@ -14,27 +18,19 @@ input:focus{
   background-size: 75px;
 }
 
-.bg-dev-red{
-  background:linear-gradient(rgba(55, 0, 0, 0.15), rgba(55, 0, 0, 0.15)),url(../background/dev-pattern.png);
-  background-position: center;
-  background-size: 75px;
-}
-
-.bg-dev-gray{
-  background:linear-gradient(rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 0.5)),url(../background/dev-pattern.png);
+.bg-dev-slate-darker{
+  background:linear-gradient(rgba(0, 3, 15, 0.6), rgba(0, 3, 15, 0.6)),url(../background/dev-pattern.png);
   background-position: center;
   background-size: 75px;
 }
 
 .font-black-outline{
-  
   text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, rgb(0, 0, 0) 1px 0 10px,
   rgb(0, 0, 0) 1px 0 4px ; 
                         
 }
 
 .box-shadow-outline{
-  
   box-shadow:  rgba(255, 255, 255, 0.4) 1px 0 20px,
   rgb(255, 255, 255) 1px 0 4px ; 
                         
@@ -42,8 +38,6 @@ input:focus{
 
 .bg-earth{
   background:url(../images/earth2.png);
-  
-
   background-position: center;
   background-size:contain;
   background-repeat: no-repeat;
@@ -52,6 +46,26 @@ input:focus{
 
 .LOG-IN-FORM, .SIGN-UP-FORM{
   width: 24rem;
+}
+
+.DialogOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  
+}
+
+.DialogContent {
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  z-index: 50;
+  height: fit-content;
+  
 }
 
 @media (max-width: 640px) {

@@ -17,6 +17,10 @@ function App() {
     
   }, [])
 
+  useEffect(()=>{
+    if(userLoggedIn) window.location.href = '/tracker'
+  },[userLoggedIn])
+
   
   return (
     <BrowserRouter>
@@ -24,9 +28,9 @@ function App() {
           <Header/>
           <Routes>
             {
-            !userLoggedIn &&
-            <Route path="/" element={<Login/>}/>
+            userLoggedIn && <Route path="/" element={<Login/>}/>
             }
+            
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/tracker" element={<Tracker/>}/>

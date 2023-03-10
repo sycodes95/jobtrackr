@@ -21,14 +21,14 @@ function Header () {
     .then((data)=>{
       console.log(data);
       if(!data.error) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('jobtrackr_token')
         window.location.href='/login'
       }
     })
   }
   
   const verifyToken = () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('jobtrackr_token')
     token && setLoggedIn(true)
   }
 

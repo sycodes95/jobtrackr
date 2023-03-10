@@ -1,14 +1,19 @@
 
 
 import Icon from '@mdi/react';
-import { mdiRadar, mdiPlusThick } from '@mdi/js';
+
 import TrackerTable from './trackerTable';
 import * as Dialog from '@radix-ui/react-dialog';
 import AddJob from './addJob';
+
+import { mdiRadar, mdiPlusThick, mdiCircleSlice8 } from '@mdi/js';
 import { useEffect, useState } from 'react';
 
 function Tracker () {
   const [user_id, set_user_id] = useState(null)
+
+  const [jobApps, setJobApps] = useState(null)
+
   useEffect(()=>{
     const token = JSON.parse(localStorage.getItem('jobtrackr_token'))
     
@@ -26,15 +31,27 @@ function Tracker () {
       }
   }, [])
 
+  useEffect(()=>{
+    user_id && getAllJobApps()
+  },[user_id])
+
+  const getAllJobApps = () => {
+    fetch(`${process.env.REACT_APP_API_HOST}/job-app-all-get?user_id=${user_id}`)
+    .then(res => res.json())
+    .then(data => {
+      if(data.length > 0) setJobApps(data)
+    })
+  }
+
   const handleOverlayClick = (event) => {
     event.preventDefault();
   };
   return(
     <Dialog.Root>
     <div className="flex justify-center p-16 w-full">
-      <div className="TRACKER-CONTAINER  h-full text-black max-w-7xl gap-y-12 flex flex-col items-center justify-center">
+      <div className="TRACKER-CONTAINER  h-full text-black max-w-screen-2xl flex flex-col items-center justify-center">
 
-        <section className='TRACKER-BANNER h-24 w-96 bg-black bg-opacity-30 flex items-center p-2'>
+        <section className='TRACKER-BANNER h-24 w-96 bg-black bg-opacity-30 flex items-center p-2 mb-12'>
           <Icon className='text-red-800' path={mdiRadar} size={2} />
           <div className='text-4xl font-bold'>TRACK</div>
         </section>
@@ -43,8 +60,8 @@ function Tracker () {
 
           <div className='h-12 w-fit'>
             <Dialog.Trigger className='h-full'>
-            <button className='h-full w-48 text-xs bg-steel-blue bg-opacity-25 hover:bg-opacity-50 transition-all
-            grid grid-cols-3 items-center text-black'>
+            <button className='h-full w-48 text-xs bg-red-800 bg-opacity-50 hover:bg-opacity-70 transition-all
+            grid grid-cols-3 items-center text-white'>
              
               <div className='flex justify-center'> <Icon path={mdiPlusThick} size={1}/></div>
               <div>ADD JOB</div>
@@ -73,9 +90,24 @@ function Tracker () {
           </div>
           
         </section>
-
+        <section className='flex justify-end w-full p-2'>
+          <div className='flex gap-x-4 COLOR-TIPS'>
+            <span className='flex items-center text-white text-xs gap-x-1'>
+              <Icon className='' path={mdiCircleSlice8} size={0.8}/> AWAITING RESPONSE
+            </span>
+            <span className='flex items-center text-steel-blue text-xs gap-x-1'>
+              <Icon className='' path={mdiCircleSlice8} size={0.8}/> INTERVIEW STAGE
+            </span>
+            <span className='flex items-center text-yellow-500 text-xs gap-x-1'>
+              <Icon className='' path={mdiCircleSlice8} size={0.8}/> OFFER RECEIVED
+            </span>
+            <span className='flex items-center text-red-500 text-xs gap-x-1'>
+              <Icon className='' path={mdiCircleSlice8} size={0.8}/> REJECTED
+            </span>
+          </div>
+        </section>
         <section className='TABLE-CONTAINER w-full gap-x-2 p-2 bg-black bg-opacity-30'>
-          <TrackerTable/>
+          <TrackerTable jobAppsContext={{jobApps, setJobApps}}/>
         </section>
        
       </div>

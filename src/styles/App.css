@@ -27,7 +27,18 @@ input:focus select:focus{
 
 
 
+table tr:nth-of-type(even){
+  background:rgba(0, 0, 0, 0.2)
+}
+th {
+  font-weight:100;
+}
 
+.strike {
+  text-decoration: line-through;
+  text-decoration-color: red;
+  text-decoration-style: dashed;
+}
 
 .bg-dev-slate{
   background:linear-gradient(rgba(0, 11, 55, 0.15), rgba(0, 11, 55, 0.15)),url(../background/dev-pattern.png);
@@ -98,7 +109,7 @@ input:focus select:focus{
 }
 @media (max-width: 1280px) {
   .TRACKER-CONTAINER{
-    max-width: 90%;
+    max-width: 98%;
   }
   .JOB-FORM {
     grid-template-columns: repeat(2,1fr);

@@ -2,6 +2,29 @@ input:focus select:focus{
   outline: none;
 }
 
+::-webkit-scrollbar{
+  width: 14px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track{
+  background-color: rgb(35, 35, 35);
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: rgb(17, 17, 21);
+}
+
+
+.scrollbar-color::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;
+}
+
+.scrollbar-color::-webkit-scrollbar-track{
+  background-color: rgb(187, 187, 187);
+}
+
 
 
 
@@ -64,13 +87,38 @@ input:focus select:focus{
   transform: translate(-50%, -50%);
   margin: 0 auto;
   z-index: 50;
-  height: fit-content;
+  
   
 }
 
+.JOB-FORM {
+  max-width: fit-content;
+  max-height: 50rem;
+  grid-template-columns: repeat(4,1fr);
+}
+@media (max-width: 1280px) {
+  .TRACKER-CONTAINER{
+    max-width: 90%;
+  }
+  .JOB-FORM {
+    grid-template-columns: repeat(2,1fr);
+  }
+} 
+
+@media (max-width: 769px) {
+  
+  .DialogContent {
+    width: fit-content;
+  }
+  
+}
 @media (max-width: 640px) {
   .LOG-IN-FORM, .SIGN-UP-FORM{
     width: 90%;
+  }
+  .JOB-FORM {
+    grid-template-columns: 1fr;
+    
   }
 }
 

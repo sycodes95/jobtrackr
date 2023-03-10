@@ -24,17 +24,17 @@ function App() {
   
   return (
     <BrowserRouter>
-      <div className="APP-CONTAINER h-screen m-0 flex flex-col w-full min-w-fit">
-          <Header/>
-          <Routes>
-            {
-            userLoggedIn && <Route path="/" element={<Login/>}/>
-            }
-            
-            <Route path="/signup" element={<Signup/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/tracker" element={<Tracker/>}/>
-          </Routes>
+      <div className="APP-CONTAINER h-screen m-0 flex flex-col w-full">
+        <Header/>
+        <Routes>
+          {
+          userLoggedIn && <Route path="/" element={<Login/>}/>
+          }
+          
+          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/tracker" element={<Tracker/>}/>
+        </Routes>
       </div>
     </BrowserRouter>
   );

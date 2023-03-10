@@ -32,7 +32,7 @@ function Tracker () {
   return(
     <Dialog.Root>
     <div className="flex justify-center p-16 w-full">
-      <div className="h-ful w-full text-black max-w-7xl gap-y-12 flex flex-col items-center justify-center">
+      <div className="TRACKER-CONTAINER  h-full text-black max-w-7xl gap-y-12 flex flex-col items-center justify-center">
 
         <section className='TRACKER-BANNER h-24 w-96 bg-black bg-opacity-30 flex items-center p-2'>
           <Icon className='text-red-800' path={mdiRadar} size={2} />
@@ -74,7 +74,7 @@ function Tracker () {
           
         </section>
 
-        <section className='w-full flex justify-between items-center gap-x-2 p-2 bg-black bg-opacity-30'>
+        <section className='TABLE-CONTAINER w-full gap-x-2 p-2 bg-black bg-opacity-30'>
           <TrackerTable/>
         </section>
        

@@ -105,7 +105,7 @@ function Tracker () {
        
         
         <section className='TABLE-CONTAINER w-full gap-x-2 p-2 bg-black bg-opacity-30'>
-          <TrackerTable jobAppsContext={{jobApps, setJobApps}}/>
+          <TrackerTable jobAppsContext={{jobApps, setJobApps}} user_id={user_id}/>
         </section>
        
       </div>

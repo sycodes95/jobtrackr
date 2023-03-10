@@ -2,33 +2,88 @@ import moment from "moment";
 import Icon from '@mdi/react';
 import { mdiDeleteVariant, mdiCircleEditOutline } from '@mdi/js';
 import Rating from 'react-rating';
+import { useEffect, useState } from "react";
 
 
 function TrackerTable (props) {
+  const user_id = props.user_id;
   const {jobApps, setJobApps} = props.jobAppsContext
+
+  const [categories, setCategories] = useState([
+    {category: 'APP DATE', column: 'job_app_date', sortby: 0},
+    {category: 'FAV', column: 'company_favorite', sortby: 0},
+    {category: 'COMPANY', column: 'company_name', sortby: 0},
+    {category: 'COMPANY WEBSITE', column: 'company_website', sortby: 0},
+    {category: 'APPLICATION METHOD', column: 'job_app_method', sortby: 0},
+    {category: 'SOURCE WEBSITE', column: 'job_source_website', sortby: 0},
+    {category: 'POSITION', column: 'job_position', sortby: 0},
+    {category: 'FIT RATING', column: 'job_fit_rating', sortby: 0},
+    {category: 'LOCATION', column: 'job_location', sortby: 0},
+    {category: 'RESPONSE DATE', column: 'response_date', sortby: 0},
+    {category: 'INTERVIEW DATE', column: 'interview_date', sortby: 0},
+    {category: 'REJECTED', column: 'rejected', sortby: 0},
+    {category: 'OFFER AMOUNT', column: 'offer_amount', sortby: 0},
+  ])
+  
+  const handleCategorySort = (index) => {
+    const column = categories[index].column;
+    const sortby = categories[index].sortby;
+    fetch(`${process.env.REACT_APP_API_HOST}/job-app-sort-category-get?user_id=${user_id}&column=${column}&sortby=${sortby}`)
+    .then(response => response.json())
+    .then(data =>{
+      if(data.length > 0){
+        let cat = Array.from(categories)
+        cat[index].sortby === 0 ? cat[index].sortby = 1 : cat[index].sortby = 0;
+        setCategories(cat)
+        setJobApps(data)
+      }
+      console.log(data);
+      /*
+      let cat = Array.from(categories)
+      cat[index].sortby === 0 ? cat[index].sortby = 1 : cat[index].sortby = 0
+      setCategories(cat)
+      */
+      
+    })
+    
+  } 
+
+ 
+  useEffect(()=>{
+    console.log(categories);
+  },[categories])
+
+  /*
   const categories = [
-    'APP DATE', 'FAV', 'COMPANY', 'COMPANY WEBSITE', 'APPLICATION METHOD', 'SOURCE WEBSITE', 'POSITION',
+    {category: 'APP DATE',  }, 'FAV', 'COMPANY', 'COMPANY WEBSITE', 'APPLICATION METHOD', 'SOURCE WEBSITE', 'POSITION',
     'FIT RATING', 'LOCATION', 'RESPONSE DATE', 'INTERVIEW DATE',  'REJECTED', 'OFFER AMOUNT', 'ADDITIONAL'
   ]
+  */
 
   console.log(jobApps);
   return (
-    <div className=' w-full overflow-x-auto'>
+    <div className=' w-full h-96 overflow-x-auto'>
       <table className="w-full">
         <thead>
           <tr className="bg-black bg-opacity-25">
-            <th colspan='1' className='text-xs text-gray-300 p-2  w-6
-            '></th>
-            <th colspan='1' className='text-xs text-gray-300 p-2 border-r-2 border-white border-opacity-30 w-6
-            '></th>
-            <th colspan='1' className='text-xs text-gray-300 p-2 border-r-2 border-white border-opacity-30 w-6
-            '>#</th>
+            <th colspan='1' className='text-xs text-gray-300 p-2  w-6'>
+            </th>
+            <th colspan='1' className='text-xs text-gray-300 p-2 border-r-2 border-white border-opacity-30 w-6'>
+            </th>
+            <th colspan='1' className='text-xs text-gray-300 p-2 border-r-2 border-white border-opacity-30 w-6'>
+            #
+            </th>
             {
+            categories &&
             categories.map((cat, index) => (
             <th colspan='1' className='text-xs text-gray-300 p-2 border-r-2 border-white border-opacity-30
-            whitespace-nowrap'>{cat}</th>
+            whitespace-nowrap hover:cursor-pointer hover:text-white transition-all' onClick={()=>handleCategorySort(index)} >{cat.category}</th>
             ))
             }
+            <th colspan='1' className='text-xs text-gray-300 p-2 border-r-2 border-white border-opacity-30 w-6'>
+            ADDITIONAL
+            </th>
+          
 
           </tr>
         </thead>

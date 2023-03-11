@@ -10,17 +10,7 @@ import { Oval } from "react-loader-spinner";
 function AddJob (props) {
   const user_id = props.user_id;
 
-  const job_app_method_choices = [
-    'Company Website', 'Job Board Website', 'Recruiter', 'Referral', 'Other'
-  ];
-
-  const job_location_choices = [
-    'On Site', 'Remote', 'Hybrid', 'Both'
-  ];
-
-  const rejected_choices = [
-    'From Reponse', 'After Interview', 'After Offer', 'Other'
-  ];
+  
 
   const [jobForm, setJobForm] = useState({
     
@@ -44,30 +34,6 @@ function AddJob (props) {
     notes: null, //STRING
     user_id: user_id
   });
-  /*
-  const [jobForm, setJobForm] = useState({
-    
-    
-    company_name: '', //STRING
-    company_website: '', //STRING LINK
-    company_favorite: false, //BOOLEAN
-    job_app_date: null, //DATE
-    job_app_method: '',//STRING OPTIONS
-    job_source_website: '', //STRING LINK
-    job_position: '', //STRING
-    job_fit_rating: 0, //INTEGER OPTIONS
-    job_location: '', //STRING OPTIONS
-    response_date: null, //DATE
-    interview_date: null, //DATE
-    offer_amount : null, //INTEGER
-    rejected: '', //STRING OPTIONS
-    contact_person_name: '', //STRING 
-    contact_person_email: '', //STRING  
-    contact_person_phone: '', //STRING 
-    notes: '', //STRING
-    user_id: user_id
-  });
-  */
 
   const [favoriteIsChecked, setFavoriteIsChecked] = useState(null)
 
@@ -108,6 +74,7 @@ function AddJob (props) {
     })
     .then(response => response.json())
     .then((data) => {
+      console.log(data);
       setSaveLoading(false)
       const job_app_id = data.job_app_id
       if(job_app_id){
@@ -123,6 +90,19 @@ function AddJob (props) {
   useEffect(()=>{
     console.log(jobForm);
   },[jobForm])
+
+  const job_app_method_choices = [
+    'Company Website', 'Job Board Website', 'Recruiter', 'Referral', 'Other'
+  ];
+
+  const job_location_choices = [
+    'On Site', 'Remote', 'Hybrid', 'Both'
+  ];
+
+  const rejected_choices = [
+    'From Reponse', 'After Interview', 'After Offer', 'Other'
+  ];
+
   return(
     <div className="flex flex-col h-full max-w-7xl">
       

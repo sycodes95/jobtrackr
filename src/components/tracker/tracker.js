@@ -51,7 +51,7 @@ function Tracker () {
     <div className="flex justify-center p-8 w-full">
       <div className="TRACKER-CONTAINER  h-full text-black max-w-screen-2xl flex flex-col items-center justify-center">
 
-        <section className='TRACKER-BANNER h-24  bg-black bg-opacity-30 flex items-center p-2 mb-12'>
+        <section className='TRACKER-BANNER h-24  bg-red-800 bg-opacity-30 flex items-center p-2 mb-12'>
           <Icon className='text-red-800' path={mdiRadar} size={2} />
           <div className='text-4xl font-bold'>TRACK</div>
         </section>

@@ -8,7 +8,7 @@ input:focus, select:focus{
 }
 
 ::-webkit-scrollbar-track{
-  background-color: rgb(35, 35, 35);
+  background-color: rgb(95, 95, 95);
 }
 
 ::-webkit-scrollbar-thumb{
@@ -31,13 +31,30 @@ table tr:nth-of-type(even){
   background:rgba(0, 0, 0, 0.2)
 }
 th {
-  font-weight:100;
+  font-weight: bold;
+  text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, rgb(0, 0, 0) 1px 0 10px,
+  rgb(0, 0, 0) 1px 0 4px ; 
+}
+td {
+  font-weight: 100;
+}
+th, td{
+  max-width: 20ch;
 }
 
 .strike {
   text-decoration: line-through;
   text-decoration-color: red;
   text-decoration-style: dashed;
+}
+
+.bg-striped{
+  background: repeating-linear-gradient( 
+  45deg,
+  rgba(0, 0, 0, 0.1),
+  rgba(0, 0, 0, 0.1) 5px,
+  rgba(0, 0, 0, 0.3) 5px,
+  rgba(0, 0, 0, 0.3) 10px)
 }
 
 .bg-dev-slate{

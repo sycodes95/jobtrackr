@@ -8,7 +8,9 @@ import AddJob from './addJob';
 
 import { mdiRadar, mdiPlusThick, mdiCircleSlice8 } from '@mdi/js';
 import { useEffect, useState } from 'react';
-import Toolbar from './toolbar';
+
+import AppFilter from './trackerFilter';
+import TrackerFilter from './trackerFilter';
 
 function Tracker () {
   const [user_id, set_user_id] = useState(null)
@@ -53,12 +55,11 @@ function Tracker () {
       <div className="TRACKER-CONTAINER  h-full text-black max-w-screen-2xl flex flex-col items-center justify-center">
 
         
-        <section className='w-full gap-x-2 p-2 bg-black bg-opacity-30 mb-4'>
-          <Toolbar/>
+        <section className='w-full gap-x-2 p-2 bg-black bg-opacity-25 mb-4'>
+          <TrackerFilter jobAppsContext={{jobApps, setJobApps}} user_id={user_id}/>
         </section>
 
         <section className='TOOL-BAR w-full grid gap-x-2 bg-opacity-25 gap-y-2 mb-4'>
-
           <div className='ADD-JOB-BUTTON-CONTAINER h-12 p-2 bg-black bg-opacity-25 w-fit'>
             <Dialog.Trigger className='h-full w-full'>
             <button className='ADD-JOB-BUTTON h-full w-48 text-xs bg-red-800 bg-opacity-50 hover:bg-opacity-70 transition-all
@@ -96,7 +97,7 @@ function Tracker () {
           <div className='SEARCH-BAR h-12 w-full flex items-center'>
             <div className='SEARCH-BAR-CONTAINER p-2 bg-black bg-opacity-25 '>
               <input className='SEARCH-BAR-INPUT bg-black bg-opacity-25  text-white text-sm h-8 w-48
-              transition-all' type='text' placeholder='Search...'/>
+              transition-all' type='text' placeholder='Search Any...'/>
             </div>
             
           </div>

@@ -1,6 +1,6 @@
 import moment from "moment";
 import Icon from '@mdi/react';
-import { mdiDeleteVariant, mdiCircleEditOutline } from '@mdi/js';
+import { mdiDeleteVariant, mdiCircleEditOutline, mdiSort } from '@mdi/js';
 import Rating from 'react-rating';
 import { useEffect, useState } from "react";
 
@@ -9,8 +9,10 @@ function TrackerTable (props) {
   const user_id = props.user_id;
   const {jobApps, setJobApps} = props.jobAppsContext
 
+  
+
   const [categories, setCategories] = useState([
-    {category: 'APP DATE', column: 'job_app_date', sortby: 0},
+    {category: 'APP DATE', column: 'job_app_date', sortby: 1},
     {category: 'FAV', column: 'company_favorite', sortby: 0},
     {category: 'COMPANY', column: 'company_name', sortby: 0},
     {category: 'COMPANY WEBSITE', column: 'company_website', sortby: 0},
@@ -55,7 +57,7 @@ function TrackerTable (props) {
     <div className=' w-full h-96 overflow-x-auto'>
       <table className="w-full">
         <thead>
-          <tr className="bg-striped">
+          <tr className="bg-striped h-12">
             <th colspan='1' className='text-xs text-white p-2  w-6 pointer-events-none'>
             </th>
             <th colspan='1' className='text-xs text-white p-2 w-6 pointer-events-none'>
@@ -68,7 +70,9 @@ function TrackerTable (props) {
             categories.map((cat, index) => (
             <th colspan='1' className='text-xs text-white p-2 
             whitespace-nowrap hover:cursor-pointer hover:text-opacity-70 transition-all
-            overflow-hidden' onClick={()=>handleCategorySort(index)} >{cat.category}</th>
+            overflow-hidden ' onClick={()=>handleCategorySort(index)} >
+              {cat.category }
+            </th>
             ))
             }
             <th colspan='1' className='text-xs text-white p-2 border-r-2 border-white border-opacity-30 pointer-events-none
@@ -83,7 +87,7 @@ function TrackerTable (props) {
           {
           jobApps &&
           jobApps.map((obj, index) => (
-            <tr className={`text-xs font-thin  
+            <tr className={`text-xs font-thin h-6  
             ${!obj.interview_date && !obj.rejected && !obj.offer_amount && 'text-gray-300'}
             ${obj.interview_date && !obj.offer_amount && 'text-steel-blue'}
             ${obj.offer_amount && 'text-yellow-500'}

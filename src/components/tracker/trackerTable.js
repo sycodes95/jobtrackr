@@ -28,7 +28,9 @@ function TrackerTable (props) {
   const handleCategorySort = (index) => {
     const column = categories[index].column;
     const sortby = categories[index].sortby;
-    fetch(`${process.env.REACT_APP_API_HOST}/job-app-sort-category-get?user_id=${user_id}&column=${column}&sortby=${sortby}`)
+    const jobAppIds = jobApps.map(app => app.job_app_id)
+    
+    fetch(`${process.env.REACT_APP_API_HOST}/job-app-sort-category-get?user_id=${user_id}&column=${column}&sortby=${sortby}&jobAppIds=${JSON.stringify(jobAppIds)}`)
     .then(response => response.json())
     .then(data =>{
       if(data.length > 0){

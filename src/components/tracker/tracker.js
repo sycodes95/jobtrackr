@@ -8,6 +8,7 @@ import AddJob from './addJob';
 
 import { mdiRadar, mdiPlusThick, mdiCircleSlice8 } from '@mdi/js';
 import { useEffect, useState } from 'react';
+import Toolbar from './toolbar';
 
 function Tracker () {
   const [user_id, set_user_id] = useState(null)
@@ -51,12 +52,12 @@ function Tracker () {
     <div className="flex justify-center p-8 w-full">
       <div className="TRACKER-CONTAINER  h-full text-black max-w-screen-2xl flex flex-col items-center justify-center">
 
-        <section className='TRACKER-BANNER h-24  bg-red-800 bg-opacity-30 flex items-center p-2 mb-12'>
-          <Icon className='text-red-800' path={mdiRadar} size={2} />
-          <div className='text-4xl font-bold'>TRACK</div>
+        
+        <section className='w-full gap-x-2 p-2 bg-black bg-opacity-30 mb-4'>
+          <Toolbar/>
         </section>
 
-        <section className='TOOL-BAR w-full grid gap-x-2 bg-opacity-25 gap-y-2 mb-2'>
+        <section className='TOOL-BAR w-full grid gap-x-2 bg-opacity-25 gap-y-2 mb-4'>
 
           <div className='ADD-JOB-BUTTON-CONTAINER h-12 p-2 bg-black bg-opacity-25 w-fit'>
             <Dialog.Trigger className='h-full w-full'>

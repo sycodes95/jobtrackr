@@ -144,10 +144,7 @@ function TrackerFilter (props) {
     showFilters ? filtersContainer.classList.remove('max-640px-hidden') : filtersContainer.classList.add('max-640px-hidden')
   },[showFilters])
 
-  const handleApplicationDate = (range) =>{
-    console.log(range);
-   
-  }
+  
   const handleJobFitClear = () => {
     setJobFitRating1(null)
     setJobFitRating2(null)
@@ -163,28 +160,6 @@ function TrackerFilter (props) {
     console.log(parseInt(e.target.value));
     setOfferAmount2(value)
   }
-
-  useEffect(()=>{
-    console.log(favoriteIsChecked
-    );
-  },[favoriteIsChecked])
-
-  useEffect(()=>{
-    console.log(appDateStart);
-  },[appDateStart])
-
-  useEffect(()=>{
-    console.log(appDateEnd);
-  },[appDateEnd])
-
-  useEffect(()=>{
-    console.log(offerAmount2);
-    console.log(typeof offerAmount2);
-  },[offerAmount2])
-
-
-  
-
   
   return(
     <div className="flex max-640px-flex-column-w-full gap-x-4 gap-y-4 h-fit w-full ">
@@ -210,9 +185,6 @@ function TrackerFilter (props) {
         </button>
         <div></div>
       </section>
-
-      
-
 
       <div className="max-640px-hidden flex flex-wrap gap-x-4 gap-y-4 justify-between transition-all" ref={filtersContainerRef}>
 

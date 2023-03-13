@@ -51,7 +51,10 @@ select:focus{
   outline: none;
 }
 
-
+input[type="date"] {
+  color: red;
+  background-color: red;
+}
 
 .react-datepicker, .react-datepicker-popper, .react-datepicker__month-container, .react-datepicker__header
 ,.react-datepicker__day-names, .react-datepicker__day-name,.react-datepicker__current-month, .react-datepicker__aria-live, .react-datepicker__day {

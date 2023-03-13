@@ -39,16 +39,9 @@ function TrackerTable (props) {
         setCategories(cat)
         setJobApps(data)
       }
-      console.log(data);
-      
     })
   } 
  
-  useEffect(()=>{
-    console.log(categories);
-  },[categories])
-
-  console.log(jobApps);
   return (
     <div className=' w-full h-96 overflow-x-auto'>
       <table className="w-full">
@@ -64,7 +57,7 @@ function TrackerTable (props) {
             {
             categories &&
             categories.map((cat, index) => (
-            <th colspan='1' className='text-xs text-white p-2 
+            <th key={index} colspan='1' className='text-xs text-white p-2 
             whitespace-nowrap hover:cursor-pointer hover:text-opacity-70 transition-all
             overflow-hidden ' onClick={()=>handleCategorySort(index)} >
               {cat.category }
@@ -82,7 +75,7 @@ function TrackerTable (props) {
           {
           jobApps &&
           jobApps.map((obj, index) => (
-            <tr className={`text-xs font-thin h-6  
+            <tr key={index} className={`text-xs font-thin h-6  
             ${!obj.interview_date && !obj.rejected && !obj.offer_amount && 'text-gray-300'}
             ${obj.interview_date && !obj.offer_amount && !obj.rejected && 'text-steel-blue'}
             ${obj.offer_amount && 'text-yellow-500'}
@@ -106,7 +99,7 @@ function TrackerTable (props) {
               <Rating
               className={`
               ${!obj.interview_date && !obj.rejected && !obj.offer_amount && 'text-gray-300'}
-              ${obj.interview_date && !obj.offer_amount && 'text-steel-blue'}
+              ${obj.interview_date && !obj.offer_amount && !obj.rejected && 'text-steel-blue'}
               ${obj.offer_amount && 'text-yellow-500'}
               ${obj.rejected && 'text-red-500'}
               ${obj.rejected && 'strike'} 

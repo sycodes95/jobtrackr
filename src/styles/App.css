@@ -240,12 +240,15 @@ select:focus{
   }
 }
 
-@media (max-width: 545px) {
-  .max-545px{
+@media (max-width: 640px) {
+  .max-640px-hidden{
+    display: none;
+  }
+  .max-640px-flex-column-w-full{
     width: 100%;
     flex-direction: column;
   }
-  .max-545px-row{
+  .max-640px-row{
     width: 100%;
     flex-direction: row;
   }

@@ -1,11 +1,12 @@
-import * as Dialog from '@radix-ui/react-dialog';
+
 import { useEffect, useState } from 'react';
-import Icon from '@mdi/react';
-import { mdiDomain, mdiBriefcaseOutline, mdiCheckDecagram } from '@mdi/js';
+
+import * as Dialog from '@radix-ui/react-dialog';
 import Rating from 'react-rating';
 import { Oval } from "react-loader-spinner";
-import { format, parseISO, parse } from 'date-fns';
-
+import { format } from 'date-fns';
+import Icon from '@mdi/react';
+import { mdiDomain, mdiBriefcaseOutline, mdiCheckDecagram } from '@mdi/js';
 
 function AddJob (props) {
   const user_id = props.user_id;
@@ -68,13 +69,33 @@ function AddJob (props) {
 
   const handleJobFormSubmit = () =>{
     if(isEditMode){
+      setSaveLoading(true)
+      fetch(`${process.env.REACT_APP_API_HOST}/job-app-put?job_app_id=${jobApp.job_app_id}`,{
+        method: 'PUT',
+        body: JSON.stringify(jobForm),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(response => response.json())
+      .then(data => {
+        setSaveLoading(false)
+        if(data.command === 'UPDATE'){
+          setSaveSuccessful(true)
+          setTimeout(()=>{
+            setSaveSuccessful(false)
+            window.location.href = '/tracker'
+          },1500)
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
       
     }
 
     if(!isEditMode){
       if(!jobForm.company_name) return setCompanyNameEmpty(true)
       setSaveLoading(true)
-      fetch(`http://localhost:5000/job-app-post`, {
+      fetch(`${process.env.REACT_APP_API_HOST}/job-app-post`, {
         method:'POST',
         body: JSON.stringify(jobForm),
         headers: { 'Content-Type': 'application/json'}
@@ -98,26 +119,31 @@ function AddJob (props) {
 
 
   useEffect(()=>{
-    jobApp && setJobForm(jobApp)
-    jobApp && setIsEditMode(true)
+    console.log(jobApp);
+    if(jobApp && jobApp.job_app_id){
+      setJobForm(jobApp)
+      setIsEditMode(true)
+    }
+   
+     
   },[jobApp])
 
   const job_app_method_choices = [
-    'Company Website', 'Job Board Website', 'Recruiter', 'Referral', 'Other'
+    null, 'Company Website', 'Job Board Website', 'Recruiter', 'Referral', 'Other'
   ];
 
   const job_location_choices = [
-    'On Site', 'Remote', 'Hybrid', 'Both'
+    null, 'On Site', 'Remote', 'Hybrid', 'Both'
   ];
 
   const rejected_choices = [
-    'From Reponse', 'After Interview', 'After Offer', 'Other'
+    null, 'From Reponse', 'After Interview', 'After Offer', 'Other'
   ];
 
   return(
     <div className="flex flex-col h-full max-w-7xl">
       
-      <section className="min-w-fit h-8 text-center text-sm font-bold bg-red-800  text-black
+      <section className="min-w-fit h-8 text-center text-sm font-bold bg-red-800 bg-opacity-50  text-black
       grid items-center pl-4 pr-4">
         <div className="col-start-2 min-w-fit">JOB APPLICATION DETAILS</div>
         <div className="col-start-3 flex justify-end">
@@ -127,8 +153,8 @@ function AddJob (props) {
         </div>
       </section>
 
-      <section className="JOB-FORM w-full h-full bg-dev-slate-dark border-black 
-      text-center text-sm text-white flex-grow  
+      <section className="JOB-FORM w-full h-full bg-striped bg-opacity-30 
+      text-center text-sm text-white flex-grow   
       grid justify-center p-4 gap-x-4 overflow-x-hidden overflow-y-auto">
         
         <section className='COMPANY-DETAILS flex flex-col gap-y-2 p-4 w-72 '>
@@ -164,7 +190,12 @@ function AddJob (props) {
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Application Date</label>
             <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='job_app_date' 
-            type='datetime-local' value={format(new Date(jobForm.job_app_date), 'yyyy-MM-dd HH:mm')} placeholder='...' onChange={handleOnChange}/>
+            type='datetime-local' value={
+            jobForm.job_app_date 
+            ? format(new Date(jobForm.job_app_date), 'yyyy-MM-dd HH:mm')
+            : jobForm.job_app_date 
+            } 
+            placeholder='...' onChange={handleOnChange}/>
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Job Application Method</label>
@@ -220,12 +251,25 @@ function AddJob (props) {
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Response Date</label>
             <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='response_date' 
-            type='datetime-local' value={format(new Date(jobForm.response_date), 'yyyy-MM-dd HH:mm')} placeholder='...' onChange={handleOnChange}/>
+            type='datetime-local' 
+            value={
+            jobForm.response_date 
+            ? format(new Date(jobForm.response_date), 'yyyy-MM-dd HH:mm')
+            : jobForm.response_date
+            }
+            placeholder='...' onChange={handleOnChange}/>
+            
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start'>Interview Date</label>
             <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='interview_date' 
-            type='datetime-local' value={format(new Date(jobForm.interview_date), 'yyyy-MM-dd HH:mm')} placeholder='...' onChange={handleOnChange}/>
+            type='datetime-local' 
+            value={
+            jobForm.interview_date 
+            ? format(new Date(jobForm.interview_date), 'yyyy-MM-dd HH:mm')
+            : jobForm.interview_date 
+            }
+            placeholder='...' onChange={handleOnChange}/>
           </div>
 
           <div className='flex flex-col gap-y-2'>

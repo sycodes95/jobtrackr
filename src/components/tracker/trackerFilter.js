@@ -145,8 +145,8 @@ function TrackerFilter (props) {
           <div className="bg-black bg-opacity-25 flex flex-grow items-center h-6 max-640px-flex-column-w-full">
             <select className="bg-black bg-opacity-0 text-xs focus:outline-none h-6 max-640px-flex-column-w-full flex flex-grow items-center" onChange={handleAppStatus}>
               {
-              applicationStatusOptions.map(status =>(
-                <option className="bg-jet ">{status.value}</option>
+              applicationStatusOptions.map((status, index) =>(
+                <option key={index} className="bg-jet ">{status.value}</option>
               ))
               }
             </select>

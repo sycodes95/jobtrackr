@@ -1,15 +1,22 @@
 import moment from "moment";
 import Icon from '@mdi/react';
-import { mdiDeleteVariant, mdiCircleEditOutline, mdiSort } from '@mdi/js';
+import { mdiDeleteVariant, mdiCircleEditOutline, mdiSort, mdiAccountCircleOutline, mdiNoteOutline } from '@mdi/js';
 import Rating from 'react-rating';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as Dialog from '@radix-ui/react-dialog';
 import AddJob from "./addJob";
+import {Tooltip} from 'react-tippy';
+import 'react-tippy/dist/tippy.css'
+import Contact from "./appNotes";
+import ContactPerson from "./appNotes";
+import Notes from "./appNotes";
+import AppNotes from "./appNotes";
+import AppContact from "./appContact";
 
 function TrackerTable (props) {
   const user_id = props.user_id;
   const {jobApps, setJobApps} = props.jobAppsContext
-
+  const containerRef = useRef(null)
   const [categories, setCategories] = useState([
     {category: 'APP DATE', column: 'job_app_date', sortby: 1},
     {category: 'FAV', column: 'company_favorite', sortby: 0},
@@ -45,37 +52,39 @@ function TrackerTable (props) {
   const handleOverlayClick = (event) => {
     event.preventDefault();
   };
+  
+
   return (
     
-    <div className=' w-full h-96 overflow-x-auto'>
+    <div className=' w-full h-96 overflow-x-auto' ref={containerRef}>
       <table className="w-full">
         <thead>
           <tr className="bg-striped h-12">
-            <th colspan='1' className='text-xs text-white p-2  w-6 pointer-events-none'>
+            <th className='text-xs text-white p-2 w-6 pointer-events-none'>
             </th>
-            <th colspan='1' className='text-xs text-white p-2 w-6 pointer-events-none'>
+            <th className='text-xs text-white p-2 w-6 pointer-events-none'>
             </th>
-            <th colspan='1' className='text-xs text-white p-2 w-6 pointer-events-none'>
+            <th className='text-xs text-white p-2 w-6 pointer-events-none'>
             #
             </th>
             {
             categories &&
             categories.map((cat, index) => (
-            <th key={index} colspan='1' className='text-xs text-white p-2 
+            <th key={index} className='text-xs text-white p-2 
             whitespace-nowrap hover:cursor-pointer hover:text-opacity-70 transition-all
             overflow-hidden ' onClick={()=>handleCategorySort(index)} >
               {cat.category }
             </th>
             ))
             }
-            <th colspan='1' className='text-xs text-white p-2 border-r-2 border-white border-opacity-30 pointer-events-none
+            <th className='text-xs text-white p-2 border-r-2 border-white border-opacity-30 pointer-events-none
             '>
-            ADDITIONAL
+            MISC
             </th>
 
           </tr>
         </thead>
-        <tbody>
+        <tbody className="">
           {
           jobApps &&
           jobApps.map((obj, index) => (
@@ -85,24 +94,31 @@ function TrackerTable (props) {
             ${obj.offer_amount && 'text-yellow-500'}
             ${obj.rejected && 'text-red-500'}
             ${obj.rejected && 'strike'}
-            
+            relative overflow-hidden
             `}>
               
-              <td className="text-center whitespace-nowrap"><Icon path={mdiDeleteVariant} size={0.7} /></td>
-              <Dialog.Root>
-                <Dialog.Trigger className='h-full w-full'>
-                  <td className="text-center whitespace-nowrap"><Icon path={mdiCircleEditOutline} size={0.7} /></td>
-                </Dialog.Trigger>
-                <Dialog.Portal>
+              <td className="text-center whitespace-nowrap pl-1"><Icon path={mdiDeleteVariant} size={0.7} /></td>
               
-                  <Dialog.Overlay className="DialogOverlay"/>
-                  <Dialog.Overlay/>
-                  <Dialog.Content className="DialogContent" onInteractOutside={handleOverlayClick}>
-                    <AddJob user_id={user_id} jobApp={obj}/>
-                  </Dialog.Content>
+              
+              <td className="text-center whitespace-nowrap">
                 
-                </Dialog.Portal>
-              </Dialog.Root>
+                <Dialog.Root>
+                  <Dialog.Trigger className="flex items-center">
+                        
+                    <Icon className="h-fit w-fit" path={mdiCircleEditOutline} size={0.6}/>
+                  </Dialog.Trigger>
+                  <Dialog.Portal>
+                
+                    <Dialog.Overlay className="DialogOverlay"/>
+                    <Dialog.Overlay/>
+                    <Dialog.Content className="DialogContent" onInteractOutside={handleOverlayClick}>
+                      <AddJob user_id={user_id} jobApp={obj}/>
+                    </Dialog.Content>
+                  
+                  </Dialog.Portal>
+                </Dialog.Root>
+              </td>
+              
               <td className="text-center whitespace-nowrap">{index + 1}</td>
               <td className="text-center whitespace-nowrap">{moment(obj.job_app_date).format("YYYY-MM-DD")}</td>
               <td className="text-center whitespace-nowrap">{obj.company_favorite}</td>
@@ -146,10 +162,43 @@ function TrackerTable (props) {
               }
               </td>
               <td className="text-center whitespace-nowrap">{obj.rejected}</td>
+
+
               <td className="text-center whitespace-nowrap overflow-ellipsis overflow-hidden">{obj.offer_amount}</td>
               
-              <td className="flex flex-row">
-                <span>Contact</span> <span>Notes</span>
+              <td className="flex flex-row items-center justify-center gap-x-1">
+                <Dialog.Root>
+                  <Dialog.Trigger className="flex items-center">
+                        
+                    <Icon path={mdiAccountCircleOutline} size={0.7} />
+                  </Dialog.Trigger>
+                  <Dialog.Portal>
+                
+                    <Dialog.Overlay className="DialogOverlayMisc"/>
+                    <Dialog.Overlay/>
+                    <Dialog.Content className="DialogContentMisc" >
+                      <AppContact user_id={user_id} jobApp={obj}/>
+                    </Dialog.Content>
+                  
+                  </Dialog.Portal>
+                </Dialog.Root>
+
+                
+                <Dialog.Root>
+                  <Dialog.Trigger className="flex items-center">
+                        
+                    <Icon className="" path={mdiNoteOutline} size={0.7} />
+                  </Dialog.Trigger>
+                  <Dialog.Portal>
+                
+                    <Dialog.Overlay className="DialogOverlayMisc"/>
+                    <Dialog.Overlay/>
+                    <Dialog.Content className="DialogContentMisc" >
+                      <AppNotes user_id={user_id} jobApp={obj}/>
+                    </Dialog.Content>
+                  
+                  </Dialog.Portal>
+                </Dialog.Root>
               </td>
               
             </tr>

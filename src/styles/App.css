@@ -146,12 +146,29 @@ input[type="date"] {
 }
 
 .DialogOverlay {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
   inset: 0;
   z-index: 10;
+  height: 1000dvh;
+  width: 1000dvh;
+  /*
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  
+  */
+  backdrop-filter: blur(20px);
+}
+
+.DialogOverlayMisc {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  height: 1000dvh;
+  width: 1000dvh;
+  /*
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  */
+  backdrop-filter: blur(10px);
 }
 
 .DialogContent {
@@ -161,8 +178,15 @@ input[type="date"] {
   transform: translate(-50%, -50%);
   margin: 0 auto;
   z-index: 50;
-  
-  
+}
+
+.DialogContentMisc {
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  z-index: 50;
 }
 
 .JOB-FORM {
@@ -180,6 +204,15 @@ input[type="date"] {
 }
 .SEARCH-BAR{
   justify-content: end;
+}
+
+.my-tooltip {
+  font-size: 10px;
+}
+
+.break-word{
+  word-wrap: break-word;
+  word-break: break-all;
 }
 @media (max-width: 1440px) {
   .TRACKER-CONTAINER{

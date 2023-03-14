@@ -69,7 +69,7 @@ function Tracker () {
               <div>ADD JOB</div>
             </button>
             </Dialog.Trigger>
-              <Dialog.Portal>
+            <Dialog.Portal>
             
               <Dialog.Overlay className="DialogOverlay"/>
               <Dialog.Overlay/>
@@ -96,7 +96,7 @@ function Tracker () {
           
           <div className='SEARCH-BAR h-12 w-full flex items-center'>
             <div className='SEARCH-BAR-CONTAINER p-2 bg-black bg-opacity-25 '>
-              <input className='SEARCH-BAR-INPUT bg-black bg-opacity-25  text-white text-sm h-8 w-48
+              <input className='SEARCH-BAR-INPUT bg-black bg-opacity-25  text-white text-sm h-8 w-48 p-1
               transition-all' type='text' placeholder='Search Any...'/>
             </div>
             

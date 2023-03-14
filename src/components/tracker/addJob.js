@@ -4,13 +4,15 @@ import Icon from '@mdi/react';
 import { mdiDomain, mdiBriefcaseOutline, mdiCheckDecagram } from '@mdi/js';
 import Rating from 'react-rating';
 import { Oval } from "react-loader-spinner";
-
+import { format, parseISO, parse } from 'date-fns';
 
 
 function AddJob (props) {
   const user_id = props.user_id;
 
+  const jobApp = props.jobApp
   
+  const [isEditMode, setIsEditMode] = useState(false)
 
   const [jobForm, setJobForm] = useState({
     
@@ -65,31 +67,40 @@ function AddJob (props) {
   }
 
   const handleJobFormSubmit = () =>{
-    if(!jobForm.company_name) return setCompanyNameEmpty(true)
-    setSaveLoading(true)
-    fetch(`http://localhost:5000/job-app-post`, {
-      method:'POST',
-      body: JSON.stringify(jobForm),
-      headers: { 'Content-Type': 'application/json'}
-    })
-    .then(response => response.json())
-    .then((data) => {
-      console.log(data);
-      setSaveLoading(false)
-      const job_app_id = data.job_app_id
-      if(job_app_id){
-        setSaveSuccessful(true)
-        setTimeout(()=>{
-          setSaveSuccessful(false)
-          window.location.href = '/tracker'
-        },1500)
-      } 
-    })
+    if(isEditMode){
+      
+    }
+
+    if(!isEditMode){
+      if(!jobForm.company_name) return setCompanyNameEmpty(true)
+      setSaveLoading(true)
+      fetch(`http://localhost:5000/job-app-post`, {
+        method:'POST',
+        body: JSON.stringify(jobForm),
+        headers: { 'Content-Type': 'application/json'}
+      })
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data);
+        setSaveLoading(false)
+        const job_app_id = data.job_app_id
+        if(job_app_id){
+          setSaveSuccessful(true)
+          setTimeout(()=>{
+            setSaveSuccessful(false)
+            window.location.href = '/tracker'
+          },1500)
+        } 
+      })
+    }
+    
   }
 
+
   useEffect(()=>{
-    console.log(jobForm);
-  },[jobForm])
+    jobApp && setJobForm(jobApp)
+    jobApp && setIsEditMode(true)
+  },[jobApp])
 
   const job_app_method_choices = [
     'Company Website', 'Job Board Website', 'Recruiter', 'Referral', 'Other'
@@ -153,7 +164,7 @@ function AddJob (props) {
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Application Date</label>
             <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='job_app_date' 
-            type='datetime-local' value={jobForm.job_app_date} placeholder='...' onChange={handleOnChange}/>
+            type='datetime-local' value={format(new Date(jobForm.job_app_date), 'yyyy-MM-dd HH:mm')} placeholder='...' onChange={handleOnChange}/>
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Job Application Method</label>
@@ -181,7 +192,7 @@ function AddJob (props) {
             <div className='text-2xl'>
               <Rating
               className=' text-yellow-600 flex justify-between'
-              initialRating={jobFitRating}
+              initialRating={jobForm.job_fit_rating}
               emptySymbol="fa fa-star-o"
               fullSymbol="fa fa-star "
               fractions={1}
@@ -209,12 +220,12 @@ function AddJob (props) {
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Response Date</label>
             <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='response_date' 
-            type='datetime-local' value={jobForm.response_date} placeholder='...' onChange={handleOnChange}/>
+            type='datetime-local' value={format(new Date(jobForm.response_date), 'yyyy-MM-dd HH:mm')} placeholder='...' onChange={handleOnChange}/>
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start'>Interview Date</label>
             <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='interview_date' 
-            type='datetime-local' value={jobForm.interview_date} placeholder='...' onChange={handleOnChange}/>
+            type='datetime-local' value={format(new Date(jobForm.interview_date), 'yyyy-MM-dd HH:mm')} placeholder='...' onChange={handleOnChange}/>
           </div>
 
           <div className='flex flex-col gap-y-2'>

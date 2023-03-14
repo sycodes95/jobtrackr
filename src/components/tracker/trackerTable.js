@@ -3,7 +3,8 @@ import Icon from '@mdi/react';
 import { mdiDeleteVariant, mdiCircleEditOutline, mdiSort } from '@mdi/js';
 import Rating from 'react-rating';
 import { useEffect, useState } from "react";
-
+import * as Dialog from '@radix-ui/react-dialog';
+import AddJob from "./addJob";
 
 function TrackerTable (props) {
   const user_id = props.user_id;
@@ -41,8 +42,11 @@ function TrackerTable (props) {
       }
     })
   } 
- 
+  const handleOverlayClick = (event) => {
+    event.preventDefault();
+  };
   return (
+    
     <div className=' w-full h-96 overflow-x-auto'>
       <table className="w-full">
         <thead>
@@ -85,7 +89,20 @@ function TrackerTable (props) {
             `}>
               
               <td className="text-center whitespace-nowrap"><Icon path={mdiDeleteVariant} size={0.7} /></td>
-              <td className="text-center whitespace-nowrap"><Icon path={mdiCircleEditOutline} size={0.7} /></td>
+              <Dialog.Root>
+                <Dialog.Trigger className='h-full w-full'>
+                  <td className="text-center whitespace-nowrap"><Icon path={mdiCircleEditOutline} size={0.7} /></td>
+                </Dialog.Trigger>
+                <Dialog.Portal>
+              
+                  <Dialog.Overlay className="DialogOverlay"/>
+                  <Dialog.Overlay/>
+                  <Dialog.Content className="DialogContent" onInteractOutside={handleOverlayClick}>
+                    <AddJob user_id={user_id} jobApp={obj}/>
+                  </Dialog.Content>
+                
+                </Dialog.Portal>
+              </Dialog.Root>
               <td className="text-center whitespace-nowrap">{index + 1}</td>
               <td className="text-center whitespace-nowrap">{moment(obj.job_app_date).format("YYYY-MM-DD")}</td>
               <td className="text-center whitespace-nowrap">{obj.company_favorite}</td>
@@ -144,6 +161,7 @@ function TrackerTable (props) {
       </table>
       
     </div>
+    
   )
 }
 export default TrackerTable;

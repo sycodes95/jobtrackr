@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState, useMemo } from "react"
+
 import Icon from '@mdi/react';
 import { mdiFilterSettings} from '@mdi/js';
+
 import Rating from 'react-rating';
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -52,7 +55,7 @@ function TrackerFilter (props) {
     {value:'', column:null, a:null},
     {value:'AWAITING RESPONSE', column: ['response_date', 'interview_date', 'rejected'], a:['IS NULL','IS NULL','IS NULL']},
     {value:'INTERVIEW STAGE', column: ['interview_date', 'rejected', 'offer_amount'], a:['IS NOT NULL','IS NULL','IS NULL']},
-    {value:'OFFER RECEIVED', column: ['offer_amount'], a:['IS NOT NULL']}, //RESPONSE, INTERVIEW, REJECTED, OFFER MUST BE NULL
+    {value:'OFFER RECEIVED', column: ['offer_amount'], a:['IS NOT NULL']}, 
     {value:'REJECTED', column: ['rejected'], a:['IS NOT NULL']},
   ],[])
 
@@ -61,7 +64,7 @@ function TrackerFilter (props) {
     const statusIndex = applicationStatusOptions.findIndex(obj => obj.value === value)
     const column = applicationStatusOptions[statusIndex].column
     const a = applicationStatusOptions[statusIndex].a
-    setAppStatus({...appStatus,column:column, a: a})
+    setAppStatus({...appStatus, column: column, a: a})
   }
   
   const handleFilterApply = () => {
@@ -248,14 +251,14 @@ function TrackerFilter (props) {
           
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs">
             <input className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white '
-             name='offer_amount_a' type='number' onChange={(e)=>setOfferAmount({...offerAmount, a: e.target.value})}/>
+             name='offer_amount_a' type='number' onChange={(e)=>setOfferAmount({...offerAmount, a: parseInt(e.target.value)})}/>
           </div>
           
           <div className=" text-center text-white h-6">-</div>
 
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs ">
             <input className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white'
-             name='offer_amount_b' type='number' onChange={(e)=>setOfferAmount({...offerAmount, b: e.target.value})} />
+             name='offer_amount_b' type='number' onChange={(e)=>setOfferAmount({...offerAmount, b: parseInt(e.target.value)})} />
           </div>
           
         </section>

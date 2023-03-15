@@ -56,10 +56,10 @@ function TrackerTable (props) {
 
   return (
     
-    <div className=' w-full h-96 overflow-x-auto' ref={containerRef}>
-      <table className="w-full">
-        <thead>
-          <tr className="bg-striped h-12">
+    <div className='h-full w-full overflow-x-scroll flex-grow ' ref={containerRef}>
+      <table className="w-full relative">
+        <thead className='sticky top-0 z-10 '>
+          <tr className="bg-striped h-12 bg-blur">
             <th className='text-xs text-white p-2 w-6 pointer-events-none'>
             </th>
             <th className='text-xs text-white p-2 w-6 pointer-events-none'>
@@ -77,18 +77,18 @@ function TrackerTable (props) {
             </th>
             ))
             }
-            <th className='text-xs text-white p-2 border-r-2 border-white border-opacity-30 pointer-events-none
+            <th className='text-xs text-white p-2 pointer-events-none
             '>
             MISC
             </th>
 
           </tr>
         </thead>
-        <tbody className="">
+        <tbody className="h-full overflow-y-scroll">
           {
           jobApps &&
           jobApps.map((obj, index) => (
-            <tr key={index} className={`text-xs font-thin h-6  
+            <tr key={index} className={`text-xs font-thin h-6   
             ${!obj.interview_date && !obj.rejected && !obj.offer_amount && 'text-gray-300'}
             ${obj.interview_date && !obj.offer_amount && !obj.rejected && 'text-steel-blue'}
             ${obj.offer_amount && 'text-yellow-500'}

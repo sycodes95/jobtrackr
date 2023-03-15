@@ -51,7 +51,7 @@ function Tracker () {
   };
   return(
     <Dialog.Root>
-    <div className="flex justify-center p-8 w-full">
+    <div className="flex justify-center p-8 w-full h-full">
       <div className="TRACKER-CONTAINER  h-full text-black max-w-screen-2xl flex flex-col items-center justify-center">
 
         
@@ -106,7 +106,7 @@ function Tracker () {
 
        
         
-        <section className='TABLE-CONTAINER w-full gap-x-2 p-2 bg-black bg-opacity-30'>
+        <section className='TABLE-CONTAINER flex-grow w-full gap-x-2 p-2 bg-black bg-opacity-30'>
           <TrackerTable jobAppsContext={{jobApps, setJobApps}} user_id={user_id}/>
         </section>
        

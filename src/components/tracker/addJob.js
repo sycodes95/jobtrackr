@@ -6,7 +6,10 @@ import Rating from 'react-rating';
 import { Oval } from "react-loader-spinner";
 import { format } from 'date-fns';
 import Icon from '@mdi/react';
-import { mdiDomain, mdiBriefcaseOutline, mdiCheckDecagram } from '@mdi/js';
+import { mdiDomain, mdiBriefcaseOutline, mdiCheckDecagram, mdiHelpCircle } from '@mdi/js';
+
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 function AddJob (props) {
   const user_id = props.user_id;
@@ -231,6 +234,11 @@ function AddJob (props) {
               onChange={handleJobFitRating}
               />
             </div>
+            <a className='my-anchor-element flex justify-center items-center text-white' 
+            data-tooltip-id="my-tooltip" data-tooltip-content="How well do you fit the job description?">
+              <Icon className='hover:cursor-pointer hover:text-slate-300  transition-all' path={mdiHelpCircle} size={1} />
+            </a>
+            <Tooltip anchorSelect=".my-anchor-element" />
             
           </div>
           <div className='flex flex-col gap-y-2'>

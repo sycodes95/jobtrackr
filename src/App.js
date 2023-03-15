@@ -28,7 +28,7 @@ function App() {
         <Header/>
         <Routes>
           {
-          userLoggedIn && <Route path="/" element={<Login/>}/>
+          !userLoggedIn && <Route path="/" element={<Login/>}/>
           }
           
           <Route path="/signup" element={<Signup/>}/>

@@ -42,7 +42,7 @@ function Login () {
       const token = data.token;
       if(token) {
         localStorage.setItem('jobtrackr_token', JSON.stringify(token))
-        window.location.href = '/'
+        window.location.href = '/tracker'
       } else {
         setLoginError('Incorrect email or password')
       }

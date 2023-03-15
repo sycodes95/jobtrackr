@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useMemo } from "react"
+import React, { useEffect, useRef, useState, useMemo, forwardRef } from "react"
 
 import Icon from '@mdi/react';
 import { mdiFilterSettings} from '@mdi/js';
@@ -94,6 +94,16 @@ function TrackerFilter (props) {
     const filtersContainer = filtersContainerRef.current;
     showFilters ? filtersContainer.classList.remove('max-640px-hidden') : filtersContainer.classList.add('max-640px-hidden')
   },[showFilters])
+
+  const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
+    <input
+      className="bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white flex-grow"
+      style={{ zIndex: 200 }}
+      ref={ref}
+      value={value}
+      onClick={onClick}
+    />
+  ));
   
   return(
     <div className="flex max-640px-flex-column-w-full gap-x-4 gap-y-4 h-fit w-full ">
@@ -135,6 +145,7 @@ function TrackerFilter (props) {
 
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs flex-grow">
             <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 flex-grow text-white '
+             
              selected={appDate.b} onChange={(date) => setAppDate({...appDate, b:date })} />
           </div>
           
@@ -211,13 +222,13 @@ function TrackerFilter (props) {
           </div>
           
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs">
-            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white flex-grow' 
+            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white flex-grow z-20' 
             selected={responseDate.a} onChange={(date) => setResponseDate({...responseDate, a:date })} />
           </div>
           
           <div className=" text-center  text-white h-6">-</div>
 
-          <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs ">
+          <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs">
             <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white flex-grow' 
             selected={responseDate.b} onChange={(date) => setResponseDate({...responseDate, b:date })} />
           </div>

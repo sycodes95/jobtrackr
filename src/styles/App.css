@@ -56,6 +56,8 @@ input[type="date"] {
   background-color: red;
 }
 
+
+
 .react-datepicker, .react-datepicker-popper, .react-datepicker__month-container, .react-datepicker__header
 ,.react-datepicker__day-names, .react-datepicker__day-name,.react-datepicker__current-month, .react-datepicker__aria-live, .react-datepicker__day {
   font-family: spacegrotesk, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -68,17 +70,21 @@ input[type="date"] {
   background:linear-gradient(rgba(0, 3, 15, 0.4), rgba(0, 3, 15, 0.4)),url(../background/dev-pattern.png);
   background-position: center;
   background-size: 75px;
+  z-index: 50 !important;
   
 }
 .react-datepicker__day--today{
   color:  rgb(201, 0, 0) !important;
+  
 }
 .react-datepicker__day--selected{
   background-color: rgb(100, 0, 0) !important;
+  
 }
 
 .react-datepicker__day--keyboard-selected{
   background-color: rgb(rgb(79, 0, 0), green, blue);
+  
 }
 
 .react-datepicker__day:hover{
@@ -86,6 +92,7 @@ input[type="date"] {
 }
 
 .react-datepicker-font-small{
+  
   font-size: small;
 }
 .strike {
@@ -138,6 +145,10 @@ input[type="date"] {
   background-position: center;
   background-size:contain;
   background-repeat: no-repeat;
+}
+
+.bg-blur{
+  backdrop-filter: blur(10px);
 }
 
 

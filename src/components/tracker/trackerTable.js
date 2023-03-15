@@ -1,6 +1,6 @@
 import moment from "moment";
 import Icon from '@mdi/react';
-import { mdiDeleteVariant, mdiCircleEditOutline, mdiSort, mdiAccountCircleOutline, mdiNoteOutline } from '@mdi/js';
+import { mdiDeleteVariant, mdiCircleEditOutline, mdiSort, mdiAccountCircleOutline, mdiNoteOutline, mdiHeart } from '@mdi/js';
 import Rating from 'react-rating';
 import { useEffect, useRef, useState } from "react";
 import * as Dialog from '@radix-ui/react-dialog';
@@ -121,7 +121,9 @@ function TrackerTable (props) {
               
               <td className="text-center whitespace-nowrap">{index + 1}</td>
               <td className="text-center whitespace-nowrap">{moment(obj.job_app_date).format("YYYY-MM-DD")}</td>
-              <td className="text-center whitespace-nowrap">{obj.company_favorite}</td>
+              <td className="text-center whitespace-nowrap h-6 flex justify-center items-center">
+                {obj.company_favorite && <Icon className="" path={mdiHeart} size={0.7} />}
+              </td>
               <td className="text-center whitespace-nowrap overflow-ellipsis overflow-hidden">{obj.company_name}</td>
               <td className="text-center whitespace-nowrap overflow-ellipsis overflow-hidden">{obj.company_website}</td>
               <td className="text-center whitespace-nowrap">{obj.job_app_method}</td>
@@ -166,7 +168,7 @@ function TrackerTable (props) {
 
               <td className="text-center whitespace-nowrap overflow-ellipsis overflow-hidden">{obj.offer_amount}</td>
               
-              <td className="flex flex-row items-center justify-center gap-x-1">
+              <td className="flex items-center justify-center gap-x-1 h-6">
                 <Dialog.Root>
                   <Dialog.Trigger className="flex items-center">
                         

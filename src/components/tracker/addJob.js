@@ -41,8 +41,6 @@ function AddJob (props) {
     user_id: user_id
   });
 
-  const [favoriteIsChecked, setFavoriteIsChecked] = useState(null)
-
   const [jobFitRating, setJobFitRating] = useState(null);
 
   const [saveLoading, setSaveLoading] = useState(false);
@@ -51,11 +49,6 @@ function AddJob (props) {
 
   const [companyNameEmpty, setCompanyNameEmpty] = useState(null)
 
-  useEffect(()=>{
-    favoriteIsChecked
-    ? setJobForm({...jobForm, company_favorite: true})
-    : setJobForm({...jobForm, company_favorite: false})
-  },[favoriteIsChecked])
 
   useEffect(()=>{
     jobFitRating && setJobForm({...jobForm, job_fit_rating: jobFitRating})
@@ -183,7 +176,8 @@ function AddJob (props) {
           <div className='flex justify-between gap-x-2'>
             <label className='flex justify-start '>Favorite Company</label>
             <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='company_favorite' 
-            type='checkbox' placeholder='...' checked={favoriteIsChecked} onChange={(e) => setFavoriteIsChecked(e.target.checked)}/>
+            type='checkbox' placeholder='...' checked={jobForm.company_favorite}
+             onChange={(e) => setJobForm({...jobForm, company_favorite : e.target.checked})}/>
           </div>
         </section>
 

@@ -170,7 +170,8 @@ function TrackerFilter (props) {
           <div className=" bg-red-800 bg-opacity-25 w-fit h-6 text-white text-xs text-center p-1 min-w-fit max-640px-row">FAVORITE COMPANY</div>
           <div className=" text-xs h-6 flex flex-grow justify-center items-center pr-1 max-640px-flex-column-w-full w-full">
             <input className='bg-black bg-opacity-0 text-xs focus:outline-none h-6 flex items-center black-check' name='company_favorite' 
-            type='checkbox' placeholder='...' checked={favorite.a} onChange={(e) => setFavorite(e.target.checked)}/>
+            type='checkbox' placeholder='...' checked={favorite.a} 
+            onChange={(e) => setFavorite({...favorite, a: e.target.checked})}/>
           </div>
           
         </section>

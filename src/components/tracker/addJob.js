@@ -133,13 +133,13 @@ function AddJob (props) {
   ];
 
   const rejected_choices = [
-    null, 'From Reponse', 'After Interview', 'After Offer', 'Other'
+    null, 'From Response', 'After Interview', 'After Offer', 'Other'
   ];
 
   return(
-    <div className="flex flex-col h-full max-w-7xl">
+    <div className="flex flex-col h-full max-w-7xl  border-2 border-black ">
       
-      <section className="min-w-fit h-8 text-center text-sm font-bold bg-red-800 bg-opacity-50  text-black
+      <section className="min-w-fit h-8 text-center text-sm font-bold bg-black bg-opacity-50 text-white
       grid items-center pl-4 pr-4">
         <div className="col-start-2 min-w-fit">JOB APPLICATION DETAILS</div>
         <div className="col-start-3 flex justify-end">
@@ -154,7 +154,11 @@ function AddJob (props) {
       grid justify-center p-4 gap-x-4 overflow-x-hidden overflow-y-auto">
         
         <section className='COMPANY-DETAILS flex flex-col gap-y-2 p-4 w-72 '>
-          <div className='text-white text-2xl mb-2 flex gap-x-2'><Icon path={mdiDomain} size={1.1} />COMPANY DETAILS</div>
+          <div className='text-yellow-600 text-2xl mb-2 flex justify-center items-center gap-x-2 bg-black bg-opacity-30 p-1'>
+          
+            
+            <span>COMPANY</span>
+          </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start'>
               <span className='text-red-800'>Company Name</span> 
@@ -182,7 +186,10 @@ function AddJob (props) {
         </section>
 
         <section className='JOB-DETAILS flex flex-col gap-y-2 p-4 w-72'>
-          <div className='text-white text-2xl mb-2 flex gap-x-2'><Icon path={mdiBriefcaseOutline} size={1.1} />JOB DETAILS</div>
+          <div className='text-yellow-600 text-2xl mb-2 flex justify-center items-center gap-x-2 p-1 bg-black bg-opacity-30'>
+            
+            <span>JOB DETAILS</span>
+          </div>
             
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Application Date</label>
@@ -249,7 +256,9 @@ function AddJob (props) {
         </section>
 
         <section className='flex flex-col gap-y-2 p-4 w-72'>
-          <div className='text-white text-2xl mb-2 flex gap-x-2'><Icon path={mdiDomain} size={1.1} />RESPONSE</div>
+          <div className='text-yellow-600 text-2xl mb-2 flex justify-center gap-x-2 bg-black bg-opacity-25 p-1'>
+            <span>RESPONSE</span>
+          </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Response Date</label>
             <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='response_date' 
@@ -295,7 +304,9 @@ function AddJob (props) {
         </section>
 
         <section className='flex flex-col gap-y-2 p-4 w-72'>
-          <div className='text-white text-2xl mb-2 flex gap-x-2'><Icon path={mdiDomain} size={1.1} />MISC</div>
+          <div className='text-yellow-600 text-2xl mb-2 flex justify-center items-center gap-x-2 p-1 bg-black bg-opacity-30'>
+            <span>MISC</span>
+          </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start'>Contact Person Name</label>
             <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='contact_person_name' 
@@ -343,7 +354,7 @@ function AddJob (props) {
             
             
           </button>
-          <Dialog.Close className='bg-red-800 bg-opacity-40  border-black hover:bg-opacity-50 transition-all'>
+          <Dialog.Close className='bg-red-800 bg-opacity-40 hover:bg-opacity-50 transition-all'>
             <button className='w-28'>CANCEL</button>
           </Dialog.Close>
           

@@ -157,7 +157,7 @@ input[type="date"] {
 }
 
 .DialogOverlay {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(25, 25, 25, 0.3);
   position: fixed;
   inset: 0;
   z-index: 10;
@@ -170,7 +170,7 @@ input[type="date"] {
 }
 
 .DialogOverlayMisc {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(20, 20, 20, 0.3);
   position: fixed;
   inset: 0;
   z-index: 10;
@@ -198,6 +198,9 @@ input[type="date"] {
   transform: translate(-50%, -50%);
   margin: 0 auto;
   z-index: 50;
+}
+.TRACKER-TABLE{
+  height: 32rem;
 }
 
 .JOB-FORM {

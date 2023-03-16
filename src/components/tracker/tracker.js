@@ -51,7 +51,7 @@ function Tracker () {
   };
   return(
     <Dialog.Root>
-    <div className="flex justify-center p-8 w-full h-full">
+    <div className="flex justify-center p-8 w-full h-full ">
       <div className="TRACKER-CONTAINER  h-full text-black max-w-screen-2xl flex flex-col items-center justify-center">
 
         

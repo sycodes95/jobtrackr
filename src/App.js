@@ -24,8 +24,11 @@ function App() {
   
   return (
     <BrowserRouter>
-      <div className="APP-CONTAINER h-screen m-0 flex flex-col">
+      <div className="APP-CONTAINER h-full m-0 flex flex-col">
+        
         <Header/>
+        
+        <div className='h-full'>
         <Routes>
           {
           !userLoggedIn && <Route path="/" element={<Login/>}/>
@@ -35,6 +38,10 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/tracker" element={<Tracker/>}/>
         </Routes>
+        </div>
+        
+       
+        
       </div>
     </BrowserRouter>
   );

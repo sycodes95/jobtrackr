@@ -12,6 +12,7 @@ import ContactPerson from "./appNotes";
 import Notes from "./appNotes";
 import AppNotes from "./appNotes";
 import AppContact from "./appContact";
+import AppDelete from "./appDelete";
 
 function TrackerTable (props) {
   const user_id = props.user_id;
@@ -56,7 +57,7 @@ function TrackerTable (props) {
 
   return (
     
-    <div className='h-full w-full overflow-x-scroll flex-grow ' ref={containerRef}>
+    <div className='TRACKER-TABLE w-full overflow-x-scroll ' ref={containerRef}>
       <table className="w-full relative">
         <thead className='sticky top-0 z-10 '>
           <tr className="bg-striped h-12 bg-blur">
@@ -97,7 +98,24 @@ function TrackerTable (props) {
             relative overflow-hidden
             `}>
               
-              <td className="text-center whitespace-nowrap pl-1"><Icon path={mdiDeleteVariant} size={0.7} /></td>
+              <td className="text-center whitespace-nowrap pl-1">
+                <Dialog.Root>
+                  <Dialog.Trigger className="flex items-center">
+                        
+                    <Icon path={mdiDeleteVariant} size={0.7} />
+                  </Dialog.Trigger>
+                  <Dialog.Portal>
+                
+                    <Dialog.Overlay className="DialogOverlayMisc"/>
+                    <Dialog.Overlay/>
+                    <Dialog.Content className="DialogContentMisc">
+                      <AppDelete user_id={user_id} jobApp={obj}/>
+                    </Dialog.Content>
+                  
+                  </Dialog.Portal>
+                </Dialog.Root>                
+                
+              </td>
               
               
               <td className="text-center whitespace-nowrap">

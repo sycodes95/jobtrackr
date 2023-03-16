@@ -11,11 +11,17 @@ import { useEffect, useState } from 'react';
 
 import AppFilter from './trackerFilter';
 import TrackerFilter from './trackerFilter';
+import useDebounce from "../hooks/useDebounce";
 
 function Tracker () {
   const [user_id, set_user_id] = useState(null)
 
   const [jobApps, setJobApps] = useState(null)
+
+  
+  const [searchText, setSearchText] = useState(null)
+  const debouncedSearch = useDebounce(searchText, 500)
+  
 
   useEffect(()=>{
     const token = JSON.parse(localStorage.getItem('jobtrackr_token'))
@@ -46,9 +52,27 @@ function Tracker () {
     })
   }
 
+  const getSearchedJobApps = () => {
+    fetch(`${process.env.REACT_APP_API_HOST}/job-app-search-get?user_id=${user_id}&searchText=${debouncedSearch}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if(data.length > 0) setJobApps(data)
+    })
+  }
+
   const handleOverlayClick = (event) => {
     event.preventDefault();
   };
+
+  useEffect(()=>{
+    if(debouncedSearch){
+      getSearchedJobApps()
+    }
+    if(!debouncedSearch){
+      getAllJobApps()
+    }
+  },[debouncedSearch])
   return(
     <Dialog.Root>
     <div className="flex justify-center p-8 w-full h-full ">
@@ -97,7 +121,7 @@ function Tracker () {
           <div className='SEARCH-BAR h-12 w-full flex items-center'>
             <div className='SEARCH-BAR-CONTAINER p-2 bg-black bg-opacity-25 '>
               <input className='SEARCH-BAR-INPUT bg-black bg-opacity-25  text-white text-sm h-8 w-48 p-1
-              transition-all' type='text' placeholder='Search Any...'/>
+              transition-all' type='text' placeholder='Search Any...' onChange={(e)=> setSearchText(e.target.value)}/>
             </div>
             
           </div>

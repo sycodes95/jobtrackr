@@ -17,6 +17,8 @@ function AddJob (props) {
   const jobApp = props.jobApp
   
   const [isEditMode, setIsEditMode] = useState(false)
+  
+  const [saveError, setSaveError] = useState(' ')
 
   const [jobForm, setJobForm] = useState({
     
@@ -55,7 +57,8 @@ function AddJob (props) {
   },[jobFitRating])
 
   const handleOnChange = (e) =>{
-    const {name, value} = e.target;
+    let {name, value} = e.target;
+    if(name === 'company_name') value = value.toUpperCase()
     setJobForm({...jobForm, [name]: value})
   }
 
@@ -98,7 +101,7 @@ function AddJob (props) {
       })
       .then(response => response.json())
       .then((data) => {
-        console.log(data);
+        
         setSaveLoading(false)
         const job_app_id = data.job_app_id
         if(job_app_id){
@@ -108,6 +111,12 @@ function AddJob (props) {
             window.location.href = '/tracker'
           },1500)
         } 
+
+        if(data.name === 'error'){
+          if(data.code === '23505'){
+            setSaveError('[ COMPANY NAME ALREADY EXISTS ]')
+          }
+        }
       })
     }
     
@@ -333,6 +342,11 @@ function AddJob (props) {
           
         </section>
 
+        <section className='ERROR-TEXT h-6 w-full col-span-full pb-2 text-xs'>
+          
+          <span className='text-red-700 h-full'>{saveError}</span>
+        </section>
+
         <section className='h-12 w-full col-span-full justify-center 
         border-black border-opacity-50 flex'>
           <button className='bg-steel-blue bg-opacity-40  border-black flex justify-center items-center
@@ -354,6 +368,7 @@ function AddJob (props) {
             
             
           </button>
+
           <Dialog.Close className='bg-red-800 bg-opacity-40 hover:bg-opacity-50 transition-all'>
             <button className='w-28'>CANCEL</button>
           </Dialog.Close>

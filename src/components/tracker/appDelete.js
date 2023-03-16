@@ -14,7 +14,7 @@ function AppDelete (props) {
   const [fetchLoading, setFetchLoading] = useState(false)
 
   const fetchDeleteJobApp = () => {
-    fetch(`${process.env.REACT_APP_API_HOST}/job_app_delete?user_id=${user_id}&job_app_id=${job_app_id}`, {
+    fetch(`${process.env.REACT_APP_API_HOST}/job-app-delete?user_id=${user_id}&job_app_id=${job_app_id}`, {
       method: 'DELETE'
     })
     .then(res => res.json())

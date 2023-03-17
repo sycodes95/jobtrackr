@@ -18,8 +18,13 @@ function Tracker () {
 
   const [jobApps, setJobApps] = useState(null)
 
-  
+  const [paginate, setPaginate] = useState({
+    page: 1,
+    pageSize: 4
+  })
+
   const [searchText, setSearchText] = useState(null)
+
   const debouncedSearch = useDebounce(searchText, 500)
   
 
@@ -43,6 +48,8 @@ function Tracker () {
   useEffect(()=>{
     user_id && getAllJobApps()
   },[user_id])
+
+  
 
   const getAllJobApps = () => {
     fetch(`${process.env.REACT_APP_API_HOST}/job-app-all-get?user_id=${user_id}`)
@@ -80,7 +87,7 @@ function Tracker () {
 
         
         <section className='w-full gap-x-2 p-2 bg-black bg-opacity-25 mb-4'>
-          <TrackerFilter jobAppsContext={{jobApps, setJobApps}} user_id={user_id}/>
+          <TrackerFilter jobAppsContext={{jobApps, setJobApps}} user_id={user_id} paginateContext={{paginate, setPaginate}}/>
         </section>
 
         <section className='TOOL-BAR w-full grid gap-x-2 bg-opacity-25 gap-y-2 mb-4'>
@@ -131,7 +138,7 @@ function Tracker () {
        
         
         <section className='TABLE-CONTAINER flex-grow w-full gap-x-2 p-2 bg-black bg-opacity-30'>
-          <TrackerTable jobAppsContext={{jobApps, setJobApps}} user_id={user_id}/>
+          <TrackerTable jobAppsContext={{jobApps, setJobApps}} user_id={user_id} paginateContext={{paginate, setPaginate}}/>
         </section>
        
       </div>

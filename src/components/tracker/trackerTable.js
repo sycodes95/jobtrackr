@@ -14,10 +14,16 @@ import AppNotes from "./appNotes";
 import AppContact from "./appContact";
 import AppDelete from "./appDelete";
 
+
 function TrackerTable (props) {
   const user_id = props.user_id;
   const {jobApps, setJobApps} = props.jobAppsContext
+  const {paginate, setPaginate} = props.paginateContext
   const containerRef = useRef(null)
+
+ 
+
+
   const [categories, setCategories] = useState([
     {category: 'APP DATE', column: 'job_app_date', sortby: 1},
     {category: 'FAV', column: 'company_favorite', sortby: 0},
@@ -59,7 +65,7 @@ function TrackerTable (props) {
     
     <div className='TRACKER-TABLE w-full overflow-x-scroll ' ref={containerRef}>
       <table className="w-full relative">
-        <thead className='sticky top-0 z-10 '>
+        <thead className='sticky top-0 z-20'>
           <tr className="bg-striped h-12 bg-blur">
             <th className='text-xs text-white p-2 w-6 pointer-events-none'>
             </th>
@@ -85,7 +91,7 @@ function TrackerTable (props) {
 
           </tr>
         </thead>
-        <tbody className="h-full overflow-y-scroll">
+        <tbody className="h-full overflow-y-scroll pointer-events-none">
           {
           jobApps &&
           jobApps.map((obj, index) => (
@@ -95,7 +101,7 @@ function TrackerTable (props) {
             ${obj.offer_amount && 'text-yellow-500'}
             ${obj.rejected && 'text-red-500'}
             ${obj.rejected && 'strike'}
-            relative overflow-hidden
+            relative overflow-hidden pointer-events-auto
             `}>
               
               <td className="text-center whitespace-nowrap pl-1">

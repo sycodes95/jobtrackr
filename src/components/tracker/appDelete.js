@@ -33,7 +33,7 @@ function AppDelete (props) {
         <div className="min-w-fit flex items-center">CONFIRM DELETE</div>
         <div className="absolute right-0 flex items-center h-full">
           <Dialog.Close className='text-lg h-full w-8 hover:text-white transition-all duration-300 text-center '>
-              X
+            X
           </Dialog.Close>
         </div>
       </section>

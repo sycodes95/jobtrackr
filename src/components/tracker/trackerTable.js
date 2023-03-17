@@ -65,7 +65,7 @@ function TrackerTable (props) {
     
     <div className='TRACKER-TABLE w-full overflow-x-scroll ' ref={containerRef}>
       <table className="w-full relative">
-        <thead className='sticky top-0 z-20'>
+        <thead className='sticky top-0 z-10'>
           <tr className="bg-striped h-12 bg-blur">
             <th className='text-xs text-white p-2 w-6 pointer-events-none'>
             </th>

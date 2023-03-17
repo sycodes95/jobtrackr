@@ -11,18 +11,20 @@ function Login () {
     password: ""
   })
 
+ 
+
+  const verifyToken = () => {
+    const token = localStorage.getItem('jobtrackr_token')
+    token && setLoggedIn(true)
+  }
+
   useEffect(()=> {
     verifyToken()
   },[])
 
   useEffect(()=>{
-    if(loggedIn) window.location.href = '/'
+    if(loggedIn) window.location.href = '/tracker'
   },[loggedIn])
-
-  const verifyToken = () => {
-    const token = localStorage.getItem('token')
-    token && setLoggedIn(true)
-  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

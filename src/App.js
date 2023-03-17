@@ -1,26 +1,15 @@
 import './styles/App.css';
 
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
 import Header from './components/header';
 import Signup from './components/user/signup';
 import Login from './components/user/login';
 import Tracker from './components/tracker/tracker';
+import Home from './components/home/home';
 
 function App() {
-  const [userLoggedIn, setUserLoggedIn] = useState(false)
-
-  useEffect(()=>{
-    const token = JSON.parse(localStorage.getItem('token'))
-    token && setUserLoggedIn(true)
-    
-  }, [])
-
-  useEffect(()=>{
-    if(userLoggedIn) window.location.href = '/tracker'
-  },[userLoggedIn])
-
   
   return (
     <BrowserRouter>
@@ -29,18 +18,13 @@ function App() {
         <Header/>
         
         <div className='h-full'>
-        <Routes>
-          {
-          !userLoggedIn && <Route path="/" element={<Login/>}/>
-          }
-          
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/tracker" element={<Tracker/>}/>
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/signup" element={<Signup/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/tracker" element={<Tracker/>}/>
+          </Routes>
         </div>
-        
-       
         
       </div>
     </BrowserRouter>

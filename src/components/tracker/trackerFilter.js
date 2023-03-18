@@ -10,7 +10,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 
 function TrackerFilter (props) {
-  
+  const navigate = useNavigate()
+
   const {filters, setFilters} = props.filtersContext
 
   const filtersContainerRef = useRef(null)
@@ -75,7 +76,7 @@ function TrackerFilter (props) {
   }
 
   const handleFilterClear = () =>{
-    window.location.reload();
+    navigate(0)
   }
  
   const handleShowHideFilters = () =>{ 

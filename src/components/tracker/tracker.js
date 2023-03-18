@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import AppFilter from './trackerFilter';
 import TrackerFilter from './trackerFilter';
 import useDebounce from "../hooks/useDebounce";
-import Pagination from '../pagination/pagination';
+
 import ReactPaginate from 'react-paginate';
 
 
@@ -43,25 +43,25 @@ function Tracker () {
 
   const [categories, setCategories] = useState([
     {category: 'APP DATE', column: 'job_app_date', sortOrder: 1},
-    {category: 'FAV', column: 'company_favorite', sortOrder: 0},
-    {category: 'COMPANY', column: 'company_name', sortOrder: 0},
-    {category: 'COMPANY WEBSITE', column: 'company_website', sortOrder: 0},
-    {category: 'APPLICATION METHOD', column: 'job_app_method', sortOrder: 0},
-    {category: 'SOURCE WEBSITE', column: 'job_source_website', sortOrder: 0},
-    {category: 'POSITION', column: 'job_position', sortOrder: 0},
-    {category: 'FIT RATING', column: 'job_fit_rating', sortOrder: 0},
-    {category: 'LOCATION', column: 'job_location', sortOrder: 0},
-    {category: 'RESPONSE DATE', column: 'response_date', sortOrder: 0},
-    {category: 'INTERVIEW DATE', column: 'interview_date', sortOrder: 0},
-    {category: 'REJECTED', column: 'rejected', sortOrder: 0},
-    {category: 'OFFER AMOUNT', column: 'offer_amount', sortOrder: 0},
+    {category: 'FAV', column: 'company_favorite', sortOrder: 1},
+    {category: 'COMPANY', column: 'company_name', sortOrder: 1},
+    {category: 'COMPANY WEBSITE', column: 'company_website', sortOrder: 1},
+    {category: 'APPLICATION METHOD', column: 'job_app_method', sortOrder: 1},
+    {category: 'SOURCE WEBSITE', column: 'job_source_website', sortOrder: 1},
+    {category: 'POSITION', column: 'job_position', sortOrder: 1},
+    {category: 'FIT RATING', column: 'job_fit_rating', sortOrder: 1},
+    {category: 'LOCATION', column: 'job_location', sortOrder: 1},
+    {category: 'RESPONSE DATE', column: 'response_date', sortOrder: 1},
+    {category: 'INTERVIEW DATE', column: 'interview_date', sortOrder: 1},
+    {category: 'REJECTED', column: 'rejected', sortOrder: 1},
+    {category: 'OFFER AMOUNT', column: 'offer_amount', sortOrder: 1},
   ])
 
   useEffect(()=>{
     const token = JSON.parse(localStorage.getItem('jobtrackr_token'))
     
     if(token) {
-      fetch('http://localhost:5000/users/verify-token-get', {
+      fetch(`${process.env.REACT_APP_API_HOST}/users/verify-token-get`, {
         method: 'GET',
         headers: { 'authorization': `Bearer ${token}`}
       })
@@ -71,7 +71,8 @@ function Tracker () {
           set_user_id(user_id)
       })  
       .catch(error => console.error(error))
-      }    
+    }    
+
   }, [])    
  
   const getJobApps = () => {

@@ -45,13 +45,11 @@ function Header () {
         loggedIn ?
         <div className='LOGGED-IN-NAV flex items-center gap-x-6 pr-8 text-sm font-normal'>
 
-          {
-          /*
-          <Link className='hover:text-slate-300 border-b border-white  border-opacity-0 hover:border-opacity-100 transition-all' to='/'>
+          
+          
+          <Link className='hover:text-slate-300 border-b border-white  border-opacity-0 hover:border-opacity-100 transition-all' to='/dashboard'>
             Dashboard
           </Link>
-          */
-          }
           
           <Link className='hover:text-slate-300 border-b border-white border-opacity-0 hover:border-opacity-100 transition-all' to='/tracker'>
             Tracker

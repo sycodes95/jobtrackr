@@ -7,14 +7,17 @@ import Rating from 'react-rating';
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 
 function TrackerFilter (props) {
+  const navigate = useNavigate()
   const user_id = props.user_id;
   const {jobApps, setJobApps} = props.jobAppsContext
+  const {filters, setFilters} = props.filtersContext
 
   const filtersContainerRef = useRef(null)
   const [showFilters, setShowFilters] = useState(false)
-
+  
   const [appStatus, setAppStatus] = useState({
     filter: 'APPLICATION STATUS',
     column: null,
@@ -73,6 +76,7 @@ function TrackerFilter (props) {
     .then(response => response.json())
     .then(data =>{
       if(data.length > 0){
+        setFilters(filters)
         setJobApps(data)
       }
     })
@@ -95,15 +99,6 @@ function TrackerFilter (props) {
     showFilters ? filtersContainer.classList.remove('max-640px-hidden') : filtersContainer.classList.add('max-640px-hidden')
   },[showFilters])
 
-  const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
-    <input
-      className="bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white flex-grow"
-      style={{ zIndex: 200 }}
-      ref={ref}
-      value={value}
-      onClick={onClick}
-    />
-  ));
   
   return(
     <div className="flex max-640px-flex-column-w-full gap-x-4 gap-y-4 h-fit w-full ">

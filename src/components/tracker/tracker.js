@@ -26,7 +26,8 @@ function Tracker () {
   const [searchText, setSearchText] = useState(null)
 
   const debouncedSearch = useDebounce(searchText, 500)
-  
+
+  const [filters, setFilters] = useState(null)
 
   useEffect(()=>{
     const token = JSON.parse(localStorage.getItem('jobtrackr_token'))
@@ -64,13 +65,20 @@ function Tracker () {
     .then(res => res.json())
     .then(data => {
       console.log(data);
-      if(data.length > 0) setJobApps(data)
+      if(data.length > 0){
+        setJobApps(data)
+        setFilters(null)
+      } 
     })
   }
 
-  const handleOverlayClick = (event) => {
-    event.preventDefault();
+  const handleOverlayClick = (e) => {
+    e.preventDefault();
   };
+
+  const handleSearchChange = (e) =>{
+    setSearchText(e.target.value)
+  }
 
   useEffect(()=>{
     if(debouncedSearch){
@@ -87,7 +95,12 @@ function Tracker () {
 
         
         <section className='w-full gap-x-2 p-2 bg-black bg-opacity-25 mb-4'>
-          <TrackerFilter jobAppsContext={{jobApps, setJobApps}} user_id={user_id} paginateContext={{paginate, setPaginate}}/>
+          <TrackerFilter 
+          jobAppsContext={{jobApps, setJobApps}} 
+          user_id={user_id} 
+          paginateContext={{paginate, setPaginate}}
+          filtersContext={{filters, setFilters}}
+          />
         </section>
 
         <section className='TOOL-BAR w-full grid gap-x-2 bg-opacity-25 gap-y-2 mb-4'>
@@ -128,7 +141,7 @@ function Tracker () {
           <div className='SEARCH-BAR h-12 w-full flex items-center'>
             <div className='SEARCH-BAR-CONTAINER p-2 bg-black bg-opacity-25 '>
               <input className='SEARCH-BAR-INPUT bg-black bg-opacity-25  text-white text-sm h-8 w-48 p-1
-              transition-all' type='text' placeholder='Search Any...' onChange={(e)=> setSearchText(e.target.value)}/>
+              transition-all' type='text' placeholder='Search Any...' onChange={handleSearchChange}/>
             </div>
             
           </div>
@@ -138,7 +151,13 @@ function Tracker () {
        
         
         <section className='TABLE-CONTAINER flex-grow w-full gap-x-2 p-2 bg-black bg-opacity-30'>
-          <TrackerTable jobAppsContext={{jobApps, setJobApps}} user_id={user_id} paginateContext={{paginate, setPaginate}}/>
+          <TrackerTable 
+          jobAppsContext={{jobApps, setJobApps}} 
+          user_id={user_id} 
+          paginateContext={{paginate, setPaginate}}
+          filtersContext={{filters, setFilters}}
+          searchTextContext={{searchText, setSearchText}}
+          />
         </section>
        
       </div>

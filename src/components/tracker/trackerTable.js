@@ -19,6 +19,8 @@ function TrackerTable (props) {
   const user_id = props.user_id;
   const {jobApps, setJobApps} = props.jobAppsContext
   const {paginate, setPaginate} = props.paginateContext
+  const {filters, setFilters} = props.filtersContext
+  const {searchText, setSearchText} = props.searchTextContext
   const containerRef = useRef(null)
 
  
@@ -44,11 +46,20 @@ function TrackerTable (props) {
     const column = categories[index].column;
     const sortby = categories[index].sortby;
     const jobAppIds = jobApps.map(app => app.job_app_id)
-    
-    fetch(`${process.env.REACT_APP_API_HOST}/job-app-sort-category-get?user_id=${user_id}&column=${column}&sortby=${sortby}&jobAppIds=${JSON.stringify(jobAppIds)}`)
+
+    let endPoint;
+    if(!filters && !searchText){
+      endPoint = `job-app-sort-category-get?user_id=${user_id}&column=${column}&sortby=${sortby}`
+    } else if (filters) {
+      endPoint = `job-app-filter-get?user_id=${user_id}&filters=${JSON.stringify(filters)}&column=${column}&sortby=${sortby}`
+    } else if (searchText) {
+      endPoint = `job-app-search-get?user_id=${user_id}&searchText=${searchText}&column=${column}&sortby=${sortby}`
+    }
+    fetch(`${process.env.REACT_APP_API_HOST}/${endPoint}`)
     .then(response => response.json())
     .then(data =>{
       if(data.length > 0){
+        console.log(data);
         let cat = Array.from(categories)
         cat[index].sortby === 0 ? cat[index].sortby = 1 : cat[index].sortby = 0;
         setCategories(cat)

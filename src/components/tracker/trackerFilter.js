@@ -95,7 +95,7 @@ function TrackerFilter (props) {
   return(
     <div className="flex max-640px-flex-column-w-full gap-x-4 gap-y-4 h-fit w-full ">
       <section className="FILTER-LOGO text-white flex">
-        <div className="p-2 bg-striped bg-opacity-25 flex flex-col flex-1 justify-center  items-center gap-y-2">
+        <div className="p-2 bg-striped-alt bg-opacity-25 flex flex-col flex-1 justify-center  items-center gap-y-2">
           <Icon path={mdiFilterSettings} size={1.5} />
           <span className="text-xs font-bold">FILTERS</span>
         </div>
@@ -103,7 +103,7 @@ function TrackerFilter (props) {
       </section>
 
       <section className="FILTER-LOGO-SMALL hidden text-white ">
-        <div className="p-2 bg-striped bg-opacity-25 flex flex-col flex-1 justify-center  items-center gap-y-2 hover:cursor-pointer">
+        <div className="p-2 bg-striped-alt bg-opacity-25 flex flex-col flex-1 justify-center  items-center gap-y-2 hover:cursor-pointer">
           <Icon path={mdiFilterSettings} size={2} />
           <span className="text-sm font-bold">FILTERS</span>
           
@@ -263,7 +263,7 @@ function TrackerFilter (props) {
         </section>
 
       </div>
-      <section className="flex flex-col bg-striped">
+      <section className="flex flex-col bg-black bg-opacity-25">
 
           <div className=" max-640px-flex-column-w-full flex h-full w-full text-xs p-1">
             <button className='bg-green-700 bg-opacity-25 max-640px-flex-column-w-full h-full w-fit  

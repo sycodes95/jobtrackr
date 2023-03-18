@@ -35,8 +35,10 @@ function Tracker () {
 
   const [paginate, setPaginate] = useState({
     page: 1,
-    pageSize: 1,
-    totalCount: null
+    pageSize: 2,
+    totalCount: null,
+    showingA: 1,
+    showingB: 2
   })
 
   useEffect(()=>{
@@ -178,9 +180,12 @@ function Tracker () {
           sortColumnContext={{sortColumn, setSortColumn}}
           sortByContext={{sortOrder, setSortOrder}}
           />
-          <div className='PaginateContainer w-full flex justify-end mt-2 select-none'>
+          <div className='PaginateContainer w-full flex justify-between mt-2 select-none'>
+            <div className='text-white flex items-center text-xs'>
+              Showing {paginate.showingA} to {paginate.showingB} of {paginate.totalCount}
+            </div>
             <ReactPaginate
-              className='bg-striped w-fit text-gray-300 flex items-center gap-x-2 text-sm font-bold p-1'
+              className='bg-striped-alt w-fit text-gray-300 flex items-center gap-x-2 text-sm font-bold p-1 rounded-sm'
               previousLabel={<Icon path={mdiArrowLeftDropCircle} size={1} />}
               nextLabel={<Icon path={mdiArrowRightDropCircle} size={1} />}
               breakLabel={'...'}
@@ -188,14 +193,21 @@ function Tracker () {
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
               onPageChange={({ selected }) => {
-                setPaginate({ ...paginate, page: selected + 1 });
+                setPaginate({ ...paginate, 
+                  page: selected + 1, 
+                  showingA: (selected * paginate.pageSize) + 1, 
+                  showingB: (selected * paginate.pageSize) + paginate.pageSize > paginate.totalCount
+                  ? paginate.totalCount
+                  : (selected * paginate.pageSize) + paginate.pageSize, 
+                });
               }}
               containerClassName=''
-              previousClassName='hover:text-red-800 hover:text-opacity-50 transition-all'
-              nextClassName='hover:text-red-800 hover:text-opacity-50 transition-all'
-              activeClassName='PaginatePageActive bg-red-800 bg-opacity-30 p-1 flex justify-center rounded-full'
+              previousClassName='hover:text-gray-500 hover:text-opacity-50 transition-all'
+              nextClassName='hover:text-gray-500 hover:text-opacity-50 transition-all'
+              activeClassName='PaginatePageActive bg-white text-black bg-opacity-30 p-1 flex justify-center w-6 flex'
               breakClassName='PaginateBreak p-1'
-              pageClassName='PaginatePage p-1'
+              pageClassName='PaginatePage hover:bg-white hover:bg-opacity-10 w-6 h-6 text-center transition-all flex items-center'
+              pageLinkClassName='flex-grow'
               forcePage={paginate.page - 1}
             />
           </div>

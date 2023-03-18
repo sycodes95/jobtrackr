@@ -19,7 +19,7 @@ function AppContact (props) {
         </div>
       </section>
         
-      <section className='p-2 w-full bg-striped text-white flex flex-col justify-center flex-wrap break-word overflow-ellipsis
+      <section className='p-2 w-full bg-striped-alt text-white flex flex-col justify-center flex-wrap break-word overflow-ellipsis
       text-sm'>
         <div className='break-word p-1 w-full text-center text-yellow-600 text-xl mb-4 font-black-outline'>
           {jobApp.company_name.toUpperCase()}

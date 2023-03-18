@@ -6,28 +6,38 @@ import TrackerTable from './trackerTable';
 import * as Dialog from '@radix-ui/react-dialog';
 import AddJob from './addJob';
 
-import { mdiRadar, mdiPlusThick, mdiCircleSlice8 } from '@mdi/js';
+import { mdiRadar, mdiPlusThick, mdiCircleSlice8, mdiArrowLeftDropCircle, mdiArrowRightDropCircle } from '@mdi/js';
 import { useEffect, useState } from 'react';
 
 import AppFilter from './trackerFilter';
 import TrackerFilter from './trackerFilter';
 import useDebounce from "../hooks/useDebounce";
+import Pagination from '../pagination/pagination';
+import ReactPaginate from 'react-paginate';
+
+
+
 
 function Tracker () {
   const [user_id, set_user_id] = useState(null)
 
   const [jobApps, setJobApps] = useState(null)
 
-  const [paginate, setPaginate] = useState({
-    page: 1,
-    pageSize: 4
-  })
+  const [search, setSearch] = useState(null)
 
-  const [searchText, setSearchText] = useState(null)
-
-  const debouncedSearch = useDebounce(searchText, 500)
+  const debouncedSearch = useDebounce(search, 500)
 
   const [filters, setFilters] = useState(null)
+
+  const [sortColumn, setSortColumn] = useState(null)
+
+  const [sortOrder, setSortOrder] = useState(null)
+
+  const [paginate, setPaginate] = useState({
+    page: 1,
+    pageSize: 1,
+    totalCount: null
+  })
 
   useEffect(()=>{
     const token = JSON.parse(localStorage.getItem('jobtrackr_token'))
@@ -43,51 +53,58 @@ function Tracker () {
           set_user_id(user_id)
       })  
       .catch(error => console.error(error))
-      }
-  }, [])
+      }    
+  }, [])    
+ 
+  const getJobApps = () => {
+    let fetchQueries = `?user_id=${user_id}`
 
-  useEffect(()=>{
-    user_id && getAllJobApps()
-  },[user_id])
+    debouncedSearch && (fetchQueries += `&search=${debouncedSearch}`)
+    filters && (fetchQueries += `&filters=${JSON.stringify(filters)}`)
+    paginate.page && (fetchQueries += `&page=${paginate.page}`)
+    paginate.pageSize && (fetchQueries += `&pageSize=${paginate.pageSize}`)
+    sortColumn && (fetchQueries += `&sortColumn=${sortColumn}`)
+    sortOrder && (fetchQueries += `&sortOrder=${sortOrder}`)
 
-  
-
-  const getAllJobApps = () => {
-    fetch(`${process.env.REACT_APP_API_HOST}/job-app-all-get?user_id=${user_id}`)
-    .then(res => res.json())
-    .then(data => {
-      if(data.length > 0) setJobApps(data)
-    })
-  }
-
-  const getSearchedJobApps = () => {
-    fetch(`${process.env.REACT_APP_API_HOST}/job-app-search-get?user_id=${user_id}&searchText=${debouncedSearch}`)
+    fetch(`${process.env.REACT_APP_API_HOST}/job-app-get${fetchQueries}`)
     .then(res => res.json())
     .then(data => {
       console.log(data);
-      if(data.length > 0){
-        setJobApps(data)
-        setFilters(null)
+      if(data.rows.length > 0){
+        setJobApps(data.rows)
+        setPaginate({...paginate, totalCount: data.totalCount})
+      } else {
+        setJobApps([])
       } 
+      
     })
-  }
+  } 
 
   const handleOverlayClick = (e) => {
     e.preventDefault();
   };
 
   const handleSearchChange = (e) =>{
-    setSearchText(e.target.value)
+    setSearch(e.target.value)
   }
 
   useEffect(()=>{
-    if(debouncedSearch){
-      getSearchedJobApps()
-    }
-    if(!debouncedSearch){
-      getAllJobApps()
-    }
+    user_id && getJobApps()
+  },[user_id])
+
+  useEffect(()=>{
+    getJobApps()
   },[debouncedSearch])
+  useEffect(()=>{
+    
+    getJobApps()
+    
+  },[filters])
+  useEffect(()=>{
+    getJobApps()
+  },[paginate.page])
+  
+
   return(
     <Dialog.Root>
     <div className="flex justify-center p-8 w-full h-full ">
@@ -100,6 +117,7 @@ function Tracker () {
           user_id={user_id} 
           paginateContext={{paginate, setPaginate}}
           filtersContext={{filters, setFilters}}
+          
           />
         </section>
 
@@ -156,10 +174,34 @@ function Tracker () {
           user_id={user_id} 
           paginateContext={{paginate, setPaginate}}
           filtersContext={{filters, setFilters}}
-          searchTextContext={{searchText, setSearchText}}
+          searchTextContext={{search, setSearch}}
+          sortColumnContext={{sortColumn, setSortColumn}}
+          sortByContext={{sortOrder, setSortOrder}}
           />
+          <div className='PaginateContainer w-full flex justify-end mt-2 select-none'>
+            <ReactPaginate
+              className='bg-striped w-fit text-gray-300 flex items-center gap-x-2 text-sm font-bold p-1'
+              previousLabel={<Icon path={mdiArrowLeftDropCircle} size={1} />}
+              nextLabel={<Icon path={mdiArrowRightDropCircle} size={1} />}
+              breakLabel={'...'}
+              pageCount={Math.ceil(paginate.totalCount / paginate.pageSize)}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={({ selected }) => {
+                setPaginate({ ...paginate, page: selected + 1 });
+              }}
+              containerClassName=''
+              previousClassName='hover:text-red-800 hover:text-opacity-50 transition-all'
+              nextClassName='hover:text-red-800 hover:text-opacity-50 transition-all'
+              activeClassName='PaginatePageActive bg-red-800 bg-opacity-30 p-1 flex justify-center rounded-full'
+              breakClassName='PaginateBreak p-1'
+              pageClassName='PaginatePage p-1'
+              forcePage={paginate.page - 1}
+            />
+          </div>
+          
         </section>
-       
+
       </div>
       
     </div>

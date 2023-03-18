@@ -20,53 +20,60 @@ function TrackerTable (props) {
   const {jobApps, setJobApps} = props.jobAppsContext
   const {paginate, setPaginate} = props.paginateContext
   const {filters, setFilters} = props.filtersContext
-  const {searchText, setSearchText} = props.searchTextContext
+  const {search, setSearch} = props.searchTextContext
+  const {sortColumn, setSortColumn} = props.sortColumnContext
+  const {sortOrder, setSortOrder} = props.sortByContext
   const containerRef = useRef(null)
 
  
 
 
   const [categories, setCategories] = useState([
-    {category: 'APP DATE', column: 'job_app_date', sortby: 1},
-    {category: 'FAV', column: 'company_favorite', sortby: 0},
-    {category: 'COMPANY', column: 'company_name', sortby: 0},
-    {category: 'COMPANY WEBSITE', column: 'company_website', sortby: 0},
-    {category: 'APPLICATION METHOD', column: 'job_app_method', sortby: 0},
-    {category: 'SOURCE WEBSITE', column: 'job_source_website', sortby: 0},
-    {category: 'POSITION', column: 'job_position', sortby: 0},
-    {category: 'FIT RATING', column: 'job_fit_rating', sortby: 0},
-    {category: 'LOCATION', column: 'job_location', sortby: 0},
-    {category: 'RESPONSE DATE', column: 'response_date', sortby: 0},
-    {category: 'INTERVIEW DATE', column: 'interview_date', sortby: 0},
-    {category: 'REJECTED', column: 'rejected', sortby: 0},
-    {category: 'OFFER AMOUNT', column: 'offer_amount', sortby: 0},
+    {category: 'APP DATE', column: 'job_app_date', sortOrder: 1},
+    {category: 'FAV', column: 'company_favorite', sortOrder: 0},
+    {category: 'COMPANY', column: 'company_name', sortOrder: 0},
+    {category: 'COMPANY WEBSITE', column: 'company_website', sortOrder: 0},
+    {category: 'APPLICATION METHOD', column: 'job_app_method', sortOrder: 0},
+    {category: 'SOURCE WEBSITE', column: 'job_source_website', sortOrder: 0},
+    {category: 'POSITION', column: 'job_position', sortOrder: 0},
+    {category: 'FIT RATING', column: 'job_fit_rating', sortOrder: 0},
+    {category: 'LOCATION', column: 'job_location', sortOrder: 0},
+    {category: 'RESPONSE DATE', column: 'response_date', sortOrder: 0},
+    {category: 'INTERVIEW DATE', column: 'interview_date', sortOrder: 0},
+    {category: 'REJECTED', column: 'rejected', sortOrder: 0},
+    {category: 'OFFER AMOUNT', column: 'offer_amount', sortOrder: 0},
   ])
   
   const handleCategorySort = (index) => {
     const column = categories[index].column;
-    const sortby = categories[index].sortby;
-    const jobAppIds = jobApps.map(app => app.job_app_id)
+    const sortOrder = categories[index].sortOrder;
+    
+    let fetchQueries = `?user_id=${user_id}`
 
-    let endPoint;
-    if(!filters && !searchText){
-      endPoint = `job-app-sort-category-get?user_id=${user_id}&column=${column}&sortby=${sortby}`
-    } else if (filters) {
-      endPoint = `job-app-filter-get?user_id=${user_id}&filters=${JSON.stringify(filters)}&column=${column}&sortby=${sortby}`
-    } else if (searchText) {
-      endPoint = `job-app-search-get?user_id=${user_id}&searchText=${searchText}&column=${column}&sortby=${sortby}`
-    }
-    fetch(`${process.env.REACT_APP_API_HOST}/${endPoint}`)
-    .then(response => response.json())
-    .then(data =>{
-      if(data.length > 0){
-        console.log(data);
+    search && (fetchQueries += `&search=${search}`)
+    filters && (fetchQueries += `&filters=${JSON.stringify(filters)}`)
+    paginate.page && (fetchQueries += `&page=${paginate.page}`)
+    paginate.pageSize && (fetchQueries += `&pageSize=${paginate.pageSize}`)
+    fetchQueries += `&sortColumn=${column}`
+    fetchQueries += `&sortOrder=${sortOrder}`
+
+    fetch(`${process.env.REACT_APP_API_HOST}/job-app-get${fetchQueries}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if(data.rows.length > 0){
         let cat = Array.from(categories)
-        cat[index].sortby === 0 ? cat[index].sortby = 1 : cat[index].sortby = 0;
+        cat[index].sortOrder === 0 ? cat[index].sortOrder = 1 : cat[index].sortOrder = 0;
         setCategories(cat)
-        setJobApps(data)
+        setJobApps(data.rows) 
+      } else {
+        setJobApps([])
       }
+        
     })
+    
   } 
+
   const handleOverlayClick = (event) => {
     event.preventDefault();
   };

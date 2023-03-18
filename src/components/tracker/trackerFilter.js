@@ -10,12 +10,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 
 function TrackerFilter (props) {
-  const navigate = useNavigate()
-  const user_id = props.user_id;
-  const {jobApps, setJobApps} = props.jobAppsContext
+  
   const {filters, setFilters} = props.filtersContext
 
   const filtersContainerRef = useRef(null)
+  
   const [showFilters, setShowFilters] = useState(false)
   
   const [appStatus, setAppStatus] = useState({
@@ -72,14 +71,7 @@ function TrackerFilter (props) {
   
   const handleFilterApply = () => {
     const filters = [appStatus, appDate, favorite, jobFitRating, responseDate, interviewDate, offerAmount,]
-    fetch(`${process.env.REACT_APP_API_HOST}/job-app-filter-get?user_id=${user_id}&filters=${JSON.stringify(filters)}`)
-    .then(response => response.json())
-    .then(data =>{
-      if(data.length > 0){
-        setFilters(filters)
-        setJobApps(data)
-      }
-    })
+    setFilters(filters)
   }
 
   const handleFilterClear = () =>{

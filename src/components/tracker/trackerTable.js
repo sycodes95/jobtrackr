@@ -18,59 +18,20 @@ import AppDelete from "./appDelete";
 function TrackerTable (props) {
   const user_id = props.user_id;
   const {jobApps, setJobApps} = props.jobAppsContext
-  const {paginate, setPaginate} = props.paginateContext
-  const {filters, setFilters} = props.filtersContext
-  const {search, setSearch} = props.searchTextContext
   const {sortColumn, setSortColumn} = props.sortColumnContext
   const {sortOrder, setSortOrder} = props.sortByContext
+  const {categories, setCategories} = props.categoriesContext
   const containerRef = useRef(null)
 
- 
-
-
-  const [categories, setCategories] = useState([
-    {category: 'APP DATE', column: 'job_app_date', sortOrder: 1},
-    {category: 'FAV', column: 'company_favorite', sortOrder: 0},
-    {category: 'COMPANY', column: 'company_name', sortOrder: 0},
-    {category: 'COMPANY WEBSITE', column: 'company_website', sortOrder: 0},
-    {category: 'APPLICATION METHOD', column: 'job_app_method', sortOrder: 0},
-    {category: 'SOURCE WEBSITE', column: 'job_source_website', sortOrder: 0},
-    {category: 'POSITION', column: 'job_position', sortOrder: 0},
-    {category: 'FIT RATING', column: 'job_fit_rating', sortOrder: 0},
-    {category: 'LOCATION', column: 'job_location', sortOrder: 0},
-    {category: 'RESPONSE DATE', column: 'response_date', sortOrder: 0},
-    {category: 'INTERVIEW DATE', column: 'interview_date', sortOrder: 0},
-    {category: 'REJECTED', column: 'rejected', sortOrder: 0},
-    {category: 'OFFER AMOUNT', column: 'offer_amount', sortOrder: 0},
-  ])
-  
   const handleCategorySort = (index) => {
     const column = categories[index].column;
     const sortOrder = categories[index].sortOrder;
-    
-    let fetchQueries = `?user_id=${user_id}`
+    setSortColumn(column)
+    setSortOrder(sortOrder)
 
-    search && (fetchQueries += `&search=${search}`)
-    filters && (fetchQueries += `&filters=${JSON.stringify(filters)}`)
-    paginate.page && (fetchQueries += `&page=${paginate.page}`)
-    paginate.pageSize && (fetchQueries += `&pageSize=${paginate.pageSize}`)
-    fetchQueries += `&sortColumn=${column}`
-    fetchQueries += `&sortOrder=${sortOrder}`
-
-    fetch(`${process.env.REACT_APP_API_HOST}/job-app-get${fetchQueries}`)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      if(data.rows.length > 0){
-        let cat = Array.from(categories)
-        cat[index].sortOrder === 0 ? cat[index].sortOrder = 1 : cat[index].sortOrder = 0;
-        setCategories(cat)
-        setJobApps(data.rows) 
-      } else {
-        setJobApps([])
-      }
-        
-    })
+    let cat = Array.from(categories)
+    cat[index].sortOrder === 0 ? cat[index].sortOrder = 1 : cat[index].sortOrder = 0;
+    setCategories(cat)
     
   } 
 
@@ -111,7 +72,11 @@ function TrackerTable (props) {
         </thead>
         <tbody className="h-full overflow-y-scroll pointer-events-none">
           {
-          jobApps &&
+          !jobApps &&
+          <td colSpan='17' className="text-center text-white text-sm">No Results...</td>
+          }
+          {
+          jobApps && 
           jobApps.map((obj, index) => (
             <tr key={index} className={`text-xs font-thin h-6   
             ${!obj.interview_date && !obj.rejected && !obj.offer_amount && 'text-gray-300'}
@@ -121,6 +86,7 @@ function TrackerTable (props) {
             ${obj.rejected && 'strike'}
             relative overflow-hidden pointer-events-auto
             `}>
+              
               
               <td className="text-center whitespace-nowrap pl-1">
                 <Dialog.Root>

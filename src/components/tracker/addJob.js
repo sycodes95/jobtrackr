@@ -348,30 +348,33 @@ function AddJob (props) {
         </section>
 
         <section className='h-12 w-full col-span-full justify-center 
-        border-black border-opacity-50 flex'>
-          <button className='bg-steel-blue bg-opacity-40  border-black flex justify-center items-center
-          hover:bg-opacity-50 transition-all w-28' onClick={handleJobFormSubmit}>
-          
-            {
-            !saveLoading && !saveSuccessful && 'SAVE'
-            }
-            {
-            saveLoading &&
-            <Oval height="20" width="20" color="#000000" secondaryColor="#808080"
-            strokeWidth="8" ariaLabel="triangle-loading" wrapperStyle={{}}
-            visible={true}/>
-            }
-            {
-            saveSuccessful && 
-            <Icon path={mdiCheckDecagram} size={1.1} className='text-white' />
-            }
+        border-black border-opacity-50 flex p-1'>
+          <div className='flex p-1 bg-black bg-opacity-25 gap-x-1 w-64'>
+            <button className='bg-steel-blue bg-opacity-40  border-black flex justify-center items-center
+            hover:bg-opacity-50 transition-all w-full p-1' onClick={handleJobFormSubmit}>
             
-            
-          </button>
+              {
+              !saveLoading && !saveSuccessful && 'SAVE'
+              }
+              {
+              saveLoading &&
+              <Oval height="20" width="20" color="#000000" secondaryColor="#808080"
+              strokeWidth="8" ariaLabel="triangle-loading" wrapperStyle={{}}
+              visible={true}/>
+              }
+              {
+              saveSuccessful && 
+              <Icon path={mdiCheckDecagram} size={1.1} className='text-white' />
+              }
+              
+              
+            </button>
 
-          <Dialog.Close className='bg-red-800 bg-opacity-40 hover:bg-opacity-50 transition-all'>
-            <button className='w-28'>CANCEL</button>
-          </Dialog.Close>
+            <Dialog.Close className='bg-red-800 bg-opacity-40 hover:bg-opacity-50 transition-all w-full'>
+              CANCEL
+            </Dialog.Close>
+          </div>
+          
           
         </section>
 

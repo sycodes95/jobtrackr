@@ -41,6 +41,22 @@ function Tracker () {
     showingB: 2
   })
 
+  const [categories, setCategories] = useState([
+    {category: 'APP DATE', column: 'job_app_date', sortOrder: 1},
+    {category: 'FAV', column: 'company_favorite', sortOrder: 0},
+    {category: 'COMPANY', column: 'company_name', sortOrder: 0},
+    {category: 'COMPANY WEBSITE', column: 'company_website', sortOrder: 0},
+    {category: 'APPLICATION METHOD', column: 'job_app_method', sortOrder: 0},
+    {category: 'SOURCE WEBSITE', column: 'job_source_website', sortOrder: 0},
+    {category: 'POSITION', column: 'job_position', sortOrder: 0},
+    {category: 'FIT RATING', column: 'job_fit_rating', sortOrder: 0},
+    {category: 'LOCATION', column: 'job_location', sortOrder: 0},
+    {category: 'RESPONSE DATE', column: 'response_date', sortOrder: 0},
+    {category: 'INTERVIEW DATE', column: 'interview_date', sortOrder: 0},
+    {category: 'REJECTED', column: 'rejected', sortOrder: 0},
+    {category: 'OFFER AMOUNT', column: 'offer_amount', sortOrder: 0},
+  ])
+
   useEffect(()=>{
     const token = JSON.parse(localStorage.getItem('jobtrackr_token'))
     
@@ -76,7 +92,7 @@ function Tracker () {
         setJobApps(data.rows)
         setPaginate({...paginate, totalCount: data.totalCount})
       } else {
-        setJobApps([])
+        setJobApps(null)
       } 
       
     })
@@ -95,17 +111,19 @@ function Tracker () {
   },[user_id])
 
   useEffect(()=>{
+    setPaginate({
+      page: 1,
+      pageSize: 2,
+      totalCount: null,
+      showingA: 1,
+      showingB: 2
+    })
     getJobApps()
-  },[debouncedSearch])
+  },[filters, debouncedSearch])
+
   useEffect(()=>{
-    
     getJobApps()
-    
-  },[filters])
-  useEffect(()=>{
-    getJobApps()
-  },[paginate.page])
-  
+  },[paginate.page, sortColumn, sortOrder])
 
   return(
     <Dialog.Root>
@@ -179,13 +197,21 @@ function Tracker () {
           searchTextContext={{search, setSearch}}
           sortColumnContext={{sortColumn, setSortColumn}}
           sortByContext={{sortOrder, setSortOrder}}
+          categoriesContext={{categories, setCategories}}
           />
           <div className='PaginateContainer w-full flex justify-between mt-2 select-none'>
             <div className='text-white flex items-center text-xs'>
-              Showing {paginate.showingA} to {paginate.showingB} of {paginate.totalCount}
+              {
+              jobApps && jobApps.length > 0 
+              ? <span>
+                Showing {paginate.showingA} to {paginate.showingB > paginate.totalCount
+                ? paginate.totalCount : paginate.showingB} of {paginate.totalCount}
+                </span>
+              : <span>Showing 0 to 0 of 0</span>
+              }
             </div>
             <ReactPaginate
-              className='bg-striped-alt w-fit text-gray-300 flex items-center gap-x-2 text-sm font-bold p-1 rounded-sm'
+              className='bg-striped-alt w-fit text-gray-300 flex items-center gap-x-2 text-sm font-bold p-1 rounded-sm '
               previousLabel={<Icon path={mdiArrowLeftDropCircle} size={1} />}
               nextLabel={<Icon path={mdiArrowRightDropCircle} size={1} />}
               breakLabel={'...'}
@@ -202,11 +228,14 @@ function Tracker () {
                 });
               }}
               containerClassName=''
-              previousClassName='hover:text-gray-500 hover:text-opacity-50 transition-all'
-              nextClassName='hover:text-gray-500 hover:text-opacity-50 transition-all'
-              activeClassName='PaginatePageActive bg-white text-black bg-opacity-30 p-1 flex justify-center w-6 flex'
+              previousClassName={`hover:text-gray-500 hover:text-opacity-50 transition-all
+              ${!jobApps && 'pointer-events-none text-gray-500 text-opacity-30'}`}
+              nextClassName={`hover:text-gray-500 hover:text-opacity-50 transition-all
+              ${!jobApps && 'pointer-events-none text-gray-500 text-opacity-30'}`}
+              activeClassName={`PaginatePageActive bg-white text-black bg-opacity-30 p-1 flex justify-center w-6 flex
+              ${!jobApps && 'hidden'}`}
               breakClassName='PaginateBreak p-1'
-              pageClassName='PaginatePage hover:bg-white hover:bg-opacity-10 w-6 h-6 text-center transition-all flex items-center'
+              pageClassName={`PaginatePage hover:bg-white hover:bg-opacity-10 w-6 h-6 text-center transition-all flex items-center ${!jobApps && 'hidden'}`}
               pageLinkClassName='flex-grow'
               forcePage={paginate.page - 1}
             />

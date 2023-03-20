@@ -35,10 +35,10 @@ function Tracker () {
 
   const [paginate, setPaginate] = useState({
     page: 1,
-    pageSize: 2,
+    pageSize: 15,
     totalCount: null,
     showingA: 1,
-    showingB: 2
+    showingB: 15
   })
 
   const [categories, setCategories] = useState([
@@ -114,10 +114,10 @@ function Tracker () {
   useEffect(()=>{
     setPaginate({
       page: 1,
-      pageSize: 2,
+      pageSize: 15,
       totalCount: null,
       showingA: 1,
-      showingB: 2
+      showingB: 15
     })
     getJobApps()
   },[filters, debouncedSearch])

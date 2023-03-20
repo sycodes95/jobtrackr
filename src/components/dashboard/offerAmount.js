@@ -40,18 +40,25 @@ function OfferAmount (props) {
     jobApps && getData()
   },[jobApps])
   return(
-    <div className="text-white bg-black bg-opacity-25 flex flex-grow gap-x-2">
+    <div className="text-white bg-black bg-opacity-25 flex flex-grow gap-x-2 gap-y-2 max-width-900px-flex-col">
       <section className=" flex justify-center text-md text-white items-center 
       bg-black bg-opacity-25 font-bold p-2 whitespace-nowrap">
         <div>
-          OFFER AMOUNT
+          OFFER INFO
         </div>
         
       </section>
       {
       jobApps &&
-      <section className=" h-full w-full flex gap-x-2 items-center justify-center">
-
+      <section className=" h-full w-full flex gap-x-2 gap-y-2 items-center justify-center max-width-900px-flex-col">
+        
+        <div className="p-1 h-full flex justify-center items-center gap-x-4 text-yellow-600 w-full text-sm bg-striped-alt">
+          <span className="w-12 text-center">HIGHEST</span>
+          <div className="flex justify-center">
+            <Icon className="" path={mdiArrowRightThin} size={1} />
+          </div>
+          <span>{data.highest}</span>
+        </div>
 
         <div className="p-1 h-full flex justify-center items-center gap-x-4 text-red-700 w-full text-sm bg-striped-alt ">
           <span className="w-12 text-center">LOWEST</span>
@@ -61,20 +68,13 @@ function OfferAmount (props) {
           <span>{data.lowest}</span>
         </div>
 
-        <div className="p-1 h-full flex justify-center items-center gap-x-4 text-yellow-600 w-full text-sm bg-striped-alt">
-          <span className="w-12 text-center">HIGHEST</span>
-          <div className="flex justify-center">
-            <Icon className="" path={mdiArrowRightThin} size={1} />
-          </div>
-          <span>{data.highest}</span>
-        </div>
         
-        <div className="p-1 h-full flex justify-center items-center gap-x-2 text-xl font-bold w-full bg-striped-alt">
-          <span className="text-center flex justify-center">AVG</span>
+        
+        <div className="p-1 h-full flex justify-center items-center gap-x-4 text-sm font-bold w-full bg-striped-alt">
+          <span className="w-12 text-center">AVERAGE</span>
           <div className="flex justify-center">
             <Icon className="" path={mdiArrowRightThin} size={1} />
           </div>
-          
           <span>{data.average}</span>
         </div>
 

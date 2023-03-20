@@ -119,11 +119,11 @@ function Tracker () {
       showingA: 1,
       showingB: 15
     })
-    getJobApps()
+    user_id && getJobApps()
   },[filters, debouncedSearch])
 
   useEffect(()=>{
-    getJobApps()
+    user_id && getJobApps()
   },[paginate.page, sortColumn, sortOrder])
 
   return(

@@ -268,7 +268,7 @@ input[type="date"] {
   
 } 
 @media (max-width: 900px) {
-  .OVERALL-STATS{
+  .OVERALL-STATS, .DASHBOARD-DATE-SORT{
     flex-direction: column;
   }
   .TOOL-BAR{

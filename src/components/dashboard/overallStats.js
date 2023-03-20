@@ -38,8 +38,8 @@ function OverallStats (props) {
     jobApps && getData()
   },[jobApps])
   return(
-    <div className="OVERALL-STATS flex  items-center gap-x-2 gap-y-2 bg-striped flex-grow ">
-      <div className="text-gray-300 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-25 p-2 
+    <div className="OVERALL-STATS flex  items-center gap-x-2 gap-y-2 flex-grow ">
+      <div className="text-gray-300 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-30 p-2 
       w-full text-md font-bold">
         <div className="">
           TOTAL APPS
@@ -49,7 +49,7 @@ function OverallStats (props) {
         </div>
       </div>
 
-      <div className="text-gray-500 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-25 p-2 
+      <div className="text-gray-500 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-30 p-2 
       w-full text-md font-bold">
         
         
@@ -62,7 +62,7 @@ function OverallStats (props) {
         </div>
       </div>
 
-      <div className="text-steel-blue flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-25 p-2 
+      <div className="text-steel-blue flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-30 p-2 
       w-full text-md font-bold">
         <div className="flex items-center gap-x-2">
           <Icon path={mdiAccountVoice} size={0.8} />
@@ -73,7 +73,7 @@ function OverallStats (props) {
         </div>
       </div>
 
-      <div className="text-yellow-600 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-25 p-2 
+      <div className="text-yellow-600 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-30 p-2 
       w-full text-md font-bold">
         <div className="flex items-center gap-x-2">
           <Icon path={mdiCurrencyUsd} size={0.8} />
@@ -84,7 +84,7 @@ function OverallStats (props) {
         </div>
       </div>
 
-      <div className="text-red-700 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-25 p-2 
+      <div className="text-red-700 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-30 p-2 
       w-full text-md font-bold">
         
         <div className="flex items-center gap-x-2">

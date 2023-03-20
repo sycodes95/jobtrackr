@@ -7,6 +7,7 @@ import StatusPie from "./statusPie"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { subWeeks, subMonths, subYears, format } from "date-fns"
+import OfferAmount from "./offerAmount"
 
 function Dashboard () {
   const sortAllRef = useRef(null)
@@ -117,7 +118,8 @@ function Dashboard () {
     <div className="flex justify-center p-8 w-full h-full">
       <div className="h-full text-black max-w-screen-2xl grid grid-cols-4 gap-x-2 gap-y-2 items-center 
      p-2">
-        <section className="DASHBOARD-DATE-SORT bg-black bg-opacity-25 col-span-full flex justify-between gap-x-2 w-full h-full col-start-1 ">
+        <section className="DASHBOARD-DATE-SORT  bg-black bg-opacity-25 col-span-full 
+        flex justify-between gap-x-2 w-full h-full col-start-1 ">
 
           
           <div className="flex gap-x-4 bg-black bg-opacity-25 p-2 text-white text-xs justify-between">
@@ -168,12 +170,15 @@ function Dashboard () {
 
 
         <section className="bg-black bg-opacity-25 col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
-
           <div className="p-2 flex flex-wrap w-full gap-x-2">
             <OverallStats jobApps={jobApps}/>
           </div>
+        </section>
 
-
+        <section className="bg-black bg-opacity-25 col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
+          <div className="p-2 flex flex-wrap w-full gap-x-2">
+            <OfferAmount jobApps={jobApps}/>
+          </div>
         </section>
 
         <section className="bg-black bg-opacity-25 col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
@@ -183,19 +188,19 @@ function Dashboard () {
             <ResponseRatio jobApps={jobApps}/>
             <InterviewRatio jobApps={jobApps}/>
             <OfferRatio jobApps={jobApps}/>
+            <OfferRatio jobApps={jobApps}/>
           </div>
           
           
         </section>
-        
-        <section className="bg-striped-alt flex flex-col w-full h-full col-start-1">
-          <div className="h-12 flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
-            JOB APP STATUS PIE
+
+        <section className="bg-black bg-opacity-25 flex flex-col w-full h-full col-start-1 col-span-full">
+          <div className="p-2 flex flex-wrap w-full gap-2">
+            
+            <StatusPie jobApps={jobApps}/>
           </div>
-          {
-          jobApps &&
-          <StatusPie jobApps={jobApps}/>
-          }
+          
+          
         </section>
       </div>
       

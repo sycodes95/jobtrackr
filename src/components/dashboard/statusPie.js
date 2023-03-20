@@ -61,37 +61,46 @@ function StatusPie ({jobApps}) {
   };
   
   useEffect(()=>{
-    getStatusData()
+    jobApps && getStatusData()
   },[jobApps])
   return (
    
-    
-    <PieChart className='text-sm' width={260} height={260}>
-      <Pie
+    <div className='bg-striped'>
+      <div className="h-12 flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
+        JOB APP STATUS PIE
+      </div>
+      {
+      jobApps &&
+      <PieChart className='text-sm' width={260} height={260}>
+        <Pie
+          
+          data={data}
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={90}
+          fill="#8884d8"
+          dataKey="value"
+          stroke='none'
+          animationDuration={600}
+          onAnimationEnd={()=>setAnimationEnd(true)}
+          
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+          
+        </Pie>
         
-        data={data}
-        cx="50%"
-        cy="50%"
-        labelLine={false}
-        label={renderCustomizedLabel}
-        outerRadius={90}
-        fill="#8884d8"
-        dataKey="value"
-        stroke='none'
-        animationDuration={600}
-        onAnimationEnd={()=>setAnimationEnd(true)}
+        <Legend animationId="chartAnimation"/>
         
-      >
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
         
-      </Pie>
+      </PieChart>
+      }
       
-      <Legend animationId="chartAnimation"/>
-      
-      
-    </PieChart>
+    </div>
+   
     
       
   )

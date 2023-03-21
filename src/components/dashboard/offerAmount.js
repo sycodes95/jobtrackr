@@ -44,7 +44,7 @@ function OfferAmount (props) {
       <section className=" flex justify-center text-md text-white items-center 
       bg-black bg-opacity-25 font-bold p-2 whitespace-nowrap">
         <div>
-          OFFER INFO
+          OFFER RANGE $
         </div>
         
       </section>

@@ -8,6 +8,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { subWeeks, subMonths, subYears, format } from "date-fns"
 import OfferAmount from "./offerAmount"
+import RejectionRatio from "./rejectionRatio"
+import JobFitBarChart from "./jobFitBarChart"
 
 function Dashboard () {
   const sortAllRef = useRef(null)
@@ -116,7 +118,7 @@ function Dashboard () {
 
   return (
     <div className="flex justify-center p-8 w-full h-full">
-      <div className="h-full text-black max-w-screen-2xl grid grid-cols-4 gap-x-2 gap-y-2 items-center 
+      <div className="h-full text-black flex flex-col max-w-screen-2xl gap-x-2 gap-y-2 items-center 
      p-2">
         <section className="DASHBOARD-DATE-SORT  bg-black bg-opacity-25 col-span-full 
         flex justify-between gap-x-2 w-full h-full col-start-1 ">
@@ -183,21 +185,22 @@ function Dashboard () {
 
         <section className="bg-black bg-opacity-25 col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
 
-          <div className="p-2 flex flex-wrap w-full gap-2">
+          <div className="DASHBOARD-RATIOS p-2 grid grid-cols-4 w-full gap-2">
             
             <ResponseRatio jobApps={jobApps}/>
             <InterviewRatio jobApps={jobApps}/>
             <OfferRatio jobApps={jobApps}/>
-            <OfferRatio jobApps={jobApps}/>
+            <RejectionRatio jobApps={jobApps}/>
           </div>
           
           
         </section>
 
         <section className="bg-black bg-opacity-25 flex flex-col w-full h-full col-start-1 col-span-full">
-          <div className="p-2 flex flex-wrap w-full gap-2">
+          <div className=" p-2 grid RECHARTS-GRID w-full gap-2">
             
             <StatusPie jobApps={jobApps}/>
+            <JobFitBarChart jobApps={jobApps}/>
           </div>
           
           

@@ -230,6 +230,12 @@ input[type="date"] {
   justify-content: end;
 }
 
+.RECHARTS-GRID{
+  grid-template-columns: repeat(4, 1fr);
+}
+.JOB-FIT-RATING-BAR{
+  grid-column: 2/5;
+}
 .my-tooltip {
   font-size: 10px;
 }
@@ -248,11 +254,9 @@ input[type="date"] {
   .JOB-FORM {
     grid-template-columns: repeat(2,1fr);
   }
-  /*
-  .TOOL-BAR{
-    grid-template-columns: repeat(2,1fr)
+  .DASHBOARD-RATIOS{
+    grid-template-columns: repeat(2, 1fr);
   }
-  */
   .COLOR-TIPS{
     grid-template-columns: repeat(2, 1fr);
   }
@@ -268,6 +272,16 @@ input[type="date"] {
   
 } 
 @media (max-width: 900px) {
+  .RECHARTS-GRID{
+    grid-template-columns: 1fr;
+  }
+  .JOB-APP-STATUS-PIE{
+    grid-column: 1/2;
+  }
+  .JOB-FIT-RATING-BAR{
+    grid-column: 1/2;
+  }
+  
   .max-width-900px-flex-col{
     flex-direction: column;
   }
@@ -295,6 +309,9 @@ input[type="date"] {
     width: 90%;
   }
   .JOB-FORM {
+    grid-template-columns: 1fr;
+  }
+  .DASHBOARD-RATIOS{
     grid-template-columns: 1fr;
   }
   

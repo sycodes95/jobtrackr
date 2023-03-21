@@ -12,9 +12,9 @@ function OfferRatio (props) {
   const [responseRatio, setResponseRatio] = useState(0)
 
   const getRatio = () => {
-    const totalApps = jobApps.length
-    const respondedApps = jobApps.filter(app => app.response_date).length
-    const ratio = Math.round((respondedApps / totalApps) * 100)
+    const interviewedApps = jobApps.filter(app => app.interview_date).length
+    const offeredApps = jobApps.filter(app => app.offer_amount).length
+    const ratio = Math.round((offeredApps / interviewedApps) * 100)
     setResponseRatio(ratio)
   }
 
@@ -26,7 +26,7 @@ function OfferRatio (props) {
       <div className="text-white text-sm flex flex-grow justify-between items-center gap-x-2 bg-black bg-opacity-25 p-2 
       w-full">
         <Icon path={mdiEmailFastOutline} size={0.8} />
-        <span className="">APP TO RESPONSE RATIO</span>
+        <span className="">INTERVIEW TO OFFER RATIO</span>
         <a className='my-anchor-element flex justify-center items-center text-white' 
         data-tooltip-id="my-tooltip" 
         data-tooltip-content="Ratio of applications that received a response to all applications.">
@@ -43,7 +43,7 @@ function OfferRatio (props) {
         styles={buildStyles({
           backgroundColor: "rgba(0,0,0,0.4)",
           textColor: "#fff",
-          pathColor: "rgba(255,255,255,0.4)",
+          pathColor: "rgba(255,255,0,0.4)",
           trailColor: "transparent"
         })}
         />

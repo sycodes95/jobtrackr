@@ -13,9 +13,9 @@ function InterviewRatio (props) {
   const [responseRatio, setResponseRatio] = useState(0)
 
   const getRatio = () => {
-    const totalApps = jobApps.length
     const respondedApps = jobApps.filter(app => app.response_date).length
-    const ratio = Math.round((respondedApps / totalApps) * 100)
+    const interviewedApps = jobApps.filter(app => app.interview_date).length
+    const ratio = Math.round((interviewedApps / respondedApps) * 100)
     setResponseRatio(ratio)
   }
 
@@ -30,7 +30,7 @@ function InterviewRatio (props) {
         <span className="">RES TO INTERVIEW RATIO</span>
         <a className='my-anchor-element flex justify-center items-center text-white' 
         data-tooltip-id="my-tooltip" 
-        data-tooltip-content="Ratio of applications that received a response to all applications.">
+        data-tooltip-content="Percentage of interviews compared to total amount of responses">
           <Icon className='hover:cursor-pointer hover:text-slate-300  transition-all' path={mdiHelpCircle} size={0.7} />
         </a>
         <Tooltip anchorSelect=".my-anchor-element" />
@@ -44,7 +44,7 @@ function InterviewRatio (props) {
         styles={buildStyles({
           backgroundColor: "rgba(0,0,0,0.4)",
           textColor: "#fff",
-          pathColor: "rgba(255,255,255,0.4)",
+          pathColor: "rgba(0,125,255,0.4)",
           trailColor: "transparent"
         })}
         />

@@ -231,8 +231,7 @@ function TrackerFilter (props) {
           
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs">
             
-            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white '
-            selected={interviewDate.a} onChange={(date) => setInterviewDate({...interviewDate, a:date })}/>
+            
           </div>
           
           <div className=" text-center text-white h-6">-</div>

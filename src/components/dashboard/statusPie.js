@@ -65,38 +65,42 @@ function StatusPie ({jobApps}) {
   },[jobApps])
   return (
    
-    <div className='bg-striped'>
-      <div className="h-12 flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
+    <div className='JOB-APP-STATUS-PIE bg-striped flex-grow flex flex-col items-center'>
+      <div className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
         JOB APP STATUS PIE
       </div>
       {
       jobApps &&
-      <PieChart className='text-sm' width={260} height={260}>
-        <Pie
-          
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          label={renderCustomizedLabel}
-          outerRadius={90}
-          fill="#8884d8"
-          dataKey="value"
-          stroke='none'
-          animationDuration={600}
-          onAnimationEnd={()=>setAnimationEnd(true)}
-          
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-          
-        </Pie>
-        
-        <Legend animationId="chartAnimation"/>
-        
-        
-      </PieChart>
+      <div className='VIEWHEIGHT-700px w-full flex justify-center items-center'>
+        <ResponsiveContainer width="95%" height={260}>
+          <PieChart className='text-sm'>
+            <Pie
+              
+              data={data}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={90}
+              fill="#8884d8"
+              dataKey="value"
+              stroke='none'
+              animationDuration={600}
+              onAnimationEnd={()=>setAnimationEnd(true)}
+              
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+              
+            </Pie>
+            
+            <Legend animationId="chartAnimation"/>
+            
+            
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
       }
       
     </div>

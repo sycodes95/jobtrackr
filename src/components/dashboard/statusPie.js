@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Label, Legend } from 'recharts';
 import { useSearch } from 'rsuite/esm/Picker';
-
+import { ResponsivePie } from '@nivo/pie'
 function StatusPie ({jobApps}) {
   /*
   ${!obj.interview_date && !obj.rejected && !obj.offer_amount && 'text-gray-300'}
@@ -13,36 +13,29 @@ function StatusPie ({jobApps}) {
   */
   const [animationEnd, setAnimationEnd] = useState(false)
   const [data, setData] = useState([
-    { name: 'AWAITING RESPONSE', value: 0 , color: 'rgba(255, 0, 0, 0.2)'},
-    { name: 'INTERVIEW STAGE', value: 0 , color: 'rgba(255, 255, 255, 0.2)'},
-    { name: 'OFFER RECEIVED', value: 0 , color: 'rgba(0, 255, 0, 0.2)'},
-    { name: 'REJECTED', value: 0 , color: 'rgba(0, 0, 255, 0.2)'},
+    { id: 'AWAITING RESPONSE', value: 0 , color: 'rgba(255, 255, 255, 0.5)'},
+    { id: 'INTERVIEW STAGE', value: 0 , color: 'rgba(43, 65, 98, 1)'},
+    { id: 'OFFER RECEIVED', value: 0 , color: 'rgba(255, 186, 8, 1)'},
+    { id: 'REJECTED', value: 0 , color: 'rgba(208, 0, 0, 0.8)'},
   ])
   
   const getStatusData = () => {
-    
-    const dataSet = {
-      'AWAITING RESPONSE': 0,
-      'INTERVIEW STAGE': 0,
-      'OFFER RECEIVED': 0,
-      'REJECTED': 0,
-    }
-    
+    let dataSet = Array.from(data)
+    dataSet.forEach(data => data.value = 0)
+     
+    console.log(dataSet);
     jobApps.forEach(app =>{
-      app.rejected && dataSet['REJECTED']++
-      app.offer_amount && dataSet['OFFER RECEIVED']++
-      app.interview_date && !app.offer_amount && !app.rejected && dataSet['INTERVIEW STAGE']++
-      !app.interview_date && !app.rejected && !app.offer_amount && dataSet['AWAITING RESPONSE']++
+      app.rejected && dataSet.forEach(data => data.id === 'REJECTED' && data.value++)
+      app.offer_amount && dataSet.forEach(data => data.id === 'OFFER RECEIVED' && data.value++)
+      app.interview_date && !app.offer_amount && !app.rejected && dataSet.forEach(data => data.id === 'INTERVIEW STAGE' && data.value++)
+      !app.interview_date && !app.rejected && !app.offer_amount && dataSet.forEach(data => data.id === 'AWAITING RESPONSE' && data.value++)
+      
     })
-
-    const updatedData = Object.entries(dataSet)
-    .map(([name, value]) => ({
-      name,
-      value,
-    }))
+    console.log(dataSet);
+    
     //.filter(entry => entry.value > 0)
-    setData(updatedData)
-    console.log(updatedData);
+    setData(dataSet)
+    
   }
   
   const COLORS = ['rgba(255, 255, 255, 0.5)', 'rgba(43, 65, 98, 0.5)', 'rgba(255, 186, 8, 0.5)', 'rgba(208, 0, 0, 0.5)'];
@@ -65,45 +58,95 @@ function StatusPie ({jobApps}) {
   },[jobApps])
   return (
    
-    <div className='JOB-APP-STATUS-PIE bg-striped flex-grow flex flex-col items-center'>
+    <div className='JOB-APP-STATUS-PIE bg-striped-alt flex-grow flex flex-col items-center col-span-2'>
       <div className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
         JOB APP STATUS PIE
       </div>
       {
       jobApps &&
-      <div className='VIEWHEIGHT-700px w-full flex justify-center items-center'>
-        <ResponsiveContainer width="95%" height={260}>
-          <PieChart className='text-sm'>
-            <Pie
-              
-              data={data}
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              label={renderCustomizedLabel}
-              outerRadius={90}
-              fill="#8884d8"
-              dataKey="value"
-              stroke='none'
-              animationDuration={600}
-              onAnimationEnd={()=>setAnimationEnd(true)}
-              
-            >
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-              
-            </Pie>
-            
-            <Legend animationId="chartAnimation"/>
-            
-            
-          </PieChart>
-        </ResponsiveContainer>
+      
+
+      <div className='h-80 w-11/12 flex justify-center items-center overflow-visible'>
+        <ResponsivePie
+        data={data}
+        margin={{ top: 20, right: 40, bottom: 20, left: 40 }}
+        innerRadius={0.5}
+        padAngle={0.7}
+        cornerRadius={3}
+        activeOuterRadiusOffset={8}
+        borderWidth={1}
+        borderColor={{
+            from: 'color',
+            modifiers: [
+                [
+                    'darker',
+                    0.2
+                ]
+            ]
+        }}
+        
+        enableArcLinkLabels={false}
+        arcLinkLabelsSkipAngle={10}
+        arcLinkLabelsTextColor="#FFFFFF"
+        arcLinkLabelsThickness={2}
+        arcLinkLabelsColor={{ from: 'color' }}
+        arcLabelsSkipAngle={10}
+        arcLabelsTextColor={{
+            from: 'color',
+            modifiers: [
+                [
+                    'darker',
+                    3
+                ]
+            ]
+        }}
+        arc
+        colors={{datum: 'data.color'}}
+        theme={{
+          labels: {
+            text: {
+              fontSize: 14, // Set the font size for arc labels
+            },
+          },
+          legends: {
+            text: {
+              fontSize: 10
+            }
+          }
+        }}
+        legends={[
+          {
+              anchor: 'top-left',
+              direction: 'column',
+              justify: false,
+              translateX: -40,
+              translateY: 0,
+              itemsSpacing: 0,
+              itemWidth: 100,
+              itemHeight: 18,
+              itemTextColor: '#999',
+              itemDirection: 'left-to-right',
+              itemOpacity: 1,
+              symbolSize: 18,
+              symbolShape: 'circle',
+              effects: [
+                  {
+                      on: 'hover',
+                      style: {
+                          itemTextColor: '#000'
+                      }
+                  }
+              ]
+            }
+        ]}
+        
+      />
       </div>
+      
       }
       
     </div>
+    
    
     
       

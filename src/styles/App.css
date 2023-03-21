@@ -234,7 +234,7 @@ input[type="date"] {
   grid-template-columns: repeat(4, 1fr);
 }
 .JOB-FIT-RATING-BAR{
-  grid-column: 2/5;
+  grid-column: 3/5;
 }
 .my-tooltip {
   font-size: 10px;
@@ -273,7 +273,8 @@ input[type="date"] {
 } 
 @media (max-width: 900px) {
   .RECHARTS-GRID{
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
   .JOB-APP-STATUS-PIE{
     grid-column: 1/2;

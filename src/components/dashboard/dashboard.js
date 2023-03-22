@@ -11,6 +11,7 @@ import OfferAmount from "./offerAmount"
 import RejectionRatio from "./rejectionRatio"
 import JobFitBarChart from "./jobFitBarChart"
 import AppMethodLine from "./appMethodLine"
+import AppLocationLine from "./appLocationLine"
 
 function Dashboard () {
   const sortAllRef = useRef(null)
@@ -216,7 +217,7 @@ function Dashboard () {
           <div className=" p-2 grid RECHARTS-GRID w-full gap-2">
              
             <AppMethodLine jobApps={jobApps}/>
-            
+            <AppLocationLine jobApps={jobApps}/>
           </div>
           
           

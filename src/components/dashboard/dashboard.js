@@ -203,6 +203,8 @@ function Dashboard () {
              
             <StatusPie jobApps={jobApps}/>
             <JobFitBarChart jobApps={jobApps}/>
+
+            
           </div>
           
           
@@ -211,7 +213,7 @@ function Dashboard () {
           <div className=" p-2 grid RECHARTS-GRID w-full gap-2">
              
             <AppMethodLine jobApps={jobApps}/>
-            <JobFitBarChart jobApps={jobApps}/>
+            
           </div>
           
           

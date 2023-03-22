@@ -7,19 +7,19 @@ function AppMethodLine (props) {
   const jobApps = props.jobApps
   const [data, setData] = useState([
     {id: 'Company Website', color: 'white', data: [
-      {x: 'APPLIED', y: 0}, {x: 'RESPONSE', y: 0}, {x: 'INTERVIEW', y: 0}, {x: 'OFFER', y: 0}
+      {x: 'APPLIED', y: null}, {x: 'RESPONSE', y: null}, {x: 'INTERVIEW', y: null}, {x: 'OFFER', y: null}
     ]},
     {id: 'Job Board Website', color: 'white', data: [
-      {x: 'APPLIED', y: 0}, {x: 'RESPONSE', y: 0}, {x: 'INTERVIEW', y: 0}, {x: 'OFFER', y: 0}
+      {x: 'APPLIED', y: null}, {x: 'RESPONSE', y: null}, {x: 'INTERVIEW', y: null}, {x: 'OFFER', y: null}
     ]},
     {id: 'Recruiter', color: 'white', data: [
-      {x: 'APPLIED', y: 0}, {x: 'RESPONSE', y: 0}, {x: 'INTERVIEW', y: 0}, {x: 'OFFER', y: 0}
+      {x: 'APPLIED', y: null}, {x: 'RESPONSE', y: null}, {x: 'INTERVIEW', y: null}, {x: 'OFFER', y: null}
     ]},
     {id: 'Referral', color: 'white', data: [
-      {x: 'APPLIED', y: 0}, {x: 'RESPONSE', y: 0}, {x: 'INTERVIEW', y: 0}, {x: 'OFFER', y: 0}
+      {x: 'APPLIED', y: null}, {x: 'RESPONSE', y: null}, {x: 'INTERVIEW', y: null}, {x: 'OFFER', y: null}
     ]},
     {id: 'Other', color: 'white', data: [
-      {x: 'APPLIED', y: 0}, {x: 'RESPONSE', y: 0}, {x: 'INTERVIEW', y: 0}, {x: 'OFFER', y: 0}
+      {x: 'APPLIED', y: null}, {x: 'RESPONSE', y: null}, {x: 'INTERVIEW', y: null}, {x: 'OFFER', y: null}
     ]},
   ])
 

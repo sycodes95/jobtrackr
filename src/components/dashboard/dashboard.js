@@ -198,7 +198,7 @@ function Dashboard () {
 
         <section className="bg-black bg-opacity-25 flex flex-col w-full h-full col-start-1 col-span-full">
           <div className=" p-2 grid RECHARTS-GRID w-full gap-2">
-            
+             
             <StatusPie jobApps={jobApps}/>
             <JobFitBarChart jobApps={jobApps}/>
           </div>
@@ -206,7 +206,7 @@ function Dashboard () {
           
         </section>
       </div>
-      
+       
     </div>
   )
 }

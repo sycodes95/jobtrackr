@@ -236,6 +236,9 @@ input[type="date"] {
 .JOB-FIT-RATING-BAR{
   grid-column: 3/5;
 }
+.width-99pct{
+  width: 99%;
+}
 .my-tooltip {
   font-size: 10px;
 }

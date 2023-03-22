@@ -7,26 +7,32 @@ function AppMethodLine (props) {
   const jobApps = props.jobApps
   const [data, setData] = useState([
     {id: 'Company Website', color: 'white', data: [
-      {x: 'APPLIED', y: null}, {x: 'RESPONSE', y: null}, {x: 'INTERVIEW', y: null}, {x: 'OFFER', y: null}
+      {x: 'APPLIED', y: 0}, {x: 'RESPONSE', y: 0}, {x: 'INTERVIEW', y: 0}, {x: 'OFFER', y: 0}
     ]},
     {id: 'Job Board Website', color: 'white', data: [
-      {x: 'APPLIED', y: null}, {x: 'RESPONSE', y: null}, {x: 'INTERVIEW', y: null}, {x: 'OFFER', y: null}
+      {x: 'APPLIED', y: 0}, {x: 'RESPONSE', y: 0}, {x: 'INTERVIEW', y: 0}, {x: 'OFFER', y: 0}
     ]},
     {id: 'Recruiter', color: 'white', data: [
-      {x: 'APPLIED', y: null}, {x: 'RESPONSE', y: null}, {x: 'INTERVIEW', y: null}, {x: 'OFFER', y: null}
+      {x: 'APPLIED', y: 0}, {x: 'RESPONSE', y: 0}, {x: 'INTERVIEW', y: 0}, {x: 'OFFER', y: 0}
     ]},
     {id: 'Referral', color: 'white', data: [
-      {x: 'APPLIED', y: null}, {x: 'RESPONSE', y: null}, {x: 'INTERVIEW', y: null}, {x: 'OFFER', y: null}
+      {x: 'APPLIED', y: 0}, {x: 'RESPONSE', y: 0}, {x: 'INTERVIEW', y: 0}, {x: 'OFFER', y: 0}
     ]},
     {id: 'Other', color: 'white', data: [
-      {x: 'APPLIED', y: null}, {x: 'RESPONSE', y: null}, {x: 'INTERVIEW', y: null}, {x: 'OFFER', y: null}
+      {x: 'APPLIED', y: 0}, {x: 'RESPONSE', y: 0}, {x: 'INTERVIEW', y: 0}, {x: 'OFFER', y: 0}
     ]},
   ])
 
   const getDataAndFormat = () => {
     
     const newData = JSON.parse(JSON.stringify(data))
-
+    if(jobApps.length === 0) {
+      newData.forEach(set => {
+        set.data.forEach(obj => obj.y = 0)
+      })
+      return setData(newData)
+    }
+    console.log('check');
     newData.forEach(set => {
       const filteredByMethod = jobApps.filter(app => app.job_app_method === set.id)
       const applied = filteredByMethod.length
@@ -42,7 +48,7 @@ function AppMethodLine (props) {
       })
       set = newSet
     })
-    console.log(newData);
+    
     setData(newData) 
 
   }

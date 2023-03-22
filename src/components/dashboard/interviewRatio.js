@@ -10,13 +10,14 @@ import 'react-tooltip/dist/react-tooltip.css'
 function InterviewRatio (props) {
   const jobApps = props.jobApps
 
-  const [responseRatio, setResponseRatio] = useState(0)
+  const [interviewRatio, setInterviewRatio] = useState(0)
 
   const getRatio = () => {
+    if(jobApps.length === 0) return setInterviewRatio(0)
     const respondedApps = jobApps.filter(app => app.response_date).length
     const interviewedApps = jobApps.filter(app => app.interview_date).length
     const ratio = Math.round((interviewedApps / respondedApps) * 100)
-    setResponseRatio(ratio)
+    setInterviewRatio(ratio)
   }
 
   useEffect(()=>{
@@ -37,8 +38,8 @@ function InterviewRatio (props) {
       </div>
       <div className="w-28 h-28 flex items-center p-2">
         <CircularProgressbar
-        value={responseRatio}
-        text={`${responseRatio}%`}
+        value={interviewRatio}
+        text={`${interviewRatio}%`}
         background
         backgroundPadding={6}
         styles={buildStyles({

@@ -45,9 +45,12 @@ function Dashboard () {
     fetch(`${process.env.REACT_APP_API_HOST}${query}`)
     .then(res => res.json())
     .then(data => {
+      console.log(data);
       if(data.length > 0){
         setJobApps(data)
-      } 
+      } else if(data.length === 0) {
+        setJobApps([])
+      }
     })
     
   }

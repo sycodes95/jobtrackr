@@ -11,13 +11,14 @@ function RejectionRatio (props) {
 
   const jobApps = props.jobApps
 
-  const [responseRatio, setResponseRatio] = useState(0)
+  const [rejectionRatio, setRejectionRatio] = useState(0)
 
   const getRatio = () => {
+    if(jobApps.length === 0) return setRejectionRatio(0)
     const interviewedApps = jobApps.filter(app => app.interview_date).length
     const rejectedApps = jobApps.filter(app => app.rejected).length
     const ratio = Math.round((rejectedApps / interviewedApps) * 100)
-    setResponseRatio(ratio)
+    setRejectionRatio(ratio)
   }
 
   useEffect(()=>{
@@ -38,8 +39,8 @@ function RejectionRatio (props) {
       </div>
       <div className="w-28 h-28 flex items-center p-2">
         <CircularProgressbar
-        value={responseRatio}
-        text={`${responseRatio}%`}
+        value={rejectionRatio}
+        text={`${rejectionRatio}%`}
         background
         backgroundPadding={6}
         styles={buildStyles({

@@ -16,6 +16,11 @@ function OfferAmount (props) {
   })
 
   const getData = () => {
+    if(jobApps.length === 0) return setData({
+      highest: 0,
+      lowest: 0,
+      average: 0,
+    })
     const offers = jobApps
     .filter(app => app.offer_amount)
     .map(app => { return app.offer_amount })

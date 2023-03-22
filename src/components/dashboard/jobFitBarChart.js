@@ -204,10 +204,11 @@ function JobFitBarChart (props) {
         'OFFER RECEIVED': 0,
       }
     })
-    
+    console.log(jobApps.length);
+    if(jobApps.length === 0) return setData(dataCopy)
     const hasRating = jobApps
     .filter(app => app.job_fit_rating)
-
+    console.log('check');
     hasRating.forEach(app => {
       const rating = app.job_fit_rating
       

@@ -12,6 +12,7 @@ function OfferRatio (props) {
   const [responseRatio, setResponseRatio] = useState(0)
 
   const getRatio = () => {
+    if(jobApps.length === 0) return setResponseRatio(0)
     const interviewedApps = jobApps.filter(app => app.interview_date).length
     const offeredApps = jobApps.filter(app => app.offer_amount).length
     const ratio = Math.round((offeredApps / interviewedApps) * 100)

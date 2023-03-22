@@ -35,10 +35,10 @@ function Tracker () {
 
   const [paginate, setPaginate] = useState({
     page: 1,
-    pageSize: 15,
+    pageSize: 5,
     totalCount: null,
     showingA: 1,
-    showingB: 15
+    showingB: 5
   })
 
   const [categories, setCategories] = useState([
@@ -114,14 +114,16 @@ function Tracker () {
   useEffect(()=>{
     setPaginate({
       page: 1,
-      pageSize: 15,
+      pageSize: 5,
       totalCount: null,
       showingA: 1,
-      showingB: 15
+      showingB: 5
     })
     user_id && getJobApps()
   },[filters, debouncedSearch])
-
+  useEffect(()=> {
+    console.log(paginate);
+  },[jobApps])
   useEffect(()=>{
     user_id && getJobApps()
   },[paginate.page, sortColumn, sortOrder])
@@ -230,11 +232,16 @@ function Tracker () {
               }}
               containerClassName=''
               previousClassName={`hover:text-gray-500 hover:text-opacity-50 transition-all
-              ${!jobApps && 'pointer-events-none text-gray-500 text-opacity-30'}`}
-              nextClassName={`hover:text-gray-500 hover:text-opacity-50 transition-all
-              ${!jobApps && 'pointer-events-none text-gray-500 text-opacity-30'}`}
+              ${!jobApps && 'pointer-events-none text-gray-500 text-opacity-30'}
+              ${paginate.page === 1 && 'pointer-events-none text-gray-500 text-opacity-30'}
+              `}
+              nextClassName={`
+              hover:text-gray-500 hover:text-opacity-50 transition-all
+              ${!jobApps && 'pointer-events-none text-gray-500 text-opacity-30'}
+              ${(paginate.page * paginate.pageSize) >= paginate.totalCount && 'pointer-events-none text-gray-500 text-opacity-30'}
+              `}
               activeClassName={`PaginatePageActive bg-white text-black bg-opacity-30 p-1 flex justify-center w-6 flex
-              ${!jobApps && 'hidden'}`}
+              ${!jobApps && 'hidden'} pointer-events-none`}
               breakClassName='PaginateBreak p-1'
               pageClassName={`PaginatePage hover:bg-white hover:bg-opacity-10 w-6 h-6 text-center transition-all flex items-center ${!jobApps && 'hidden'}`}
               pageLinkClassName='flex-grow'

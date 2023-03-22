@@ -8,23 +8,18 @@ function JobFitBarChart (props) {
   const [data, setData] = useState([
     {
       name: '*'
-      
     },
     {
       name: '**',
-      
     },
     {
       name: '***',
-      
     },
     {
       name: '****',
-      
     },
     {
       name: '*****',
-      
     }
   ])
 
@@ -65,7 +60,7 @@ function JobFitBarChart (props) {
   return (
     <div className='JOB-FIT-RATING-BAR h-full w-full relative flex flex-col items-center border-4 border-black border-opacity-30'>
       <div className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
-        PERFORMANCE BY JOB FIT RATING
+        PERFORMANCE BY FIT RATING
       </div>
       <div className='h-64 w-11/12 flex justify-center items-center relative'>
       <ResponsiveBar
@@ -157,32 +152,7 @@ function JobFitBarChart (props) {
         barAriaLabel={function(e){return e.id+": "+e.formattedValue+" in country: "+e.indexValue}}
         
       />
-        {
-        /*
-        <ResponsiveContainer width="95%" height={260}>
-          <BarChart height={260} width={260}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 0,
-              bottom: 5,
-            }}
-          >
-            
-            <XAxis dataKey="name" enableBackground={true} />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="applied" fill="rgba(255, 255, 255, 0.5)" />
-            <Bar dataKey="interviews" fill="rgba(43, 65, 98, 1)" />
-            <Bar dataKey="rejections" fill="rgba(208, 0, 0, 0.8)" />
-            <Bar dataKey="offers" fill="rgba(255, 186, 8, 1)" />
-          </BarChart>
-        </ResponsiveContainer>
-        */
-        }
-      
+       
       </div>
       
       

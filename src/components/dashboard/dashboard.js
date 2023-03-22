@@ -10,6 +10,7 @@ import { subWeeks, subMonths, subYears, format } from "date-fns"
 import OfferAmount from "./offerAmount"
 import RejectionRatio from "./rejectionRatio"
 import JobFitBarChart from "./jobFitBarChart"
+import AppMethodLine from "./appMethodLine"
 
 function Dashboard () {
   const sortAllRef = useRef(null)
@@ -44,7 +45,7 @@ function Dashboard () {
     fetch(`${process.env.REACT_APP_API_HOST}${query}`)
     .then(res => res.json())
     .then(data => {
-      if(data){
+      if(data.length > 0){
         setJobApps(data)
       } 
     })
@@ -200,6 +201,15 @@ function Dashboard () {
           <div className=" p-2 grid RECHARTS-GRID w-full gap-2">
              
             <StatusPie jobApps={jobApps}/>
+            <JobFitBarChart jobApps={jobApps}/>
+          </div>
+          
+          
+        </section>
+        <section className="bg-black bg-opacity-25 flex flex-col w-full h-full col-start-1 col-span-full">
+          <div className=" p-2 grid RECHARTS-GRID w-full gap-2">
+             
+            <AppMethodLine jobApps={jobApps}/>
             <JobFitBarChart jobApps={jobApps}/>
           </div>
           

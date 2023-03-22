@@ -33,11 +33,8 @@ function StatusPie ({jobApps}) {
    
     <div className='JOB-APP-STATUS-PIE  flex-grow flex flex-col items-center col-span-2 border-4 border-black border-opacity-30'>
       <div className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
-        JOB APP STATUS PIE
+        APPLICATION STATUS PIE
       </div>
-      {
-      jobApps &&
-      
 
       <div className='h-64 w-11/12 flex justify-center items-center overflow-visible'>
         <ResponsivePie
@@ -48,16 +45,6 @@ function StatusPie ({jobApps}) {
         cornerRadius={3}
         activeOuterRadiusOffset={8}
         borderWidth={1}
-        borderColor={{
-          from: 'color',
-          modifiers: [
-            [
-              'darker',
-              0.2
-            ]
-          ]
-        }}
-        
         enableArcLinkLabels={false}
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor="#FFFFFF"
@@ -65,20 +52,38 @@ function StatusPie ({jobApps}) {
         arcLinkLabelsColor={{ from: 'color' }}
         arcLabelsSkipAngle={10}
         arcLabelsTextColor={{
-            from: 'color',
-            modifiers: [
-                [
-                    'darker',
-                    3
-                ]
-            ]
+          from: 'color',
+          modifiers: [
+              [
+                'darker',
+                3
+              ]
+          ]
         }}
-        arc
+        defs={[
+          {
+            id: 'lines',
+            type: 'patternLines',
+            background: 'red',
+            color: 'rgba(255, 255, 255, 0.4)',
+            rotation: -45,
+            lineWidth: 6,
+            spacing: 10
+          }
+        ]}
+        fill={[
+          {
+            match: {
+              id: 'REJECTED'
+            },
+            id: 'lines'
+          },
+        ]}
         colors={{datum: 'data.color'}}
         theme={{
           labels: {
             text: {
-              fontSize: 14, // Set the font size for arc labels
+              fontSize: 16,
             },
           },
           legends: {
@@ -101,20 +106,12 @@ function StatusPie ({jobApps}) {
             itemDirection: 'left-to-right',
             itemOpacity: 1,
             symbolSize: 18,
-            
-            
           }
         ]}
-        
       />
       </div>
       
-      }
-      
     </div>
-    
-   
-    
       
   )
 }

@@ -37,6 +37,7 @@ function OfferAmount (props) {
   }
 
   useEffect(()=>{
+    console.log(jobApps);
     jobApps && getData()
   },[jobApps])
   return(
@@ -48,8 +49,7 @@ function OfferAmount (props) {
         </div>
         
       </section>
-      {
-      jobApps &&
+      
       <section className=" h-full w-full flex gap-x-2 gap-y-2 items-center justify-center max-width-900px-flex-col">
         
         <div className="p-1 h-full flex justify-center items-center gap-x-4 text-yellow-600 w-full text-sm bg-striped-alt">
@@ -67,7 +67,6 @@ function OfferAmount (props) {
           </div>
           <span>{data.lowest}</span>
         </div>
-
         
         
         <div className="p-1 h-full flex justify-center items-center gap-x-4 text-sm font-bold w-full bg-striped-alt">
@@ -77,12 +76,8 @@ function OfferAmount (props) {
           </div>
           <span>{data.average}</span>
         </div>
-
-        
-
         
       </section>
-      }
       
     </div>
   )

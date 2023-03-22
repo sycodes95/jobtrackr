@@ -58,102 +58,105 @@ function JobFitBarChart (props) {
   },[jobApps])
 
   return (
-    <div className='JOB-FIT-RATING-BAR h-full w-full relative flex flex-col items-center border-4 border-black border-opacity-30'>
-      <div className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
+    <div className='JOB-FIT-RATING-BAR h-full w-full flex flex-col items-center
+     border-4 border-black border-opacity-30'>
+      <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
         PERFORMANCE BY FIT RATING
-      </div>
-      <div className='h-64 w-11/12 flex justify-center items-center relative'>
-      <ResponsiveBar
-        data={data}
-        keys={[
-          'AWAITING RESPONSE',
-          'INTERVIEW STAGE',
-          'REJECTED',
-          'OFFER RECEIVED',
-        ]}
-        indexBy="name"
-        margin={{ top: 20, right: 140, bottom: 50, left: 40 }}
-        padding={0.3}
-        valueScale={{ type: 'linear' }}
-        indexScale={{ type: 'band', round: true }}
-        colors={{ scheme: 'nivo' }}
-        borderColor={{
-            from: 'color',
-            modifiers: [
-                [
+      </section>
+
+      <section className='h-64 w-11/12 top-0 left-0 flex justify-center items-center'>
+        <ResponsiveBar
+          data={data}
+          keys={[
+            'AWAITING RESPONSE',
+            'INTERVIEW STAGE',
+            'REJECTED',
+            'OFFER RECEIVED',
+          ]}
+          indexBy="name"
+          margin={{ top: 20, right: 140, bottom: 50, left: 40 }}
+          padding={0.3}
+          valueScale={{ type: 'linear' }}
+          indexScale={{ type: 'band', round: true }}
+          colors={{ scheme: 'nivo' }}
+          borderColor={{
+              from: 'color',
+              modifiers: [
+                  [
+                      'darker',
+                      1.6
+                  ]
+              ]
+          }}
+          enableGridY={false}
+          axisTop={null}
+          axisRight={null}
+          axisBottom={{
+            
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'FIT RATING',
+            legendPosition: 'middle',
+            legendOffset: 32,
+              
+          }}
+          axisLeft={{
+            format: e => Math.floor(e) === e && e,
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'APPS',
+            legendPosition: 'middle',
+            legendOffset: -30,
+              
+          }}
+          labelSkipWidth={12}
+          labelSkipHeight={12}
+          labelTextColor={{
+              from: 'color',
+              modifiers: [
+                  [
                     'darker',
                     1.6
-                ]
-            ]
-        }}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'FIT RATING',
-          legendPosition: 'middle',
-          legendOffset: 32,
-            
-        }}
-        axisLeft={{
-          format: e => Math.floor(e) === e && e,
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'APPS',
-          legendPosition: 'middle',
-          legendOffset: -30,
-            
-        }}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor={{
-            from: 'color',
-            modifiers: [
-                [
-                  'darker',
-                  1.6
-                ]
-            ]
-        }}
-        theme={{
-          textColor: 'gray',
-          fontSize: 10,
-        }}
-        legends={[
-          {
-            dataFrom: 'keys',
-            anchor: 'bottom-right',
-            direction: 'column',
-            justify: false,
-            translateX: 110,
-            translateY: 0,
-            itemsSpacing: 1,
-            itemWidth: 100,
-            itemHeight: 20,
-            itemDirection: 'left-to-right',
-            itemOpacity: 1,
-            symbolSize: 15,
-            effects: [
-              {
-                on: 'hover',
-                style: {
-                    itemOpacity: 1
+                  ]
+              ]
+          }}
+          theme={{
+            textColor: 'gray',
+            fontSize: 10,
+          }}
+          legends={[
+            {
+              dataFrom: 'keys',
+              anchor: 'bottom-right',
+              direction: 'column',
+              justify: false,
+              translateX: 110,
+              translateY: 0,
+              itemsSpacing: 1,
+              itemWidth: 100,
+              itemHeight: 20,
+              itemDirection: 'left-to-right',
+              itemOpacity: 1,
+              symbolSize: 15,
+              effects: [
+                {
+                  on: 'hover',
+                  style: {
+                      itemOpacity: 1
+                  }
                 }
-              }
-            ]
-          }
-        ]}
-        role="application"
-        ariaLabel="Nivo bar chart demo"
-        barAriaLabel={function(e){return e.id+": "+e.formattedValue+" in country: "+e.indexValue}}
-        
-      />
-       
-      </div>
+              ]
+            }
+          ]}
+          role="application"
+          ariaLabel="Nivo bar chart demo"
+          barAriaLabel={function(e){return e.id+": "+e.formattedValue+" in country: "+e.indexValue}}
+          
+        />
+      
+      </section>
       
       
     </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSearch } from "rsuite/esm/Picker"
 import { ResponsiveLine } from "@nivo/line"
-import { type } from "@nivo/api/src/samples/heatmap"
+
 
 function AppMethodLine (props) {
   const jobApps = props.jobApps
@@ -25,7 +25,7 @@ function AppMethodLine (props) {
 
   const getDataAndFormat = () => {
     
-    const newData = Array.from(data)
+    const newData = JSON.parse(JSON.stringify(data))
 
     newData.forEach(set => {
       const filteredByMethod = jobApps.filter(app => app.job_app_method === set.id)
@@ -52,13 +52,13 @@ function AppMethodLine (props) {
   },[jobApps])
   return(
     <div className='JOB-APP-STATUS-PIE col-span-2 h-full w-full relative flex flex-col items-center border-4 border-black border-opacity-30'>
-      <div className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
+      <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
         PERFORMANCE BY APPLICATION METHOD
-      </div>
-      <div className='h-64 w-11/12 flex justify-center items-center relative'>
+      </section>
+      <section className='h-64 w-11/12 flex justify-center items-center'>
         <ResponsiveLine
           data={data}
-          margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+          margin={{ top: 30, right: 120, bottom: 50, left: 50 }}
           xScale={{ type: 'point' }}
           yScale={{
             type: 'linear',
@@ -67,8 +67,9 @@ function AppMethodLine (props) {
             stacked: false,
             reverse: false
           }}
+          colors={{ scheme: 'set3' }}
           yFormat=" >-.2f"
-          
+          enableGridY={false}
           axisTop={null}
           axisRight={null}
           axisBottom={{
@@ -96,6 +97,13 @@ function AppMethodLine (props) {
           pointBorderColor={{ from: 'serieColor' }}
           pointLabelYOffset={-12}
           useMesh={true}
+          theme={{
+            textColor: 'gray',
+            fontSize: 10,
+            grid: {
+              stroke: 'rgba(255,255,255,0.2)'
+            }
+          }}
           legends={[
             {
               anchor: 'bottom-right',
@@ -124,7 +132,7 @@ function AppMethodLine (props) {
           ]}
         />
        
-      </div>
+      </section>
       
       
     </div>

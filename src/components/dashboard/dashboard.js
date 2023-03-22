@@ -189,6 +189,7 @@ function Dashboard () {
           <div className="DASHBOARD-RATIOS p-2 grid grid-cols-4 w-full gap-2">
             
             <ResponseRatio jobApps={jobApps}/>
+            
             <InterviewRatio jobApps={jobApps}/>
             <OfferRatio jobApps={jobApps}/>
             <RejectionRatio jobApps={jobApps}/>

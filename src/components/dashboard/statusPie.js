@@ -33,7 +33,7 @@ function StatusPie ({jobApps}) {
   },[jobApps])
   return (
    
-    <div className='JOB-APP-STATUS-PIE  flex-grow flex flex-col items-center col-span-2 border-4 border-black border-opacity-30'>
+    <div className='JOB-APP-STATUS-PIE  flex-grow flex flex-col items-center col-span-1 border-4 border-black border-opacity-30'>
       <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
         APPLICATION STATUS PIE
       </section>

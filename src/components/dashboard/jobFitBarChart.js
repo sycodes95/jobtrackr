@@ -204,11 +204,11 @@ function JobFitBarChart (props) {
         'OFFER RECEIVED': 0,
       }
     })
-    console.log(jobApps.length);
+    
     if(jobApps.length === 0) return setData(dataCopy)
     const hasRating = jobApps
     .filter(app => app.job_fit_rating)
-    console.log('check');
+    
     hasRating.forEach(app => {
       const rating = app.job_fit_rating
       
@@ -223,14 +223,14 @@ function JobFitBarChart (props) {
 
   }
   useEffect(()=>{ 
-    console.log(data);
+    
   },[data])
   useEffect(()=>{
     jobApps && getDataAndFormat()
   },[jobApps])
 
   return (
-    <div className='JOB-FIT-RATING-BAR h-full w-full flex flex-col items-center
+    <div className='JOB-FIT-RATING-BAR h-full w-full flex flex-col items-center col-span-1
      border-4 border-black border-opacity-30'>
       <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
         STATUS BY FIT RATING
@@ -246,7 +246,7 @@ function JobFitBarChart (props) {
             'OFFER RECEIVED',
           ]}
           indexBy="name"
-          margin={{ top: 20, right: 140, bottom: 50, left: 40 }}
+          margin={{ top: 20, right: 140, bottom: 50, left: 25 }}
           padding={0.3}
           valueScale={{ type: 'linear' }}
           indexScale={{ type: 'band', round: true }}

@@ -12,6 +12,8 @@ import RejectionRatio from "./rejectionRatio"
 import JobFitBarChart from "./jobFitBarChart"
 import AppMethodLine from "./appMethodLine"
 import AppLocationLine from "./appLocationLine"
+import RejectionStage from "./rejectionStage"
+import RejectionStageBar from "./rejectionStage"
 
 function Dashboard () {
   const sortAllRef = useRef(null)
@@ -123,7 +125,7 @@ function Dashboard () {
 
   return (
     <div className="flex justify-center p-8 w-full h-full">
-      <div className="h-full text-black flex flex-col max-w-screen-2xl gap-x-2 gap-y-2 items-center 
+      <div className="h-full w-full max-w-7xl text-black flex flex-col gap-x-2 gap-y-2 items-center 
      p-2">
         <section className="DASHBOARD-DATE-SORT  bg-black bg-opacity-25 col-span-full 
         flex justify-between gap-x-2 w-full h-full col-start-1 ">
@@ -172,54 +174,60 @@ function Dashboard () {
             </div>
           </div>
 
-
         </section>
 
 
         <section className="bg-black bg-opacity-25 col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
+
           <div className="p-2 flex flex-wrap w-full gap-x-2">
             <OverallStats jobApps={jobApps}/>
           </div>
+
         </section>
 
         <section className="bg-black bg-opacity-25 col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
+
           <div className="p-2 flex flex-wrap w-full gap-x-2">
             <OfferAmount jobApps={jobApps}/>
           </div>
+
         </section>
 
         <section className="bg-black bg-opacity-25 col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
 
           <div className="DASHBOARD-RATIOS p-2 grid grid-cols-4 w-full gap-2">
-            
             <ResponseRatio jobApps={jobApps}/>
-            
             <InterviewRatio jobApps={jobApps}/>
             <OfferRatio jobApps={jobApps}/>
             <RejectionRatio jobApps={jobApps}/>
           </div>
           
-          
         </section>
 
         <section className="bg-black bg-opacity-25 flex flex-col w-full h-full col-start-1 col-span-full">
-          <div className=" p-2 grid RECHARTS-GRID w-full gap-2">
-             
+
+          <div className=" p-2 grid NIVO-GRID w-full gap-2">
             <StatusPie jobApps={jobApps}/>
             <JobFitBarChart jobApps={jobApps}/>
-
             
           </div>
           
-          
         </section>
+
         <section className="bg-black bg-opacity-25 flex flex-col w-full h-full col-start-1 col-span-full">
-          <div className=" p-2 grid RECHARTS-GRID w-full gap-2">
-             
+
+          <div className=" p-2 grid NIVO-GRID w-full gap-2">
             <AppMethodLine jobApps={jobApps}/>
             <AppLocationLine jobApps={jobApps}/>
           </div>
           
+        </section>
+
+        <section className="bg-black bg-opacity-25 flex flex-col w-full h-full col-start-1 col-span-full">
+
+          <div className=" p-2 grid NIVO-GRID w-full gap-2">
+            <RejectionStageBar jobApps={jobApps}/>
+          </div>
           
         </section>
       </div>

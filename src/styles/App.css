@@ -234,12 +234,10 @@ input[type="date"] {
   justify-content: end;
 }
 
-.RECHARTS-GRID{
-  grid-template-columns: repeat(4, 1fr);
+.NIVO-GRID{
+  grid-template-columns: repeat(2, 1fr);
 }
-.JOB-FIT-RATING-BAR{
-  grid-column: 3/5;
-}
+
 .width-99pct{
   width: 99%;
 }
@@ -279,16 +277,14 @@ input[type="date"] {
   
 } 
 @media (max-width: 900px) {
-  .RECHARTS-GRID{
+  .NIVO-GRID{
     display: flex;
     flex-direction: column;
   }
   .JOB-APP-STATUS-PIE{
     grid-column: 1/2;
   }
-  .JOB-FIT-RATING-BAR{
-    grid-column: 1/2;
-  }
+  
   
   .max-width-900px-flex-col{
     flex-direction: column;

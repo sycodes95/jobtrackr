@@ -55,14 +55,14 @@ function AppLocationLine (props) {
     jobApps && getDataAndFormat()
   },[jobApps])
   return(
-    <div className='JOB-APP-STATUS-PIE col-span-2 h-full w-full relative flex flex-col items-center border-4 border-black border-opacity-30'>
+    <div className='JOB-APP-STATUS-PIE col-span-1 h-full w-full relative flex flex-col items-center border-4 border-black border-opacity-30'>
       <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
         PERFORMANCE BY APPLICATION LOCATION
       </section>
       <section className='h-64 w-11/12 flex justify-center items-center'>
         <ResponsiveLine
           data={data}
-          margin={{ top: 30, right: 120, bottom: 50, left: 50 }}
+          margin={{ top: 30, right: 120, bottom: 50, left: 25 }}
           xScale={{ type: 'point' }}
           yScale={{
             type: 'linear',
@@ -81,7 +81,6 @@ function AppLocationLine (props) {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'APPLICATION METHODS',
             legendOffset: 36,
             legendPosition: 'middle'
           }}
@@ -90,7 +89,7 @@ function AppLocationLine (props) {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'APPS',
+            
             legendOffset: -40,
             legendPosition: 'middle',
             format: e => Math.floor(e) === e && e,

@@ -114,10 +114,10 @@ function Tracker () {
   useEffect(()=>{
     setPaginate({
       page: 1,
-      pageSize: 5,
+      pageSize: 15,
       totalCount: null,
       showingA: 1,
-      showingB: 5
+      showingB: 15
     })
     user_id && getJobApps()
   },[filters, debouncedSearch])

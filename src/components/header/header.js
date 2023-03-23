@@ -42,6 +42,7 @@ function Header () {
     setProfileMenuOpen((open) => !open)
   }
   const handleProfileClose = () => {
+    console.log('close it');
     
     setProfileMenuOpen(false)
   }
@@ -88,19 +89,18 @@ function Header () {
             
             <div className='absolute top-8 right-0  z-50 bg-dev-slate-dark p-1 hidden border-4 border-black border-opacity-25' ref={profileMenuRef}>
 
-              <ul className='w-28 flex flex-col gap-y-1 z-50'  onClick={handleProfileClose}>
-                <li className=' h-8' onClick={handleProfileClose}>
-                  <Link className='pl-2 hover:bg-black hover:bg-opacity-40
-                  transition-all flex justify-start items-center w-full h-full' onClick={handleProfileClose} to='/dashboard' >
-                    Dashboard
-                  </Link>
+              <ul className='w-28 flex flex-col gap-y-1 z-50' >
+                <li className='pl-2 hover:bg-black hover:bg-opacity-40
+                  transition-all flex justify-start items-center w-full h-8' onClick={()=> navigate('/dashboard')}>
+
+                  DASHBOARD
                 </li>
 
-                <li className=' h-8' onClick={handleProfileClose}>
-                  <Link className='pl-2 hover:bg-black hover:bg-opacity-40
-                  transition-all flex justify-start items-center w-full h-full' to='/tracker'>
-                    Tracker
-                  </Link>
+                <li className='pl-2 hover:bg-black hover:bg-opacity-40
+                  transition-all flex justify-start items-center w-full h-8' 
+                  onClick={()=> navigate('/tracker')}>
+
+                  TRACKER
                 </li>
 
                 <li className=' h-8' onClick={handleProfileClose}>

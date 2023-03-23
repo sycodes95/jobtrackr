@@ -1,6 +1,6 @@
 import '../../styles/header.css';
 import logo from '../../logo/logo.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import Icon from '@mdi/react';
 import { mdiLogoutVariant, mdiAccountCircle, mdiMenuDown } from '@mdi/js';
@@ -12,6 +12,12 @@ function Header () {
   const [loggedIn, setLoggedIn] = useState(null)
 
   const [profileMenuOpen, setProfileMenuOpen] = useState(false)
+
+  const [profileMenuItems, setProfileMenuItems] = useState([
+
+  ])
+
+  const navigate = useNavigate()
 
   const profileMenuRef = useRef(null)
 
@@ -36,6 +42,7 @@ function Header () {
     setProfileMenuOpen((open) => !open)
   }
   const handleProfileClose = () => {
+    
     setProfileMenuOpen(false)
   }
 
@@ -78,24 +85,35 @@ function Header () {
           flex items-center relative'
            to='/tracker' onClick={handleProfileClick}>
             <div className='flex'> <Icon path={mdiAccountCircle} size={1} /><Icon path={mdiMenuDown} size={1} /></div>
+            
+            <div className='absolute top-8 right-0  z-50 bg-dev-slate-dark p-1 hidden border-4 border-black border-opacity-25' ref={profileMenuRef}>
 
-            <div className='absolute top-8  z-50 bg-dev-slate-dark p-1 hidden' ref={profileMenuRef}>
-              <ul className='w-24 flex flex-col gap-y-2'>
-                <li className='z-50 hover:cursor-pointer bg-striped-alt' onClick={handleProfileClose}>
-                  <Link className='hover:text-slate-300 border-b border-white  border-opacity-0 
-                  hover:border-opacity-100 transition-all' to='/dashboard' >
+              <ul className='w-28 flex flex-col gap-y-1 z-50'  onClick={handleProfileClose}>
+                <li className=' h-8' onClick={handleProfileClose}>
+                  <Link className='pl-2 hover:bg-black hover:bg-opacity-40
+                  transition-all flex justify-start items-center w-full h-full' onClick={handleProfileClose} to='/dashboard' >
                     Dashboard
                   </Link>
                 </li>
-                <li>HI</li>
-                <li className='z-50 hover:cursor-pointer bg-striped-alt flex justify-center' onClick={handleProfileClose}>
-                  <button className='hover:text-red-600 text-red-700 flex items-center gap-x-1 transition-all' 
-                  onClick={handleLogout}>
+
+                <li className=' h-8' onClick={handleProfileClose}>
+                  <Link className='pl-2 hover:bg-black hover:bg-opacity-40
+                  transition-all flex justify-start items-center w-full h-full' to='/tracker'>
+                    Tracker
+                  </Link>
+                </li>
+
+                <li className=' h-8' onClick={handleProfileClose}>
+                  <button className='pl-2 hover:bg-black hover:bg-opacity-40 hover:text-red-600 text-red-700 w-full h-full flex justify-start items-center gap-x-1 transition-all
+                  ' onClick={handleLogout}>
+                  
                     <div>Log out</div>
-                    <div className=''><Icon className='h-6 w-6' path={mdiLogoutVariant} /></div>
+                    <div className=''><Icon path={mdiLogoutVariant} size={1}/></div>
                   </button>
                 </li>
+
               </ul>
+
             </div>
 
           </button>  

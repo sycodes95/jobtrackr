@@ -19,7 +19,7 @@ function AppLocationLine (props) {
     
   ])
 
-  const getDataAndFormat = useCallback(() => {
+  const getDataAndFormat = () => {
     
     const newData = JSON.parse(JSON.stringify(data))
     if(jobApps.length === 0) {
@@ -47,11 +47,11 @@ function AppLocationLine (props) {
     
     setData(newData) 
 
-  },[data, jobApps])
+  }
   
   useEffect(()=>{
     jobApps && getDataAndFormat()
-  },[jobApps, getDataAndFormat])
+  },[jobApps])
   return(
     <div className='JOB-APP-STATUS-PIE col-span-1 h-full w-full relative flex flex-col items-center border-4 border-black border-opacity-30'>
       <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">

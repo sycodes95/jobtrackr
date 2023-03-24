@@ -26,7 +26,7 @@ function Signup () {
   },[loggedIn])
 
   const verifyToken = () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('jobtrackr_token')
     token && setLoggedIn(true)
   }
 

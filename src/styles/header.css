@@ -10,6 +10,9 @@
 
 @media (max-width: 769px){
   .LOGGED-IN-NAV{
+    
+  }
+  .HEADER-QUICK-MENU{
     display: none;
   }
   .NOT-LOGGED-IN-NAV{

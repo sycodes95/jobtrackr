@@ -9,6 +9,7 @@ import Login from './components/user/login';
 import Tracker from './components/tracker/tracker';
 import Home from './components/home/home';
 import Dashboard from './components/dashboard/dashboard';
+import Settings from './components/user/settings';
 
 function App() {
   
@@ -23,8 +24,10 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/settings" element={<Settings/>}/>
             <Route path="/tracker" element={<Tracker/>}/>
             <Route path="/dashboard" element={<Dashboard/>}/>
+
           </Routes>
         </div>
         

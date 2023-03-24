@@ -72,7 +72,7 @@ function Header () {
         {
         loggedIn ?
         <div className='LOGGED-IN-NAV flex items-center gap-x-6 pr-8 text-sm font-normal relative overflow-visible'>
-          
+          <div className='HEADER-QUICK-MENU flex gap-x-6'>
           <Link className='hover:text-slate-300 border-b border-white  border-opacity-0 hover:border-opacity-100 transition-all' to='/dashboard'>
             Dashboard
           </Link>
@@ -80,6 +80,7 @@ function Header () {
           <Link className='hover:text-slate-300 border-b border-white border-opacity-0 hover:border-opacity-100 transition-all' to='/tracker'>
             Tracker
           </Link>
+          </div>
 
          
           <button className='hover:text-slate-300 border-b border-white border-opacity-0  transition-all
@@ -87,9 +88,9 @@ function Header () {
            to='/tracker' onClick={handleProfileClick}>
             <div className='flex'> <Icon path={mdiAccountCircle} size={1} /><Icon path={mdiMenuDown} size={1} /></div>
             
-            <div className='absolute top-8 right-0  z-50 bg-dev-slate-dark p-1 hidden border-4 border-black border-opacity-25' ref={profileMenuRef}>
+            <div className='absolute top-8 right-0  z-50 bg-dev-slate-dark hidden border-4 border-black border-opacity-25' ref={profileMenuRef}>
 
-              <ul className='w-28 flex flex-col gap-y-1 z-50' >
+              <ul className='w-28 flex flex-col gap-y-1 z-50 p-1' >
                 <li className='pl-2 hover:bg-black hover:bg-opacity-40
                   transition-all flex justify-start items-center w-full h-8' onClick={()=> navigate('/dashboard')}>
 
@@ -101,6 +102,16 @@ function Header () {
                   onClick={()=> navigate('/tracker')}>
 
                   TRACKER
+                </li>
+
+              </ul>
+
+              <ul className='w-28 flex flex-col gap-y-1 z-50 border-t border-gray-800 p-1' >
+                <li className='pl-2 hover:bg-black hover:bg-opacity-40
+                  transition-all flex justify-start items-center w-full h-8' 
+                  onClick={()=> navigate('/settings')}>
+
+                  SETTINGS
                 </li>
 
                 <li className=' h-8' onClick={handleProfileClose}>

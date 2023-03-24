@@ -14,11 +14,14 @@ import TrackerFilter from './trackerFilter';
 import useDebounce from "../hooks/useDebounce";
 
 import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 function Tracker () {
+  const navigate = useNavigate()
+
   const [user_id, set_user_id] = useState(null)
 
   const [jobApps, setJobApps] = useState(null)
@@ -59,7 +62,7 @@ function Tracker () {
 
   useEffect(()=>{
     const token = JSON.parse(localStorage.getItem('jobtrackr_token'))
-    
+    if(!token) return navigate('/login')
     if(token) {
       fetch(`${process.env.REACT_APP_API_HOST}/users/verify-token-get`, {
         method: 'GET',

@@ -14,8 +14,11 @@ import AppMethodLine from "./appMethodLine"
 import AppLocationLine from "./appLocationLine"
 import RejectionStage from "./rejectionStage"
 import RejectionStageBar from "./rejectionStage"
+import { useNavigate } from "react-router-dom"
 
 function Dashboard () {
+  const navigate = useNavigate()
+
   const sortAllRef = useRef(null)
   const sortWeekRef = useRef(null)
   const sortMonthRef = useRef(null)
@@ -100,7 +103,7 @@ function Dashboard () {
 
   useEffect(()=>{
     const token = JSON.parse(localStorage.getItem('jobtrackr_token'))
-    
+    if(!token) return navigate('/login')
     if(token) {
       fetch(`${process.env.REACT_APP_API_HOST}/users/verify-token-get`, {
         method: 'GET',
@@ -108,8 +111,9 @@ function Dashboard () {
       })
       .then(response => response.json())
       .then(data => {
-          const user_id = data.user.user.rows[0].user_id
-          set_user_id(user_id)
+        console.log(data);
+        const user_id = data.user.user.rows[0].user_id
+        set_user_id(user_id)
       })  
       .catch(error => console.error(error))
     }    
@@ -118,10 +122,14 @@ function Dashboard () {
   
   useEffect(()=>{
     user_id && getAllJobApps()
+     
   },[user_id])
 
   return (
+    
     <div className="DASHBOARD-CONTAINER flex justify-center p-8 w-full h-full">
+      {
+      user_id &&
       <div className="h-full w-full max-w-7xl text-black flex flex-col gap-x-2 gap-y-2 items-center 
      p-2">
         <section className="DASHBOARD-DATE-SORT  bg-black bg-opacity-25 col-span-full 
@@ -228,8 +236,9 @@ function Dashboard () {
           
         </section>
       </div>
-       
+      }
     </div>
+    
   )
 }
 

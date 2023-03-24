@@ -136,7 +136,7 @@ function Dashboard () {
         flex justify-between gap-x-2 w-full h-full col-start-1 ">
 
           
-          <div className="flex flex-wrap gap-4 bg-black bg-opacity-25 p-2 text-white text-xs justify-between">
+          <div className="flex gap-4 bg-black bg-opacity-25 p-2 text-white text-xs justify-between">
             <button className="border-b border-white p-1 transition-all"
             name="ALL" onClick={handleDateSort} ref={sortAllRef}>
               ALL

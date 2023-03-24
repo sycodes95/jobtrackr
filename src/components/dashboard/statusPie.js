@@ -15,9 +15,9 @@ function StatusPie ({jobApps}) {
   const getStatusData = () => {
     let dataSet = Array.from(data)
     dataSet.forEach(data => data.value = 0)
-    console.log(jobApps.length);
+    
     if(jobApps.length === 0) return setData(dataSet)
-    console.log('check');
+    
     jobApps.forEach(app =>{
       app.rejected && dataSet.forEach(data => data.id === 'REJECTED' && data.value++)
       app.offer_amount && dataSet.forEach(data => data.id === 'OFFER RECEIVED' && data.value++)

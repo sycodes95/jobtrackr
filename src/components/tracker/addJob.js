@@ -124,7 +124,7 @@ function AddJob (props) {
 
 
   useEffect(()=>{
-    console.log(jobApp);
+    
     if(jobApp && jobApp.job_app_id){
       setJobForm(jobApp)
       setIsEditMode(true)
@@ -162,7 +162,7 @@ function AddJob (props) {
       text-center text-sm text-white flex-grow   
       grid justify-center p-4 gap-x-4 overflow-x-hidden overflow-y-auto">
         
-        <section className='COMPANY-DETAILS flex flex-col gap-y-2 p-4 w-72 '>
+        <section className='COMPANY-DETAILS flex flex-col gap-y-2 p-4 w-64 '>
           <div className='text-yellow-600 text-2xl mb-2 flex justify-center items-center gap-x-2 bg-black bg-opacity-30 p-1'>
           
             
@@ -194,7 +194,7 @@ function AddJob (props) {
           </div>
         </section>
 
-        <section className='JOB-DETAILS flex flex-col gap-y-2 p-4 w-72'>
+        <section className='JOB-DETAILS flex flex-col gap-y-2 p-4 w-64'>
           <div className='text-yellow-600 text-2xl mb-2 flex justify-center items-center gap-x-2 p-1 bg-black bg-opacity-30'>
             
             <span>JOB DETAILS</span>
@@ -264,7 +264,7 @@ function AddJob (props) {
           </div>
         </section>
 
-        <section className='flex flex-col gap-y-2 p-4 w-72'>
+        <section className='flex flex-col gap-y-2 p-4 w-64'>
           <div className='text-yellow-600 text-2xl mb-2 flex justify-center gap-x-2 bg-black bg-opacity-25 p-1'>
             <span>RESPONSE</span>
           </div>
@@ -312,7 +312,7 @@ function AddJob (props) {
           
         </section>
 
-        <section className='flex flex-col gap-y-2 p-4 w-72'>
+        <section className='flex flex-col gap-y-2 p-4 w-64'>
           <div className='text-yellow-600 text-2xl mb-2 flex justify-center items-center gap-x-2 p-1 bg-black bg-opacity-30'>
             <span>MISC</span>
           </div>
@@ -347,9 +347,9 @@ function AddJob (props) {
           <span className='text-red-700 h-full'>{saveError}</span>
         </section>
 
-        <section className='h-12 w-full col-span-full justify-center 
-        border-black border-opacity-50 flex p-1'>
-          <div className='flex p-1 bg-black bg-opacity-25 gap-x-1 w-64'>
+        <section className='h-12 col-span-full justify-center 
+        border-black border-opacity-50 flex p-1 '>
+          <div className='flex p-1 bg-black bg-opacity-25 gap-x-1 w-56'>
             <button className='bg-steel-blue bg-opacity-40  border-black flex justify-center items-center
             hover:bg-opacity-50 transition-all w-full p-1' onClick={handleJobFormSubmit}>
             

@@ -19,7 +19,7 @@ function AppDelete (props) {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+      
       setIsDeleted(true)
       setTimeout(() =>{
         window.location.href = '/tracker'

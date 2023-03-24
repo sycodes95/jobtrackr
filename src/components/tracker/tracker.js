@@ -88,7 +88,7 @@ function Tracker () {
     fetch(`${process.env.REACT_APP_API_HOST}/job-app-get${fetchQueries}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+      
       if(data.rows.length > 0){
         setJobApps(data.rows)
         setPaginate({...paginate, totalCount: data.totalCount})
@@ -145,12 +145,12 @@ function Tracker () {
           <section className='TOOL-BAR w-full grid gap-x-2 bg-opacity-25 gap-y-2 mb-4'>
             <div className='ADD-JOB-BUTTON-CONTAINER h-12 p-2 bg-black bg-opacity-25 w-fit'>
               <Dialog.Trigger className='h-full w-full'>
-              <button className='ADD-JOB-BUTTON h-full w-48 text-xs bg-red-800 bg-opacity-50 hover:bg-opacity-70 transition-all
+              <div className='ADD-JOB-BUTTON h-full w-48 text-xs bg-red-800 bg-opacity-50 hover:bg-opacity-70 transition-all
               grid grid-cols-3 items-center text-white'>
               
                 <div className='flex justify-center'> <Icon path={mdiPlusThick} size={1}/></div>
                 <div>ADD JOB</div>
-              </button>
+              </div>
               </Dialog.Trigger>
               <Dialog.Portal>
               

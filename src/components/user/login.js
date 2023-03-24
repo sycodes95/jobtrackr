@@ -59,7 +59,7 @@ function Login () {
     verifyToken()
   },[])
   useEffect(()=> {
-    console.log(formData);
+    
     if(formData.email && formData.password){
       handleLogIn()
     }

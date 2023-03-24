@@ -18,13 +18,7 @@ function Login () {
     token && setLoggedIn(true)
   }
 
-  useEffect(()=> {
-    verifyToken()
-  },[])
-
-  useEffect(()=>{
-    if(loggedIn) window.location.href = '/tracker'
-  },[loggedIn])
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +26,8 @@ function Login () {
   }
 
   const handleLogIn = (e) =>{
-    e.preventDefault()
+    e && e.preventDefault()
+
     const host = process.env.REACT_APP_API_HOST
     fetch(`${host}/users/log-in-post`, {
       method: 'POST',
@@ -53,6 +48,25 @@ function Login () {
       console.error('Error:', error);
     });
   }
+  const handleDemoLogIn = (e) => {
+    e && e.preventDefault()
+    setFormData({
+      email: process.env.REACT_APP_DEMO_EMAIL,
+      password: process.env.REACT_APP_DEMO_PW,
+    })
+  }
+  useEffect(()=> {
+    verifyToken()
+  },[])
+  useEffect(()=> {
+    console.log(formData);
+    if(formData.email && formData.password){
+      handleLogIn()
+    }
+  },[formData.email, formData.password])
+  useEffect(()=>{
+    if(loggedIn) window.location.href = '/tracker'
+  },[loggedIn])
   
   return(
     <div className="LOG-IN-CONTAINER h-fit flex flex-1 flex-col items-center pb-16 ">
@@ -72,8 +86,10 @@ function Login () {
         <input className="w-full h-10 rounded-sm p-1 border border-black bg-black bg-opacity-25 text-white caret-white text-xl" name="password" type="password" value={formData.password} onChange={handleInputChange}/>
         <div className="h-4 text-red-600"></div>
 
-        <button className="w-full h-10  text-white text-xl bg-green-800 bg-opacity-25 hover:bg-green-700 hover:bg-opacity-25 transition-colors font-black-outline" onClick={handleLogIn}>LOG IN</button>
-        <button className="w-full h-6 mt-4 text-white bg-red-800 bg-opacity-25 hover:bg-red-700 hover:bg-opacity-25 transition-colors font-black-outline text-xs" onClick={handleLogIn}>USE DEMO ACCOUNT</button>
+        <button className="w-full h-10  text-white text-xl bg-green-800 bg-opacity-25 hover:bg-green-700 hover:bg-opacity-25 transition-colors font-black-outline"
+         onClick={handleLogIn}>LOG IN</button>
+        <button className="w-full h-6 mt-4 text-white bg-red-800 bg-opacity-25 hover:bg-red-700 hover:bg-opacity-25 transition-colors font-black-outline text-xs"
+         onClick={handleDemoLogIn}>USE DEMO ACCOUNT</button>
       </form>
     </div>
   )

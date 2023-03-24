@@ -285,7 +285,6 @@ input[type="date"] {
     grid-column: 1/2;
   }
   
-  
   .max-width-900px-flex-col{
     flex-direction: column;
   }

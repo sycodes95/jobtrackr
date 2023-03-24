@@ -75,7 +75,9 @@ function TrackerTable (props) {
         <tbody className="h-full overflow-y-scroll pointer-events-none">
           {
           !jobApps &&
-          <td colSpan='17' className="text-center text-white text-sm">No Results...</td>
+          <tr className="text-center text-white text-sm">
+            <td colSpan='17'>No Results...</td>
+          </tr>
           }
           {
           jobApps && 

@@ -50,13 +50,10 @@ function RejectionStageBar({jobApps}) {
     setData(dataCopy)
     
   }
-  useEffect(()=>{ 
-    console.log(data);
-  },[data])
+  
   useEffect(()=>{
     jobApps && getDataAndFormat()
   },[jobApps])
-
   
   return (
     <div className='col-span-2 h-full w-full flex flex-col items-center

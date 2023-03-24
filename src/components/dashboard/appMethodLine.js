@@ -32,7 +32,7 @@ function AppMethodLine (props) {
       })
       return setData(newData)
     }
-    console.log('check');
+    
     newData.forEach(set => {
       const filteredByMethod = jobApps.filter(app => app.job_app_method === set.id)
       const applied = filteredByMethod.length

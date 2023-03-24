@@ -66,7 +66,7 @@ function Signup () {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      
       const user = data.user;
       const errors = data.errors;
       setIsLoading(false)

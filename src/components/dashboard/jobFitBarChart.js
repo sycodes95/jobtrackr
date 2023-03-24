@@ -64,12 +64,10 @@ function JobFitBarChart (props) {
       })
       set = newSet
     })
-    console.log(newData);
     setData(newData) 
 
   }
   useEffect(()=>{ 
-    console.log(data);
   },[data])
   useEffect(()=>{
     jobApps && getDataAndFormat()

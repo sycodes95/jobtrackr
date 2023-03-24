@@ -42,7 +42,6 @@ function OfferAmount (props) {
   }
 
   useEffect(()=>{
-    console.log(jobApps);
     jobApps && getData()
   },[jobApps])
   return(

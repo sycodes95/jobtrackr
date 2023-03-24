@@ -5,19 +5,12 @@ import { useEffect, useRef, useState } from 'react';
 import Icon from '@mdi/react';
 import { mdiLogoutVariant, mdiAccountCircle, mdiMenuDown } from '@mdi/js';
 
-
-
-
 function Header () {
+  const navigate = useNavigate()
+
   const [loggedIn, setLoggedIn] = useState(null)
 
   const [profileMenuOpen, setProfileMenuOpen] = useState(false)
-
-  const [profileMenuItems, setProfileMenuItems] = useState([
-
-  ])
-
-  const navigate = useNavigate()
 
   const profileMenuRef = useRef(null)
 
@@ -30,7 +23,7 @@ function Header () {
     })
     .then(response => response.json())
     .then((data)=>{
-      console.log(data);
+      
       if(!data.error) {
         localStorage.removeItem('jobtrackr_token')
         window.location.href='/login'
@@ -42,8 +35,6 @@ function Header () {
     setProfileMenuOpen((open) => !open)
   }
   const handleProfileClose = () => {
-    console.log('close it');
-    
     setProfileMenuOpen(false)
   }
 
@@ -52,7 +43,7 @@ function Header () {
     token && setLoggedIn(true)
   }
   useEffect(()=> {
-    console.log(profileMenuOpen);
+    
     if(profileMenuOpen && profileMenuRef.current){
       profileMenuRef.current.classList.remove('hidden')
     } 
@@ -107,12 +98,16 @@ function Header () {
               </ul>
 
               <ul className='w-28 flex flex-col gap-y-1 z-50 border-t border-gray-800 p-1' >
+                {
+                /*
                 <li className='pl-2 hover:bg-black hover:bg-opacity-40
                   transition-all flex justify-start items-center w-full h-8' 
                   onClick={()=> navigate('/settings')}>
 
                   SETTINGS
                 </li>
+                */
+                }
 
                 <li className=' h-8' onClick={handleProfileClose}>
                   <button className='pl-2 hover:bg-black hover:bg-opacity-40 hover:text-red-600 text-red-700 w-full h-full flex justify-start items-center gap-x-1 transition-all
@@ -143,7 +138,6 @@ function Header () {
             Signup
           </Link>
         </div>
-        
 
         }
       </div>

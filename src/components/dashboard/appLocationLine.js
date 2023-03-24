@@ -30,7 +30,7 @@ function AppLocationLine (props) {
       })
       return setData(newData)
     }
-    console.log('check');
+    
     newData.forEach(set => {
       const filteredByMethod = jobApps.filter(app => app.job_location === set.id)
       const applied = filteredByMethod.length

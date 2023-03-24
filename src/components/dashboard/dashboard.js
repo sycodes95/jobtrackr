@@ -48,7 +48,6 @@ function Dashboard () {
     fetch(`${process.env.REACT_APP_API_HOST}${query}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       if(data.length > 0){
         setJobApps(data)
       } else if(data.length === 0) {
@@ -71,7 +70,6 @@ function Dashboard () {
 
     let date_end = new Date()
     let date_start;
-    console.log(date_end);
     if(name === 'LAST WEEK'){
       date_start = subWeeks(date_end, 1)
     } else if (name === 'LAST MONTH') {
@@ -87,7 +85,6 @@ function Dashboard () {
   const handleCustomDateSort = () => {
     const sortDateArray = [sortAllRef, sortWeekRef, sortMonthRef, sortYearRef, sortCustomRangeRef]
     sortDateArray.forEach(date => date.current.classList.add('border-opacity-0'))
-    console.log(sortCustomRangeRef.current);
     
     if(customDateRange.start || customDateRange.end) {
       getAllJobApps(customDateRange.start, customDateRange.end )
@@ -131,7 +128,7 @@ function Dashboard () {
         flex justify-between gap-x-2 w-full h-full col-start-1 ">
 
           
-          <div className="flex gap-x-4 bg-black bg-opacity-25 p-2 text-white text-xs justify-between">
+          <div className="flex flex-wrap gap-4 bg-black bg-opacity-25 p-2 text-white text-xs justify-between">
             <button className="border-b border-white p-1 transition-all"
             name="ALL" onClick={handleDateSort} ref={sortAllRef}>
               ALL

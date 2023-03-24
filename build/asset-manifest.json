@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fb730c43.css",
+    "main.js": "/static/js/main.7cbf73c7.js",
+    "static/js/787.176b653d.chunk.js": "/static/js/787.176b653d.chunk.js",
+    "static/media/Rajdhani-Medium.ttf": "/static/media/Rajdhani-Medium.69a9f7bccb45c01931a2.ttf",
+    "static/media/SpaceGrotesk-VariableFont_wght.ttf": "/static/media/SpaceGrotesk-VariableFont_wght.1036357b9651eff7d3dd.ttf",
+    "static/media/earth2.png": "/static/media/earth2.9de25ae67e830d4fc301.png",
+    "static/media/logo.png": "/static/media/logo.4d9b99b01264fe25087a.png",
+    "index.html": "/index.html",
+    "main.fb730c43.css.map": "/static/css/main.fb730c43.css.map",
+    "main.7cbf73c7.js.map": "/static/js/main.7cbf73c7.js.map",
+    "787.176b653d.chunk.js.map": "/static/js/787.176b653d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fb730c43.css",
+    "static/js/main.7cbf73c7.js"
+  ]
+}

@@ -250,7 +250,7 @@ input[type="date"] {
   word-break: break-all;
 }
 @media (max-width: 1440px) {
-  .TRACKER-CONTAINER{
+  .TRACKER-SUB-CONTAINER{
     width: 90%;
   }
 }
@@ -382,14 +382,18 @@ input[type="date"] {
   .SEARCH-BAR-INPUT{
     width: 100%;
   } 
-  .TRACKER-CONTAINER{
+  .TRACKER-SUB-CONTAINER{
     width: 99%;
   }
 }
 
 @media (max-width: 300px) {
-  .APP-CONTAINER{
-    width: 300px;
+  
+  .DASHBOARD-CONTAINER{
+    padding: 0.25rem;
+  }
+  .TRACKER-CONTAINER{
+    padding: 0.5rem;
   }
   .DialogContent {
     position:fixed;

@@ -124,7 +124,7 @@ function Dashboard () {
   },[user_id])
 
   return (
-    <div className="flex justify-center p-8 w-full h-full">
+    <div className="DASHBOARD-CONTAINER flex justify-center p-8 w-full h-full">
       <div className="h-full w-full max-w-7xl text-black flex flex-col gap-x-2 gap-y-2 items-center 
      p-2">
         <section className="DASHBOARD-DATE-SORT  bg-black bg-opacity-25 col-span-full 

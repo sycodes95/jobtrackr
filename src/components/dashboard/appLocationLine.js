@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useSearch } from "rsuite/esm/Picker"
+
 import { ResponsiveLine } from "@nivo/line"
 
 
@@ -37,7 +37,7 @@ function AppLocationLine (props) {
       const response = filteredByMethod.filter(app => app.response_date).length
       const interview = filteredByMethod.filter(app => app.interview_date).length
       const offer = filteredByMethod.filter(app => app.offer_amount).length
-      const rejected = filteredByMethod.filter(app => app.rejected).length
+      
       const newSet = set.data.forEach(obj => {
         if(obj.x === 'APPLIED') obj.y = applied;
         if(obj.x === 'OFFER') obj.y = offer;

@@ -1,19 +1,17 @@
 {
   "files": {
     "main.css": "/jobtrackr/static/css/main.d48885a2.css",
-    "main.js": "/jobtrackr/static/js/main.3a7c33ca.js",
-    "static/js/787.176b653d.chunk.js": "/jobtrackr/static/js/787.176b653d.chunk.js",
+    "main.js": "/jobtrackr/static/js/main.a77ad52f.js",
     "static/media/Rajdhani-Medium.ttf": "/jobtrackr/static/media/Rajdhani-Medium.69a9f7bccb45c01931a2.ttf",
     "static/media/SpaceGrotesk-VariableFont_wght.ttf": "/jobtrackr/static/media/SpaceGrotesk-VariableFont_wght.1036357b9651eff7d3dd.ttf",
     "static/media/earth2.png": "/jobtrackr/static/media/earth2.9de25ae67e830d4fc301.png",
     "static/media/logo.png": "/jobtrackr/static/media/logo.4d9b99b01264fe25087a.png",
     "index.html": "/jobtrackr/index.html",
     "main.d48885a2.css.map": "/jobtrackr/static/css/main.d48885a2.css.map",
-    "main.3a7c33ca.js.map": "/jobtrackr/static/js/main.3a7c33ca.js.map",
-    "787.176b653d.chunk.js.map": "/jobtrackr/static/js/787.176b653d.chunk.js.map"
+    "main.a77ad52f.js.map": "/jobtrackr/static/js/main.a77ad52f.js.map"
   },
   "entrypoints": [
     "static/css/main.d48885a2.css",
-    "static/js/main.3a7c33ca.js"
+    "static/js/main.a77ad52f.js"
   ]
 }

@@ -169,7 +169,7 @@ export default JobFitBarChart;
 
 import Rating from 'react-rating';
 import { useEffect, useState } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 import { ResponsiveBar } from '@nivo/bar';
 
 function JobFitBarChart (props) {

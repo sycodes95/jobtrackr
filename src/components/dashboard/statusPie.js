@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Label, Legend } from 'recharts';
+
 import { useSearch } from 'rsuite/esm/Picker';
 import { ResponsivePie } from '@nivo/pie'
 function StatusPie ({jobApps}) {

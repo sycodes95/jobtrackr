@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "homepage": "https://sycodes95.github.io/jobtrackr",
   "private": true,
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

@@ -10,11 +10,14 @@ import { mdiDomain, mdiBriefcaseOutline, mdiCheckDecagram, mdiHelpCircle } from 
 
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
+import { useNavigate } from 'react-router-dom';
 
 function AddJob (props) {
   const user_id = props.user_id;
 
   const jobApp = props.jobApp
+
+  const navigate = useNavigate()
   
   const [isEditMode, setIsEditMode] = useState(false)
   
@@ -58,9 +61,7 @@ function AddJob (props) {
 
   const handleOnChange = (e) =>{
     let {name, value} = e.target;
-    if(name === 'job_app_date' || name === 'response_date' || name === 'interview_date'){
-      value = (value || null)
-    }
+    
     if(name === 'company_name') value = value.toUpperCase()
     setJobForm({...jobForm, [name]: value})
   }
@@ -79,12 +80,13 @@ function AddJob (props) {
       })
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         setSaveLoading(false)
         if(data.command === 'UPDATE'){
           setSaveSuccessful(true)
           setTimeout(()=>{
             setSaveSuccessful(false)
-            window.location.href = '/tracker'
+            navigate(0)
           },1500)
         }
       })
@@ -111,7 +113,7 @@ function AddJob (props) {
           setSaveSuccessful(true)
           setTimeout(()=>{
             setSaveSuccessful(false)
-            window.location.href = '/tracker'
+            navigate(0)
           },1500)
         } 
 
@@ -138,6 +140,7 @@ function AddJob (props) {
 
   useEffect(()=> {
     console.log(typeof jobForm.interview_date);
+    console.log(jobForm.interview_date);
   },[jobForm])
 
   const job_app_method_choices = [

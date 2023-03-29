@@ -58,6 +58,9 @@ function AddJob (props) {
 
   const handleOnChange = (e) =>{
     let {name, value} = e.target;
+    if(name === 'job_app_date' || name === 'response_date' || name === 'interview_date'){
+      value = (value || null)
+    }
     if(name === 'company_name') value = value.toUpperCase()
     setJobForm({...jobForm, [name]: value})
   }
@@ -132,6 +135,10 @@ function AddJob (props) {
    
      
   },[jobApp])
+
+  useEffect(()=> {
+    console.log(typeof jobForm.interview_date);
+  },[jobForm])
 
   const job_app_method_choices = [
     null, 'Company Website', 'Job Board Website', 'Recruiter', 'Referral', 'Other'
@@ -275,7 +282,7 @@ function AddJob (props) {
             value={
             jobForm.response_date 
             ? format(new Date(jobForm.response_date), 'yyyy-MM-dd HH:mm')
-            : jobForm.response_date
+            : jobForm.response_date 
             }
             placeholder='...' onChange={handleOnChange}/>
             
@@ -287,7 +294,7 @@ function AddJob (props) {
             value={
             jobForm.interview_date 
             ? format(new Date(jobForm.interview_date), 'yyyy-MM-dd HH:mm')
-            : jobForm.interview_date 
+            : jobForm.interview_date
             }
             placeholder='...' onChange={handleOnChange}/>
           </div>
@@ -301,7 +308,7 @@ function AddJob (props) {
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Rejected</label>
             <select className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='rejected' 
-            type='text' value={jobForm.rejected} placeholder='...' onChange={handleOnChange}>
+            type='text' value={jobForm.rejected } placeholder='...' onChange={handleOnChange}>
               {
               rejected_choices.map(choice => (
                 <option className='bg-black focus:bg-slate-600'>{choice}</option>

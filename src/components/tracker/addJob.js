@@ -146,9 +146,9 @@ function AddJob (props) {
   ];
 
   return(
-    <div className="flex flex-col max-h-full max-w-7xl  border-2 border-black ">
+    <div className="flex flex-col max-h-full max-w-7xl ">
       
-      <section className="min-w-fit h-8 text-center text-sm font-bold bg-black bg-opacity-50 text-white
+      <section className="min-w-fit h-8 text-center text-sm font-bold bg-green-800 bg-opacity-25 text-white
       grid items-center pl-4 pr-4">
         <div className="col-start-2 min-w-fit">JOB APPLICATION DETAILS</div>
         <div className="col-start-3 flex justify-end">
@@ -158,7 +158,7 @@ function AddJob (props) {
         </div>
       </section>
 
-      <section className="JOB-FORM w-full h-full bg-striped-alt bg-opacity-30 
+      <section className="JOB-FORM w-full h-full bg-black bg-opacity-20 
       text-center text-sm text-white flex-grow   
       grid justify-center p-4 gap-x-4 overflow-x-hidden overflow-y-auto">
         

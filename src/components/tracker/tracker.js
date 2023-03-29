@@ -111,6 +111,7 @@ function Tracker () {
   }
 
   useEffect(()=>{
+    console.log(process.env.REACT_APP_API_HOST);
     user_id && getJobApps()
   },[user_id])
 

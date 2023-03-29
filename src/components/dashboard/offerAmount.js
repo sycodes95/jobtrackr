@@ -25,6 +25,12 @@ function OfferAmount (props) {
     .filter(app => app.offer_amount)
     .map(app => { return app.offer_amount })
     
+    if(!offers.length) return setData({
+      highest: 0,
+      lowest: 0,
+      average: 0,
+    })
+    
     const highest = offers.reduce((acc, cur) => {
       if(acc >= cur) return acc
       return cur

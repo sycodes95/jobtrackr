@@ -18,7 +18,6 @@ function Settings () {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         const user_id = data.user.user.rows[0].user_id
         set_user_id(user_id)
       })  

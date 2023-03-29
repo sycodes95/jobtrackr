@@ -10,6 +10,7 @@ import Tracker from './components/tracker/tracker';
 import Home from './components/home/home';
 import Dashboard from './components/dashboard/dashboard';
 import Settings from './components/user/settings';
+import Footer from './components/footer/footer';
 
 function App() {
   
@@ -32,6 +33,8 @@ function App() {
         </div>
         
       </div>
+
+      <Footer/>
     </BrowserRouter>
   );
 }

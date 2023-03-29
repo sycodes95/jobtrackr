@@ -1,7 +1,7 @@
 {
   "name": "jobtrackr",
   "version": "0.1.0",
-  "homepage": "https://sycodes95.github.io/jobtrackr",
+  
   "private": true,
   "engines": {
     "node": "16.x",

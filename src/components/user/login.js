@@ -6,6 +6,8 @@ function Login () {
 
   const [loginError, setLoginError] = useState(null)
 
+  const [isDemoAccount, setIsDemoAccount] = useState(false)
+
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -54,16 +56,15 @@ function Login () {
       email: process.env.REACT_APP_DEMO_EMAIL,
       password: process.env.REACT_APP_DEMO_PW,
     })
+    setIsDemoAccount(true)
   }
   useEffect(()=> {
     verifyToken()
   },[])
   useEffect(()=> {
     
-    if(formData.email && formData.password){
-      handleLogIn()
-    }
-  },[formData.email, formData.password])
+    formData.email && formData.password && isDemoAccount && handleLogIn()
+  },[formData.email, formData.password, isDemoAccount])
   useEffect(()=>{
     if(loggedIn) window.location.href = '/tracker'
   },[loggedIn])

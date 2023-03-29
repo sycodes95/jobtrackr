@@ -81,7 +81,7 @@ function StatusPie ({jobApps}) {
             id: 'lines'
           },
         ]}
-        colors={{datum: 'data.color'}}
+        colors={{scheme: 'set3'}}
         theme={{
           labels: {
             text: {

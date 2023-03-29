@@ -58,7 +58,10 @@ function Header () {
     <section className="HEADER-CONTAINER bg-dev-slate h-16 w-full pl-2 pr-2">
       <div className='h-full max-w-7xl flex justify-between items-center text-white ml-auto mr-auto'>
         <div className='HEADER-LOGO h-full w-72 flex items-center overflow-hidden '>
-          <img className='' src={logo}/>
+          
+            <img className='' src={logo} alt=""/>
+          
+          
         </div>
         {
         loggedIn ?

@@ -16,9 +16,11 @@ function App() {
   
   return (
     <BrowserRouter>
-      <div className="APP-CONTAINER h-full m-0 flex flex-col">
+      <div className="APP-CONTAINER min-h-screen m-0 flex flex-col">
+        <div>
+          <Header/>
+        </div>
         
-        <Header/>
         
         <div className='h-full'>
           <Routes>
@@ -31,10 +33,15 @@ function App() {
 
           </Routes>
         </div>
+
+        
+          <Footer/>
+        
         
       </div>
+      
 
-      <Footer/>
+      
     </BrowserRouter>
   );
 }

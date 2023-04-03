@@ -70,9 +70,9 @@ function Login () {
   },[loggedIn])
   
   return(
-    <div className="LOG-IN-CONTAINER h-fit flex flex-1 flex-col items-center pb-16 ">
+    <div className="LOG-IN-CONTAINER h-full flex flex-1 flex-col items-center pt-16 pb-16 ">
       
-      <form className="LOG-IN-FORM mt-8  flex flex-col gap-y-2 items-center p-4 rounded-md
+      <form className="LOG-IN-FORM   flex flex-col gap-y-2 items-center p-4 rounded-md
       text-black text-sm bg-black bg-opacity-25 pb-8">
         <div className="h-48 w-48 bg-earth">
         </div>

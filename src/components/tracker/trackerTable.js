@@ -16,6 +16,7 @@ import AppDelete from "./appDelete";
 
 
 function TrackerTable (props) {
+  const {fetchLoading, setFetchLoading} = props.fetchLoadingContext
   const user_id = props.user_id;
   const {jobApps, setJobApps} = props.jobAppsContext
   const {sortColumn, setSortColumn} = props.sortColumnContext
@@ -39,7 +40,7 @@ function TrackerTable (props) {
     event.preventDefault();
   };
   
-
+  
   return (
     
     <div className='TRACKER-TABLE w-full overflow-x-scroll ' ref={containerRef}>
@@ -80,7 +81,13 @@ function TrackerTable (props) {
           </tr>
           }
           {
-          jobApps && 
+          fetchLoading &&
+          <tr className="text-center text-white text-sm">
+            <td colSpan='17'>Loading...</td>
+          </tr>
+          }
+          {
+          jobApps && !fetchLoading &&
           jobApps.map((obj, index) => (
             <tr key={index} className={`text-xs font-thin h-5
             ${!obj.interview_date && !obj.rejected && !obj.offer_amount && 'text-gray-300'}

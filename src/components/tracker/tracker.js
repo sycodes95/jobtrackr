@@ -36,6 +36,8 @@ function Tracker () {
 
   const [sortOrder, setSortOrder] = useState(null)
 
+  const [fetchLoading, setFetchLoading] = useState(false)
+
   const [paginate, setPaginate] = useState({
     page: 1,
     pageSize: 50,
@@ -79,6 +81,7 @@ function Tracker () {
   }, [])    
  
   const getJobApps = () => {
+    setFetchLoading(true)
     let fetchQueries = `?user_id=${user_id}`
 
     debouncedSearch && (fetchQueries += `&search=${debouncedSearch}`)
@@ -91,7 +94,7 @@ function Tracker () {
     fetch(`${process.env.REACT_APP_API_HOST}/job-app-get${fetchQueries}`)
     .then(res => res.json())
     .then(data => {
-      
+      setFetchLoading(false)
       if(data.rows.length > 0){
         setJobApps(data.rows)
         setPaginate({...paginate, totalCount: data.totalCount})
@@ -201,6 +204,7 @@ function Tracker () {
             sortColumnContext={{sortColumn, setSortColumn}}
             sortByContext={{sortOrder, setSortOrder}}
             categoriesContext={{categories, setCategories}}
+            fetchLoadingContext={{fetchLoading, setFetchLoading}}
             />
             <div className='PaginateContainer w-full flex justify-between mt-2 select-none'>
               <div className='text-white flex items-center text-xs'>

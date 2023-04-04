@@ -16,6 +16,9 @@ import useDebounce from "../hooks/useDebounce";
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
 
+import companyNameMockArray from '../mockData/companyNameMockArray';
+import jobPositionsMockArray from '../mockData/jobPositionsMockArray';
+import { mockComponent } from 'react-dom/test-utils';
 
 
 
@@ -37,6 +40,8 @@ function Tracker () {
   const [sortOrder, setSortOrder] = useState(null)
 
   const [fetchLoading, setFetchLoading] = useState(false)
+
+  const [jobAppsIsEmpty, setJobAppsIsEmpty] = useState(false)
 
   const [paginate, setPaginate] = useState({
     page: 1,
@@ -94,6 +99,7 @@ function Tracker () {
     fetch(`${process.env.REACT_APP_API_HOST}/job-app-get${fetchQueries}`)
     .then(res => res.json())
     .then(data => {
+      console.log(data);
       setFetchLoading(false)
       if(data.rows.length > 0){
         setJobApps(data.rows)
@@ -101,9 +107,125 @@ function Tracker () {
       } else {
         setJobApps(null)
       } 
+      if(data.totalCount === 0){
+        setJobAppsIsEmpty(true)
+      }
       
     })
   } 
+
+  const handleAddMockData = () => {
+    
+    const randomCompanyIndex = () => Math.floor(Math.random() * 500)
+    let company_name = companyNameMockArray[randomCompanyIndex()]
+    if(jobApps && jobApps.length > 0) {
+      while(jobApps.some(app => app.company_name === company_name)){
+        randomCompanyIndex()
+        company_name = companyNameMockArray[randomCompanyIndex()];
+      }
+    }
+    let company_website = `${company_name.replace(/[\s,'\.]+/g, '')}.com`
+    
+    const companyFavoriteOdds = Math.floor(Math.random() * 100)
+
+    let company_favorite = companyFavoriteOdds > 75 ? true : false;
+
+    const start = new Date('2023-01-01');
+    const end = new Date('2023-04-01');
+    const job_app_date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+
+    const randomNumFrom5 = () => Math.floor(Math.random() * 5);
+    const jobAppMethodChoices = ['Company Website', 'Job Board Website', 'Recruiter', 'Referral', 'Other']
+    const job_app_method = jobAppMethodChoices[randomNumFrom5()]
+
+    let jobSourceWebsiteChoices = ['indeed.com', 'linkedin.com', 'glassdoor.com', 'monster.com', 'careerbuilder.com']
+    let job_source_website = null
+    if(job_app_method === 'Job Board Website'){
+      job_source_website = jobSourceWebsiteChoices[randomNumFrom5()]
+    } 
+
+    const randomJobPostion = () => Math.floor(Math.random() * 50);
+    const job_position = jobPositionsMockArray[randomJobPostion()]
+
+    const randomJobFitRating = () => Math.floor(Math.random() * 5) + 1;
+    const job_fit_rating = randomJobFitRating()
+
+    const randomJobLocation = () => Math.floor(Math.random() * 4);
+    const jobLocationTypeChoices = ['On Site', 'Remote', 'Hybrid', 'Both']
+    const job_location = jobLocationTypeChoices[randomJobLocation()]
+
+    let response_date = null
+    const randomDaysAdded = () => (Math.random() * 20)
+    let responseOdds = Math.floor(Math.random() * 100);
+    if(responseOdds > 50) {
+      response_date = new Date(job_app_date.getTime())
+      response_date.setDate(response_date.getDate() + randomDaysAdded())
+    }
+
+    let interview_date = null
+    
+    let interviewOdds = Math.floor(Math.random() * 100);
+    if(interviewOdds > 70 && response_date) {
+      interview_date = new Date(response_date.getTime())
+      interview_date.setDate(interview_date.getDate() + randomDaysAdded())
+    }
+
+    let offer_amount = null
+    const offerOdds = Math.floor(Math.random() * 100);
+    const randomOfferAmount = () => Math.floor(Math.random() * (300_000 - 22_000 + 1) + 22_000);
+    if(offerOdds > 70 && interview_date) {
+      offer_amount = randomOfferAmount()
+    }
+
+    let rejected = null
+    const rejectedChoices = ['From Response', 'After Interview']
+    if(response_date && !interview_date) rejected = rejectedChoices[0]
+    if(interview_date && !offer_amount) rejected = rejectedChoices[1]
+    
+    const contact_person_name = 'Mock Data Name'
+    const contact_person_email = 'Mock Data Email'
+    const contact_person_phone = '111-222-3333'
+    const notes = 'Mock Data Notes'
+
+    const mockData = {
+      company_name: company_name,
+      company_website: company_website,
+      company_favorite: company_favorite,
+      job_app_date: job_app_date,
+      job_app_method: job_app_method,
+      job_source_website: job_source_website,
+      job_position: job_position,
+      job_fit_rating: job_fit_rating,
+      job_location: job_location,
+      response_date: response_date,
+      interview_date: interview_date, 
+      offer_amount : offer_amount, 
+      rejected: rejected, 
+      contact_person_name: contact_person_name, 
+      contact_person_email: contact_person_email, 
+      contact_person_phone: contact_person_phone,
+      notes: notes, 
+      user_id: user_id
+    }
+    fetch(`${process.env.REACT_APP_API_HOST}/job-app-post`, {
+      method:'POST',
+      body: JSON.stringify(mockData),
+      headers: { 'Content-Type': 'application/json'}
+    })
+    .then(response => response.json())
+    .then((data) => {
+      const job_app_id = data.job_app_id
+      if(job_app_id){
+        navigate(0)
+      } 
+      if(data.name === 'error'){
+        if(data.code === '23505'){
+          
+        }
+      }
+    })
+
+  }
 
   const handleOverlayClick = (e) => {
     e.preventDefault();
@@ -114,7 +236,7 @@ function Tracker () {
   }
 
   useEffect(()=>{
-    console.log(process.env.REACT_APP_API_HOST);
+    console.log(jobApps);
     user_id && getJobApps()
   },[user_id])
 
@@ -169,6 +291,8 @@ function Tracker () {
               
               </Dialog.Portal>
             </div>
+            
+            
             <div className='grid justify-center gap-x-4 COLOR-TIPS'>
               <span className='flex items-center text-white text-xs gap-x-1 whitespace-nowrap'>
                 <Icon className='' path={mdiCircleSlice8} size={0.8}/> AWAITING RESPONSE
@@ -205,6 +329,7 @@ function Tracker () {
             sortByContext={{sortOrder, setSortOrder}}
             categoriesContext={{categories, setCategories}}
             fetchLoadingContext={{fetchLoading, setFetchLoading}}
+            jobAppsIsEmptyContext={{jobAppsIsEmpty, setJobAppsIsEmpty}}
             />
             <div className='PaginateContainer w-full flex justify-between mt-2 select-none'>
               <div className='text-white flex items-center text-xs'>
@@ -252,6 +377,14 @@ function Tracker () {
                 forcePage={paginate.page - 1}
               />
             </div>
+             
+          </section>
+
+          <section className='w-full'>
+            
+            <button className='p-1 bg-green-800 bg-opacity-50 text-white text-xs w-44 rounded-sm 
+            hover:bg-opacity-70 transition-all' onClick={handleAddMockData}>ADD MOCK DATA</button>
+            
             
           </section>
 

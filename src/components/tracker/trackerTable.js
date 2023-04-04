@@ -22,6 +22,7 @@ function TrackerTable (props) {
   const {sortColumn, setSortColumn} = props.sortColumnContext
   const {sortOrder, setSortOrder} = props.sortByContext
   const {categories, setCategories} = props.categoriesContext
+  const {jobAppsIsEmpty, setJobAppsIsEmpty} = props.jobAppsIsEmptyContext
   const containerRef = useRef(null)
 
   const handleCategorySort = (index) => {
@@ -75,7 +76,7 @@ function TrackerTable (props) {
         </thead>
         <tbody className="h-full overflow-y-scroll pointer-events-none">
           {
-          !jobApps &&
+          jobAppsIsEmpty &&
           <tr className="text-center text-white text-sm">
             <td colSpan='17'>No Results...</td>
           </tr>

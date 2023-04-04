@@ -6,10 +6,10 @@ import { ResponsivePie } from '@nivo/pie'
 function StatusPie ({jobApps}) {
   
   const [data, setData] = useState([
-    { id: 'AWAITING RESPONSE', value: 0 , color: 'rgba(255, 255, 255, 0.5)'},
-    { id: 'INTERVIEW STAGE', value: 0 , color: 'rgba(43, 65, 98, 1)'},
-    { id: 'OFFER RECEIVED', value: 0 , color: 'rgba(255, 186, 8, 1)'},
-    { id: 'REJECTED', value: 0 , color: 'rgba(255,30,0, 0.8)'},
+    { id: 'AWAITING RESPONSE', value: 0 , color: 'rgba(156, 175, 183)'},
+    { id: 'INTERVIEW STAGE', value: 0 , color: 'rgb(3, 206, 164)'},
+    { id: 'OFFER RECEIVED', value: 0 , color: 'rgb(247, 219, 167)'},
+    { id: 'REJECTED', value: 0 , color: 'rgb(251, 77, 61)'},
   ])
   
   const getStatusData = () => {
@@ -66,10 +66,19 @@ function StatusPie ({jobApps}) {
           {
             id: 'lines',
             type: 'patternLines',
-            background: 'red',
+            background: 'rgb(251, 77, 61)',
             color: 'rgba(255, 255, 255, 0.4)',
             rotation: -45,
-            lineWidth: 6,
+            lineWidth: 9,
+            spacing: 10
+          },
+          {
+            id: 'dots',
+            type: 'patternDots',
+            background: 'rgb(247, 219, 167)',
+            color: 'rgba(255, 255, 255, 0.8)',
+            rotation: -45,
+            lineWidth: 8,
             spacing: 10
           }
         ]}
@@ -80,8 +89,14 @@ function StatusPie ({jobApps}) {
             },
             id: 'lines'
           },
+          {
+            match: {
+              id: 'OFFER RECEIVED'
+            },
+            id: 'dots'
+          },
         ]}
-        colors={{scheme: 'set3'}}
+        colors={data.map(d => d.color)}
         theme={{
           labels: {
             text: {

@@ -192,6 +192,8 @@ function JobFitBarChart (props) {
     }
   ])
 
+  const legendColors = ['rgba(156, 175, 183)', 'rgb(3, 206, 164)', 'rgb(251, 77, 61)', 'rgb(247, 219, 167)']
+
   const getDataAndFormat = () => {
     let dataCopy = Array.from(data).map(app => {
       return {
@@ -248,12 +250,12 @@ function JobFitBarChart (props) {
           padding={0.3}
           valueScale={{ type: 'linear' }}
           indexScale={{ type: 'band', round: true }}
-          colors={{ scheme: 'set3' }}
+          colors={legendColors}
           defs={[
             {
               id: 'dots',
               type: 'patternDots',
-              background: 'inherit',
+              background: 'rgb(247, 219, 167)',
               color: 'rgba(255, 255, 255, 0.2)',
               rotation: -45,
               lineWidth: 6,
@@ -262,7 +264,7 @@ function JobFitBarChart (props) {
             {
               id: 'lines',
               type: 'patternLines',
-              background: 'inherit',
+              background: 'rgb(251, 77, 61)',
               color: 'rgba(255, 255, 255, 0.2)',
               rotation: -45,
               lineWidth: 6,

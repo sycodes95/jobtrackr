@@ -383,7 +383,7 @@ function Tracker () {
           <section className='w-full'>
             
             <button className='p-1 bg-green-800 bg-opacity-50 text-white text-xs w-44 rounded-sm 
-            hover:bg-opacity-70 transition-all' onClick={handleAddMockData}>ADD MOCK DATA</button>
+            hover:bg-opacity-70 transition-all' onClick={handleAddMockData}>ADD MOCK DATA ROW</button>
             
             
           </section>

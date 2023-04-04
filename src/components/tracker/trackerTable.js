@@ -44,7 +44,18 @@ function TrackerTable (props) {
   
   return (
     
-    <div className='TRACKER-TABLE w-full overflow-x-scroll ' ref={containerRef}>
+    <div className='TRACKER-TABLE w-full overflow-x-scroll relative' ref={containerRef}>
+      {
+      fetchLoading && 
+      <div className="absolute top-0 left-0 h-full w-full flex justify-center items-center z-40 ">
+        <div className="absolute bg-black bg-opacity-70  h-full w-full z-40 "></div>
+        <p className="text-white z-50">Loading...</p>
+      </div>
+      }
+      
+      
+        
+      
       <table className="w-full relative">
         <thead className='sticky top-0 z-10'>
           <tr className="bg-striped-alt h-12 bg-blur">
@@ -79,12 +90,6 @@ function TrackerTable (props) {
           jobAppsIsEmpty &&
           <tr className="text-center text-white text-sm">
             <td colSpan='17'>No Results...</td>
-          </tr>
-          }
-          {
-          fetchLoading &&
-          <tr className="text-center text-white text-sm">
-            <td colSpan='17'>Loading...</td>
           </tr>
           }
           {
@@ -186,7 +191,7 @@ function TrackerTable (props) {
               <td className="text-center whitespace-nowrap">{obj.rejected}</td>
 
 
-              <td className="text-center whitespace-nowrap overflow-ellipsis overflow-hidden">{obj.offer_amount}</td>
+              <td className="text-center whitespace-nowrap overflow-ellipsis overflow-hidden  ">{obj.offer_amount}</td>
               
               <td className="text-center whitespace-nowrap pl-1">
                 <Dialog.Root>

@@ -1,4 +1,4 @@
-const companyNameMock = [
+const companyNameMockArray = [
   "WAL-MART STORES",
   "EXXON MOBIL",
   "CHEVRON",
@@ -501,4 +501,4 @@ const companyNameMock = [
   "UNITED RENTALS, INC."
 ]
 
-export default companyNameMock;
+export default companyNameMockArray;

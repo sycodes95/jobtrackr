@@ -18,7 +18,8 @@ function RejectionRatio (props) {
     const interviewedApps = jobApps.filter(app => app.interview_date).length
     const rejectedApps = jobApps.filter(app => app.rejected && app.interview_date).length
     const ratio = Math.round((rejectedApps / interviewedApps) * 100)
-    console.log(interviewedApps, rejectedApps);
+    
+    if(!ratio) return setRejectionRatio(0)
     setRejectionRatio(ratio)
   }
 

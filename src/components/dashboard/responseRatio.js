@@ -17,6 +17,7 @@ function ResponseRatio (props) {
     const totalApps = jobApps.length
     const respondedApps = jobApps.filter(app => app.response_date).length
     const ratio = Math.round((respondedApps / totalApps) * 100)
+    console.log(ratio);
     setResponseRatio(ratio)
   }
 

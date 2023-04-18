@@ -15,7 +15,7 @@ function Footer () {
       </div>
 
       <div className="w-fit h-fit text-xs flex flex-col p-4 items-center
-      absolute top-1/2 -translate-y-1/2 right-0 bg-red-700 bg-opacity-20 ">
+      absolute top-1/2 -translate-y-1/2 right-0 bg-red-700 bg-opacity-20 max-width-display-none">
         <p>Any bugs or suggestions? Contact: jobtrackrsupport@gmail.com</p>
       </div>
 

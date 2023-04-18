@@ -59,7 +59,7 @@ function Header () {
       <div className='h-full max-w-7xl flex justify-between items-center text-white ml-auto mr-auto'>
         <div className='HEADER-LOGO h-full w-72 flex items-center overflow-hidden '>
           
-            <img className='' src={logo} alt=""/>
+            <img className='h-40' src={logo} alt=""/>
           
           
         </div>

@@ -277,6 +277,9 @@ input[type="date"] {
   
 } 
 @media (max-width: 900px) {
+  .max-width-display-none{
+    display: none;
+  }
   .NIVO-GRID{
     display: flex;
     flex-direction: column;

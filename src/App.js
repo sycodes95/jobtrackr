@@ -16,7 +16,7 @@ function App() {
   
   return (
     <BrowserRouter>
-      <div className="APP-CONTAINER min-h-screen m-0 flex flex-col">
+      <div className="APP-CONTAINER min-h-screen m-0 flex flex-col gap-12">
         <div>
           <Header/>
         </div>

@@ -126,7 +126,7 @@ function Dashboard () {
 
   return (
     
-    <div className="DASHBOARD-CONTAINER flex justify-center pt-8 w-full h-full">
+    <div className="DASHBOARD-CONTAINER flex justify-center w-full h-full">
       {
       user_id &&
       <div className="h-full w-full max-w-7xl text-black flex flex-col gap-x-2 gap-y-2 items-center 

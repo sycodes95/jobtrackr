@@ -102,6 +102,7 @@ function Tracker () {
       console.log(data);
       setFetchLoading(false)
       if(data.rows.length > 0){
+        setJobAppsIsEmpty(false)
         setJobApps(data.rows)
         setPaginate({...paginate, totalCount: data.totalCount})
       } else {

@@ -142,6 +142,12 @@ input[type="date"] {
   background-size: 75px;
 }
 
+.bg-dev-slate-header{
+  background:linear-gradient(rgba(20, 21, 25, 0.5), rgba(19, 20, 23, 0.5)),url(../background/dev-pattern.png);
+  background-position: center;
+  background-size: 75px;
+}
+
 .font-black-outline{
   text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, rgb(0, 0, 0) 1px 0 10px,
   rgb(0, 0, 0) 1px 0 4px ; 

@@ -350,7 +350,7 @@ function Tracker () {
                 }
               </div>
               <ReactPaginate
-                className='bg-striped-alt w-fit text-gray-300 flex items-center gap-x-2 text-sm font-bold p-1 rounded-sm '
+                className='w-fit text-gray-300 flex items-center gap-x-2 text-sm font-bold p-1 rounded-sm '
                 previousLabel={<Icon path={mdiArrowLeftDropCircle} size={1} />}
                 nextLabel={<Icon path={mdiArrowRightDropCircle} size={1} />}
                 breakLabel={'...'}

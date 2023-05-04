@@ -158,7 +158,7 @@ function AddJob (props) {
   return(
     <div className="flex flex-col max-h-full max-w-7xl ">
       
-      <section className="min-w-fit h-8 text-center text-sm font-bold bg-green-800 bg-opacity-25 text-white
+      <section className="min-w-fit h-8 text-center text-sm font-bold bg-mocha text-white
       grid items-center pl-4 pr-4">
         <div className="col-start-2 min-w-fit">JOB APPLICATION DETAILS</div>
         <div className="col-start-3 flex justify-end">
@@ -168,9 +168,9 @@ function AddJob (props) {
         </div>
       </section>
 
-      <section className="JOB-FORM w-full h-full bg-black bg-opacity-20 
+      <section className="JOB-FORM w-full h-full bg-light-brown-gradient
       text-center text-sm text-white flex-grow   
-      grid justify-center p-4 gap-x-4 overflow-x-hidden overflow-y-auto">
+      grid justify-center gap-x-4 overflow-x-hidden overflow-y-auto p-4">
         
         <section className='COMPANY-DETAILS flex flex-col gap-y-2 p-4 w-64 '>
           <div className='text-yellow-600 text-2xl mb-2 flex justify-center items-center gap-x-2 bg-black bg-opacity-30 p-1'>
@@ -212,7 +212,7 @@ function AddJob (props) {
             
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Application Date</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='job_app_date' 
+            <input className='flex justify-start w-full bg-gray-600 bg-opacity-25 pl-1 pr-1' name='job_app_date' 
             type='datetime-local' value={
             jobForm.job_app_date 
             ? format(new Date(jobForm.job_app_date), 'yyyy-MM-dd HH:mm')
@@ -358,9 +358,9 @@ function AddJob (props) {
         </section>
 
         <section className='h-12 col-span-full justify-center 
-        border-black border-opacity-50 flex p-1 '>
-          <div className='flex p-1 bg-black bg-opacity-25 gap-x-1 w-56'>
-            <button className='bg-steel-blue bg-opacity-40  border-black flex justify-center items-center
+        border-black border-opacity-50 flex p-2 '>
+          <div className='flex w-56'>
+            <button className='bg-yellow-500 text-black  border-black flex justify-center items-center
             hover:bg-opacity-50 transition-all w-full p-1' onClick={handleJobFormSubmit}>
             
               {
@@ -380,7 +380,7 @@ function AddJob (props) {
               
             </button>
 
-            <Dialog.Close className='bg-red-800 bg-opacity-40 hover:bg-opacity-50 transition-all w-full'>
+            <Dialog.Close className='bg-black bg-opacity-40 hover:bg-opacity-50 transition-all w-full'>
               CANCEL
             </Dialog.Close>
           </div>

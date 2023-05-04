@@ -97,7 +97,7 @@ function Signup () {
     <div className="SIGN-UP-CONTAINER h-fit flex flex-1 flex-col items-center">
       
       <form className="SIGN-UP-FORM mt-8 flex flex-col gap-y-2 items-center p-4 rounded-md
-      text-black text-sm bg-black bg-opacity-25 " >
+      text-black text-sm bg-light-brown" >
         <div className="h-48 w-48 bg-earth">
         </div>
         <div className="h-12 w-full rounded-sm  flex justify-center items-center text-white text-2xl ">REGISTRATION</div>

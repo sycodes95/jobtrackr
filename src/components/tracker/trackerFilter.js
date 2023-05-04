@@ -109,7 +109,7 @@ function TrackerFilter (props) {
           <span className="text-sm font-bold">FILTERS</span>
           
         </div>
-        <button className="flex items-center justify-center w-full bg-steel-blue bg-opacity-30 hover:bg-opacity-40 transition-all"
+        <button className="flex items-center justify-center h-6 w-full bg-steel-blue bg-opacity-30 hover:bg-opacity-40 transition-all"
         onClick={handleShowHideFilters}>
           
           <div className="text-xs"> SHOW FILTERS / HIDE </div>

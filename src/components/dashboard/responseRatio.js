@@ -25,11 +25,11 @@ function ResponseRatio (props) {
     jobApps && getRatio()
   },[jobApps])
   return(
-    <div className="flex flex-col items-center gap-x-2 bg-striped flex-grow">
+    <div className="flex flex-col items-center gap-x-2 border border-black border-opacity-25 flex-grow">
       <div className="text-white text-sm flex flex-grow justify-center items-center gap-x-2 bg-black bg-opacity-25 p-2 
       w-full">
         
-        <span className="">APPLICATION TO RESPONSE RATIO</span>
+        <span className="text-white text-opacity-50">APPLICATION TO RESPONSE RATIO</span>
         {
         /*
         <a className='my-anchor-element flex justify-center items-center text-white' 

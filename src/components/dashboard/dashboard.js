@@ -181,25 +181,25 @@ function Dashboard () {
         </section>
 
 
-        <section className="bg-black bg-opacity-25 col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
+        <section className="col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
 
-          <div className="p-2 flex flex-wrap w-full gap-x-2">
+          <div className="flex flex-wrap w-full gap-x-2">
             <OverallStats jobApps={jobApps}/>
           </div>
 
         </section>
 
-        <section className="bg-black bg-opacity-25 col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
+        <section className="col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
 
-          <div className="p-2 flex flex-wrap w-full gap-x-2">
+          <div className="flex flex-wrap w-full gap-x-2">
             <OfferAmount jobApps={jobApps}/>
           </div>
 
         </section>
 
-        <section className="bg-black bg-opacity-25 col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
+        <section className="col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
 
-          <div className="DASHBOARD-RATIOS p-2 grid grid-cols-4 w-full gap-2">
+          <div className="DASHBOARD-RATIOS grid grid-cols-4 w-full gap-2">
             <ResponseRatio jobApps={jobApps}/>
             <InterviewRatio jobApps={jobApps}/>
             <OfferRatio jobApps={jobApps}/>
@@ -208,9 +208,9 @@ function Dashboard () {
           
         </section>
 
-        <section className="bg-black bg-opacity-25 flex flex-col w-full h-full col-start-1 col-span-full">
+        <section className="flex flex-col w-full h-full col-start-1 col-span-full">
 
-          <div className=" p-2 grid NIVO-GRID w-full gap-2">
+          <div className="grid NIVO-GRID w-full gap-2">
             <StatusPie jobApps={jobApps}/>
             <JobFitBarChart jobApps={jobApps}/>
             

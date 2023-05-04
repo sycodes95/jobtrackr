@@ -231,7 +231,7 @@ function JobFitBarChart (props) {
 
   return (
     <div className='JOB-FIT-RATING-BAR h-full w-full flex flex-col items-center col-span-1
-     border-4 border-black border-opacity-30'>
+     border border-black border-opacity-20 bg-black-transparent-gradient'>
       <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
         STATUS BY FIT RATING
       </section>

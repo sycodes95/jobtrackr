@@ -24,10 +24,10 @@ function OfferRatio (props) {
     jobApps && getRatio()
   },[jobApps])
   return(
-    <div className="flex flex-col items-center gap-x-2 bg-striped flex-grow">
+    <div className="flex flex-col items-center gap-x-2 border border-black border-opacity-25 flex-grow">
       <div className="text-white text-sm flex flex-grow justify-center items-center gap-x-2 bg-black bg-opacity-25 p-2 
       w-full">
-        <span className="">INTERVIEW TO OFFER RATIO</span>
+        <span className="text-white text-opacity-50">INTERVIEW TO OFFER RATIO</span>
         
       </div>
       <div className="w-28 h-28 flex items-center p-2">

@@ -1,7 +1,7 @@
 
 function Footer () {
   return (
-    <div className="relative h-fit w-full flex-grow flex justify-center items-center text-white bg-black">
+    <div className="relative h-fit w-full flex justify-center items-center text-white bg-black">
       
       <div className="w-fit h-fit text-xs flex flex-col p-8  items-center bg-striped-dark">
         <p className=" bg-opacity-25 p-2 whitespace-nowrap">DESIGNED AND CREATED BY KEVIN KIM</p>

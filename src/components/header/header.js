@@ -55,7 +55,7 @@ function Header () {
     verifyToken()
   },[])
   return (
-    <section className="HEADER-CONTAINER bg-black bg-opacity-25 h-16 w-full pl-2 pr-2 shadow-lg">
+    <section className="HEADER-CONTAINER bg-header h-16 w-full pl-2 pr-2 shadow-lg">
       <div className='h-full max-w-7xl flex justify-between items-center text-white ml-auto mr-auto'>
         <div className='HEADER-LOGO h-full w-72 flex items-center overflow-hidden '>
           
@@ -82,7 +82,7 @@ function Header () {
            to='/tracker' onClick={handleProfileClick}>
             <div className='flex'> <Icon path={mdiAccountCircle} size={1} /><Icon path={mdiMenuDown} size={1} /></div>
             
-            <div className='absolute top-8 right-0  z-50 bg-dev-slate-dark hidden border-4 border-black border-opacity-25' ref={profileMenuRef}>
+            <div className='absolute top-8 right-0  z-50 bg-black bg-opacity-75 backdrop-blur-sm hidden border-4 border-black border-opacity-25' ref={profileMenuRef}>
 
               <ul className='w-28 flex flex-col gap-y-1 z-50 p-1' >
                 <li className='pl-2 hover:bg-black hover:bg-opacity-40

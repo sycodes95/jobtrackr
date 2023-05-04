@@ -16,13 +16,13 @@ function App() {
   
   return (
     <BrowserRouter>
-      <div className="APP-CONTAINER min-h-screen m-0 flex flex-col gap-8">
+      <div className="APP-CONTAINER bg-mocha min-h-screen m-0 flex flex-col gap-8">
         <div>
           <Header/>
         </div>
         
         
-        <div className='h-full mb-16'>
+        <div className='h-full mb-16 flex-grow'>
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/signup" element={<Signup/>}/>

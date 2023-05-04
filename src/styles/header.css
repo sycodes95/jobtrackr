@@ -8,6 +8,10 @@
   background-size: 20rem;
 }
 
+.bg-header{
+  background-color: #21201e;
+}
+
 @media (max-width: 769px){
   .LOGGED-IN-NAV{
     

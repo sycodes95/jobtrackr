@@ -21,6 +21,11 @@ import jobPositionsMockArray from '../mockData/jobPositionsMockArray';
 import { mockComponent } from 'react-dom/test-utils';
 
 
+import { mdiMagnify } from '@mdi/js';
+
+
+
+
 
 function Tracker () {
   const navigate = useNavigate()
@@ -258,11 +263,11 @@ function Tracker () {
 
   return(
     <Dialog.Root>
-      <div className="TRACKER-CONTAINER flex justify-center w-full h-full ">
+      <div className="TRACKER-CONTAINER flex justify-center w-full h-full">
         <div className="TRACKER-SUB-CONTAINER  h-full text-black max-w-screen-2xl flex flex-col items-center justify-center p-2">
 
           
-          <section className='w-full gap-x-2 p-2 bg-black bg-opacity-25 mb-4'>
+          <section className='w-full gap-x-2  mb-4'>
             <TrackerFilter 
             jobAppsContext={{jobApps, setJobApps}} 
             user_id={user_id} 
@@ -273,10 +278,10 @@ function Tracker () {
           </section>
 
           <section className='TOOL-BAR w-full grid gap-x-2 bg-opacity-25 gap-y-2 mb-4'>
-            <div className='ADD-JOB-BUTTON-CONTAINER h-12 p-2 bg-black bg-opacity-25 w-fit'>
+            <div className='ADD-JOB-BUTTON-CONTAINER w-fit'>
               <Dialog.Trigger className='h-full w-full'>
-              <div className='ADD-JOB-BUTTON h-full w-48 text-xs bg-red-800 bg-opacity-50 hover:bg-opacity-70 transition-all
-              grid grid-cols-3 items-center text-white'>
+              <div className='ADD-JOB-BUTTON h-full w-48 text-xs bg-yellow-500 bg-opacity-10 hover:bg-opacity-25 transition-all
+              border border-yellow-400 grid grid-cols-3 rounded-sm items-center text-white'>
               
                 <div className='flex justify-center'> <Icon path={mdiPlusThick} size={1}/></div>
                 <div>ADD JOB</div>
@@ -309,9 +314,10 @@ function Tracker () {
               </span>
             </div>
             
-            <div className='SEARCH-BAR h-12 w-full flex items-center'>
-              <div className='SEARCH-BAR-CONTAINER p-2 bg-black bg-opacity-25 '>
-                <input className='SEARCH-BAR-INPUT bg-black bg-opacity-25  text-white text-sm h-8 w-48 p-1
+            <div className='SEARCH-BAR w-full flex items-center'>
+              <div className='SEARCH-BAR-CONTAINER flex items-center bg-black bg-opacity-50 pl-2 pr-2 rounded-sm '>
+                <Icon className='text-white text-opacity-25' path={mdiMagnify} size={0.8} />
+                <input className='SEARCH-BAR-INPUT bg-black bg-opacity-0  text-white text-sm h-8 w-48 p-1
                 transition-all' type='text' placeholder='Search Any...' onChange={handleSearchChange}/>
               </div>
               
@@ -319,7 +325,7 @@ function Tracker () {
             
           </section>
           
-          <section className='TABLE-CONTAINER flex-grow w-full gap-x-2 p-2 bg-black bg-opacity-30'>
+          <section className='TABLE-CONTAINER flex-grow w-full gap-x-2  rounded-md'>
             <TrackerTable 
             jobAppsContext={{jobApps, setJobApps}} 
             user_id={user_id} 
@@ -383,8 +389,8 @@ function Tracker () {
 
           <section className='w-full'>
             
-            <button className='p-1 bg-green-800 bg-opacity-50 text-white text-xs w-44 rounded-sm 
-            hover:bg-opacity-70 transition-all' onClick={handleAddMockData}>ADD MOCK DATA ROW</button>
+            <button className='p-1 bg-green-800 bg-opacity-10 border border-green-500 text-white text-xs w-44 rounded-sm 
+            hover:bg-opacity-25 transition-all' onClick={handleAddMockData}>ADD MOCK DATA ROW</button>
             
             
           </section>

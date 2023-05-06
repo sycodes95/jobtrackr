@@ -57,8 +57,8 @@ function RejectionStageBar({jobApps}) {
   
   return (
     <div className='col-span-2 h-full w-full flex flex-col items-center
-    border-4 border-black border-opacity-30'>
-      <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
+    border border-black border-opacity-30'>
+      <section className="h-12 bg-black bg-opacity-25 w-full flex justify-center text-md text-white items-center  font-bold">
         REJECTIONS BY STAGE
       </section>
 

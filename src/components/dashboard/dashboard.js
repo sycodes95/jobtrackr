@@ -131,11 +131,11 @@ function Dashboard () {
       user_id &&
       <div className="h-full w-full max-w-7xl text-black flex flex-col gap-x-2 gap-y-2 items-center 
      p-2">
-        <section className="DASHBOARD-DATE-SORT  bg-black bg-opacity-25 col-span-full 
+        <section className="DASHBOARD-DATE-SORT  border border-black border-opacity-30 col-span-full 
         flex justify-between gap-x-2 w-full h-full col-start-1 ">
 
           
-          <div className="flex gap-4 bg-black bg-opacity-25 p-2 text-white text-xs justify-between">
+          <div className="flex gap-4 p-2 bg-black bg-opacity-25 text-white text-xs justify-between">
             <button className="border-b border-white p-1 transition-all"
             name="ALL" onClick={handleDateSort} ref={sortAllRef}>
               ALL
@@ -218,18 +218,18 @@ function Dashboard () {
           
         </section>
 
-        <section className="bg-black bg-opacity-25 flex flex-col w-full h-full col-start-1 col-span-full">
+        <section className=" flex flex-col w-full h-full col-start-1 col-span-full">
 
-          <div className=" p-2 grid NIVO-GRID w-full gap-2">
+          <div className=" grid NIVO-GRID w-full gap-2">
             <AppMethodLine jobApps={jobApps}/>
             <AppLocationLine jobApps={jobApps}/>
           </div>
           
         </section>
 
-        <section className="bg-black bg-opacity-25 flex flex-col w-full h-full col-start-1 col-span-full">
+        <section className="flex flex-col w-full h-full col-start-1 col-span-full">
 
-          <div className=" p-2 grid NIVO-GRID w-full gap-2">
+          <div className="grid NIVO-GRID w-full gap-2">
             <RejectionStageBar jobApps={jobApps}/>
           </div>
           

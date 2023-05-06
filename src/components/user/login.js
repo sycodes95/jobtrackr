@@ -73,7 +73,7 @@ function Login () {
     <div className="LOG-IN-CONTAINER h-full flex flex-1 flex-col items-center pt-16 pb-16 ">
       
       <form className="LOG-IN-FORM   flex flex-col gap-y-2 items-center p-4 rounded-md
-      text-black text-sm bg-light-brown pb-8">
+      text-black text-sm bg-gray-2 pb-8">
         <div className="h-48 w-48 bg-earth">
         </div>
         <div className="h-12 w-full rounded-sm flex justify-center items-center text-white text-2xl ">AUTHORIZATION</div>

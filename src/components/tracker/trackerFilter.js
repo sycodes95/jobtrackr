@@ -121,7 +121,7 @@ function TrackerFilter (props) {
       <div className="max-640px-hidden flex flex-wrap gap-x-4 gap-y-4 justify-between transition-all" ref={filtersContainerRef}>
 
         <section className="FILTER-SECTION-DATES h-fit min-w-fit flex-grow max-640px-flex-column-w-full flex items-center p-1 
-        bg-light-brown  gap-x-2 gap-y-2">
+        bg-gray-2  gap-x-2 gap-y-2">
           
           <div className=" bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 
           text-black text-xs text-center p-1 ">APP DATE</div>
@@ -141,7 +141,7 @@ function TrackerFilter (props) {
           
         </section>
 
-        <section id="filter-app-status" className="text-gray-300 h-fit p-1 bg-light-brown
+        <section id="filter-app-status" className="text-gray-300 h-fit p-1 bg-gray-2
         flex flex-grow gap-x-2 max-640px-flex-column-w-full ">
           <div className=" bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 
           text-black text-xs text-center p-1 ">APP STATUS</div>
@@ -159,7 +159,7 @@ function TrackerFilter (props) {
         </section>
 
         <section className="h-fit min-w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1
-        bg-light-brown gap-x-2 ">
+        bg-gray-2 gap-x-2 ">
           <div className=" bg-yellow-500 w-fit h-6
           text-black text-xs text-center p-1 min-w-fit max-640px-row">
             FAVORITE COMPANY
@@ -173,7 +173,7 @@ function TrackerFilter (props) {
         </section>
 
         <section className="h-fit flex flex-grow items-center p-1  gap-x-2 gap-y-2 max-640px-flex-column-w-full 
-        bg-light-brown">
+        bg-gray-2">
           <div className=" bg-yellow-500 h-6 text-black text-xs text-center 
           p-1 w-fit max-640px-flex-column-w-full ">
             FIT RATING
@@ -216,7 +216,7 @@ function TrackerFilter (props) {
         </section>
         
         <section className="FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1 
-        bg-light-brown gap-x-2 gap-y-2 ">
+        bg-gray-2 gap-x-2 gap-y-2 ">
           
           <div className=" bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 
           text-black text-xs text-center p-1 ">
@@ -238,7 +238,7 @@ function TrackerFilter (props) {
         </section>
 
         <section className="FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1
-        bg-light-brown gap-x-2 gap-y-2">
+        bg-gray-2 gap-x-2 gap-y-2">
           
           <div className="bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 text-black text-xs text-center p-1">INTERVIEW DATE</div>
           
@@ -257,7 +257,7 @@ function TrackerFilter (props) {
         </section>
 
         <section className="FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1
-        bg-light-brown gap-x-2 gap-y-2">
+        bg-gray-2 gap-x-2 gap-y-2">
           
           <div className="bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 text-black text-xs text-center p-1">OFFER AMOUNT</div>
           
@@ -276,7 +276,7 @@ function TrackerFilter (props) {
         </section>
 
       </div>
-      <section className="flex flex-col bg-light-brown">
+      <section className="flex flex-col bg-gray-2">
 
           <div className=" max-640px-flex-column-w-full flex h-full w-full text-xs p-1">
             <button className='bg-green-700 bg-opacity-25 max-640px-flex-column-w-full h-full w-fit  

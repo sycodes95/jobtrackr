@@ -16,7 +16,7 @@ function App() {
   
   return (
     <BrowserRouter>
-      <div className="APP-CONTAINER bg-mocha min-h-screen m-0 flex flex-col gap-8">
+      <div className="APP-CONTAINER bg-gray min-h-screen m-0 flex flex-col gap-8">
         <div>
           <Header/>
         </div>

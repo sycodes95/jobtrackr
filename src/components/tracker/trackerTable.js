@@ -56,8 +56,8 @@ function TrackerTable (props) {
       
         
       
-      <table className="w-full relative rounded-md">
-        <thead className='sticky top-0 z-10 border-b-2 border-black border-opacity-20'>
+      <table className="w-full relative rounded-md ">
+        <thead className='sticky top-0 z-10 border-b-2 border-black border-opacity-20 '>
           <tr className=" h-12 bg-blur rounded-md text-left">
             <th className='text-xs text-white w-6 pointer-events-none'>
             </th>
@@ -74,11 +74,11 @@ function TrackerTable (props) {
             </th>
             ))
             }
-            <th className='text-xs text-white p-2 pointer-events-none
+            <th className='w-6 text-xs text-white p-2 pointer-events-none
             '>
             
             </th>
-            <th className='text-xs text-white p-2 pointer-events-none
+            <th className='w-6 text-xs text-white p-2 pointer-events-none
             '>
             
             </th>
@@ -95,7 +95,7 @@ function TrackerTable (props) {
           {
           jobApps &&
           jobApps.map((obj, index) => (
-            <tr key={index} className={`text-xs font-thin h-5
+            <tr key={index} className={`text-xs font-thin h-7
             ${!obj.interview_date && !obj.rejected && !obj.offer_amount && 'text-white'}
             ${obj.interview_date && !obj.offer_amount && !obj.rejected && 'text-steel-blue'}
             ${obj.offer_amount && 'text-yellow-400'}
@@ -105,7 +105,7 @@ function TrackerTable (props) {
             `}>
               
               
-              <td className="text-left whitespace-nowrap pl-1">
+              <td className="text-left whitespace-nowrap">
                 <Dialog.Root>
                   <Dialog.Trigger className="flex items-center">
                         
@@ -193,7 +193,7 @@ function TrackerTable (props) {
 
               <td className="whitespace-nowrap overflow-ellipsis overflow-hidden  ">{obj.offer_amount}</td>
               
-              <td className="whitespace-nowrap pl-1">
+              <td className="whitespace-nowrap ">
                 <Dialog.Root>
                   <Dialog.Trigger className="flex items-center">
                         
@@ -210,7 +210,7 @@ function TrackerTable (props) {
                   </Dialog.Portal>
                 </Dialog.Root>
               </td>
-              <td className="whitespace-nowrap pl-1">
+              <td className="whitespace-nowrap">
                 <Dialog.Root>
                   <Dialog.Trigger className="flex items-center">
                         

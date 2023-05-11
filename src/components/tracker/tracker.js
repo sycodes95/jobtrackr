@@ -104,7 +104,6 @@ function Tracker () {
     fetch(`${process.env.REACT_APP_API_HOST}/job-app-get${fetchQueries}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       setFetchLoading(false)
       if(data.rows.length > 0){
         setJobAppsIsEmpty(false)
@@ -242,7 +241,6 @@ function Tracker () {
   }
 
   useEffect(()=>{
-    console.log(jobApps);
     user_id && getJobApps()
   },[user_id])
 

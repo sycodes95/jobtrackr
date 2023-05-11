@@ -80,7 +80,6 @@ function AddJob (props) {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setSaveLoading(false)
         if(data.command === 'UPDATE'){
           setSaveSuccessful(true)
@@ -138,10 +137,6 @@ function AddJob (props) {
      
   },[jobApp])
 
-  useEffect(()=> {
-    console.log(typeof jobForm.interview_date);
-    console.log(jobForm.interview_date);
-  },[jobForm])
 
   const job_app_method_choices = [
     null, 'Company Website', 'Job Board Website', 'Recruiter', 'Referral', 'Other'

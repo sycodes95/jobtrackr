@@ -121,27 +121,27 @@ function TrackerFilter (props) {
       <div className="max-640px-hidden flex flex-wrap gap-x-4 gap-y-4 justify-between transition-all" ref={filtersContainerRef}>
 
         <section className="FILTER-SECTION-DATES h-fit min-w-fit flex-grow max-640px-flex-column-w-full flex items-center p-1 
-        bg-gray-2  gap-x-2 gap-y-2">
+        bg-black bg-opacity-40  gap-x-2 gap-y-2">
           
           <div className=" bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 
           text-black text-xs text-center p-1 ">APP DATE</div>
           
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs flex-grow">
-            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 flex-grow text-white '
-             selected={appDate.a} onChange={(date) => setAppDate({...appDate, a:date })} />
+            
+            <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+            type="date" value={appDate.a} onChange={(e) => setAppDate({...appDate, a: e.target.value })}/>
           </div>
           
           <div className="text-center text-white h-6">-</div>
 
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs flex-grow">
-            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 flex-grow text-white '
-             
-             selected={appDate.b} onChange={(date) => setAppDate({...appDate, b:date })} />
+          <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+            type="date" value={appDate.b} onChange={(e) => setAppDate({...appDate, b: e.target.value })}/>
           </div>
           
         </section>
 
-        <section id="filter-app-status" className="text-gray-300 h-fit p-1 bg-gray-2
+        <section id="filter-app-status" className="text-gray-300 h-fit p-1 bg-black bg-opacity-40
         flex flex-grow gap-x-2 max-640px-flex-column-w-full ">
           <div className=" bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 
           text-black text-xs text-center p-1 ">APP STATUS</div>
@@ -159,7 +159,7 @@ function TrackerFilter (props) {
         </section>
 
         <section className="h-fit min-w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1
-        bg-gray-2 gap-x-2 ">
+        bg-black bg-opacity-40 gap-x-2 ">
           <div className=" bg-yellow-500 w-fit h-6
           text-black text-xs text-center p-1 min-w-fit max-640px-row">
             FAVORITE COMPANY
@@ -173,7 +173,7 @@ function TrackerFilter (props) {
         </section>
 
         <section className="h-fit flex flex-grow items-center p-1  gap-x-2 gap-y-2 max-640px-flex-column-w-full 
-        bg-gray-2">
+        bg-black bg-opacity-40">
           <div className=" bg-yellow-500 h-6 text-black text-xs text-center 
           p-1 w-fit max-640px-flex-column-w-full ">
             FIT RATING
@@ -216,7 +216,7 @@ function TrackerFilter (props) {
         </section>
         
         <section className="FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1 
-        bg-gray-2 gap-x-2 gap-y-2 ">
+        bg-black bg-opacity-40 gap-x-2 gap-y-2 ">
           
           <div className=" bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 
           text-black text-xs text-center p-1 ">
@@ -224,40 +224,44 @@ function TrackerFilter (props) {
           </div>
           
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs ">
-            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white flex-grow z-20' 
-            selected={responseDate.a} onChange={(date) => setResponseDate({...responseDate, a:date })} />
+            
+            <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+            type="date" value={responseDate.a} onChange={(e) => setAppDate({...responseDate, a: e.target.value })}/>
           </div>
           
           <div className=" text-center  text-white h-6">-</div>
 
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs">
-            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white flex-grow' 
-            selected={responseDate.b} onChange={(date) => setResponseDate({...responseDate, b:date })} />
+            
+            <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+            type="date" value={responseDate.b} onChange={(e) => setAppDate({...responseDate, b: e.target.value })}/>
           </div>
           
         </section>
 
         <section className="FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1
-        bg-gray-2 gap-x-2 gap-y-2">
+        bg-black bg-opacity-40 gap-x-2 gap-y-2">
           
           <div className="bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 text-black text-xs text-center p-1">INTERVIEW DATE</div>
           
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs">
-            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white '
-            selected={interviewDate.a} onChange={(date) => setInterviewDate({...interviewDate, a:date })} />
+            
+            <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+            type="date" value={interviewDate.a} onChange={(e) => setAppDate({...interviewDate, a: e.target.value })}/>
           </div>
           
           <div className=" text-center text-white h-6">-</div>
 
           <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs ">
-            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white '
-            selected={interviewDate.b} onChange={(date) => setInterviewDate({...interviewDate, b:date })} />
+            
+            <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+            type="date" value={interviewDate.b} onChange={(e) => setAppDate({...interviewDate, b: e.target.value })}/>
           </div>
           
         </section>
 
         <section className="FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1
-        bg-gray-2 gap-x-2 gap-y-2">
+        bg-black bg-opacity-40 gap-x-2 gap-y-2">
           
           <div className="bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 text-black text-xs text-center p-1">OFFER AMOUNT</div>
           

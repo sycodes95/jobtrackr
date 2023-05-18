@@ -160,17 +160,16 @@ function Dashboard () {
               CUSTOM RANGE
             </div>
             <div className="w-full">
-            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white '
-            selected={customDateRange.start} placeholderText="MM/DD/YYYY" 
-            onChange={(date) => setCustomDateRange({...customDateRange, start:date})}/>
+            <input className="bg-black bg-opacity-25 p-1 w-full" 
+            type="date" value={customDateRange.start} onChange={(e) => setCustomDateRange({...customDateRange, start: e.target.value})}/>
+            
             </div>
             <div>
               -
             </div>
             <div className="w-full">
-            <DatePicker className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white '
-            selected={customDateRange.end} placeholderText="MM/DD/YYYY" 
-            onChange={(date) => setCustomDateRange({...customDateRange, end:date})}/>
+            <input className="bg-black bg-opacity-25 p-1 w-full" 
+            type="date" value={customDateRange.end} onChange={(e) => setCustomDateRange({...customDateRange, end: e.target.value})}/>
             </div>
             <div className="flex gap-x-2">
               <button onClick={handleCustomDateSort}>APPLY</button>

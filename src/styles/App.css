@@ -55,10 +55,7 @@ select:focus{
   outline: none;
 }
 
-input[type="date"] {
-  color: red;
-  background-color: red;
-}
+
 
 
 

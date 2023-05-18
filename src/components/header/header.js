@@ -55,7 +55,7 @@ function Header () {
     verifyToken()
   },[])
   return (
-    <section className="HEADER-CONTAINER bg-header h-16 w-full pl-2 pr-2 shadow-lg">
+    <section className="HEADER-CONTAINER bg-black bg-opacity-50 h-16 w-full pl-2 pr-2 shadow-lg">
       <div className='h-full max-w-7xl flex justify-between items-center text-white ml-auto mr-auto'>
         <div className='HEADER-LOGO h-full w-72 flex items-center overflow-hidden '>
           

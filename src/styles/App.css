@@ -55,7 +55,9 @@ select:focus{
   outline: none;
 }
 
-
+input[type="date"] {
+  color-scheme: dark;
+}
 
 
 

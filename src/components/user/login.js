@@ -72,7 +72,7 @@ function Login () {
   return(
     <div className="flex flex-col items-center flex-1 h-full pt-16 pb-16 LOG-IN-CONTAINER ">
       
-      <form className="flex flex-col items-center p-4 pb-8 text-sm text-black rounded-md LOG-IN-FORM gap-y-2 bg-gray-2">
+      <form className="flex flex-col items-center p-4 pb-8 text-sm text-black bg-black bg-opacity-25 border rounded-md shadow-md LOG-IN-FORM gap-y-2 border-slate-800">
         <div className="w-48 h-48 bg-earth">
         </div>
         <div className="flex items-center justify-center w-full h-12 text-2xl text-white rounded-sm ">AUTHORIZATION</div>

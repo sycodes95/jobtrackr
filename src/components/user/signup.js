@@ -94,33 +94,32 @@ function Signup () {
   }
   
   return(
-    <div className="SIGN-UP-CONTAINER h-fit flex flex-1 flex-col items-center">
+    <div className="flex flex-col items-center flex-1 SIGN-UP-CONTAINER h-fit">
       
-      <form className="SIGN-UP-FORM mt-8 flex flex-col gap-y-2 items-center p-4 rounded-md
-      text-black text-sm bg-light-brown" >
-        <div className="h-48 w-48 bg-earth">
+      <form className="flex flex-col items-center p-4 mt-8 text-sm text-black bg-black bg-opacity-25 border rounded-md shadow-md SIGN-UP-FORM gap-y-2 border-slate-800" >
+        <div className="w-48 h-48 bg-earth">
         </div>
-        <div className="h-12 w-full rounded-sm  flex justify-center items-center text-white text-2xl ">REGISTRATION</div>
+        <div className="flex items-center justify-center w-full h-12 text-2xl text-white rounded-sm ">REGISTRATION</div>
         <div className="flex flex-col flex-wrap">
-          <span className="w-full text-center text-xs text-yellow-500 ">PLEASE COMPLETE THE FORM BELOW TO CREATE A NEW JOB TRACKR ACCOUNT.</span>
+          <span className="w-full text-xs text-center text-yellow-500 ">PLEASE COMPLETE THE FORM BELOW TO CREATE A NEW JOB TRACKR ACCOUNT.</span>
         </div>
         
         
         <label className="text-white font-black-outline">Email*</label>
-        <input className=" w-full h-10 rounded-sm p-1 border border-black bg-black bg-opacity-25 text-white caret-white text-xl" name="email" type="email" value={formData.email} required onChange={handleInputChange}/>
+        <input className="w-full h-10 p-1 text-xl text-white bg-black bg-opacity-25 border border-black rounded-sm caret-white" name="email" type="email" value={formData.email} required onChange={handleInputChange}/>
         <div className="h-4 text-red-600">{emailError}</div>
 
         <label className="text-white font-black-outline">Password*</label>
-        <input className="w-full h-10 rounded-sm p-1 border border-black bg-black bg-opacity-25 text-white caret-white text-xl" name="password" type="password" value={formData.password} required onChange={handleInputChange}/>
+        <input className="w-full h-10 p-1 text-xl text-white bg-black bg-opacity-25 border border-black rounded-sm caret-white" name="password" type="password" value={formData.password} required onChange={handleInputChange}/>
         <div className="h-4 text-red-600">{passwordError}</div>
 
         <label className="text-white font-black-outline">Confirm Password*</label>
-        <input className="w-full h-10 rounded-sm p-1 border border-black bg-black bg-opacity-25 text-white caret-white text-xl" name="confirm_password" type="password" value={formData.confirm_password} required onChange={handleInputChange}/>
+        <input className="w-full h-10 p-1 text-xl text-white bg-black bg-opacity-25 border border-black rounded-sm caret-white" name="confirm_password" type="password" value={formData.confirm_password} required onChange={handleInputChange}/>
         <div className="h-4 text-red-600"></div>
 
-        <button className="w-full h-10  text-white text-xl bg-yellow-500 bg-opacity-25 hover:bg-yellow-700 hover:bg-opacity-25 transition-colors font-black-outline grid grid-cols-3" onClick={handleSignUp}>
-          <div className="col-start-2 flex justify-center items-center h-full">SIGN UP</div>
-          <div className="col-start-3 flex justify-center items-center">
+        <button className="grid w-full h-10 grid-cols-3 text-xl text-white transition-colors bg-yellow-500 bg-opacity-25 hover:bg-yellow-700 hover:bg-opacity-25 font-black-outline" onClick={handleSignUp}>
+          <div className="flex items-center justify-center h-full col-start-2">SIGN UP</div>
+          <div className="flex items-center justify-center col-start-3">
             {
             isLoading &&
             <Dna

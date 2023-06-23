@@ -11,18 +11,19 @@ import Home from './components/home/home';
 import Dashboard from './components/dashboard/dashboard';
 import Settings from './components/user/settings';
 import Footer from './components/footer/footer';
+import Page404 from './components/404/Page404';
 
 function App() {
   
   return (
     <BrowserRouter>
-      <div className="APP-CONTAINER bg-gray min-h-screen m-0 flex flex-col gap-8">
+      <div className="flex flex-col min-h-screen gap-8 m-0 APP-CONTAINER bg-gray">
         <div>
           <Header/>
         </div>
         
         
-        <div className='h-full mb-16 flex-grow'>
+        <div className='relative flex-grow h-full mb-16'>
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/signup" element={<Signup/>}/>
@@ -30,7 +31,7 @@ function App() {
             <Route path="/settings" element={<Settings/>}/>
             <Route path="/tracker" element={<Tracker/>}/>
             <Route path="/dashboard" element={<Dashboard/>}/>
-
+            <Route path="*" element={<Page404/>}/>
           </Routes>
         </div>
 

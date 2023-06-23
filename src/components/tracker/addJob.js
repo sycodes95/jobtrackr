@@ -29,7 +29,7 @@ function AddJob (props) {
     company_name: null, //STRING
     company_website: null, //STRING LINK
     company_favorite: null, //BOOLEAN
-    job_app_date: null, //DATE
+    job_app_date: '', //DATE
     job_app_method: null,//STRING OPTIONS
     job_source_website: null, //STRING LINK
     job_position: null, //STRING
@@ -61,9 +61,25 @@ function AddJob (props) {
 
   const handleOnChange = (e) =>{
     let {name, value} = e.target;
-    
+
+    // if (name === 'job_app_date' || name === 'response_date' || name === 'interview_date') {
+    //   const date = new Date(value);
+  
+    //   const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+  
+    //   const formattedDate = format(localDate, 'yyyy-MM-dd\'T\'HH:mm');
+  
+    //   setJobForm({ ...jobForm, [name]: formattedDate });
+    // } else {
+    //   if(name === 'company_name') value = value.toUpperCase()
+    //   setJobForm({...jobForm, [name]: value})
+
+    // }
+
     if(name === 'company_name') value = value.toUpperCase()
     setJobForm({...jobForm, [name]: value})
+    
+    
   }
 
   const handleJobFitRating = (value) => {
@@ -219,10 +235,11 @@ function AddJob (props) {
 
             <div className='flex w-full p-1 border rounded-lg border-slate-700'>
             <input className='flex justify-start w-full pl-1 pr-1 bg-black bg-opacity-0' name='job_app_date' 
-            type='datetime-local' value={
-            jobForm.job_app_date 
-            ? format(addMinutes(new Date(jobForm.job_app_date), new Date().getTimezoneOffset()), 'yyyy-MM-dd\'T\'HH:mm')
-            : jobForm.job_app_date 
+            type='date' value={
+            jobForm.job_app_date ?
+            new Date(jobForm.job_app_date).toISOString().split('T')[0]
+            : null
+            
             } 
             placeholder='...' onChange={handleOnChange}/>
             </div>
@@ -301,11 +318,11 @@ function AddJob (props) {
             <label className='flex justify-start '>Response Date</label>
             <div className='flex w-full p-1 border rounded-lg border-slate-700'>
               <input className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='response_date' 
-              type='datetime-local' 
+              type='date' 
               value={
               jobForm.response_date 
-              ? format(addMinutes(new Date(jobForm.response_date), new Date().getTimezoneOffset()), 'yyyy-MM-dd\'T\'HH:mm')
-              : jobForm.response_date 
+              ? new Date(jobForm.response_date).toISOString().split('T')[0]
+              : ''
               }
               placeholder='...' onChange={handleOnChange}/>
             </div>
@@ -316,10 +333,10 @@ function AddJob (props) {
             <label className='flex justify-start'>Interview Date</label>
             <div className='flex w-full p-1 border rounded-lg border-slate-700'>
               <input className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='interview_date' 
-              type='datetime-local' 
+              type='date' 
               value={
               jobForm.interview_date 
-              ? new Date(jobForm.interview_date).toISOString().slice(0, -1)
+              ? new Date(jobForm.interview_date).toISOString().split('T')[0]
               : ''
               }
               placeholder='...' onChange={handleOnChange}/>

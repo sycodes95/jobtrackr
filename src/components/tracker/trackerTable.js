@@ -137,7 +137,10 @@ function TrackerTable (props) {
               </td>
               
               
-              <td className="whitespace-nowrap">{moment(obj.job_app_date).format("YYYY-MM-DD")}</td>
+              <td className="whitespace-nowrap"> {obj.job_app_date 
+              ? new Date(obj.job_app_date).toISOString().split('T')[0]
+              : 'N/A'
+              }</td>
               <td className="flex items-center w-6 h-6 whitespace-nowrap">
                 {obj.company_favorite && <Icon className="" path={mdiHeart} size={0.7} />}
               </td>

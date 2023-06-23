@@ -74,13 +74,12 @@ function JobFitBarChart (props) {
   },[jobApps])
 
   return (
-    <div className='JOB-FIT-RATING-BAR h-full w-full flex flex-col items-center
-     border-4 border-black border-opacity-30'>
-      <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
+    <div className='flex flex-col items-center w-full h-full border-4 border-black JOB-FIT-RATING-BAR border-opacity-30'>
+      <section className="flex items-center justify-center w-full h-12 font-bold text-white bg-black bg-opacity-25 text-md">
         PERFORMANCE BY FIT RATING
       </section>
 
-      <section className='h-64 w-11/12 top-0 left-0 flex justify-center items-center'>
+      <section className='top-0 left-0 flex items-center justify-center w-11/12 h-64'>
       <ResponsiveLine
         data={data}
         margin={{ top: 30, right: 60, bottom: 50, left: 50 }}
@@ -230,13 +229,12 @@ function JobFitBarChart (props) {
   },[jobApps])
 
   return (
-    <div className='JOB-FIT-RATING-BAR h-full w-full flex flex-col items-center col-span-1
-     border border-black border-opacity-20 bg-black-transparent-gradient'>
-      <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
+    <div className='flex flex-col items-center w-full h-full col-span-1 border rounded-lg shadow-md JOB-FIT-RATING-BAR border-slate-800 bg-black-transparent-gradient'>
+      <section className="flex items-center justify-center w-full h-12 font-bold text-white bg-black bg-opacity-25 rounded-lg text-md">
         STATUS BY FIT RATING
       </section>
 
-      <section className='h-64 w-11/12 top-0 left-0 flex justify-center items-center'>
+      <section className='top-0 left-0 flex items-center justify-center w-11/12 h-64'>
         <ResponsiveBar
           data={data}
           keys={[

@@ -3,23 +3,21 @@ import * as Dialog from '@radix-ui/react-dialog';
 function AppNotes (props) {
   const jobApp = props.jobApp
   return(
-    <div className='flex flex-col w-64'>
-      <section className="min-w-fit h-8 text-center text-sm font-bold bg-slate-800 text-white
-      flex justify-center relative pl-4 pr-4">
-        <div className="min-w-fit flex items-center">NOTES</div>
+    <div className='flex flex-col w-64 rounded-lg bg-gray'>
+      <section className="relative flex justify-center h-8 pl-4 pr-4 text-sm font-bold text-center text-white bg-black bg-opacity-25 rounded-lg min-w-fit">
+        <div className="flex items-center min-w-fit">NOTES</div>
         <div className="absolute right-0 flex items-center h-full">
           <Dialog.Close>
-            <button className='text-lg h-full pr-2 hover:text-white transition-all duration-300'>X</button>
+            <button className='h-full pr-2 text-lg transition-all duration-300 hover:text-white'>X</button>
           </Dialog.Close>
         </div>
       </section>
         
-      <section className='p-2 w-full font-black-outline bg-black  text-white flex flex-col justify-center flex-wrap
-      items-center break-word overflow-ellipsis text-sm'>
-        <div className='break-word p-1 w-full text-center text-white text-xl mb-4 font-black-outline'>
-          {jobApp.company_name.toUpperCase()}
+      <section className='flex flex-col flex-wrap items-center justify-center w-full p-2 text-sm text-white break-word overflow-ellipsis'>
+        <div className='w-full p-1 mb-4 text-white break-word font-black-outline'>
+          <p className='text-md'> Company Name: {jobApp.company_name.toUpperCase()}</p>
         </div>
-        <div className='break-word border border-gray-800 p-2 w-full text-center'>{jobApp.notes ? jobApp.notes : 'N/A'}</div>
+        <div className='w-full p-2 text-center border border-gray-800 break-word'>{jobApp.notes ? jobApp.notes : 'N/A'}</div>
       </section>
     </div>
   )

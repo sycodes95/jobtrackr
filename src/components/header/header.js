@@ -55,44 +55,41 @@ function Header () {
     verifyToken()
   },[])
   return (
-    <section className="HEADER-CONTAINER bg-black bg-opacity-50 h-16 w-full pl-2 pr-2 shadow-lg">
-      <div className='h-full max-w-7xl flex justify-between items-center text-white ml-auto mr-auto'>
-        <div className='HEADER-LOGO h-full w-72 flex items-center overflow-hidden '>
+    <section className="w-full h-16 pl-2 pr-2 bg-black bg-opacity-50 shadow-lg HEADER-CONTAINER">
+      <div className='flex items-center justify-between h-full ml-auto mr-auto text-white max-w-7xl'>
+        <div className='flex items-center h-full overflow-hidden HEADER-LOGO w-72 '>
           
-            <img className='h-40' src={logo} alt=""/>
+          <img className='h-40 cursor-pointer' src={logo} alt="" onClick={()=> window.location.href = '/'}/>
           
           
         </div>
         {
         loggedIn ?
-        <div className='LOGGED-IN-NAV flex items-center gap-x-6 pr-8 text-sm font-normal relative overflow-visible'>
-          <div className='HEADER-QUICK-MENU flex gap-x-6'>
-          <Link className='hover:text-slate-300 border-b border-white  border-opacity-0 hover:border-opacity-100 transition-all' to='/dashboard'>
+        <div className='relative flex items-center pr-8 overflow-visible text-sm font-normal LOGGED-IN-NAV gap-x-6'>
+          <div className='flex HEADER-QUICK-MENU gap-x-6'>
+          <Link className='transition-all border-b border-white border-opacity-0 hover:text-slate-300 hover:border-opacity-100' to='/dashboard'>
             Dashboard
           </Link>
           
-          <Link className='hover:text-slate-300 border-b border-white border-opacity-0 hover:border-opacity-100 transition-all' to='/tracker'>
+          <Link className='transition-all border-b border-white border-opacity-0 hover:text-slate-300 hover:border-opacity-100' to='/tracker'>
             Tracker
           </Link>
           </div>
 
          
-          <button className='hover:text-slate-300 border-b border-white border-opacity-0  transition-all
-          flex items-center relative'
+          <button className='relative flex items-center transition-all border-b border-white border-opacity-0 hover:text-slate-300'
            to='/tracker' onClick={handleProfileClick}>
             <div className='flex'> <Icon path={mdiAccountCircle} size={1} /><Icon path={mdiMenuDown} size={1} /></div>
             
-            <div className='absolute top-8 right-0  z-50 bg-black bg-opacity-75 backdrop-blur-sm hidden border-4 border-black border-opacity-25' ref={profileMenuRef}>
+            <div className='absolute right-0 z-50 hidden bg-black bg-opacity-75 border-4 border-black border-opacity-25 top-8 backdrop-blur-sm' ref={profileMenuRef}>
 
-              <ul className='w-28 flex flex-col gap-y-1 z-50 p-1' >
-                <li className='pl-2 hover:bg-black hover:bg-opacity-40
-                  transition-all flex justify-start items-center w-full h-8' onClick={()=> navigate('/dashboard')}>
+              <ul className='z-50 flex flex-col p-1 w-28 gap-y-1' >
+                <li className='flex items-center justify-start w-full h-8 pl-2 transition-all hover:bg-black hover:bg-opacity-40' onClick={()=> navigate('/dashboard')}>
 
                   DASHBOARD
                 </li>
 
-                <li className='pl-2 hover:bg-black hover:bg-opacity-40
-                  transition-all flex justify-start items-center w-full h-8' 
+                <li className='flex items-center justify-start w-full h-8 pl-2 transition-all hover:bg-black hover:bg-opacity-40' 
                   onClick={()=> navigate('/tracker')}>
 
                   TRACKER
@@ -100,11 +97,10 @@ function Header () {
 
               </ul>
 
-              <ul className='w-28 flex flex-col gap-y-1 z-50 border-t border-gray-800 p-1' >
+              <ul className='z-50 flex flex-col p-1 border-t border-gray-800 w-28 gap-y-1' >
                 {
                 /*
-                <li className='pl-2 hover:bg-black hover:bg-opacity-40
-                  transition-all flex justify-start items-center w-full h-8' 
+                <li className='flex items-center justify-start w-full h-8 pl-2 transition-all hover:bg-black hover:bg-opacity-40' 
                   onClick={()=> navigate('/settings')}>
 
                   SETTINGS
@@ -112,9 +108,8 @@ function Header () {
                 */
                 }
 
-                <li className=' h-8' onClick={handleProfileClose}>
-                  <button className='pl-2 hover:bg-black hover:bg-opacity-40 hover:text-red-600 text-red-700 w-full h-full flex justify-start items-center gap-x-1 transition-all
-                  ' onClick={handleLogout}>
+                <li className='h-8 ' onClick={handleProfileClose}>
+                  <button className='flex items-center justify-start w-full h-full pl-2 text-red-700 transition-all hover:bg-black hover:bg-opacity-40 hover:text-red-600 gap-x-1 ' onClick={handleLogout}>
                   
                     <div>Log out</div>
                     <div className=''><Icon path={mdiLogoutVariant} size={1}/></div>
@@ -128,16 +123,16 @@ function Header () {
           </button>  
           {
           profileMenuOpen && 
-          <div className='OVERLAY top-0 left-0 fixed h-screen w-screen z-20' onClick={handleProfileClose}></div>
+          <div className='fixed top-0 left-0 z-20 w-screen h-screen OVERLAY' onClick={handleProfileClose}></div>
           }
           
         </div>
         :
-        <div className='NOT-LOGGED-IN-NAV flex gap-x-4 pr-8 text-sm font-normal'>
-          <Link className='hover:text-slate-300 border-b border-white  border-opacity-0 hover:border-opacity-100 transition-all' to='/login'>
+        <div className='flex pr-8 text-sm font-normal NOT-LOGGED-IN-NAV gap-x-4'>
+          <Link className='transition-all border-b border-white border-opacity-0 hover:text-slate-300 hover:border-opacity-100' to='/login'>
             Login
           </Link>
-          <Link className='hover:text-slate-300 border-b border-white border-opacity-0 hover:border-opacity-100 transition-all' to='/signup'>
+          <Link className='transition-all border-b border-white border-opacity-0 hover:text-slate-300 hover:border-opacity-100' to='/signup'>
             Signup
           </Link>
         </div>

@@ -4,7 +4,6 @@ import OfferRatio from "./offerRatio"
 import OverallStats from "./overallStats"
 import ResponseRatio from "./responseRatio"
 import StatusPie from "./statusPie"
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { subWeeks, subMonths, subYears, format } from "date-fns"
 import OfferAmount from "./offerAmount"
@@ -12,7 +11,6 @@ import RejectionRatio from "./rejectionRatio"
 import JobFitBarChart from "./jobFitBarChart"
 import AppMethodLine from "./appMethodLine"
 import AppLocationLine from "./appLocationLine"
-import RejectionStage from "./rejectionStage"
 import RejectionStageBar from "./rejectionStage"
 import { useNavigate } from "react-router-dom"
 
@@ -126,41 +124,39 @@ function Dashboard () {
 
   return (
     
-    <div className="DASHBOARD-CONTAINER flex justify-center w-full h-full">
+    <div className="flex justify-center w-full h-full DASHBOARD-CONTAINER">
       {
       user_id &&
-      <div className="h-full w-full max-w-7xl text-black flex flex-col gap-x-2 gap-y-2 items-center 
-     p-2">
-        <section className="DASHBOARD-DATE-SORT  border border-black border-opacity-30 col-span-full 
-        flex justify-between gap-x-2 w-full h-full col-start-1 ">
+      <div className="flex flex-col items-center w-full h-full p-2 text-black max-w-7xl gap-x-2 gap-y-2">
+        <section className="flex justify-between w-full h-full col-start-1 DASHBOARD-DATE-SORT border-opacity-30 col-span-full gap-x-2 ">
 
           
-          <div className="flex gap-4 p-2 bg-black bg-opacity-25 text-white text-xs justify-between">
-            <button className="border-b border-white p-1 transition-all"
+          <div className="flex justify-between gap-4 p-2 text-xs text-white bg-black bg-opacity-25 border rounded-lg shadow-md border-slate-800">
+            <button className="p-1 transition-all border-b border-white"
             name="ALL" onClick={handleDateSort} ref={sortAllRef}>
               ALL
             </button>
-            <button className="border-b border-white border-opacity-0 whitespace-nowrap transition-all" 
+            <button className="transition-all border-b border-white border-opacity-0 whitespace-nowrap" 
             name="LAST WEEK" onClick={handleDateSort} ref={sortWeekRef}>
               LAST WEEK
             </button>
-            <button className="border-b border-white border-opacity-0 whitespace-nowrap transition-all" 
+            <button className="transition-all border-b border-white border-opacity-0 whitespace-nowrap" 
             name="LAST MONTH" onClick={handleDateSort} ref={sortMonthRef}>
               LAST MONTH
             </button>
-            <button className="border-b border-white border-opacity-0 whitespace-nowrap transition-all" 
+            <button className="transition-all border-b border-white border-opacity-0 whitespace-nowrap" 
             name="LAST YEAR" onClick={handleDateSort} ref={sortYearRef}>
               LAST YEAR
             </button>
           </div>
 
-          <div className="flex gap-x-2 items-center bg-black bg-opacity-25 p-2 text-white text-xs w-full">
-            <div className="whitespace-nowrap border-b border-white border-opacity-0" 
+          <div className="flex items-center w-full p-2 text-xs text-white bg-black bg-opacity-25 border rounded-lg shadow-md border-slate-800 gap-x-2">
+            <div className="border-b border-white border-opacity-0 whitespace-nowrap" 
             ref={sortCustomRangeRef}>
               CUSTOM RANGE
             </div>
             <div className="w-full">
-            <input className="bg-black bg-opacity-25 p-1 w-full" 
+            <input className="w-full p-1 bg-black bg-opacity-25" 
             type="date" value={customDateRange.start} onChange={(e) => setCustomDateRange({...customDateRange, start: e.target.value})}/>
             
             </div>
@@ -168,7 +164,7 @@ function Dashboard () {
               -
             </div>
             <div className="w-full">
-            <input className="bg-black bg-opacity-25 p-1 w-full" 
+            <input className="w-full p-1 bg-black bg-opacity-25" 
             type="date" value={customDateRange.end} onChange={(e) => setCustomDateRange({...customDateRange, end: e.target.value})}/>
             </div>
             <div className="flex gap-x-2">
@@ -180,7 +176,7 @@ function Dashboard () {
         </section>
 
 
-        <section className="col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
+        <section className="flex flex-wrap w-full h-full col-start-1 col-span-full gap-x-2">
 
           <div className="flex flex-wrap w-full gap-x-2">
             <OverallStats jobApps={jobApps}/>
@@ -188,7 +184,7 @@ function Dashboard () {
 
         </section>
 
-        <section className="col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
+        <section className="flex flex-wrap w-full h-full col-start-1 col-span-full gap-x-2">
 
           <div className="flex flex-wrap w-full gap-x-2">
             <OfferAmount jobApps={jobApps}/>
@@ -196,9 +192,9 @@ function Dashboard () {
 
         </section>
 
-        <section className="col-span-full flex flex-wrap gap-x-2 w-full h-full col-start-1">
+        <section className="flex flex-wrap w-full h-full col-start-1 col-span-full gap-x-2">
 
-          <div className="DASHBOARD-RATIOS grid grid-cols-4 w-full gap-2">
+          <div className="grid w-full grid-cols-4 gap-2 DASHBOARD-RATIOS">
             <ResponseRatio jobApps={jobApps}/>
             <InterviewRatio jobApps={jobApps}/>
             <OfferRatio jobApps={jobApps}/>
@@ -209,7 +205,7 @@ function Dashboard () {
 
         <section className="flex flex-col w-full h-full col-start-1 col-span-full">
 
-          <div className="grid NIVO-GRID w-full gap-2">
+          <div className="grid w-full gap-2 NIVO-GRID">
             <StatusPie jobApps={jobApps}/>
             <JobFitBarChart jobApps={jobApps}/>
             
@@ -217,9 +213,9 @@ function Dashboard () {
           
         </section>
 
-        <section className=" flex flex-col w-full h-full col-start-1 col-span-full">
+        <section className="flex flex-col w-full h-full col-start-1 col-span-full">
 
-          <div className=" grid NIVO-GRID w-full gap-2">
+          <div className="grid w-full gap-2 NIVO-GRID">
             <AppMethodLine jobApps={jobApps}/>
             <AppLocationLine jobApps={jobApps}/>
           </div>
@@ -228,7 +224,7 @@ function Dashboard () {
 
         <section className="flex flex-col w-full h-full col-start-1 col-span-full">
 
-          <div className="grid NIVO-GRID w-full gap-2">
+          <div className="grid w-full gap-2 NIVO-GRID">
             <RejectionStageBar jobApps={jobApps}/>
           </div>
           

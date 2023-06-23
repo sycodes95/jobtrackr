@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import Rating from 'react-rating';
 import { Oval } from "react-loader-spinner";
-import { format } from 'date-fns';
+import { format, addMinutes } from 'date-fns';
 import Icon from '@mdi/react';
 import { mdiDomain, mdiBriefcaseOutline, mdiCheckDecagram, mdiHelpCircle } from '@mdi/js';
 
@@ -150,97 +150,119 @@ function AddJob (props) {
     null, 'From Response', 'After Interview', 'After Offer', 'Other'
   ];
 
+  useEffect(()=> {
+    console.log(jobForm);
+    console.log(jobForm.job_app_date);
+  },[jobForm])
+
   return(
-    <div className="flex flex-col max-h-full max-w-7xl ">
+    <div className="flex flex-col max-h-full border rounded-lg max-w-7xl bg-gray border-slate-800">
       
-      <section className="min-w-fit h-8 text-center text-sm font-bold bg-black text-white
-      grid items-center pl-4 pr-4">
+      <section className="grid items-center h-8 pl-4 pr-4 text-sm font-bold text-center text-white bg-black bg-opacity-25 rounded-lg min-w-fit">
         <div className="col-start-2 min-w-fit">JOB APPLICATION DETAILS</div>
-        <div className="col-start-3 flex justify-end">
+        <div className="flex justify-end col-start-3">
           <Dialog.Close>
             <button className='text-xl'>X</button>
           </Dialog.Close>
         </div>
       </section>
 
-      <section className="JOB-FORM w-full h-full bg-gray-gradient
-      text-center text-sm text-white flex-grow   
-      grid justify-center gap-x-4 overflow-x-hidden overflow-y-auto p-4">
+      <section className="grid justify-center flex-grow w-full h-full p-4 overflow-x-hidden overflow-y-auto text-sm text-center text-white rounded-lg JOB-FORM gap-x-4">
         
-        <section className='COMPANY-DETAILS flex flex-col gap-y-2 p-4 w-64 '>
-          <div className='text-yellow-600 text-2xl mb-2 flex justify-center items-center gap-x-2 bg-black bg-opacity-30 p-1'>
-          
-            
+        <section className='flex flex-col w-64 p-4 COMPANY-DETAILS gap-y-2 '>
+          <div className='flex items-center justify-center p-1 mb-2 text-2xl text-white bg-black bg-opacity-25 rounded-lg gap-x-2'>
             <span>COMPANY</span>
           </div>
-          <div className='flex flex-col gap-y-2'>
+
+          <div className='flex flex-col gap-y-2 '>
             <label className='flex justify-start'>
               <span className='text-red-800'>Company Name</span> 
-              <span className='text-red-800 text-xs flex items-end pl-4'>*</span>
+              <span className='flex items-end pl-4 text-xs text-red-800'>*</span>
               {
               companyNameEmpty &&
-              <span className='text-red-800 text-xs flex items-end pl-4'>required</span>
+              <span className='flex items-end pl-4 text-xs text-red-800'>required</span>
               }
               
             </label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1 ' name='company_name' 
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+            <input className='flex justify-start w-full pl-1 pr-1 bg-black bg-opacity-0' name='company_name' 
             type='text' value={jobForm.company_name} placeholder='...' onChange={handleOnChange}/>
+            </div>
+            
           </div>
+
+
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Company Website</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='company_website' 
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+            <input className='flex justify-start w-full pl-1 pr-1 bg-black bg-opacity-0' name='company_website' 
             type='text' value={jobForm.company_website} placeholder='...' onChange={handleOnChange}/>
+            </div>
+            
           </div>
           <div className='flex justify-between gap-x-2'>
             <label className='flex justify-start '>Favorite Company</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='company_favorite' 
+            <input className='flex justify-start pl-1 pr-1 bg-gray-600 bg-opacity-25' name='company_favorite' 
             type='checkbox' placeholder='...' checked={jobForm.company_favorite}
              onChange={(e) => setJobForm({...jobForm, company_favorite : e.target.checked})}/>
           </div>
         </section>
 
-        <section className='JOB-DETAILS flex flex-col gap-y-2 p-4 w-64'>
-          <div className='text-yellow-600 text-2xl mb-2 flex justify-center items-center gap-x-2 p-1 bg-black bg-opacity-30'>
+        <section className='flex flex-col w-64 p-4 JOB-DETAILS gap-y-2'>
+          <div className='flex items-center justify-center p-1 mb-2 text-2xl text-white bg-black rounded-lg gap-x-2 bg-opacity-30'>
             
             <span>JOB DETAILS</span>
           </div>
             
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Application Date</label>
-            <input className='flex justify-start w-full bg-gray-600 bg-opacity-25 pl-1 pr-1' name='job_app_date' 
+
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+            <input className='flex justify-start w-full pl-1 pr-1 bg-black bg-opacity-0' name='job_app_date' 
             type='datetime-local' value={
             jobForm.job_app_date 
-            ? format(new Date(jobForm.job_app_date), 'yyyy-MM-dd HH:mm')
+            ? format(addMinutes(new Date(jobForm.job_app_date), new Date().getTimezoneOffset()), 'yyyy-MM-dd\'T\'HH:mm')
             : jobForm.job_app_date 
             } 
             placeholder='...' onChange={handleOnChange}/>
+            </div>
+            
+            
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Job Application Method</label>
-            <select className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='job_app_method' 
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+            <select className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='job_app_method' 
             type='text' value={jobForm.job_app_method} placeholder='...' onChange={handleOnChange}>
               {
               job_app_method_choices.map(choice => (
-                <option className='bg-black focus:bg-slate-600'>{choice}</option>
+                <option className='bg-slate-600'>{choice}</option>
               ))  
               }
             </select>
+            </div>
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Job Source Website</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='job_source_website' 
-            type='text' value={jobForm.job_source_website} placeholder='...' onChange={handleOnChange}/>
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+              <input className='flex justify-start w-full pl-1 pr-1 bg-black bg-opacity-0' name='job_source_website' 
+              type='text' value={jobForm.job_source_website} placeholder='...' onChange={handleOnChange}/>
+            </div>
+            
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Job Position</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='job_position' 
-            type='text' value={jobForm.job_position} placeholder='...' onChange={handleOnChange}/>
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+              <input className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='job_position' 
+              type='text' value={jobForm.job_position} placeholder='...' onChange={handleOnChange}/>
+            </div>
+           
           </div>
-          <div className='flex gap-y-2 justify-between '>
+          <div className='flex justify-between gap-y-2 '>
             <label className='flex items-center justify-start'>Job Fit Rating :</label>
             <div className='text-2xl'>
               <Rating
-              className=' text-yellow-600 flex justify-between'
+              className='flex justify-between text-yellow-600 '
               initialRating={jobForm.job_fit_rating}
               emptySymbol="fa fa-star-o"
               fullSymbol="fa fa-star "
@@ -249,16 +271,17 @@ function AddJob (props) {
               onChange={handleJobFitRating}
               />
             </div>
-            <a className='my-anchor-element flex justify-center items-center text-white' 
+            <a className='flex items-center justify-center text-white my-anchor-element' 
             data-tooltip-id="my-tooltip" data-tooltip-content="How well do you fit the job description?">
-              <Icon className='hover:cursor-pointer hover:text-slate-300  transition-all' path={mdiHelpCircle} size={1} />
+              <Icon className='transition-all hover:cursor-pointer hover:text-slate-300' path={mdiHelpCircle} size={1} />
             </a>
             <Tooltip anchorSelect=".my-anchor-element" />
             
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Job Location</label>
-            <select className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='job_location' 
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+            <select className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='job_location' 
             type='text' value={jobForm.job_location} placeholder='...' onChange={handleOnChange}>
               {
               job_location_choices.map(choice => (
@@ -266,97 +289,114 @@ function AddJob (props) {
               ))  
               }
             </select>
+            </div>
           </div>
         </section>
 
-        <section className='flex flex-col gap-y-2 p-4 w-64'>
-          <div className='text-yellow-600 text-2xl mb-2 flex justify-center gap-x-2 bg-black bg-opacity-25 p-1'>
+        <section className='flex flex-col w-64 p-4 gap-y-2'>
+          <div className='flex justify-center p-1 mb-2 text-2xl text-white bg-black bg-opacity-25 rounded-lg gap-x-2'>
             <span>RESPONSE</span>
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Response Date</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='response_date' 
-            type='datetime-local' 
-            value={
-            jobForm.response_date 
-            ? format(new Date(jobForm.response_date), 'yyyy-MM-dd HH:mm')
-            : jobForm.response_date 
-            }
-            placeholder='...' onChange={handleOnChange}/>
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+              <input className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='response_date' 
+              type='datetime-local' 
+              value={
+              jobForm.response_date 
+              ? format(addMinutes(new Date(jobForm.response_date), new Date().getTimezoneOffset()), 'yyyy-MM-dd\'T\'HH:mm')
+              : jobForm.response_date 
+              }
+              placeholder='...' onChange={handleOnChange}/>
+            </div>
+            
             
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start'>Interview Date</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='interview_date' 
-            type='datetime-local' 
-            value={
-            jobForm.interview_date 
-            ? format(new Date(jobForm.interview_date), 'yyyy-MM-dd HH:mm')
-            : jobForm.interview_date
-            }
-            placeholder='...' onChange={handleOnChange}/>
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+              <input className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='interview_date' 
+              type='datetime-local' 
+              value={
+              jobForm.interview_date 
+              ? new Date(jobForm.interview_date).toISOString().slice(0, -1)
+              : ''
+              }
+              placeholder='...' onChange={handleOnChange}/>
+            </div>
+            
           </div>
 
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start'>Offer Amount</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='offer_amount' 
-            type='number' value={jobForm.offer_amount} placeholder='...' onChange={handleOnChange}/>
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+              <input className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='offer_amount' 
+              type='number' value={jobForm.offer_amount} placeholder='...' onChange={handleOnChange}/>
+            </div>
           </div>
 
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start '>Rejected</label>
-            <select className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='rejected' 
-            type='text' value={jobForm.rejected } placeholder='...' onChange={handleOnChange}>
-              {
-              rejected_choices.map(choice => (
-                <option className='bg-black focus:bg-slate-600'>{choice}</option>
-              ))  
-              }
-            </select>
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+              <select className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='rejected' 
+              type='text' value={jobForm.rejected } placeholder='...' onChange={handleOnChange}>
+                {
+                rejected_choices.map(choice => (
+                  <option className='bg-black focus:bg-slate-600'>{choice}</option>
+                ))  
+                }
+              </select>
+            </div>
           </div>
           
         </section>
 
-        <section className='flex flex-col gap-y-2 p-4 w-64'>
-          <div className='text-yellow-600 text-2xl mb-2 flex justify-center items-center gap-x-2 p-1 bg-black bg-opacity-30'>
+        <section className='flex flex-col w-64 p-4 gap-y-2'>
+          <div className='flex items-center justify-center p-1 mb-2 text-2xl text-white bg-black rounded-lg gap-x-2 bg-opacity-30 '>
             <span>MISC</span>
           </div>
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start'>Contact Person Name</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='contact_person_name' 
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+            <input className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='contact_person_name' 
             type='text' value={jobForm.contact_person_name} placeholder='...' onChange={handleOnChange}/>
+            </div>
           </div>
 
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start'>Contact Person Email</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='contact_person_email' 
-            type='text' value={jobForm.contact_person_email} placeholder='...' onChange={handleOnChange}/>
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+              <input className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='contact_person_email' 
+              type='text' value={jobForm.contact_person_email} placeholder='...' onChange={handleOnChange}/>
+            </div>
           </div>
 
           <div className='flex flex-col gap-y-2'>
             <label className='flex justify-start'>Contact Person Phone</label>
-            <input className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1' name='contact_person_phone' 
+            <div className='flex w-full p-1 border rounded-lg border-slate-700'>
+            <input className='flex justify-start w-full pl-1 pr-1 bg-gray-600 bg-opacity-0' name='contact_person_phone' 
             type='text' value={jobForm.contact_person_phone} placeholder='...' onChange={handleOnChange}/>
+            </div>
           </div>
 
-          <div className='flex flex-col gap-y-2 h-full'>
+          <div className='flex flex-col h-full gap-y-2'>
             <label className='flex justify-start'>Notes</label>
-            <textarea className='flex justify-start bg-gray-600 bg-opacity-25 pl-1 pr-1 h-full' name='notes' 
-            type='text' value={jobForm.notes} placeholder='...' onChange={handleOnChange} maxLength='255'/>
+            <div className='flex w-full h-full p-1 border rounded-lg border-slate-700'>
+              <textarea className='flex justify-start w-full h-full pl-1 pr-1 bg-gray-600 bg-opacity-0 resize-none' name='notes' 
+              type='text' value={jobForm.notes} placeholder='...' onChange={handleOnChange} maxLength='255'/>
+            </div>
           </div>
           
         </section>
 
-        <section className='ERROR-TEXT h-6 w-full col-span-full pb-2 text-xs'>
+        <section className='w-full h-6 pb-2 text-xs ERROR-TEXT col-span-full'>
           
-          <span className='text-red-700 h-full'>{saveError}</span>
+          <span className='h-full text-red-700'>{saveError}</span>
         </section>
 
-        <section className='h-12 col-span-full justify-center 
-        border-black border-opacity-50 flex p-2 '>
-          <div className='flex w-56'>
-            <button className='bg-yellow-500 text-black  border-black flex justify-center items-center
-            hover:bg-opacity-50 transition-all w-full p-1' onClick={handleJobFormSubmit}>
+        <section className='flex justify-center p-2 border-black border-opacity-50 h-fit col-span-full '>
+          <div className='flex w-64 gap-4 max-640px-flex-column-w-full'>
+            <button className='flex items-center justify-center w-full text-black transition-all bg-yellow-500 rounded-lg border-blac bg-opacity-60 hover:bg-opacity-80' onClick={handleJobFormSubmit}>
             
               {
               !saveLoading && !saveSuccessful && 'SAVE'
@@ -375,7 +415,7 @@ function AddJob (props) {
               
             </button>
 
-            <Dialog.Close className='bg-black bg-opacity-40 hover:bg-opacity-50 transition-all w-full'>
+            <Dialog.Close className='w-full h-8 transition-all bg-black rounded-lg bg-opacity-40 hover:bg-opacity-50'>
               CANCEL
             </Dialog.Close>
           </div>

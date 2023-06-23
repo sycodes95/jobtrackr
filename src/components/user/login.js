@@ -70,29 +70,26 @@ function Login () {
   },[loggedIn])
   
   return(
-    <div className="LOG-IN-CONTAINER h-full flex flex-1 flex-col items-center pt-16 pb-16 ">
+    <div className="flex flex-col items-center flex-1 h-full pt-16 pb-16 LOG-IN-CONTAINER ">
       
-      <form className="LOG-IN-FORM   flex flex-col gap-y-2 items-center p-4 rounded-md
-      text-black text-sm bg-gray-2 pb-8">
-        <div className="h-48 w-48 bg-earth">
+      <form className="flex flex-col items-center p-4 pb-8 text-sm text-black rounded-md LOG-IN-FORM gap-y-2 bg-gray-2">
+        <div className="w-48 h-48 bg-earth">
         </div>
-        <div className="h-12 w-full rounded-sm flex justify-center items-center text-white text-2xl ">AUTHORIZATION</div>
+        <div className="flex items-center justify-center w-full h-12 text-2xl text-white rounded-sm ">AUTHORIZATION</div>
         
         
         <label className="text-white font-black-outline">Email</label>
-        <input className=" w-full h-10 rounded-sm p-1 border border-black bg-black bg-opacity-25 text-white caret-white text-xl" name="email" type="email" value={formData.email} onChange={handleInputChange}/>
+        <input className="w-full h-10 p-1 text-xl text-white bg-black bg-opacity-25 border border-black rounded-sm caret-white" name="email" type="email" value={formData.email} onChange={handleInputChange}/>
         <div className="h-4 text-red-600">{loginError}</div>
 
         <label className="text-white font-black-outline">Password</label>
-        <input className="w-full h-10 rounded-sm p-1 border border-black bg-black bg-opacity-25 text-white caret-white text-xl" 
+        <input className="w-full h-10 p-1 text-xl text-white bg-black bg-opacity-25 border border-black rounded-sm caret-white" 
         name="password" type="password" value={formData.password} onChange={handleInputChange}/>
         <div className="h-4 text-red-600"></div>
 
-        <button className="w-full h-10  text-white text-xl bg-yellow-500 bg-opacity-50 
-        hover:bg-opacity-25 transition-colors font-black-outline rounded-sm"
+        <button className="w-full h-10 text-xl text-white transition-colors bg-yellow-500 bg-opacity-50 rounded-sm hover:bg-opacity-25 font-black-outline"
          onClick={handleLogIn}>LOG IN</button>
-        <button className="w-full h-6 mt-4 text-white bg-red-800 bg-opacity-50 
-        hover:bg-opacity-25 transition-colors font-black-outline text-xs rounded-sm"
+        <button className="w-full h-6 mt-4 text-xs text-white transition-colors bg-red-800 bg-opacity-50 rounded-sm hover:bg-opacity-25 font-black-outline"
          onClick={handleDemoLogIn}>USE DEMO ACCOUNT</button>
       </form>
     </div>

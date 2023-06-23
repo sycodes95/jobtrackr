@@ -51,19 +51,17 @@ function OfferAmount (props) {
     jobApps && getData()
   },[jobApps])
   return(
-    <div className="text-white  flex flex-grow gap-x-2 gap-y-2 max-width-900px-flex-col border border-black border-opacity-25">
-      <section className=" flex justify-center text-md text-white items-center 
-      bg-black bg-opacity-25 font-bold p-2 whitespace-nowrap">
+    <div className="flex flex-grow p-2 text-white bg-black bg-opacity-25 border rounded-lg shadow-md gap-x-2 gap-y-2 max-width-900px-flex-col border-slate-800">
+      <section className="flex items-center justify-center p-2 font-bold text-white bg-black bg-opacity-25 rounded-lg text-md whitespace-nowrap">
         <div>
           OFFER RANGE $
         </div>
         
       </section>
       
-      <section className=" h-full w-full flex gap-x-2 gap-y-2 items-center justify-center max-width-900px-flex-col">
+      <section className="flex items-center justify-center w-full h-full gap-x-2 gap-y-2 max-width-900px-flex-col">
         
-        <div className="p-1 h-full flex justify-center items-center gap-x-4 
-         text-yellow-500 w-full text-sm bg-striped-alt">
+        <div className="flex items-center justify-center w-full h-full p-1 text-sm text-yellow-500 rounded-lg gap-x-4 bg-striped-alt">
           <span className="w-12 text-center">HIGHEST</span>
           <div className="flex justify-center">
             <Icon className="" path={mdiArrowRightThin} size={1} />
@@ -71,8 +69,7 @@ function OfferAmount (props) {
           <span>{data.highest}</span>
         </div>
 
-        <div className="p-1 h-full flex justify-center items-center gap-x-4 
-         text-red-600 w-full text-sm bg-striped-alt ">
+        <div className="flex items-center justify-center w-full h-full p-1 text-sm text-red-600 rounded-lg gap-x-4 bg-striped-alt ">
           <span className="w-12 text-center">LOWEST</span>
           <div className="flex justify-center">
             <Icon className="" path={mdiArrowRightThin} size={1} />
@@ -81,8 +78,7 @@ function OfferAmount (props) {
         </div>
         
         
-        <div className="p-1 h-full flex justify-center 
-         items-center gap-x-4 text-sm font-bold w-full bg-striped-alt">
+        <div className="flex items-center justify-center w-full h-full p-1 text-sm font-bold rounded-lg gap-x-4 bg-striped-alt">
           <span className="w-12 text-center">AVERAGE</span>
           <div className="flex justify-center">
             <Icon className="" path={mdiArrowRightThin} size={1} />

@@ -38,9 +38,8 @@ function OverallStats (props) {
     jobApps && getData()
   },[jobApps])
   return(
-    <div className="OVERALL-STATS flex  items-center gap-x-2 gap-y-2 flex-grow ">
-      <div className="text-gray-300 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-30 p-2 
-      w-full text-md font-bold">
+    <div className="flex items-center flex-grow p-2 bg-black bg-opacity-25 border rounded-lg shadow-md OVERALL-STATS gap-x-2 gap-y-2 border-slate-800">
+      <div className="flex items-center justify-between flex-grow w-full p-2 font-bold text-gray-300 bg-black rounded-lg gap-x-2 bg-opacity-30 text-md">
         <div className="">
           TOTAL APPS
         </div>
@@ -49,8 +48,7 @@ function OverallStats (props) {
         </div>
       </div>
 
-      <div className="text-gray-500 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-30 p-2 
-      w-full text-md font-bold">
+      <div className="flex items-center justify-between flex-grow w-full p-2 font-bold text-gray-500 bg-black rounded-lg gap-x-2 bg-opacity-30 text-md">
         
         
         <div className="flex items-center gap-x-2">
@@ -62,8 +60,7 @@ function OverallStats (props) {
         </div>
       </div>
 
-      <div className="text-steel-blue flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-30 p-2 
-      w-full text-md font-bold">
+      <div className="flex items-center justify-between flex-grow w-full p-2 font-bold bg-black rounded-lg text-steel-blue gap-x-2 bg-opacity-30 text-md">
         <div className="flex items-center gap-x-2">
           <Icon path={mdiAccountVoice} size={0.8} />
           INTERVIEWS
@@ -73,8 +70,7 @@ function OverallStats (props) {
         </div>
       </div>
 
-      <div className="text-yellow-600 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-30 p-2 
-      w-full text-md font-bold">
+      <div className="flex items-center justify-between flex-grow w-full p-2 font-bold text-yellow-600 bg-black rounded-lg gap-x-2 bg-opacity-30 text-md">
         <div className="flex items-center gap-x-2">
           <Icon path={mdiCurrencyUsd} size={0.8} />
           OFFERS
@@ -84,8 +80,7 @@ function OverallStats (props) {
         </div>
       </div>
 
-      <div className="text-red-700 flex flex-grow items-center justify-between  gap-x-2 bg-black bg-opacity-30 p-2 
-      w-full text-md font-bold">
+      <div className="flex items-center justify-between flex-grow w-full p-2 font-bold text-red-700 bg-black rounded-lg gap-x-2 bg-opacity-30 text-md">
         
         <div className="flex items-center gap-x-2">
           <Icon path={mdiSkullOutline} size={0.8} />

@@ -26,13 +26,12 @@ function RejectionRatio (props) {
     jobApps && getRatio()
   },[jobApps])
   return(
-    <div className="flex flex-col items-center gap-x-2 border border-black border-opacity-25 flex-grow">
-      <div className="text-white text-sm flex flex-grow justify-center items-center gap-x-2 bg-black bg-opacity-25 p-2 
-      w-full">
+    <div className="flex flex-col items-center flex-grow border rounded-lg shadow-md gap-x-2 border-slate-800">
+      <div className="flex items-center justify-center flex-grow w-full p-2 text-sm text-white bg-black bg-opacity-25 rounded-lg gap-x-2">
         <span className="text-white text-opacity-50">INTERVIEW TO REJECTION RATIO</span>
         
       </div>
-      <div className="w-28 h-28 flex items-center p-2">
+      <div className="flex items-center p-2 w-28 h-28">
         <CircularProgressbar
         value={rejectionRatio}
         text={`${rejectionRatio}%`}

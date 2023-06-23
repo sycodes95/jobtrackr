@@ -27,26 +27,23 @@ function AppDelete (props) {
     })
   }
   return(
-    <div className='flex flex-col w-64 '>
-      <section className="min-w-fit h-8 text-center text-sm font-bold bg-red-800   text-white
-      flex justify-center relative pl-4 pr-4">
-        <div className="min-w-fit flex items-center text-white">CONFIRM DELETE</div>
+    <div className='flex flex-col w-64 gap-4 border rounded-lg shadow-md bg-gray border-slate-800'>
+      <section className="relative flex justify-center h-8 pl-4 pr-4 text-sm font-bold text-center text-white bg-black bg-opacity-25 rounded-lg min-w-fit">
+        <div className="flex items-center text-white min-w-fit">CONFIRM DELETE</div>
         <div className="absolute right-0 flex items-center h-full">
-          <Dialog.Close className='text-lg h-full w-8 hover:text-red-500 transition-all duration-300 text-center '>
+          <Dialog.Close className='w-8 h-full text-lg text-center transition-all duration-300 hover:text-red-500 '>
             X
           </Dialog.Close>
         </div>
       </section>
         
-      <section className='p-2 w-full font-black-outline bg-black text-white flex flex-col justify-center flex-wrap
-      items-center break-word overflow-ellipsis text-sm'>
-        <div className='break-word p-1 w-full text-center text-white text-xl mb-4 font-black-outline'>
-          {jobApp.company_name.toUpperCase()}
+      <section className='flex flex-col flex-wrap justify-center w-full gap-8 p-4 text-sm text-white break-word overflow-ellipsis'>
+        <p>This will item be deleted permanently, are you sure? </p>
+        <div className='w-full mb-4 text-sm text-white break-word'>
+          <p className='flex gap-2'>Company Name : <p className='text-blue-400'>{jobApp.company_name.toUpperCase()}</p></p>
         </div>
-        <div className='break-word bg-black bg-opacity-30 w-full text-center grid grid-cols-2'>
-          <button className='w-full text-white hover:text-red-800  border border-red-800 hover:bg-red-800 
-          hover:bg-opacity-25 p-2
-          transition-all flex justify-center' onClick={fetchDeleteJobApp}>
+        <div className='grid w-full grid-cols-2 gap-2 text-center '>
+          <button className='flex justify-center w-full p-2 text-red-500 transition-all bg-red-500 border border-red-800 rounded-lg bg-opacity-10 hover:text-red-800 hover:bg-red-800 hover:bg-opacity-40' onClick={fetchDeleteJobApp}>
             {isDeleted && <Icon path={mdiCheckboxMarkedCircle} size={0.8} />}
             {!isDeleted && 'Delete'}
             {fetchLoading && !isDeleted &&
@@ -64,8 +61,7 @@ function AppDelete (props) {
             }
             
           </button>
-          <Dialog.Close className='w-full text-gray-600 hover:text-gray-300  p-2
-          transition-all flex justify-center'>
+          <Dialog.Close className='flex justify-center w-full p-2 text-gray-600 transition-all bg-black bg-opacity-25 rounded-lg hover:text-gray-300'>
             Cancel
           </Dialog.Close>
           

@@ -256,16 +256,26 @@ function Tracker () {
   },[filters, debouncedSearch])
   
   useEffect(()=>{
-    user_id && getJobApps()
+    user_id && getJobApps();
   },[paginate.page, sortColumn, sortOrder])
+
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+
+    
+  },[paginate.page])
 
   return(
     <Dialog.Root>
-      <div className="TRACKER-CONTAINER flex justify-center w-full h-full">
-        <div className="TRACKER-SUB-CONTAINER  h-full text-black max-w-screen-2xl flex flex-col items-center justify-center p-2">
+      <div className="flex justify-center w-full h-full TRACKER-CONTAINER">
+        <div className="flex flex-col items-center justify-center h-full p-2 text-black TRACKER-SUB-CONTAINER max-w-screen-2xl">
 
           
-          <section className='w-full gap-x-2  mb-4'>
+          <section className='w-full mb-4 gap-x-2'>
             <TrackerFilter 
             jobAppsContext={{jobApps, setJobApps}} 
             user_id={user_id} 
@@ -275,11 +285,10 @@ function Tracker () {
             />
           </section>
 
-          <section className='TOOL-BAR w-full grid gap-x-2 bg-opacity-25 gap-y-2 mb-4'>
+          <section className='grid w-full mb-4 bg-opacity-25 TOOL-BAR gap-x-2 gap-y-2'>
             <div className='ADD-JOB-BUTTON-CONTAINER w-fit'>
-              <Dialog.Trigger className='h-full w-full'>
-              <div className='ADD-JOB-BUTTON h-full w-48 text-xs bg-yellow-500 bg-opacity-10 hover:bg-opacity-25 transition-all
-              border border-yellow-400 grid grid-cols-3 rounded-sm items-center text-white'>
+              <Dialog.Trigger className='w-full h-full'>
+              <div className='grid items-center w-48 h-full grid-cols-3 text-xs text-white transition-all bg-white border border-white rounded-lg ADD-JOB-BUTTON bg-opacity-10 hover:bg-opacity-25'>
               
                 <div className='flex justify-center'> <Icon path={mdiPlusThick} size={1}/></div>
                 <div>ADD JOB</div>
@@ -298,32 +307,31 @@ function Tracker () {
             
             
             <div className='grid justify-center gap-x-4 COLOR-TIPS'>
-              <span className='flex items-center text-white text-xs gap-x-1 whitespace-nowrap'>
+              <span className='flex items-center text-xs text-white gap-x-1 whitespace-nowrap'>
                 <Icon className='' path={mdiCircleSlice8} size={0.8}/> AWAITING RESPONSE
               </span>
-              <span className='flex items-center text-steel-blue text-xs gap-x-1 whitespace-nowrap'>
+              <span className='flex items-center text-xs text-steel-blue gap-x-1 whitespace-nowrap'>
                 <Icon className='' path={mdiCircleSlice8} size={0.8}/> INTERVIEW STAGE
               </span>
-              <span className='flex items-center text-yellow-500 text-xs gap-x-1 whitespace-nowrap'>
+              <span className='flex items-center text-xs text-yellow-500 gap-x-1 whitespace-nowrap'>
                 <Icon className='' path={mdiCircleSlice8} size={0.8}/> OFFER RECEIVED
               </span>
-              <span className='flex items-center text-red-500 text-xs gap-x-1 whitespace-nowrap'>
+              <span className='flex items-center text-xs text-red-500 gap-x-1 whitespace-nowrap'>
                 <Icon className='' path={mdiCircleSlice8} size={0.8}/> REJECTED
               </span>
             </div>
             
-            <div className='SEARCH-BAR w-full flex items-center'>
-              <div className='SEARCH-BAR-CONTAINER flex items-center bg-black bg-opacity-50 pl-2 pr-2 rounded-sm '>
+            <div className='flex items-center w-full rounded-lg SEARCH-BAR'>
+              <div className='flex items-center pl-2 pr-2 bg-black bg-opacity-50 rounded-lg SEARCH-BAR-CONTAINER '>
                 <Icon className='text-white text-opacity-25' path={mdiMagnify} size={0.8} />
-                <input className='SEARCH-BAR-INPUT bg-black bg-opacity-0  text-white text-sm h-8 w-48 p-1
-                transition-all' type='text' placeholder='Search Any...' onChange={handleSearchChange}/>
+                <input className='w-48 h-8 p-1 text-sm text-white transition-all bg-black bg-opacity-0 SEARCH-BAR-INPUT' type='text' placeholder='Search Any...' onChange={handleSearchChange}/>
               </div>
               
             </div>
             
           </section>
           
-          <section className='TABLE-CONTAINER flex-grow w-full gap-x-2  rounded-md'>
+          <section className='flex-grow w-full rounded-md TABLE-CONTAINER gap-x-2'>
             <TrackerTable 
             jobAppsContext={{jobApps, setJobApps}} 
             user_id={user_id} 
@@ -336,8 +344,8 @@ function Tracker () {
             fetchLoadingContext={{fetchLoading, setFetchLoading}}
             jobAppsIsEmptyContext={{jobAppsIsEmpty, setJobAppsIsEmpty}}
             />
-            <div className='PaginateContainer w-full flex justify-between mt-2 select-none'>
-              <div className='text-white flex items-center text-xs'>
+            <div className='flex justify-between w-full mt-2 select-none PaginateContainer'>
+              <div className='flex items-center text-xs text-white'>
                 {
                 jobApps && jobApps.length > 0 
                 ? <span>
@@ -348,7 +356,7 @@ function Tracker () {
                 }
               </div>
               <ReactPaginate
-                className='w-fit text-gray-300 flex items-center gap-x-2 text-sm font-bold p-1 rounded-sm '
+                className='flex items-center p-1 text-sm font-bold text-gray-300 rounded-sm w-fit gap-x-2 '
                 previousLabel={<Icon path={mdiArrowLeftDropCircle} size={1} />}
                 nextLabel={<Icon path={mdiArrowRightDropCircle} size={1} />}
                 breakLabel={'...'}
@@ -387,8 +395,7 @@ function Tracker () {
 
           <section className='w-full'>
             
-            <button className='p-1 bg-green-800 bg-opacity-10 border border-green-500 text-white text-xs w-44 rounded-sm 
-            hover:bg-opacity-25 transition-all' onClick={handleAddMockData}>ADD MOCK DATA ROW</button>
+            <button className='p-1 text-xs text-white transition-all bg-green-800 border border-green-500 rounded-lg bg-opacity-10 w-44 hover:bg-opacity-25' onClick={handleAddMockData}>ADD MOCK DATA ROW</button>
             
             
           </section>

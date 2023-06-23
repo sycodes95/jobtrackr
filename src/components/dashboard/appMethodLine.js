@@ -56,11 +56,11 @@ function AppMethodLine (props) {
     jobApps && getDataAndFormat()
   },[jobApps])
   return(
-    <div className='JOB-APP-STATUS-PIE col-span-1 h-full w-full relative flex flex-col items-center border border-black border-opacity-30'>
-      <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
+    <div className='relative flex flex-col items-center w-full h-full col-span-1 border rounded-lg shadow-md JOB-APP-STATUS-PIE border-slate-800 bg-black-transparent-gradient'>
+      <section className="flex items-center justify-center w-full h-12 font-bold text-white bg-black bg-opacity-25 rounded-lg text-md">
         <span>PERFORMANCE BY APPLICATION METHOD</span>
       </section>
-      <section className='h-64 w-11/12 flex justify-center items-center'>
+      <section className='flex items-center justify-center w-11/12 h-64'>
         <ResponsiveLine
           data={data}
           margin={{ top: 30, right: 120, bottom: 50, left: 25 }}

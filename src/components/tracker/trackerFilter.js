@@ -94,22 +94,22 @@ function TrackerFilter (props) {
 
   
   return(
-    <div className="flex max-640px-flex-column-w-full gap-x-4 gap-y-4 h-fit w-full ">
-      <section className="FILTER-LOGO text-white flex">
-        <div className="p-2 bg-black bg-opacity-25 flex flex-col flex-1 justify-center  items-center gap-y-2 rounded-sm">
+    <div className="flex w-full p-2 border border-gray-800 rounded-lg shadow-md max-640px-flex-column-w-full gap-x-4 gap-y-4 h-fit">
+      <section className="flex text-white FILTER-LOGO">
+        <div className="flex flex-col items-center justify-center flex-1 p-2 bg-black bg-opacity-25 rounded-lg gap-y-2">
           <Icon path={mdiFilterSettings} size={1.5} />
           <span className="text-xs font-bold">FILTERS</span>
         </div>
         
       </section>
 
-      <section className="FILTER-LOGO-SMALL hidden text-white ">
-        <div className="p-2 bg-black bg-opacity-25 flex flex-col flex-1 justify-center  items-center gap-y-2 hover:cursor-pointer ">
+      <section className="hidden p-2 text-white bg-black bg-opacity-25 rounded-lg FILTER-LOGO-SMALL ">
+        <div className="flex flex-col items-center justify-center flex-1 p-2 gap-y-2 hover:cursor-pointer">
           <Icon path={mdiFilterSettings} size={2} />
           <span className="text-sm font-bold">FILTERS</span>
           
         </div>
-        <button className="flex items-center justify-center h-6 w-full bg-steel-blue bg-opacity-30 hover:bg-opacity-40 transition-all"
+        <button className="flex items-center justify-center w-full h-6 transition-all rounded-lg bg-steel-blue bg-opacity-30 hover:bg-opacity-40"
         onClick={handleShowHideFilters}>
           
           <div className="text-xs"> SHOW FILTERS / HIDE </div>
@@ -118,35 +118,30 @@ function TrackerFilter (props) {
         
       </section>
 
-      <div className="max-640px-hidden flex flex-wrap gap-x-4 gap-y-4 justify-between transition-all" ref={filtersContainerRef}>
+      <div className="flex flex-wrap justify-between transition-all max-640px-hidden gap-x-4 gap-y-4" ref={filtersContainerRef}>
 
-        <section className="FILTER-SECTION-DATES h-fit min-w-fit flex-grow max-640px-flex-column-w-full flex items-center p-1 
-        bg-black bg-opacity-40  gap-x-2 gap-y-2">
+        <section className="flex items-center flex-grow p-1 bg-black rounded-lg FILTER-SECTION-DATES h-fit min-w-fit max-640px-flex-column-w-full bg-opacity-40 gap-x-2 gap-y-2">
           
-          <div className=" bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 
-          text-black text-xs text-center p-1 ">APP DATE</div>
+          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">APP DATE</div>
           
-          <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs flex-grow">
-            
-            <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+          <div className="flex items-center flex-grow w-full h-6 text-xs max-640px-flex-column-w-full">
+            <input className="w-full p-1 text-white bg-black bg-opacity-25 rounded-lg" 
             type="date" value={appDate.a} onChange={(e) => setAppDate({...appDate, a: e.target.value })}/>
           </div>
           
-          <div className="text-center text-white h-6">-</div>
+          <div className="h-6 text-center text-white">-</div>
 
-          <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs flex-grow">
-          <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+          <div className="flex items-center flex-grow w-full h-6 text-xs max-640px-flex-column-w-full">
+          <input className="w-full p-1 text-white bg-black bg-opacity-25 rounded-lg" 
             type="date" value={appDate.b} onChange={(e) => setAppDate({...appDate, b: e.target.value })}/>
           </div>
           
         </section>
 
-        <section id="filter-app-status" className="text-gray-300 h-fit p-1 bg-black bg-opacity-40
-        flex flex-grow gap-x-2 max-640px-flex-column-w-full ">
-          <div className=" bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 
-          text-black text-xs text-center p-1 ">APP STATUS</div>
-          <div className="bg-black bg-opacity-25 flex flex-grow items-center h-6 max-640px-flex-column-w-full">
-            <select className="bg-black bg-opacity-0 text-xs focus:outline-none h-6 max-640px-flex-column-w-full flex flex-grow items-center" onChange={handleAppStatus}>
+        <section id="filter-app-status" className="flex flex-grow p-1 text-gray-300 bg-black rounded-lg h-fit bg-opacity-40 gap-x-2 max-640px-flex-column-w-full">
+          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">APP STATUS</div>
+          <div className="flex items-center flex-grow h-6 bg-black bg-opacity-25 rounded-lg max-640px-flex-column-w-full">
+            <select className="flex items-center flex-grow h-6 text-xs bg-black bg-opacity-0 rounded-lg focus:outline-none max-640px-flex-column-w-full" onChange={handleAppStatus}>
               {
               applicationStatusOptions.map((status, index) =>(
                 <option key={index} className="bg-jet ">{status.value}</option>
@@ -158,32 +153,28 @@ function TrackerFilter (props) {
           
         </section>
 
-        <section className="h-fit min-w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1
-        bg-black bg-opacity-40 gap-x-2 ">
-          <div className=" bg-yellow-500 w-fit h-6
-          text-black text-xs text-center p-1 min-w-fit max-640px-row">
+        <section className="flex items-center flex-grow p-1 bg-black rounded-lg h-fit min-w-fit max-640px-flex-column-w-full bg-opacity-40 gap-x-2">
+          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg w-fit min-w-fit max-640px-row">
             FAVORITE COMPANY
           </div>
-          <div className=" text-xs h-6 flex flex-grow justify-center items-center pr-1 max-640px-flex-column-w-full w-full">
-            <input className='bg-black bg-opacity-0 text-xs focus:outline-none h-6 flex items-center black-check' name='company_favorite' 
+          <div className="flex items-center justify-center flex-grow w-full h-6 pr-1 text-xs max-640px-flex-column-w-full">
+            <input className='flex items-center h-6 text-xs bg-black bg-opacity-0 focus:outline-none' name='company_favorite' 
             type='checkbox' placeholder='...' checked={favorite.a} 
             onChange={(e) => setFavorite({...favorite, a: e.target.checked})}/>
           </div>
           
         </section>
 
-        <section className="h-fit flex flex-grow items-center p-1  gap-x-2 gap-y-2 max-640px-flex-column-w-full 
-        bg-black bg-opacity-40">
-          <div className=" bg-yellow-500 h-6 text-black text-xs text-center 
-          p-1 w-fit max-640px-flex-column-w-full ">
+        <section className="flex items-center flex-grow p-1 bg-black rounded-lg h-fit gap-x-2 gap-y-2 max-640px-flex-column-w-full bg-opacity-40">
+          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg w-fit max-640px-flex-column-w-full">
             FIT RATING
           </div>
           <div className="flex flex-grow gap-x-4">
 
           
-            <div className="w-fit flex-grow text-md flex justify-center">
+            <div className="flex justify-center flex-grow w-fit text-md">
               <Rating
-              className=' text-gray-400 flex justify-between'
+              className='flex justify-between text-gray-400 '
               initialRating={jobFitRating.a}
               emptySymbol="fa fa-star-o"
               fullSymbol="fa fa-star "
@@ -193,11 +184,11 @@ function TrackerFilter (props) {
               />
             </div>
             <div className="text-white">-</div>
-            <div className="w-fit text-md flex-grow flex justify-center">
+            <div className="flex justify-center flex-grow w-fit text-md">
 
             
               <Rating
-              className=' text-gray-400 flex justify-between'
+              className='flex justify-between text-gray-400 '
               initialRating={jobFitRating.b}
               emptySymbol="fa fa-star-o"
               fullSymbol="fa fa-star "
@@ -208,90 +199,83 @@ function TrackerFilter (props) {
             </div>
           </div>
           <div className="flex items-center max-640px-flex-column-w-full">
-            <button className="bg-steel-blue bg-opacity-50 h-6 text-white text-xs text-center p-1 w-fit max-640px-flex-column-w-full-row hover:bg-opacity-70
-             transition-all" onClick={handleJobFitClear}>
+            <button className="h-6 p-1 text-xs text-center text-white transition-all bg-opacity-50 rounded-lg bg-steel-blue w-fit max-640px-flex-column-w-full-row hover:bg-opacity-70" onClick={handleJobFitClear}>
               CLEAR
             </button>
           </div>
         </section>
         
-        <section className="FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1 
-        bg-black bg-opacity-40 gap-x-2 gap-y-2 ">
+        <section className="flex items-center flex-grow p-1 bg-black rounded-lg FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full bg-opacity-40 gap-x-2 gap-y-2">
           
-          <div className=" bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 
-          text-black text-xs text-center p-1 ">
+          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">
             RESPONSE DATE
           </div>
           
-          <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs ">
+          <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full ">
             
-            <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+            <input className="w-full p-1 text-white bg-black bg-opacity-25" 
             type="date" value={responseDate.a} onChange={(e) => setAppDate({...responseDate, a: e.target.value })}/>
           </div>
           
-          <div className=" text-center  text-white h-6">-</div>
+          <div className="h-6 text-center text-white ">-</div>
 
-          <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs">
+          <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full">
             
-            <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+            <input className="w-full p-1 text-white bg-black bg-opacity-25" 
             type="date" value={responseDate.b} onChange={(e) => setAppDate({...responseDate, b: e.target.value })}/>
           </div>
           
         </section>
 
-        <section className="FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1
-        bg-black bg-opacity-40 gap-x-2 gap-y-2">
+        <section className="flex items-center flex-grow p-1 bg-black rounded-lg FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full bg-opacity-40 gap-x-2 gap-y-2">
           
-          <div className="bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 text-black text-xs text-center p-1">INTERVIEW DATE</div>
+          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">INTERVIEW DATE</div>
           
-          <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs">
+          <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full">
             
-            <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+            <input className="w-full p-1 text-white bg-black bg-opacity-25 rounded-lg" 
             type="date" value={interviewDate.a} onChange={(e) => setAppDate({...interviewDate, a: e.target.value })}/>
           </div>
           
-          <div className=" text-center text-white h-6">-</div>
+          <div className="h-6 text-center text-white ">-</div>
 
-          <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs ">
+          <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full ">
             
-            <input className="bg-black bg-opacity-25 text-white p-1 w-full" 
+            <input className="w-full p-1 text-white bg-black bg-opacity-25 rounded-lg" 
             type="date" value={interviewDate.b} onChange={(e) => setAppDate({...interviewDate, b: e.target.value })}/>
           </div>
           
         </section>
 
-        <section className="FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full flex flex-grow items-center p-1
-        bg-black bg-opacity-40 gap-x-2 gap-y-2">
+        <section className="flex items-center flex-grow p-1 bg-black rounded-lg FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full bg-opacity-40 gap-x-2 gap-y-2">
           
-          <div className="bg-yellow-500 min-w-fit max-640px-flex-column-w-full h-6 text-black text-xs text-center p-1">OFFER AMOUNT</div>
+          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">OFFER AMOUNT</div>
           
-          <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs">
-            <input className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white '
+          <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full">
+            <input className='w-full h-6 text-white bg-black bg-opacity-25 rounded-lg max-640px-flex-column-w-full'
              name='offer_amount_a' type='number' onChange={(e)=>setOfferAmount({...offerAmount, a: parseInt(e.target.value)})}/>
           </div>
           
-          <div className=" text-center text-white h-6">-</div>
+          <div className="h-6 text-center text-white ">-</div>
 
-          <div className="w-full max-640px-flex-column-w-full flex items-center h-6 text-xs ">
-            <input className='bg-black bg-opacity-25 w-full max-640px-flex-column-w-full h-6 text-white'
+          <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full ">
+            <input className='w-full h-6 text-white bg-black bg-opacity-25 rounded-lg max-640px-flex-column-w-full'
              name='offer_amount_b' type='number' onChange={(e)=>setOfferAmount({...offerAmount, b: parseInt(e.target.value)})} />
           </div>
           
         </section>
 
       </div>
-      <section className="flex flex-col bg-gray-2">
+      <section className="flex flex-col bg-black bg-opacity-25 rounded-lg">
 
-          <div className=" max-640px-flex-column-w-full flex h-full w-full text-xs p-1">
-            <button className='bg-green-700 bg-opacity-25 max-640px-flex-column-w-full h-full w-fit  
-            text-white font-bold p-1 hover:bg-opacity-50 transition-all items-center' onClick={handleFilterApply}>
+          <div className="flex w-full h-full p-1 text-xs max-640px-flex-column-w-full">
+            <button className='items-center h-full p-1 font-bold text-white transition-all bg-green-700 bg-opacity-25 rounded-lg max-640px-flex-column-w-full w-fit hover:bg-opacity-50' onClick={handleFilterApply}>
               APPLY
             </button>
           </div>
 
-          <div className="  max-640px-flex-column-w-full flex h-full w-full text-xs p-1">
-            <button className='bg-gray-300 bg-opacity-25 max-640px-flex-column-w-full h-full 
-            text-white font-bold p-1 hover:bg-opacity-50 transition-all items-center' onClick={handleFilterClear}>
+          <div className="flex w-full h-full p-1 text-xs max-640px-flex-column-w-full">
+            <button className='items-center h-full p-1 font-bold text-white transition-all bg-gray-300 bg-opacity-25 rounded-lg max-640px-flex-column-w-full hover:bg-opacity-50' onClick={handleFilterClear}>
               CLEAR
             </button>
           </div>

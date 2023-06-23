@@ -33,13 +33,12 @@ function StatusPie ({jobApps}) {
   },[jobApps])
   return (
    
-    <div className='JOB-APP-STATUS-PIE  flex-grow flex flex-col items-center col-span-1 
-    border border-black border-opacity-30 bg-black-transparent-gradient'>
-      <section className="h-12 w-full flex justify-center text-md text-white items-center bg-black bg-opacity-25 font-bold">
+    <div className='flex flex-col items-center flex-grow col-span-1 border rounded-lg JOB-APP-STATUS-PIE border-slate-800 bg-black-transparent-gradient'>
+      <section className="flex items-center justify-center w-full h-12 font-bold text-white bg-black bg-opacity-25 rounded-lg text-md">
         APPLICATION STATUS PIE
       </section>
       
-      <section className='h-64 w-11/12 flex justify-center items-center overflow-visible '>
+      <section className='flex items-center justify-center w-11/12 h-64 overflow-visible '>
         <ResponsivePie
         data={data}
         margin={{ top: 20, right: 40, bottom: 20, left: 40 }}

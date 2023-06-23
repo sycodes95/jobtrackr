@@ -24,24 +24,23 @@ function ResponseRatio (props) {
     jobApps && getRatio()
   },[jobApps])
   return(
-    <div className="flex flex-col items-center gap-x-2 border border-black border-opacity-25 flex-grow">
-      <div className="text-white text-sm flex flex-grow justify-center items-center gap-x-2 bg-black bg-opacity-25 p-2 
-      w-full">
+    <div className="flex flex-col items-center flex-grow border rounded-lg shadow-md border-slate-800 gap-x-2">
+      <div className="flex items-center justify-center flex-grow w-full p-2 text-sm text-white bg-black bg-opacity-25 rounded-lg gap-x-2">
         
         <span className="text-white text-opacity-50">APPLICATION TO RESPONSE RATIO</span>
         {
         /*
-        <a className='my-anchor-element flex justify-center items-center text-white' 
+        <a className='flex items-center justify-center text-white my-anchor-element' 
         data-tooltip-id="my-tooltip" 
         data-tooltip-content="Ratio of applications that received a response to all applications.">
-          <Icon className='hover:cursor-pointer hover:text-slate-300  transition-all' path={mdiHelpCircle} size={0.7} />
+          <Icon className='transition-all hover:cursor-pointer hover:text-slate-300' path={mdiHelpCircle} size={0.7} />
         </a>
         <Tooltip anchorSelect=".my-anchor-element" />
         */
         }
         
       </div>
-      <div className="w-28 h-28 flex items-center p-2">
+      <div className="flex items-center p-2 w-28 h-28">
         <CircularProgressbar
         value={responseRatio}
         text={`${responseRatio}%`}

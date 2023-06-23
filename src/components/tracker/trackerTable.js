@@ -44,42 +44,34 @@ function TrackerTable (props) {
   
   return (
     
-    <div className='TRACKER-TABLE w-full relative overflow-x-auto rounded-sm' ref={containerRef}>
+    <div className='relative w-full p-2 overflow-x-auto bg-black border border-gray-800 rounded-lg shadow-md TRACKER-TABLE bg-opacity-10' ref={containerRef}>
       {
       fetchLoading && 
-      <div className="absolute top-0 left-0 h-full w-full flex justify-center items-center z-40 ">
-        <div className="absolute bg-black bg-opacity-25  h-full w-full z-40 "></div>
+      <div className="absolute top-0 left-0 z-40 flex items-center justify-center w-full h-full ">
+        <div className="absolute z-40 w-full h-full bg-black bg-opacity-25 "></div>
         
       </div>
       }
-      
-      
-        
-      
-      <table className="w-full relative rounded-md ">
+      <table className="relative w-full rounded-md ">
         <thead className='sticky top-0 z-10 border-b-2 border-black border-opacity-20 '>
-          <tr className=" h-12 bg-blur rounded-md text-left">
-            <th className='text-xs text-white w-6 pointer-events-none'>
+          <tr className="h-12 text-left rounded-md bg-blur">
+            <th className='w-6 text-xs text-white pointer-events-none'>
             </th>
-            <th className='text-xs text-white w-6 pointer-events-none'>
+            <th className='w-6 text-xs text-white pointer-events-none'>
             </th>
             
             {
             categories &&
             categories.map((cat, index) => (
-            <th key={index} className='text-xs text-gray-400 
-            whitespace-nowrap hover:cursor-pointer hover:text-opacity-70 transition-all
-            overflow-hidden pr-4' onClick={()=>handleCategorySort(index)} >
+            <th key={index} className='pr-4 overflow-hidden text-xs text-gray-400 transition-all whitespace-nowrap hover:cursor-pointer hover:text-opacity-70' onClick={()=>handleCategorySort(index)} >
               {cat.category }
             </th>
             ))
             }
-            <th className='w-6 text-xs text-white p-2 pointer-events-none
-            '>
+            <th className='w-6 p-2 text-xs text-white pointer-events-none '>
             
             </th>
-            <th className='w-6 text-xs text-white p-2 pointer-events-none
-            '>
+            <th className='w-6 p-2 text-xs text-white pointer-events-none '>
             
             </th>
 
@@ -88,7 +80,7 @@ function TrackerTable (props) {
         <tbody className="h-full overflow-y-scroll pointer-events-none ">
           {
           jobAppsIsEmpty &&
-          <tr className="text-center text-white text-sm">
+          <tr className="text-sm text-center text-white">
             <td colSpan='17'>No Results...</td>
           </tr>
           }
@@ -146,14 +138,14 @@ function TrackerTable (props) {
               
               
               <td className="whitespace-nowrap">{moment(obj.job_app_date).format("YYYY-MM-DD")}</td>
-              <td className="whitespace-nowrap h-6 w-6 flex items-center">
+              <td className="flex items-center w-6 h-6 whitespace-nowrap">
                 {obj.company_favorite && <Icon className="" path={mdiHeart} size={0.7} />}
               </td>
-              <td className="whitespace-nowrap overflow-ellipsis overflow-hidden">{obj.company_name}</td>
-              <td className="whitespace-nowrap overflow-ellipsis overflow-hidden">{obj.company_website}</td>
+              <td className="overflow-hidden whitespace-nowrap overflow-ellipsis">{obj.company_name}</td>
+              <td className="overflow-hidden whitespace-nowrap overflow-ellipsis">{obj.company_website}</td>
               <td className="whitespace-nowrap">{obj.job_app_method}</td>
-              <td className="whitespace-nowrap overflow-ellipsis overflow-hidden">{obj.job_source_website}</td>
-              <td className="whitespace-nowrap overflow-ellipsis overflow-hidden">{obj.job_position}</td>
+              <td className="overflow-hidden whitespace-nowrap overflow-ellipsis">{obj.job_source_website}</td>
+              <td className="overflow-hidden whitespace-nowrap overflow-ellipsis">{obj.job_position}</td>
               <td className="whitespace-nowrap">
               {
               <Rating
@@ -191,7 +183,7 @@ function TrackerTable (props) {
               <td className="whitespace-nowrap">{obj.rejected}</td>
 
 
-              <td className="whitespace-nowrap overflow-ellipsis overflow-hidden  ">{obj.offer_amount}</td>
+              <td className="overflow-hidden whitespace-nowrap overflow-ellipsis ">{obj.offer_amount}</td>
               
               <td className="whitespace-nowrap ">
                 <Dialog.Root>

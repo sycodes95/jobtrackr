@@ -56,13 +56,12 @@ function RejectionStageBar({jobApps}) {
   },[jobApps])
   
   return (
-    <div className='col-span-2 h-full w-full flex flex-col items-center
-    border border-black border-opacity-30'>
-      <section className="h-12 bg-black bg-opacity-25 w-full flex justify-center text-md text-white items-center  font-bold">
+    <div className='flex flex-col items-center w-full h-full col-span-2 border rounded-lg shadow-md border-slate-800 bg-black-transparent-gradient'>
+      <section className="flex items-center justify-center w-full h-12 font-bold text-white bg-black bg-opacity-25 rounded-lg text-md ">
         REJECTIONS BY STAGE
       </section>
 
-      <section className='h-64 w-11/12 top-0 left-0 flex justify-center items-center'>
+      <section className='top-0 left-0 flex items-center justify-center w-11/12 h-64'>
         <ResponsiveBar
           data={data}
           keys={[

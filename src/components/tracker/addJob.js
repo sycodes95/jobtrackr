@@ -29,7 +29,7 @@ function AddJob (props) {
     company_name: null, //STRING
     company_website: null, //STRING LINK
     company_favorite: null, //BOOLEAN
-    job_app_date: '', //DATE
+    job_app_date: null, //DATE
     job_app_method: null,//STRING OPTIONS
     job_source_website: null, //STRING LINK
     job_position: null, //STRING

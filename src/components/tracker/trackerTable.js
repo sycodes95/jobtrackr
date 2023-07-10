@@ -52,9 +52,9 @@ function TrackerTable (props) {
         
       </div>
       }
-      <table className="relative w-full rounded-md ">
-        <thead className='sticky top-0 z-10 border-b-2 border-black border-opacity-20 '>
-          <tr className="h-12 text-left rounded-md bg-blur">
+      <table className="relative w-full overflow-visible rounded-md ">
+        <thead className='top-0 z-10 border-b-2 border-black border-opacity-20 '>
+          <tr className="w-full h-12 text-left rounded-md">
             <th className='w-6 text-xs text-white pointer-events-none'>
             </th>
             <th className='w-6 text-xs text-white pointer-events-none'>

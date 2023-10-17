@@ -1,21 +1,19 @@
 
 function Footer () {
   return (
-    <div className="relative h-fit w-full flex justify-center items-center text-white bg-black">
+    <div className="relative flex items-center justify-center w-full text-white bg-black h-fit">
       
-      <div className="w-fit h-fit text-xs flex flex-col p-8  items-center bg-striped-dark">
-        <p className=" bg-opacity-25 p-2 whitespace-nowrap">DESIGNED AND CREATED BY KEVIN KIM</p>
-        <a className="text-white text-sm font-bold  p-1 w-full
-         flex gap-x-2 items-center justify-center hover:text-green-300 transition-all"
+      <div className="flex flex-col items-center p-8 text-xs w-fit h-fit bg-striped-dark">
+        <p className="p-2 bg-opacity-25  whitespace-nowrap">DESIGNED AND CREATED BY KEVIN KIM</p>
+        <a className="flex items-center justify-center w-full p-1 text-sm font-bold text-white transition-all gap-x-2 hover:text-green-300"
          target="_blank" href="https://github.com/sycodes95" rel="noreferrer">
-          <i class="devicon-github-original text-lg"></i>
+          <i className="text-lg devicon-github-original"></i>
           GITHUB/SYCODES95
           
         </a> 
       </div>
 
-      <div className="w-fit h-fit text-xs flex flex-col p-4 items-center
-      absolute top-1/2 -translate-y-1/2 right-0 bg-red-700 bg-opacity-20 max-width-display-none">
+      <div className="absolute right-0 flex flex-col items-center p-4 text-xs -translate-y-1/2 bg-red-700 w-fit h-fit top-1/2 bg-opacity-20 max-width-display-none">
         <p>Any bugs or suggestions? Contact: jobtrackrsupport@gmail.com</p>
       </div>
 

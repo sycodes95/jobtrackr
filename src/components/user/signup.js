@@ -94,7 +94,7 @@ function Signup () {
   }
   
   return(
-    <div className="flex flex-col items-center flex-1 SIGN-UP-CONTAINER h-fit">
+    <div className="flex flex-col items-center h-full grow">
       
       <form className="flex flex-col items-center p-4 mt-8 text-sm text-black bg-black bg-opacity-25 border rounded-md shadow-md SIGN-UP-FORM gap-y-2 border-slate-800" >
         <div className="w-48 h-48 bg-earth">

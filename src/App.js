@@ -17,13 +17,12 @@ function App() {
   
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen gap-8 m-0 APP-CONTAINER bg-gray">
+      <div className="flex flex-col min-h-screen m-0 APP-CONTAINER bg-gray">
         <div>
           <Header/>
         </div>
         
-        
-        <div className='relative flex-grow h-full mb-16'>
+        <div className='relative flex-grow h-full'>
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/signup" element={<Signup/>}/>
@@ -34,10 +33,7 @@ function App() {
             <Route path="*" element={<Page404/>}/>
           </Routes>
         </div>
-
-        
           <Footer/>
-        
         
       </div>
       

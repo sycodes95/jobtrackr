@@ -55,8 +55,8 @@ function Header () {
     verifyToken()
   },[])
   return (
-    <section className="w-full h-16 pl-2 pr-2 bg-black bg-opacity-50 shadow-lg HEADER-CONTAINER">
-      <div className="flex items-center justify-between h-full ml-auto mr-auto text-white max-w-7xl">
+    <section className="w-full h-16 pl-2 pr-2 bg-white shadow-lg HEADER-CONTAINER">
+      <div className="flex items-center justify-between h-full ml-auto mr-auto text-gray-700 max-w-7xl">
         <div className="flex items-center h-full overflow-hidden HEADER-LOGO w-72 ">
           <img
             className="h-40 cursor-pointer"
@@ -95,7 +95,7 @@ function Header () {
               </div>
 
               <div
-                className="absolute right-0 z-50 hidden bg-black bg-opacity-75 border-4 border-black border-opacity-25 top-8 backdrop-blur-sm"
+                className="absolute right-0 z-50 hidden bg-black bg-opacity-75 border-4 border-gray-300 border-opacity-25 top-8 backdrop-blur-sm"
                 ref={profileMenuRef}
               >
                 <ul className="z-50 flex flex-col p-1 w-28 gap-y-1">
@@ -114,7 +114,7 @@ function Header () {
                   </li>
                 </ul>
 
-                <ul className="z-50 flex flex-col p-1 border-t border-gray-800 w-28 gap-y-1">
+                <ul className="z-50 flex flex-col p-1 border-t border-gray-300 w-28 gap-y-1">
                   {/*
                 <li className='flex items-center justify-start w-full h-8 pl-2 transition-all hover:bg-black hover:bg-opacity-40' 
                   onClick={()=> navigate('/settings')}>

@@ -44,7 +44,7 @@ function TrackerTable (props) {
   
   return (
     
-    <div className='relative w-full p-2 overflow-x-auto bg-black border border-gray-800 rounded-lg shadow-md TRACKER-TABLE bg-opacity-10' ref={containerRef}>
+    <div className='relative w-full p-2 overflow-x-auto bg-black border border-gray-300 rounded-lg shadow-md TRACKER-TABLE bg-opacity-10' ref={containerRef}>
       {
       fetchLoading && 
       <div className="absolute top-0 left-0 z-40 flex items-center justify-center w-full h-full ">
@@ -53,11 +53,11 @@ function TrackerTable (props) {
       </div>
       }
       <table className="relative w-full overflow-visible rounded-md ">
-        <thead className='top-0 z-10 border-b-2 border-black border-opacity-20 '>
+        <thead className='top-0 z-10 border-b-2 border-gray-300 border-opacity-20 '>
           <tr className="w-full h-12 text-left rounded-md">
-            <th className='w-6 text-xs text-white pointer-events-none'>
+            <th className='w-6 text-xs text-gray-700 pointer-events-none'>
             </th>
-            <th className='w-6 text-xs text-white pointer-events-none'>
+            <th className='w-6 text-xs text-gray-700 pointer-events-none'>
             </th>
             
             {
@@ -68,10 +68,10 @@ function TrackerTable (props) {
             </th>
             ))
             }
-            <th className='w-6 p-2 text-xs text-white pointer-events-none '>
+            <th className='w-6 p-2 text-xs text-gray-700 pointer-events-none '>
             
             </th>
-            <th className='w-6 p-2 text-xs text-white pointer-events-none '>
+            <th className='w-6 p-2 text-xs text-gray-700 pointer-events-none '>
             
             </th>
 
@@ -80,7 +80,7 @@ function TrackerTable (props) {
         <tbody className="h-full overflow-y-scroll pointer-events-none ">
           {
           jobAppsIsEmpty &&
-          <tr className="text-sm text-center text-white">
+          <tr className="text-sm text-center text-gray-700">
             <td colSpan='17'>No Results...</td>
           </tr>
           }
@@ -88,7 +88,7 @@ function TrackerTable (props) {
           jobApps &&
           jobApps.map((obj, index) => (
             <tr key={index} className={`text-xs font-thin h-7
-            ${!obj.interview_date && !obj.rejected && !obj.offer_amount && 'text-white'}
+            ${!obj.interview_date && !obj.rejected && !obj.offer_amount && 'text-gray-700'}
             ${obj.interview_date && !obj.offer_amount && !obj.rejected && 'text-steel-blue'}
             ${obj.offer_amount && 'text-yellow-400'}
             ${obj.rejected && 'text-red-600'}

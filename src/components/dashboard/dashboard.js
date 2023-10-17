@@ -127,11 +127,11 @@ function Dashboard () {
     <div className="flex justify-center w-full h-full p-8 DASHBOARD-CONTAINER">
       {
       user_id &&
-      <div className="flex flex-col items-center w-full h-full p-2 text-black max-w-7xl gap-x-2 gap-y-2">
+      <div className="flex flex-col items-center w-full h-full max-w-5xl p-2 text-gray-700 gap-x-2 gap-y-2">
         <section className="flex justify-between w-full h-full col-start-1 DASHBOARD-DATE-SORT border-opacity-30 col-span-full gap-x-2 ">
 
           
-          <div className="flex justify-between gap-4 p-2 text-xs text-white bg-black bg-opacity-25 border rounded-lg shadow-md border-slate-800">
+          <div className="flex justify-between gap-4 p-2 text-xs text-gray-700 bg-black bg-opacity-25 border rounded-lg shadow-md border-slate-800">
             <button className="p-1 transition-all border-b border-white"
             name="ALL" onClick={handleDateSort} ref={sortAllRef}>
               ALL
@@ -150,7 +150,7 @@ function Dashboard () {
             </button>
           </div>
 
-          <div className="flex items-center w-full p-2 text-xs text-white bg-black bg-opacity-25 border rounded-lg shadow-md border-slate-800 gap-x-2">
+          <div className="flex items-center w-full p-2 text-xs text-gray-700 bg-black bg-opacity-25 border rounded-lg shadow-md border-slate-800 gap-x-2">
             <div className="border-b border-white border-opacity-0 whitespace-nowrap" 
             ref={sortCustomRangeRef}>
               CUSTOM RANGE

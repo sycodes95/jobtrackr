@@ -51,8 +51,8 @@ function OfferAmount (props) {
     jobApps && getData()
   },[jobApps])
   return(
-    <div className="flex flex-grow p-2 text-white bg-black bg-opacity-25 border rounded-lg shadow-md gap-x-2 gap-y-2 max-width-900px-flex-col border-slate-800">
-      <section className="flex items-center justify-center p-2 font-bold text-white bg-black bg-opacity-25 rounded-lg text-md whitespace-nowrap">
+    <div className="flex flex-grow p-2 text-gray-700 bg-black bg-opacity-25 border rounded-lg shadow-md gap-x-2 gap-y-2 max-width-900px-flex-col border-slate-800">
+      <section className="flex items-center justify-center p-2 font-bold text-gray-700 bg-black bg-opacity-25 rounded-lg text-md whitespace-nowrap">
         <div>
           OFFER RANGE $
         </div>

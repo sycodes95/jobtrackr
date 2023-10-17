@@ -25,12 +25,12 @@ function ResponseRatio (props) {
   },[jobApps])
   return(
     <div className="flex flex-col items-center flex-grow border rounded-lg shadow-md border-slate-800 gap-x-2">
-      <div className="flex items-center justify-center flex-grow w-full p-2 text-sm text-white bg-black bg-opacity-25 rounded-lg gap-x-2">
+      <div className="flex items-center justify-center flex-grow w-full p-2 text-sm text-gray-700 bg-black bg-opacity-25 rounded-lg gap-x-2">
         
-        <span className="text-white text-opacity-50">APPLICATION TO RESPONSE RATIO</span>
+        <span className="text-gray-700 text-opacity-50">APPLICATION TO RESPONSE RATIO</span>
         {
         /*
-        <a className='flex items-center justify-center text-white my-anchor-element' 
+        <a className='flex items-center justify-center text-gray-700 my-anchor-element' 
         data-tooltip-id="my-tooltip" 
         data-tooltip-content="Ratio of applications that received a response to all applications.">
           <Icon className='transition-all hover:cursor-pointer hover:text-slate-300' path={mdiHelpCircle} size={0.7} />

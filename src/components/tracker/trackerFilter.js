@@ -94,8 +94,8 @@ function TrackerFilter (props) {
 
   
   return(
-    <div className="flex w-full p-2 border border-gray-800 rounded-lg shadow-md max-640px-flex-column-w-full gap-x-4 gap-y-4 h-fit">
-      <section className="flex text-white FILTER-LOGO">
+    <div className="flex w-full p-2 rounded-lg shadow-md max-640px-flex-column-w-full gap-x-4 gap-y-4 h-fit">
+      <section className="flex text-gray-700 FILTER-LOGO">
         <div className="flex flex-col items-center justify-center flex-1 p-2 bg-black bg-opacity-25 rounded-lg gap-y-2">
           <Icon path={mdiFilterSettings} size={1.5} />
           <span className="text-xs font-bold">FILTERS</span>
@@ -103,7 +103,7 @@ function TrackerFilter (props) {
         
       </section>
 
-      <section className="hidden p-2 text-white bg-black bg-opacity-25 rounded-lg FILTER-LOGO-SMALL ">
+      <section className="hidden p-2 text-gray-700 bg-black bg-opacity-25 rounded-lg FILTER-LOGO-SMALL ">
         <div className="flex flex-col items-center justify-center flex-1 p-2 gap-y-2 hover:cursor-pointer">
           <Icon path={mdiFilterSettings} size={2} />
           <span className="text-sm font-bold">FILTERS</span>
@@ -122,24 +122,24 @@ function TrackerFilter (props) {
 
         <section className="flex items-center flex-grow p-1 bg-black rounded-lg FILTER-SECTION-DATES h-fit min-w-fit max-640px-flex-column-w-full bg-opacity-40 gap-x-2 gap-y-2">
           
-          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">APP DATE</div>
+          <div className="h-6 p-1 text-xs text-center text-gray-700 bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">APP DATE</div>
           
           <div className="flex items-center flex-grow w-full h-6 text-xs max-640px-flex-column-w-full">
-            <input className="w-full p-1 text-white bg-black bg-opacity-25 rounded-lg" 
+            <input className="w-full p-1 text-gray-700 bg-black bg-opacity-25 rounded-lg" 
             type="date" value={appDate.a} onChange={(e) => setAppDate({...appDate, a: e.target.value })}/>
           </div>
           
-          <div className="h-6 text-center text-white">-</div>
+          <div className="h-6 text-center text-gray-700">-</div>
 
           <div className="flex items-center flex-grow w-full h-6 text-xs max-640px-flex-column-w-full">
-          <input className="w-full p-1 text-white bg-black bg-opacity-25 rounded-lg" 
+          <input className="w-full p-1 text-gray-700 bg-black bg-opacity-25 rounded-lg" 
             type="date" value={appDate.b} onChange={(e) => setAppDate({...appDate, b: e.target.value })}/>
           </div>
           
         </section>
 
         <section id="filter-app-status" className="flex flex-grow p-1 text-gray-300 bg-black rounded-lg h-fit bg-opacity-40 gap-x-2 max-640px-flex-column-w-full">
-          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">APP STATUS</div>
+          <div className="h-6 p-1 text-xs text-center text-gray-700 bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">APP STATUS</div>
           <div className="flex items-center flex-grow h-6 bg-black bg-opacity-25 rounded-lg max-640px-flex-column-w-full">
             <select className="flex items-center flex-grow h-6 text-xs bg-black bg-opacity-0 rounded-lg focus:outline-none max-640px-flex-column-w-full" onChange={handleAppStatus}>
               {
@@ -154,7 +154,7 @@ function TrackerFilter (props) {
         </section>
 
         <section className="flex items-center flex-grow p-1 bg-black rounded-lg h-fit min-w-fit max-640px-flex-column-w-full bg-opacity-40 gap-x-2">
-          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg w-fit min-w-fit max-640px-row">
+          <div className="h-6 p-1 text-xs text-center text-gray-700 bg-white rounded-lg w-fit min-w-fit max-640px-row">
             FAVORITE COMPANY
           </div>
           <div className="flex items-center justify-center flex-grow w-full h-6 pr-1 text-xs max-640px-flex-column-w-full">
@@ -166,7 +166,7 @@ function TrackerFilter (props) {
         </section>
 
         <section className="flex items-center flex-grow p-1 bg-black rounded-lg h-fit gap-x-2 gap-y-2 max-640px-flex-column-w-full bg-opacity-40">
-          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg w-fit max-640px-flex-column-w-full">
+          <div className="h-6 p-1 text-xs text-center text-gray-700 bg-white rounded-lg w-fit max-640px-flex-column-w-full">
             FIT RATING
           </div>
           <div className="flex flex-grow gap-x-4">
@@ -183,7 +183,7 @@ function TrackerFilter (props) {
               onChange={(value)=>setJobFitRating({...jobFitRating, a: value})}
               />
             </div>
-            <div className="text-white">-</div>
+            <div className="text-gray-700">-</div>
             <div className="flex justify-center flex-grow w-fit text-md">
 
             
@@ -199,7 +199,7 @@ function TrackerFilter (props) {
             </div>
           </div>
           <div className="flex items-center max-640px-flex-column-w-full">
-            <button className="h-6 p-1 text-xs text-center text-white transition-all bg-opacity-50 rounded-lg bg-steel-blue w-fit max-640px-flex-column-w-full-row hover:bg-opacity-70" onClick={handleJobFitClear}>
+            <button className="h-6 p-1 text-xs text-center text-gray-700 transition-all bg-opacity-50 rounded-lg bg-steel-blue w-fit max-640px-flex-column-w-full-row hover:bg-opacity-70" onClick={handleJobFitClear}>
               CLEAR
             </button>
           </div>
@@ -207,21 +207,21 @@ function TrackerFilter (props) {
         
         <section className="flex items-center flex-grow p-1 bg-black rounded-lg FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full bg-opacity-40 gap-x-2 gap-y-2">
           
-          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">
+          <div className="h-6 p-1 text-xs text-center text-gray-700 bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">
             RESPONSE DATE
           </div>
           
           <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full ">
             
-            <input className="w-full p-1 text-white bg-black bg-opacity-25" 
+            <input className="w-full p-1 text-gray-700 bg-black bg-opacity-25" 
             type="date" value={responseDate.a} onChange={(e) => setAppDate({...responseDate, a: e.target.value })}/>
           </div>
           
-          <div className="h-6 text-center text-white ">-</div>
+          <div className="h-6 text-center text-gray-700 ">-</div>
 
           <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full">
             
-            <input className="w-full p-1 text-white bg-black bg-opacity-25" 
+            <input className="w-full p-1 text-gray-700 bg-black bg-opacity-25" 
             type="date" value={responseDate.b} onChange={(e) => setAppDate({...responseDate, b: e.target.value })}/>
           </div>
           
@@ -229,19 +229,19 @@ function TrackerFilter (props) {
 
         <section className="flex items-center flex-grow p-1 bg-black rounded-lg FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full bg-opacity-40 gap-x-2 gap-y-2">
           
-          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">INTERVIEW DATE</div>
+          <div className="h-6 p-1 text-xs text-center text-gray-700 bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">INTERVIEW DATE</div>
           
           <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full">
             
-            <input className="w-full p-1 text-white bg-black bg-opacity-25 rounded-lg" 
+            <input className="w-full p-1 text-gray-700 bg-black bg-opacity-25 rounded-lg" 
             type="date" value={interviewDate.a} onChange={(e) => setAppDate({...interviewDate, a: e.target.value })}/>
           </div>
           
-          <div className="h-6 text-center text-white ">-</div>
+          <div className="h-6 text-center text-gray-700 ">-</div>
 
           <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full ">
             
-            <input className="w-full p-1 text-white bg-black bg-opacity-25 rounded-lg" 
+            <input className="w-full p-1 text-gray-700 bg-black bg-opacity-25 rounded-lg" 
             type="date" value={interviewDate.b} onChange={(e) => setAppDate({...interviewDate, b: e.target.value })}/>
           </div>
           
@@ -249,17 +249,17 @@ function TrackerFilter (props) {
 
         <section className="flex items-center flex-grow p-1 bg-black rounded-lg FILTER-SECTION-DATES h-fit w-fit max-640px-flex-column-w-full bg-opacity-40 gap-x-2 gap-y-2">
           
-          <div className="h-6 p-1 text-xs text-center text-black bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">OFFER AMOUNT</div>
+          <div className="h-6 p-1 text-xs text-center text-gray-700 bg-white rounded-lg min-w-fit max-640px-flex-column-w-full">OFFER AMOUNT</div>
           
           <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full">
-            <input className='w-full h-6 text-white bg-black bg-opacity-25 rounded-lg max-640px-flex-column-w-full'
+            <input className='w-full h-6 text-gray-700 bg-black bg-opacity-25 rounded-lg max-640px-flex-column-w-full'
              name='offer_amount_a' type='number' onChange={(e)=>setOfferAmount({...offerAmount, a: parseInt(e.target.value)})}/>
           </div>
           
-          <div className="h-6 text-center text-white ">-</div>
+          <div className="h-6 text-center text-gray-700 ">-</div>
 
           <div className="flex items-center w-full h-6 text-xs max-640px-flex-column-w-full ">
-            <input className='w-full h-6 text-white bg-black bg-opacity-25 rounded-lg max-640px-flex-column-w-full'
+            <input className='w-full h-6 text-gray-700 bg-black bg-opacity-25 rounded-lg max-640px-flex-column-w-full'
              name='offer_amount_b' type='number' onChange={(e)=>setOfferAmount({...offerAmount, b: parseInt(e.target.value)})} />
           </div>
           
@@ -269,13 +269,13 @@ function TrackerFilter (props) {
       <section className="flex flex-col bg-black bg-opacity-25 rounded-lg">
 
           <div className="flex w-full h-full p-1 text-xs max-640px-flex-column-w-full">
-            <button className='items-center h-full p-1 font-bold text-white transition-all bg-green-700 bg-opacity-25 rounded-lg max-640px-flex-column-w-full w-fit hover:bg-opacity-50' onClick={handleFilterApply}>
+            <button className='items-center h-full p-1 font-bold text-gray-700 transition-all bg-green-700 bg-opacity-25 rounded-lg max-640px-flex-column-w-full w-fit hover:bg-opacity-50' onClick={handleFilterApply}>
               APPLY
             </button>
           </div>
 
           <div className="flex w-full h-full p-1 text-xs max-640px-flex-column-w-full">
-            <button className='items-center h-full p-1 font-bold text-white transition-all bg-gray-300 bg-opacity-25 rounded-lg max-640px-flex-column-w-full hover:bg-opacity-50' onClick={handleFilterClear}>
+            <button className='items-center h-full p-1 font-bold text-gray-700 transition-all bg-gray-300 bg-opacity-25 rounded-lg max-640px-flex-column-w-full hover:bg-opacity-50' onClick={handleFilterClear}>
               CLEAR
             </button>
           </div>

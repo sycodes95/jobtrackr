@@ -72,24 +72,24 @@ function Login () {
   return(
     <div className="flex flex-col items-center flex-1 h-full pt-16 pb-16 LOG-IN-CONTAINER ">
       
-      <form className="flex flex-col items-center p-4 pb-8 text-sm text-black bg-black bg-opacity-25 border rounded-md shadow-md LOG-IN-FORM gap-y-2 border-slate-800">
+      <form className="flex flex-col items-center p-4 pb-8 text-sm text-gray-700 bg-black bg-opacity-25 border rounded-md shadow-md LOG-IN-FORM gap-y-2 border-slate-800">
         <div className="w-48 h-48 bg-earth">
         </div>
-        <div className="flex items-center justify-center w-full h-12 text-2xl text-white rounded-sm ">AUTHORIZATION</div>
+        <div className="flex items-center justify-center w-full h-12 text-2xl text-gray-700 rounded-sm ">AUTHORIZATION</div>
         
         
-        <label className="text-white font-black-outline">Email</label>
-        <input className="w-full h-10 p-1 text-xl text-white bg-black bg-opacity-25 border border-black rounded-sm caret-white" name="email" type="email" value={formData.email} onChange={handleInputChange}/>
+        <label className="text-gray-700 font-black-outline">Email</label>
+        <input className="w-full h-10 p-1 text-xl text-gray-700 bg-black bg-opacity-25 border border-gray-300 rounded-sm caret-white" name="email" type="email" value={formData.email} onChange={handleInputChange}/>
         <div className="h-4 text-red-600">{loginError}</div>
 
-        <label className="text-white font-black-outline">Password</label>
-        <input className="w-full h-10 p-1 text-xl text-white bg-black bg-opacity-25 border border-black rounded-sm caret-white" 
+        <label className="text-gray-700 font-black-outline">Password</label>
+        <input className="w-full h-10 p-1 text-xl text-gray-700 bg-black bg-opacity-25 border border-gray-300 rounded-sm caret-white" 
         name="password" type="password" value={formData.password} onChange={handleInputChange}/>
         <div className="h-4 text-red-600"></div>
 
-        <button className="w-full h-10 text-xl text-white transition-colors bg-yellow-500 bg-opacity-50 rounded-sm hover:bg-opacity-25 font-black-outline"
+        <button className="w-full h-10 text-xl text-gray-700 transition-colors bg-yellow-500 bg-opacity-50 rounded-sm hover:bg-opacity-25 font-black-outline"
          onClick={handleLogIn}>LOG IN</button>
-        <button className="w-full h-6 mt-4 text-xs text-white transition-colors bg-red-800 bg-opacity-50 rounded-sm hover:bg-opacity-25 font-black-outline"
+        <button className="w-full h-6 mt-4 text-xs text-gray-700 transition-colors bg-red-800 bg-opacity-50 rounded-sm hover:bg-opacity-25 font-black-outline"
          onClick={handleDemoLogIn}>USE DEMO ACCOUNT</button>
       </form>
     </div>

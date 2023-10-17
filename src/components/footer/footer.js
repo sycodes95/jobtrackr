@@ -1,11 +1,11 @@
 
 function Footer () {
   return (
-    <div className="relative flex items-center justify-center w-full text-white bg-black h-fit">
+    <div className="relative flex items-center justify-center w-full text-gray-700 bg-black h-fit">
       
       <div className="flex flex-col items-center p-8 text-xs w-fit h-fit bg-striped-dark">
         <p className="p-2 bg-opacity-25  whitespace-nowrap">DESIGNED AND CREATED BY KEVIN KIM</p>
-        <a className="flex items-center justify-center w-full p-1 text-sm font-bold text-white transition-all gap-x-2 hover:text-green-300"
+        <a className="flex items-center justify-center w-full p-1 text-sm font-bold text-gray-700 transition-all gap-x-2 hover:text-green-300"
          target="_blank" href="https://github.com/sycodes95" rel="noreferrer">
           <i className="text-lg devicon-github-original"></i>
           GITHUB/SYCODES95

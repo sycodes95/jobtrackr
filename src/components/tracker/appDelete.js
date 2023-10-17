@@ -28,8 +28,8 @@ function AppDelete (props) {
   }
   return(
     <div className='flex flex-col w-64 gap-4 border rounded-lg shadow-md bg-gray border-slate-800'>
-      <section className="relative flex justify-center h-8 pl-4 pr-4 text-sm font-bold text-center text-white bg-black bg-opacity-25 rounded-lg min-w-fit">
-        <div className="flex items-center text-white min-w-fit">CONFIRM DELETE</div>
+      <section className="relative flex justify-center h-8 pl-4 pr-4 text-sm font-bold text-center text-gray-700 bg-black bg-opacity-25 rounded-lg min-w-fit">
+        <div className="flex items-center text-gray-700 min-w-fit">CONFIRM DELETE</div>
         <div className="absolute right-0 flex items-center h-full">
           <Dialog.Close className='w-8 h-full text-lg text-center transition-all duration-300 hover:text-red-500 '>
             X
@@ -37,9 +37,9 @@ function AppDelete (props) {
         </div>
       </section>
         
-      <section className='flex flex-col flex-wrap justify-center w-full gap-8 p-4 text-sm text-white break-word overflow-ellipsis'>
+      <section className='flex flex-col flex-wrap justify-center w-full gap-8 p-4 text-sm text-gray-700 break-word overflow-ellipsis'>
         <p>This will item be deleted permanently, are you sure? </p>
-        <div className='w-full mb-4 text-sm text-white break-word'>
+        <div className='w-full mb-4 text-sm text-gray-700 break-word'>
           <p className='flex gap-2'>Company Name : <p className='text-blue-400'>{jobApp.company_name.toUpperCase()}</p></p>
         </div>
         <div className='grid w-full grid-cols-2 gap-2 text-center '>
@@ -61,7 +61,7 @@ function AppDelete (props) {
             }
             
           </button>
-          <Dialog.Close className='flex justify-center w-full p-2 text-gray-600 transition-all bg-black bg-opacity-25 rounded-lg hover:text-gray-300'>
+          <Dialog.Close className='flex justify-center w-full p-2 text-gray-700 transition-all bg-black bg-opacity-25 rounded-lg hover:text-gray-300'>
             Cancel
           </Dialog.Close>
           

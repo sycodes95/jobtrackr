@@ -27,8 +27,8 @@ function RejectionRatio (props) {
   },[jobApps])
   return(
     <div className="flex flex-col items-center flex-grow border rounded-lg shadow-md gap-x-2 border-slate-800">
-      <div className="flex items-center justify-center flex-grow w-full p-2 text-sm text-white bg-black bg-opacity-25 rounded-lg gap-x-2">
-        <span className="text-white text-opacity-50">INTERVIEW TO REJECTION RATIO</span>
+      <div className="flex items-center justify-center flex-grow w-full p-2 text-sm text-gray-700 bg-black bg-opacity-25 rounded-lg gap-x-2">
+        <span className="text-gray-700 text-opacity-50">INTERVIEW TO REJECTION RATIO</span>
         
       </div>
       <div className="flex items-center p-2 w-28 h-28">

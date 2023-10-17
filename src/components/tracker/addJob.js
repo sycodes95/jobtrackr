@@ -174,7 +174,7 @@ function AddJob (props) {
   return(
     <div className="flex flex-col max-h-full border rounded-lg max-w-7xl bg-gray border-slate-800">
       
-      <section className="grid items-center h-8 pl-4 pr-4 text-sm font-bold text-center text-white bg-black bg-opacity-25 rounded-lg min-w-fit">
+      <section className="grid items-center h-8 pl-4 pr-4 text-sm font-bold text-center text-gray-700 bg-black bg-opacity-25 rounded-lg min-w-fit">
         <div className="col-start-2 min-w-fit">JOB APPLICATION DETAILS</div>
         <div className="flex justify-end col-start-3">
           <Dialog.Close>
@@ -183,10 +183,10 @@ function AddJob (props) {
         </div>
       </section>
 
-      <section className="grid justify-center flex-grow w-full h-full p-4 overflow-x-hidden overflow-y-auto text-sm text-center text-white rounded-lg JOB-FORM gap-x-4">
+      <section className="grid justify-center flex-grow w-full h-full p-4 overflow-x-hidden overflow-y-auto text-sm text-center text-gray-700 rounded-lg JOB-FORM gap-x-4">
         
         <section className='flex flex-col w-64 p-4 COMPANY-DETAILS gap-y-2 '>
-          <div className='flex items-center justify-center p-1 mb-2 text-2xl text-white bg-black bg-opacity-25 rounded-lg gap-x-2'>
+          <div className='flex items-center justify-center p-1 mb-2 text-2xl text-gray-700 bg-black bg-opacity-25 rounded-lg gap-x-2'>
             <span>COMPANY</span>
           </div>
 
@@ -225,7 +225,7 @@ function AddJob (props) {
         </section>
 
         <section className='flex flex-col w-64 p-4 JOB-DETAILS gap-y-2'>
-          <div className='flex items-center justify-center p-1 mb-2 text-2xl text-white bg-black rounded-lg gap-x-2 bg-opacity-30'>
+          <div className='flex items-center justify-center p-1 mb-2 text-2xl text-gray-700 bg-black rounded-lg gap-x-2 bg-opacity-30'>
             
             <span>JOB DETAILS</span>
           </div>
@@ -288,7 +288,7 @@ function AddJob (props) {
               onChange={handleJobFitRating}
               />
             </div>
-            <a className='flex items-center justify-center text-white my-anchor-element' 
+            <a className='flex items-center justify-center text-gray-700 my-anchor-element' 
             data-tooltip-id="my-tooltip" data-tooltip-content="How well do you fit the job description?">
               <Icon className='transition-all hover:cursor-pointer hover:text-slate-300' path={mdiHelpCircle} size={1} />
             </a>
@@ -311,7 +311,7 @@ function AddJob (props) {
         </section>
 
         <section className='flex flex-col w-64 p-4 gap-y-2'>
-          <div className='flex justify-center p-1 mb-2 text-2xl text-white bg-black bg-opacity-25 rounded-lg gap-x-2'>
+          <div className='flex justify-center p-1 mb-2 text-2xl text-gray-700 bg-black bg-opacity-25 rounded-lg gap-x-2'>
             <span>RESPONSE</span>
           </div>
           <div className='flex flex-col gap-y-2'>
@@ -369,7 +369,7 @@ function AddJob (props) {
         </section>
 
         <section className='flex flex-col w-64 p-4 gap-y-2'>
-          <div className='flex items-center justify-center p-1 mb-2 text-2xl text-white bg-black rounded-lg gap-x-2 bg-opacity-30 '>
+          <div className='flex items-center justify-center p-1 mb-2 text-2xl text-gray-700 bg-black rounded-lg gap-x-2 bg-opacity-30 '>
             <span>MISC</span>
           </div>
           <div className='flex flex-col gap-y-2'>
@@ -411,9 +411,9 @@ function AddJob (props) {
           <span className='h-full text-red-700'>{saveError}</span>
         </section>
 
-        <section className='flex justify-center p-2 border-black border-opacity-50 h-fit col-span-full '>
+        <section className='flex justify-center p-2 border-gray-300 border-opacity-50 h-fit col-span-full '>
           <div className='flex w-64 gap-4 max-640px-flex-column-w-full'>
-            <button className='flex items-center justify-center w-full text-black transition-all bg-yellow-500 rounded-lg border-blac bg-opacity-60 hover:bg-opacity-80' onClick={handleJobFormSubmit}>
+            <button className='flex items-center justify-center w-full text-gray-700 transition-all bg-yellow-500 rounded-lg border-blac bg-opacity-60 hover:bg-opacity-80' onClick={handleJobFormSubmit}>
             
               {
               !saveLoading && !saveSuccessful && 'SAVE'
@@ -426,7 +426,7 @@ function AddJob (props) {
               }
               {
               saveSuccessful && 
-              <Icon path={mdiCheckDecagram} size={1.1} className='text-white' />
+              <Icon path={mdiCheckDecagram} size={1.1} className='text-gray-700' />
               }
               
               

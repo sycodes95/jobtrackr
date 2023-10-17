@@ -74,8 +74,8 @@ function JobFitBarChart (props) {
   },[jobApps])
 
   return (
-    <div className='flex flex-col items-center w-full h-full border-4 border-black JOB-FIT-RATING-BAR border-opacity-30'>
-      <section className="flex items-center justify-center w-full h-12 font-bold text-white bg-black bg-opacity-25 text-md">
+    <div className='flex flex-col items-center w-full h-full border-4 border-gray-300 JOB-FIT-RATING-BAR border-opacity-30'>
+      <section className="flex items-center justify-center w-full h-12 font-bold text-gray-700 bg-black bg-opacity-25 text-md">
         PERFORMANCE BY FIT RATING
       </section>
 
@@ -230,7 +230,7 @@ function JobFitBarChart (props) {
 
   return (
     <div className='flex flex-col items-center w-full h-full col-span-1 border rounded-lg shadow-md JOB-FIT-RATING-BAR border-slate-800 bg-black-transparent-gradient'>
-      <section className="flex items-center justify-center w-full h-12 font-bold text-white bg-black bg-opacity-25 rounded-lg text-md">
+      <section className="flex items-center justify-center w-full h-12 font-bold text-gray-700 bg-black bg-opacity-25 rounded-lg text-md">
         STATUS BY FIT RATING
       </section>
 

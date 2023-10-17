@@ -27,7 +27,7 @@ function AppDelete (props) {
     })
   }
   return(
-    <div className='flex flex-col w-64 gap-4 border rounded-lg shadow-md bg-gray border-slate-800'>
+    <div className='flex flex-col w-64 gap-4 border rounded-lg shadow-md bg-gray '>
       <section className="relative flex justify-center h-8 pl-4 pr-4 text-sm font-bold text-center text-white bg-black bg-opacity-25 rounded-lg min-w-fit">
         <div className="flex items-center text-white min-w-fit">CONFIRM DELETE</div>
         <div className="absolute right-0 flex items-center h-full">

@@ -94,7 +94,7 @@ function TrackerFilter (props) {
 
   
   return(
-    <div className="flex w-full p-2 border border-gray-800 rounded-lg shadow-md max-640px-flex-column-w-full gap-x-4 gap-y-4 h-fit">
+    <div className="flex w-full p-2 bg-black rounded-lg shadow-md bg-opacity-10 max-640px-flex-column-w-full gap-x-4 gap-y-4 h-fit">
       <section className="flex text-white FILTER-LOGO">
         <div className="flex flex-col items-center justify-center flex-1 p-2 bg-black bg-opacity-25 rounded-lg gap-y-2">
           <Icon path={mdiFilterSettings} size={1.5} />

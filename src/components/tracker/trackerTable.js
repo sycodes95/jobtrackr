@@ -44,7 +44,7 @@ function TrackerTable (props) {
   
   return (
     
-    <div className='relative w-full p-2 overflow-x-auto bg-black border border-gray-800 rounded-lg shadow-md TRACKER-TABLE bg-opacity-10' ref={containerRef}>
+    <div className='relative w-full p-2 overflow-x-auto bg-black rounded-lg shadow-md bg-opacity-10 TRACKER-TABLE' ref={containerRef}>
       {
       fetchLoading && 
       <div className="absolute top-0 left-0 z-40 flex items-center justify-center w-full h-full ">

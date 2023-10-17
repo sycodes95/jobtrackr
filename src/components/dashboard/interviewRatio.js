@@ -25,7 +25,7 @@ function InterviewRatio (props) {
     jobApps && getRatio()
   },[jobApps])
   return(
-    <div className="flex flex-col items-center flex-grow border rounded-lg shadow-md gap-x-2 border-slate-800">
+    <div className="flex flex-col items-center flex-grow rounded-lg shadow-md gap-x-2 ">
       <div className="flex items-center justify-center w-full p-2 text-sm text-white bg-black bg-opacity-25 rounded-lg gap-x-2">
         <span className="text-white text-opacity-50">RESPONSE TO INTERVIEW RATIO</span>
         

@@ -266,7 +266,7 @@ function Tracker () {
 
   return(
     <Dialog.Root>
-      <div className="flex justify-center w-full h-full p-8 TRACKER-CONTAINER">
+      <div className="flex justify-center w-full h-full pt-8 pb-8 TRACKER-CONTAINER">
         <div className="flex flex-col items-center justify-center h-full p-2 text-black TRACKER-SUB-CONTAINER max-w-screen-2xl">
 
           
@@ -280,10 +280,10 @@ function Tracker () {
             />
           </section>
 
-          <section className='grid w-full mb-4 bg-opacity-25 TOOL-BAR gap-x-2 gap-y-2'>
+          <section className='grid w-full mb-4 TOOL-BAR gap-x-2 gap-y-2'>
             <div className='ADD-JOB-BUTTON-CONTAINER w-fit'>
               <Dialog.Trigger className='w-full h-full'>
-              <div className='grid items-center w-48 h-full grid-cols-3 text-xs text-white transition-all bg-white border border-white rounded-lg ADD-JOB-BUTTON bg-opacity-10 hover:bg-opacity-25'>
+              <div className='grid items-center w-48 h-full grid-cols-3 text-xs text-white transition-all bg-white border rounded-lg ADD-JOB-BUTTON bg-opacity-10 hover:bg-opacity-25'>
               
                 <div className='flex justify-center'> <Icon path={mdiPlusThick} size={1}/></div>
                 <div>ADD JOB</div>
@@ -388,12 +388,12 @@ function Tracker () {
              
           </section>
 
-          <section className='w-full'>
+          {/* <section className='w-full'>
             
             <button className='p-1 text-xs text-white transition-all bg-green-800 border border-green-500 rounded-lg bg-opacity-10 w-44 hover:bg-opacity-25' onClick={handleAddMockData}>ADD MOCK DATA ROW</button>
             
             
-          </section>
+          </section> */}
 
         </div>
         

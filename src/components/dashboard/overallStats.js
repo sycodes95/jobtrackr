@@ -38,7 +38,7 @@ function OverallStats (props) {
     jobApps && getData()
   },[jobApps])
   return(
-    <div className="flex items-center flex-grow p-2 bg-black bg-opacity-25 border rounded-lg shadow-md OVERALL-STATS gap-x-2 gap-y-2 border-slate-800">
+    <div className="flex items-center flex-grow p-2 bg-black bg-opacity-25 rounded-lg shadow-md OVERALL-STATS gap-x-2 gap-y-2 ">
       <div className="flex items-center justify-between flex-grow w-full p-2 font-bold text-gray-300 bg-black rounded-lg gap-x-2 bg-opacity-30 text-md">
         <div className="">
           TOTAL APPS

@@ -172,7 +172,7 @@ function AddJob (props) {
   },[jobForm])
 
   return(
-    <div className="flex flex-col max-h-full border rounded-lg max-w-7xl bg-gray border-slate-800">
+    <div className="flex flex-col max-h-full border rounded-lg max-w-7xl bg-gray ">
       
       <section className="grid items-center h-8 pl-4 pr-4 text-sm font-bold text-center text-white bg-black bg-opacity-25 rounded-lg min-w-fit">
         <div className="col-start-2 min-w-fit">JOB APPLICATION DETAILS</div>

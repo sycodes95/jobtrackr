@@ -229,7 +229,7 @@ function JobFitBarChart (props) {
   },[jobApps])
 
   return (
-    <div className='flex flex-col items-center w-full h-full col-span-1 border rounded-lg shadow-md JOB-FIT-RATING-BAR border-slate-800 bg-black-transparent-gradient'>
+    <div className='flex flex-col items-center w-full h-full col-span-1 rounded-lg shadow-md JOB-FIT-RATING-BAR bg-black-transparent-gradient'>
       <section className="flex items-center justify-center w-full h-12 font-bold text-white bg-black bg-opacity-25 rounded-lg text-md">
         STATUS BY FIT RATING
       </section>

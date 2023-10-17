@@ -55,7 +55,7 @@ function Header () {
     verifyToken()
   },[])
   return (
-    <section className="w-full h-16 pl-2 pr-2 bg-black bg-opacity-50 shadow-lg HEADER-CONTAINER">
+    <section className="w-full h-16 pl-2 pr-2 bg-black bg-opacity-10 HEADER-CONTAINER">
       <div className="flex items-center justify-between h-full ml-auto mr-auto text-white max-w-7xl">
         <div className="flex items-center h-full overflow-hidden HEADER-LOGO w-72 ">
           <img

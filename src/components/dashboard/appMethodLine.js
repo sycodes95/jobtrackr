@@ -56,7 +56,7 @@ function AppMethodLine (props) {
     jobApps && getDataAndFormat()
   },[jobApps])
   return(
-    <div className='relative flex flex-col items-center w-full h-full col-span-1 border rounded-lg shadow-md JOB-APP-STATUS-PIE border-slate-800 bg-black-transparent-gradient'>
+    <div className='relative flex flex-col items-center w-full h-full col-span-1 rounded-lg shadow-md JOB-APP-STATUS-PIE bg-black-transparent-gradient'>
       <section className="flex items-center justify-center w-full h-12 font-bold text-white bg-black bg-opacity-25 rounded-lg text-md">
         <span>PERFORMANCE BY APPLICATION METHOD</span>
       </section>

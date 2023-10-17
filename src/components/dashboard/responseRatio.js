@@ -24,7 +24,7 @@ function ResponseRatio (props) {
     jobApps && getRatio()
   },[jobApps])
   return(
-    <div className="flex flex-col items-center flex-grow border rounded-lg shadow-md border-slate-800 gap-x-2">
+    <div className="flex flex-col items-center flex-grow rounded-lg shadow-md gap-x-2">
       <div className="flex items-center justify-center flex-grow w-full p-2 text-sm text-white bg-black bg-opacity-25 rounded-lg gap-x-2">
         
         <span className="text-white text-opacity-50">APPLICATION TO RESPONSE RATIO</span>

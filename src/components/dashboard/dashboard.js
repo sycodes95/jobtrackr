@@ -123,117 +123,130 @@ function Dashboard () {
   },[user_id])
 
   return (
-    
-    <div className="flex justify-center w-full h-full p-8 DASHBOARD-CONTAINER">
-      {
-      user_id &&
-      <div className="flex flex-col items-center w-full h-full p-2 text-black max-w-7xl gap-x-2 gap-y-2">
-        <section className="flex justify-between w-full h-full col-start-1 DASHBOARD-DATE-SORT border-opacity-30 col-span-full gap-x-2 ">
-
-          
-          <div className="flex justify-between gap-4 p-2 text-xs text-white bg-black bg-opacity-25 border rounded-lg shadow-md border-slate-800">
-            <button className="p-1 transition-all border-b border-white"
-            name="ALL" onClick={handleDateSort} ref={sortAllRef}>
-              ALL
-            </button>
-            <button className="transition-all border-b border-white border-opacity-0 whitespace-nowrap" 
-            name="LAST WEEK" onClick={handleDateSort} ref={sortWeekRef}>
-              LAST WEEK
-            </button>
-            <button className="transition-all border-b border-white border-opacity-0 whitespace-nowrap" 
-            name="LAST MONTH" onClick={handleDateSort} ref={sortMonthRef}>
-              LAST MONTH
-            </button>
-            <button className="transition-all border-b border-white border-opacity-0 whitespace-nowrap" 
-            name="LAST YEAR" onClick={handleDateSort} ref={sortYearRef}>
-              LAST YEAR
-            </button>
-          </div>
-
-          <div className="flex items-center w-full p-2 text-xs text-white bg-black bg-opacity-25 border rounded-lg shadow-md border-slate-800 gap-x-2">
-            <div className="border-b border-white border-opacity-0 whitespace-nowrap" 
-            ref={sortCustomRangeRef}>
-              CUSTOM RANGE
+    <div className="flex justify-center w-full h-full pt-8 pb-8 DASHBOARD-CONTAINER">
+      {user_id && (
+        <div className="flex flex-col items-center w-full h-full p-2 text-black max-w-7xl gap-x-2 gap-y-2">
+          <section className="flex justify-between w-full h-full col-start-1 gap-2 DASHBOARD-DATE-SORT border-opacity-30 col-span-full ">
+            <div className="flex justify-between gap-4 p-2 text-xs text-white bg-black bg-opacity-25 border-black rounded-lg shadow-md ">
+              <button
+                className="p-1 transition-all border-b border-white "
+                name="ALL"
+                onClick={handleDateSort}
+                ref={sortAllRef}
+              >
+                ALL
+              </button>
+              <button
+                className="transition-all border-b border-white border-opacity-0 whitespace-nowrap"
+                name="LAST WEEK"
+                onClick={handleDateSort}
+                ref={sortWeekRef}
+              >
+                LAST WEEK
+              </button>
+              <button
+                className="transition-all border-b border-white border-opacity-0 whitespace-nowrap"
+                name="LAST MONTH"
+                onClick={handleDateSort}
+                ref={sortMonthRef}
+              >
+                LAST MONTH
+              </button>
+              <button
+                className="transition-all border-b border-white border-opacity-0 whitespace-nowrap"
+                name="LAST YEAR"
+                onClick={handleDateSort}
+                ref={sortYearRef}
+              >
+                LAST YEAR
+              </button>
             </div>
-            <div className="w-full">
-            <input className="w-full p-1 bg-black bg-opacity-25" 
-            type="date" value={customDateRange.start} onChange={(e) => setCustomDateRange({...customDateRange, start: e.target.value})}/>
-            
+
+            <div className="flex flex-wrap items-center w-full gap-2 p-2 text-xs text-white bg-black bg-opacity-25 rounded-lg shadow-md md:flex-nowrap">
+              <div
+                className="border-b border-white border-opacity-0 whitespace-nowrap"
+                ref={sortCustomRangeRef}
+              >
+                CUSTOM RANGE
+              </div>
+              <div className="w-full">
+                <input
+                  className="w-full p-1 bg-black bg-opacity-25"
+                  type="date"
+                  value={customDateRange.start}
+                  onChange={(e) =>
+                    setCustomDateRange({
+                      ...customDateRange,
+                      start: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div>-</div>
+              <div className="w-full">
+                <input
+                  className="w-full p-1 bg-black bg-opacity-25"
+                  type="date"
+                  value={customDateRange.end}
+                  onChange={(e) =>
+                    setCustomDateRange({
+                      ...customDateRange,
+                      end: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className="flex gap-x-2">
+                <button onClick={handleCustomDateSort}>APPLY</button>
+                <button onClick={handleCustomDateClear}>CLEAR</button>
+              </div>
             </div>
-            <div>
-              -
+          </section>
+
+          <section className="flex flex-wrap w-full h-full col-start-1 col-span-full gap-x-2">
+            <div className="flex flex-wrap w-full gap-x-2">
+              <OverallStats jobApps={jobApps} />
             </div>
-            <div className="w-full">
-            <input className="w-full p-1 bg-black bg-opacity-25" 
-            type="date" value={customDateRange.end} onChange={(e) => setCustomDateRange({...customDateRange, end: e.target.value})}/>
+          </section>
+
+          <section className="flex flex-wrap w-full h-full col-start-1 col-span-full gap-x-2">
+            <div className="flex flex-wrap w-full gap-x-2">
+              <OfferAmount jobApps={jobApps} />
             </div>
-            <div className="flex gap-x-2">
-              <button onClick={handleCustomDateSort}>APPLY</button>
-              <button onClick={handleCustomDateClear}>CLEAR</button>
+          </section>
+
+          <section className="flex flex-wrap w-full h-full col-start-1 col-span-full gap-x-2">
+            <div className="grid w-full grid-cols-4 gap-2 DASHBOARD-RATIOS">
+              <ResponseRatio jobApps={jobApps} />
+              <InterviewRatio jobApps={jobApps} />
+              <OfferRatio jobApps={jobApps} />
+              <RejectionRatio jobApps={jobApps} />
             </div>
-          </div>
+          </section>
 
-        </section>
+          <section className="flex flex-col w-full h-full col-start-1 col-span-full">
+            <div className="grid w-full gap-2 NIVO-GRID">
+              <StatusPie jobApps={jobApps} />
+              <JobFitBarChart jobApps={jobApps} />
+            </div>
+          </section>
 
+          <section className="flex flex-col w-full h-full col-start-1 col-span-full">
+            <div className="grid w-full gap-2 NIVO-GRID">
+              <AppMethodLine jobApps={jobApps} />
+              <AppLocationLine jobApps={jobApps} />
+            </div>
+          </section>
 
-        <section className="flex flex-wrap w-full h-full col-start-1 col-span-full gap-x-2">
-
-          <div className="flex flex-wrap w-full gap-x-2">
-            <OverallStats jobApps={jobApps}/>
-          </div>
-
-        </section>
-
-        <section className="flex flex-wrap w-full h-full col-start-1 col-span-full gap-x-2">
-
-          <div className="flex flex-wrap w-full gap-x-2">
-            <OfferAmount jobApps={jobApps}/>
-          </div>
-
-        </section>
-
-        <section className="flex flex-wrap w-full h-full col-start-1 col-span-full gap-x-2">
-
-          <div className="grid w-full grid-cols-4 gap-2 DASHBOARD-RATIOS">
-            <ResponseRatio jobApps={jobApps}/>
-            <InterviewRatio jobApps={jobApps}/>
-            <OfferRatio jobApps={jobApps}/>
-            <RejectionRatio jobApps={jobApps}/>
-          </div>
-          
-        </section>
-
-        <section className="flex flex-col w-full h-full col-start-1 col-span-full">
-
-          <div className="grid w-full gap-2 NIVO-GRID">
-            <StatusPie jobApps={jobApps}/>
-            <JobFitBarChart jobApps={jobApps}/>
-            
-          </div>
-          
-        </section>
-
-        <section className="flex flex-col w-full h-full col-start-1 col-span-full">
-
-          <div className="grid w-full gap-2 NIVO-GRID">
-            <AppMethodLine jobApps={jobApps}/>
-            <AppLocationLine jobApps={jobApps}/>
-          </div>
-          
-        </section>
-
-        <section className="flex flex-col w-full h-full col-start-1 col-span-full">
-
-          <div className="grid w-full gap-2 NIVO-GRID">
-            <RejectionStageBar jobApps={jobApps}/>
-          </div>
-          
-        </section>
-      </div>
-      }
+          <section className="flex flex-col w-full h-full col-start-1 col-span-full">
+            <div className="grid w-full gap-2 NIVO-GRID">
+              <RejectionStageBar jobApps={jobApps} />
+            </div>
+          </section>
+        </div>
+      )}
     </div>
-    
-  )
+  );
 }
 
 export default Dashboard;

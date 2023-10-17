@@ -56,7 +56,7 @@ function RejectionStageBar({jobApps}) {
   },[jobApps])
   
   return (
-    <div className='flex flex-col items-center w-full h-full col-span-2 border rounded-lg shadow-md border-slate-800 bg-black-transparent-gradient'>
+    <div className='flex flex-col items-center w-full h-full col-span-2 rounded-lg shadow-md bg-black-transparent-gradient'>
       <section className="flex items-center justify-center w-full h-12 font-bold text-white bg-black bg-opacity-25 rounded-lg text-md ">
         REJECTIONS BY STAGE
       </section>

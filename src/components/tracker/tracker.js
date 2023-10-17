@@ -20,12 +20,7 @@ import companyNameMockArray from '../mockData/companyNameMockArray';
 import jobPositionsMockArray from '../mockData/jobPositionsMockArray';
 import { mockComponent } from 'react-dom/test-utils';
 
-
 import { mdiMagnify } from '@mdi/js';
-
-
-
-
 
 function Tracker () {
   const navigate = useNavigate()
@@ -271,7 +266,7 @@ function Tracker () {
 
   return(
     <Dialog.Root>
-      <div className="flex justify-center w-full h-full TRACKER-CONTAINER">
+      <div className="flex justify-center w-full h-full p-8 TRACKER-CONTAINER">
         <div className="flex flex-col items-center justify-center h-full p-2 text-black TRACKER-SUB-CONTAINER max-w-screen-2xl">
 
           

@@ -166,10 +166,6 @@ function AddJob (props) {
     null, 'From Response', 'After Interview', 'After Offer', 'Other'
   ];
 
-  useEffect(()=> {
-    console.log(jobForm);
-    console.log(jobForm.job_app_date);
-  },[jobForm])
 
   return(
     <div className="flex flex-col max-h-full rounded-lg max-w-7xl bg-gray ">

@@ -11,9 +11,10 @@ function InterviewRatio (props) {
   const jobApps = props.jobApps
 
   const [interviewRatio, setInterviewRatio] = useState(0)
-
+  //testing
   const getRatio = () => {
     if(jobApps.length === 0) return setInterviewRatio(0)
+
     const respondedApps = jobApps.filter(app => app.response_date).length
     const interviewedApps = jobApps.filter(app => app.interview_date).length
     const ratio = Math.round((interviewedApps / respondedApps) * 100)
